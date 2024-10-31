@@ -3,6 +3,9 @@ package com.soybean;
 import com.soybean.block.ModBlock;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.client.gui.screen.ingame.CraftingScreen;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
+import net.minecraft.screen.ScreenHandlerType;
 
 public class StoneClient implements ClientModInitializer {
     @Override

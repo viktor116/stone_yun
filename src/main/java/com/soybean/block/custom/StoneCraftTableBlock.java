@@ -19,7 +19,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class StoneCraftTableBlock extends Block {
-
     public static final MapCodec<StoneCraftTableBlock> CODEC = createCodec(StoneCraftTableBlock::new);
     private static final Text TITLE = Text.translatable("block.stone.stone_crafting_table");
 
