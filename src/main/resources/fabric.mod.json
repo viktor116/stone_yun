@@ -17,6 +17,9 @@
 	"entrypoints": {
 		"main": [
 			"com.soybean.Stone"
+		],
+		"client": [
+			"com.soybean.StoneClient"
 		]
 	},
 	"mixins": [

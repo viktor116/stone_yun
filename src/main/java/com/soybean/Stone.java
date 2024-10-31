@@ -15,6 +15,6 @@ public class Stone implements ModInitializer {
 	public void onInitialize() {
 		ModBlock.initialize();
 		ItemsRegister.initialize();
-		InitValue.LOGGER.info("make in soybean=v=!");
+		InitValue.LOGGER.info("make in soybean =v=!");
 	}
 }

@@ -19,12 +19,12 @@ import net.minecraft.util.Identifier;
  * @description
  */
 public class ModBlock {
-    public static final Block STONE_CRAFT_TABLE =  register("stone_crafting_table", new StoneCraftTableBlock(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(NoteBlockInstrument.BASS).strength(2.5F).sounds(BlockSoundGroup.STONE).burnable()),true);
+    public static final Block STONE_CRAFT_TABLE =  register("stone_crafting_table", new StoneCraftTableBlock(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.5F).sounds(BlockSoundGroup.STONE).burnable()),true);
     public static void initialize(){
 
     }
     public static void initializeClient(){
-        BlockRenderLayerMap.INSTANCE.putBlock(STONE_CRAFT_TABLE, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(STONE_CRAFT_TABLE, RenderLayer.getCutout());
     }
 
     public static Block register(String id, Block block ,boolean shouldRegisterItem){
