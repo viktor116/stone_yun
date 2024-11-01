@@ -1,6 +1,7 @@
 package com.soybean.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import com.soybean.screen.StoneCraftingScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -45,9 +46,13 @@ public class StoneCraftTableBlock extends Block {
 
     @Override
     protected NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
-        return new SimpleNamedScreenHandlerFactory((syncId, inventory, player) ->
-                new CraftingScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)),
-                TITLE
-        );
+        return new SimpleNamedScreenHandlerFactory((syncId, inventory, player) -> {
+            // 使用ScreenHandlerContext来确保合成表与方块位置关联
+            return new StoneCraftingScreenHandler(
+                    syncId,
+                    inventory,
+                    ScreenHandlerContext.create(world, pos)
+            );
+        }, TITLE);
     }
 }

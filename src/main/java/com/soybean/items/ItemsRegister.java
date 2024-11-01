@@ -24,7 +24,6 @@ import net.minecraft.util.Identifier;
 public class ItemsRegister {
 
     public static final Item STONE_STICK = register(new Item(new Item.Settings().maxCount(64)), "stone_stick");
-
     public static final Block STONE = register("stone", new Block(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).strength(1.5F, 6.0F)));
     public static void initialize() {
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);
