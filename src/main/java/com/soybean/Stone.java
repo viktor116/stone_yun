@@ -2,6 +2,7 @@ package com.soybean;
 
 import com.soybean.block.ModBlock;
 import com.soybean.config.InitValue;
+import com.soybean.entity.EntityRegister;
 import com.soybean.items.ItemsRegister;
 import net.fabricmc.api.ModInitializer;
 
@@ -15,6 +16,7 @@ public class Stone implements ModInitializer {
 	public void onInitialize() {
 		ModBlock.initialize();
 		ItemsRegister.initialize();
+		EntityRegister.initialize();
 		InitValue.LOGGER.info("make in soybean =v=!");
 	}
 }

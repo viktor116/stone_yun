@@ -1,6 +1,7 @@
 package com.soybean;
 
 import com.soybean.block.ModBlock;
+import com.soybean.entity.EntityRegister;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.gui.screen.ingame.CraftingScreen;
@@ -11,5 +12,6 @@ public class StoneClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ModBlock.initializeClient();
+        EntityRegister.initializeClient();
     }
 }

@@ -1,6 +1,8 @@
 {
   "itemGroup.soybean": "陨风&豆浆",
   "item.stone.stone_stick": "石棍",
+  "item.stone.invert_minecart": "反转矿车",
+  "item.stone.minecart_hat": "矿车头盔",
   "block.stone.stone_crafting_table": "石制工作台",
   "stone.container.crafting": "石制工作台"
 }
