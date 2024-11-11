@@ -27,7 +27,7 @@ import net.minecraft.util.Identifier;
 public class ItemsRegister {
 
     public static final Item STONE_STICK = register(new Item(new Item.Settings().maxCount(64)), "stone_stick");
-    public static final Block STONE = register("stone", new Block(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).strength(1.5F, 6.0F)));
+    //public static final Block STONE = register("stone", new Block(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).strength(1.5F, 6.0F)));
     public static final Item INVERT_MINECART = register(new InvertMinecartItem(new Item.Settings().maxCount(1)), "invert_minecart");
     public static final Item MINECART_HAT = register(new MinecartHatItem(), "minecart_hat");
     public static final Item GRASS = register(new GrassItem(new Item.Settings()),"grass");
