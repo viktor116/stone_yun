@@ -4,6 +4,10 @@
   "item.stone.invert_minecart": "反转矿车",
   "item.stone.minecart_hat": "矿车头盔",
   "item.stone.grass": "矮草丛",
+  "item.stone.wheat": "小麦",
+  "item.stone.stone_sword": "石剑",
+  "item.stone.stone_axe": "石斧",
+  "item.stone.stone_pickaxe": "石稿",
   "block.stone.stone_crafting_table": "石制工作台",
   "stone.container.crafting": "石制工作台"
 }

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "/",
+    "/",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "stone:stone_stick"
+    },
+    "/": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "result": {
+    "id": "stone:stone_sword",
+    "count": 1
+  }
+}
