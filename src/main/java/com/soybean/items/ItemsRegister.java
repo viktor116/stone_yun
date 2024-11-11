@@ -2,6 +2,7 @@ package com.soybean.items;
 
 import com.soybean.block.ModBlock;
 import com.soybean.config.InitValue;
+import com.soybean.items.custom.GrassItem;
 import com.soybean.items.custom.InvertMinecartItem;
 import com.soybean.items.custom.MinecartHatItem;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -29,6 +30,7 @@ public class ItemsRegister {
     public static final Block STONE = register("stone", new Block(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).strength(1.5F, 6.0F)));
     public static final Item INVERT_MINECART = register(new InvertMinecartItem(new Item.Settings().maxCount(1)), "invert_minecart");
     public static final Item MINECART_HAT = register(new MinecartHatItem(), "minecart_hat");
+    public static final Item GRASS = register(new GrassItem(new Item.Settings()),"grass");
 
     public static void initialize() {
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);
@@ -37,6 +39,7 @@ public class ItemsRegister {
             itemGroup.add(ModBlock.STONE_CRAFT_TABLE.asItem());
             itemGroup.add(INVERT_MINECART);
             itemGroup.add(MINECART_HAT);
+            itemGroup.add(GRASS);
         });
 
     }

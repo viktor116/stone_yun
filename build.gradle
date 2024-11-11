@@ -23,6 +23,7 @@ repositories {
 			includeGroup("software.bernie.geckolib")
 		}
 	}
+	maven {url = "https://maven.kyrptonaught.dev"}
 }
 
 dependencies {
@@ -34,6 +35,9 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
+
+	modImplementation "net.kyrptonaught:customportalapi:${custom_portal_api}"
+	include "net.kyrptonaught:customportalapi:${custom_portal_api}"
 }
 
 processResources {
