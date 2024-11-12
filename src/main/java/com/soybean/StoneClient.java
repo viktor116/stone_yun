@@ -2,6 +2,7 @@ package com.soybean;
 
 import com.soybean.block.ModBlock;
 import com.soybean.entity.EntityRegister;
+import com.soybean.items.ItemsRegister;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.gui.screen.ingame.CraftingScreen;

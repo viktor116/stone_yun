@@ -12,4 +12,5 @@ public class InitValue {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(InitValue.MOD_ID);
     public static final String MOD_ID = "stone";
+    public static final String MINECRAFT = "minecraft";
 }

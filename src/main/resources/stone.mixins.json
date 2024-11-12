@@ -4,7 +4,7 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"ExampleMixin",
-		"ObsidianMiningMixin"
+		"ItemRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

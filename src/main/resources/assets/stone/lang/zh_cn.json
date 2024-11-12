@@ -8,6 +8,13 @@
   "item.stone.stone_sword": "石剑",
   "item.stone.stone_axe": "石斧",
   "item.stone.stone_pickaxe": "石稿",
+  "item.stone.coal_helmet": "煤炭头盔",
+  "item.stone.coal_chestplate": "煤炭胸甲",
+  "item.stone.coal_leggings": "煤炭护腿",
+  "item.stone.coal_boots": "煤炭靴子",
+  "item.stone.air_pickaxe": "空气稿",
+  "entity.stone.wheat_entity": "小麦生物",
+
 
   "block.stone.soul_torch": "加速火把",
   "block.stone.stone_crafting_table": "石制工作台",
