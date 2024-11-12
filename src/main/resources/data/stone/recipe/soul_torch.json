@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " / ",
+    "/#/",
+    " / "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:torch"
+    },
+    "/": {
+      "item": "minecraft:clock"
+    }
+  },
+  "result": {
+    "id": "stone:soul_torch",
+    "count": 1
+  }
+}

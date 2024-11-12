@@ -6,10 +6,12 @@ import com.soybean.screen.StoneCraftingScreenHandler;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.resource.featuretoggle.FeatureSet;
@@ -27,9 +29,12 @@ import net.minecraft.util.Identifier;
  */
 public class ModBlock {
     public static final Block STONE_CRAFT_TABLE = register("stone_crafting_table", new StoneCraftTableBlock(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.5F).sounds(BlockSoundGroup.STONE).burnable()), true);
-//    public static final ScreenHandlerType<CrafterScreenHandler> STONE_CRAFTER_SCREEN_HANDLER = Registry.register(Registries.SCREEN_HANDLER, Identifier.of(InitValue.MOD_ID, "stone_crafting_table"), new ScreenHandlerType<>(CrafterScreenHandler::new, FeatureSet.empty()));
-//    public static final ScreenHandlerType<CraftingScreenHandler> STONE_CRAFTING_SCREEN_HANDLER = Registry.register(Registries.SCREEN_HANDLER, Identifier.of(InitValue.MOD_ID, "stone_crafting_table"), new ScreenHandlerType<>(CraftingScreenHandler::new, FeatureSet.empty()));
-
+    public static final Block SOUL_TORCH_BLOCK = register("soul_torch", new TorchBlock(ParticleTypes.SOUL_FIRE_FLAME, AbstractBlock.Settings.create().noCollision().breakInstantly().luminance((state) -> {
+        return 10;
+    })), true);
+    public static final Block SOUL_WALL_TORCH = register("soul_wall_torch", new WallTorchBlock(ParticleTypes.SOUL_FIRE_FLAME, AbstractBlock.Settings.create().noCollision().breakInstantly().luminance((state) -> {
+        return 10;
+    }).sounds(BlockSoundGroup.WOOD).dropsLike(SOUL_TORCH_BLOCK).pistonBehavior(PistonBehavior.DESTROY)),false);
     public static final ScreenHandlerType<StoneCraftingScreenHandler> STONE_CRAFTING_SCREEN_HANDLER =
             Registry.register(
                     Registries.SCREEN_HANDLER,
@@ -43,7 +48,8 @@ public class ModBlock {
 
     public static void initializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(STONE_CRAFT_TABLE, RenderLayer.getCutout());
-
+        BlockRenderLayerMap.INSTANCE.putBlock(SOUL_TORCH_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(SOUL_WALL_TORCH, RenderLayer.getCutout());
     }
 
     public static Block register(String id, Block block, boolean shouldRegisterItem) {

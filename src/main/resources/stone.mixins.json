@@ -3,7 +3,8 @@
 	"package": "com.soybean.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"ExampleMixin",
+		"ObsidianMiningMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
