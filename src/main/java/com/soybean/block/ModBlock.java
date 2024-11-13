@@ -1,7 +1,6 @@
 package com.soybean.block;
 
 import com.soybean.block.custom.StoneCraftTableBlock;
-import com.soybean.block.custom.inventory.CactusBlock;
 import com.soybean.config.InitValue;
 import com.soybean.screen.StoneCraftingScreenHandler;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -33,12 +32,11 @@ public class ModBlock {
     public static final Block SOUL_WALL_TORCH = register("soul_wall_torch", new WallTorchBlock(ParticleTypes.SOUL_FIRE_FLAME, AbstractBlock.Settings.create().noCollision().breakInstantly().luminance((state) -> {
         return 10;
     }).sounds(BlockSoundGroup.WOOD).dropsLike(SOUL_TORCH_BLOCK).pistonBehavior(PistonBehavior.DESTROY)),false);
+    public static final Block FIRE = register("fire",new FireBlock(AbstractBlock.Settings.create().mapColor(MapColor.ORANGE)),true);
+    public static final Block NETHER_PORTAL = register("nether_portal",new NetherPortalBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_PURPLE)),true);
     public static final ScreenHandlerType<StoneCraftingScreenHandler> STONE_CRAFTING_SCREEN_HANDLER =
-            Registry.register(
-                    Registries.SCREEN_HANDLER,
-                    Identifier.of(InitValue.MOD_ID, "stone_crafting_table"),
-                    new ScreenHandlerType<>(StoneCraftingScreenHandler::new, FeatureSet.empty())
-            );
+            Registry.register(Registries.SCREEN_HANDLER, Identifier.of(InitValue.MOD_ID, "stone_crafting_table"),
+                    new ScreenHandlerType<>(StoneCraftingScreenHandler::new, FeatureSet.empty()));
 
     public static void initialize() {
 
@@ -48,7 +46,9 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlock(STONE_CRAFT_TABLE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SOUL_TORCH_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SOUL_WALL_TORCH, RenderLayer.getCutout());
-//        BlockRenderLayerMap.INSTANCE.putBlock(CACTUS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(CACTUS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FIRE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(NETHER_PORTAL, RenderLayer.getCutout());
     }
 
     public static Block register(String id, Block block, boolean shouldRegisterItem) {

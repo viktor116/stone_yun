@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#/#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:obsidian"
+    },
+    "/": {
+      "item": "stone:fire"
+    }
+  },
+  "result": {
+    "id": "stone:nether_portal",
+    "count": 1
+  }
+}

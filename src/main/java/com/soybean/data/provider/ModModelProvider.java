@@ -1,4 +1,4 @@
-package com.soybean.data.generator;
+package com.soybean.data.provider;
 
 import com.soybean.items.ItemsRegister;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -12,8 +12,8 @@ import net.minecraft.data.client.Models;
  * @date 2024/11/13 14:56
  * @description
  */
-public class ModModelGenerator extends FabricModelProvider {
-    public ModModelGenerator(FabricDataOutput output) {
+public class ModModelProvider extends FabricModelProvider {
+    public ModModelProvider(FabricDataOutput output) {
         super(output);
     }
 

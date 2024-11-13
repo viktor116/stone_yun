@@ -5,6 +5,10 @@ import com.soybean.config.InitValue;
 import com.soybean.enchant.EnchantmentRegister;
 import com.soybean.entity.EntityRegister;
 import com.soybean.event.EventRegister;
+import com.soybean.init.BlockEntityTypeInit;
+import com.soybean.init.BlockInit;
+import com.soybean.init.ItemInit;
+import com.soybean.init.ScreenHandlerTypeInit;
 import com.soybean.items.ItemsRegister;
 import com.soybean.items.armor.ModArmorMaterials;
 import com.soybean.world.portals.PortalsRegister;
@@ -14,6 +18,11 @@ public class Stone implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		BlockEntityTypeInit.initialize();
+		BlockInit.initialize();
+		ItemInit.initialize();
+		ScreenHandlerTypeInit.initialize();
+
 		ModBlock.initialize();
 		EnchantmentRegister.Initialize();
 		ModArmorMaterials.initialize();
