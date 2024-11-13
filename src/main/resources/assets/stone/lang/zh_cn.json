@@ -12,11 +12,15 @@
   "item.stone.coal_chestplate": "煤炭胸甲",
   "item.stone.coal_leggings": "煤炭护腿",
   "item.stone.coal_boots": "煤炭靴子",
-  "item.stone.air_pickaxe": "空气稿",
+  "item.stone.air_pickaxe": "",
+  "item.stone.coal_horse_armor": "下届合金马铠",
+  "item.stone.golden_apple": "金苹果",
+  "item.stone.wither_spawn_egg": "凋零蛋",
   "entity.stone.wheat_entity": "小麦生物",
-
+  "enchantment.stone.snatch": "抢劫",
 
   "block.stone.soul_torch": "加速火把",
   "block.stone.stone_crafting_table": "石制工作台",
+  "block.stone.cactus": "仙人掌箱",
   "stone.container.crafting": "石制工作台"
 }

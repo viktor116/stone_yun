@@ -1,13 +1,13 @@
 package com.soybean.block;
 
 import com.soybean.block.custom.StoneCraftTableBlock;
+import com.soybean.block.custom.inventory.CactusBlock;
 import com.soybean.config.InitValue;
 import com.soybean.screen.StoneCraftingScreenHandler;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -15,9 +15,6 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.resource.featuretoggle.FeatureSet;
-import net.minecraft.screen.CrafterScreenHandler;
-import net.minecraft.screen.CraftingScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
@@ -28,7 +25,8 @@ import net.minecraft.util.Identifier;
  * @description
  */
 public class ModBlock {
-    public static final Block STONE_CRAFT_TABLE = register("stone_crafting_table", new StoneCraftTableBlock(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.5F).sounds(BlockSoundGroup.STONE).burnable()), true);
+    public static final Block STONE_CRAFT_TABLE = register("stone_crafting_table", new StoneCraftTableBlock(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.5F).sounds(BlockSoundGroup.STONE)), true);
+    public static final Block CACTUS = register("cactus", new Block(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD)), true);
     public static final Block SOUL_TORCH_BLOCK = register("soul_torch", new TorchBlock(ParticleTypes.SOUL_FIRE_FLAME, AbstractBlock.Settings.create().noCollision().breakInstantly().luminance((state) -> {
         return 10;
     })), true);
@@ -50,6 +48,7 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlock(STONE_CRAFT_TABLE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SOUL_TORCH_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SOUL_WALL_TORCH, RenderLayer.getCutout());
+//        BlockRenderLayerMap.INSTANCE.putBlock(CACTUS, RenderLayer.getCutout());
     }
 
     public static Block register(String id, Block block, boolean shouldRegisterItem) {

@@ -2,6 +2,7 @@ package com.soybean;
 
 import com.soybean.block.ModBlock;
 import com.soybean.config.InitValue;
+import com.soybean.enchant.EnchantmentRegister;
 import com.soybean.entity.EntityRegister;
 import com.soybean.event.EventRegister;
 import com.soybean.items.ItemsRegister;
@@ -14,6 +15,7 @@ public class Stone implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModBlock.initialize();
+		EnchantmentRegister.Initialize();
 		ModArmorMaterials.initialize();
 		EventRegister.Initialize();
 		ItemsRegister.initialize();

@@ -20,5 +20,9 @@ public class UnbreakablePickaxeItem extends PickaxeItem {
         // 直接返回 true，避免耐久损耗
         return true;
     }
+    @Override
+    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        return false;
+    }
 
 }

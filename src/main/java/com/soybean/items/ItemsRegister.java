@@ -2,6 +2,7 @@ package com.soybean.items;
 
 import com.soybean.block.ModBlock;
 import com.soybean.config.InitValue;
+import com.soybean.enchant.EnchantmentRegister;
 import com.soybean.items.armor.ModArmorMaterials;
 import com.soybean.items.custom.GrassItem;
 import com.soybean.items.custom.InvertMinecartItem;
@@ -18,13 +19,24 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.component.type.ItemEnchantmentsComponent;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.EnchantmentLevelEntry;
+import net.minecraft.enchantment.Enchantments;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.*;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
+import net.minecraft.registry.*;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
+
+import java.util.Optional;
 
 
 /**
@@ -50,6 +62,10 @@ public class ItemsRegister {
     public static final Item COAL_LEGGINGS = register(new ArmorItem(ModArmorMaterials.COAL_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(15))), "coal_leggings");
     public static final Item COAL_BOOTS = register(new ArmorItem(ModArmorMaterials.COAL_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15))), "coal_boots");
     public static final Item AIR_PICKAXE = register(new UnbreakablePickaxeItem(AirMaterial.INSTANCE,new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(AirMaterial.INSTANCE, 999.0F, 999F)).maxCount(1).maxDamage(-1)),"air_pickaxe");
+    public static final Item HORSE_ARMOR_NETHERITE = register(new AnimalArmorItem(ModArmorMaterials.COAL_MATERIAL, AnimalArmorItem.Type.EQUESTRIAN,false, new Item.Settings().maxCount(1)),"coal_horse_armor");
+    public static final Item GOLDEN_APPLE = register(new SwordItem(ToolMaterials.GOLD,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD,0,0)).maxCount(1).rarity(Rarity.RARE)),"golden_apple");
+    public static final Item WITHER_SPAWN_EGG = register(new SpawnEggItem(EntityType.WITHER, // 实体类型为凋零
+            0x303030, 0xA0A0A0, new Item.Settings()), "wither_spawn_egg");
     public static void initialize() {
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);
         ItemGroupEvents.modifyEntriesEvent(FUN_ITEM_GROUP_KEY).register(itemGroup->{
@@ -68,6 +84,12 @@ public class ItemsRegister {
             itemGroup.add(COAL_CHESTPLATE);
             itemGroup.add(COAL_LEGGINGS);
             itemGroup.add(COAL_BOOTS);
+            itemGroup.add(HORSE_ARMOR_NETHERITE);
+            itemGroup.add(GOLDEN_APPLE);
+            itemGroup.add(WITHER_SPAWN_EGG);
+            itemGroup.add(ModBlock.CACTUS.asItem());
+//            itemGroup.add(Blocks.NETHER_PORTAL);
+//            itemGroup.add(Blocks.FIRE);
         });
     }
 
@@ -77,6 +99,7 @@ public class ItemsRegister {
             .icon(() -> new ItemStack(Items.ARROW))
             .displayName(Text.translatable("itemGroup.soybean"))
             .build();
+
 
 
     //通用注册

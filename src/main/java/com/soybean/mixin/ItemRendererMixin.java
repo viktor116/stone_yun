@@ -1,6 +1,7 @@
 package com.soybean.mixin;
 
 import com.soybean.items.ItemsRegister;
+import com.soybean.items.item.UnbreakablePickaxeItem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.RenderLayer;
@@ -33,13 +34,9 @@ public abstract class ItemRendererMixin {
 
     @Inject(method = "renderItem", at = @At("HEAD"), cancellable = true)
     private void onRenderItem(ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, BakedModel model, CallbackInfo ci) {
-        if (stack.isOf(ItemsRegister.AIR_PICKAXE)) {
-//            ci.cancel();
-//            ClientPlayerEntity player = MinecraftClient.getInstance().player;
-//            matrices.push();
-//            matrices.scale(0.5F, 0.5F, 0.5F);
-//            MinecraftClient.getInstance().getEntityRenderDispatcher().render((PlayerEntity)player, 0, 0, 0, 0.0F, 1.0F, matrices, vertexConsumers, light);
-//            matrices.pop();
+        // 检查是否是我们的空气镐
+        if (stack.getItem() instanceof UnbreakablePickaxeItem) {
+            ci.cancel(); // 取消渲染
         }
     }
 }

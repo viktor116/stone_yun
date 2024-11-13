@@ -20,6 +20,9 @@
 		],
 		"client": [
 			"com.soybean.StoneClient"
+		],
+		"fabric-datagen": [
+			"com.soybean.StoneGenerator"
 		]
 	},
 	"mixins": [

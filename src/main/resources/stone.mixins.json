@@ -4,7 +4,8 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"ExampleMixin",
-		"ItemRendererMixin"
+		"ItemRendererMixin",
+		"HeldItemRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

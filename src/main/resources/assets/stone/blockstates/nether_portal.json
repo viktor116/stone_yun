@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "stone:block/nether_portal_ns"
+    },
+    "axis=z": {
+      "model": "stone:block/nether_portal_ew"
+    }
+  }
+}
