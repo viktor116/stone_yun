@@ -1,10 +1,14 @@
 package com.soybean.block;
 
+import com.soybean.block.custom.DemoBlock;
 import com.soybean.block.custom.StoneCraftTableBlock;
+import com.soybean.block.custom.inventory.ExampleInventoryBlock;
+import com.soybean.block.custom.inventory.entity.DemoBlockEntity;
 import com.soybean.config.InitValue;
 import com.soybean.screen.StoneCraftingScreenHandler;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.client.render.RenderLayer;
@@ -25,7 +29,7 @@ import net.minecraft.util.Identifier;
  */
 public class ModBlock {
     public static final Block STONE_CRAFT_TABLE = register("stone_crafting_table", new StoneCraftTableBlock(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.5F).sounds(BlockSoundGroup.STONE)), true);
-    public static final Block CACTUS = register("cactus", new Block(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD)), true);
+    public static final Block CACTUS = register("cactus", new DemoBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).ticksRandomly().strength(0.4F).sounds(BlockSoundGroup.WOOL).pistonBehavior(PistonBehavior.DESTROY).nonOpaque()), true);
     public static final Block SOUL_TORCH_BLOCK = register("soul_torch", new TorchBlock(ParticleTypes.SOUL_FIRE_FLAME, AbstractBlock.Settings.create().noCollision().breakInstantly().luminance((state) -> {
         return 10;
     })), true);
@@ -38,6 +42,8 @@ public class ModBlock {
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of(InitValue.MOD_ID, "stone_crafting_table"),
                     new ScreenHandlerType<>(StoneCraftingScreenHandler::new, FeatureSet.empty()));
 
+    public static final BlockEntityType<DemoBlockEntity> DEMO_BLOCK_ENTITY =Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(InitValue.MOD_ID, "demo_block_entity"),
+            BlockEntityType.Builder.create(DemoBlockEntity::new, CACTUS).build(null));
     public static void initialize() {
 
     }

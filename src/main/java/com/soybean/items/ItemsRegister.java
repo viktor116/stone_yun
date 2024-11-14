@@ -95,7 +95,7 @@ public class ItemsRegister {
             itemGroup.add(ModBlock.CACTUS.asItem());
             itemGroup.add(ModBlock.NETHER_PORTAL.asItem());
             itemGroup.add(ModBlock.FIRE.asItem());
-            itemGroup.add(BlockInit.EXAMPLE_INVENTORY_BLOCK.asItem());
+//            itemGroup.add(BlockInit.EXAMPLE_INVENTORY_BLOCK.asItem());
         });
         UseItemCallback.EVENT.register((player, world, hand) -> {
             ItemStack stack = player.getStackInHand(hand);

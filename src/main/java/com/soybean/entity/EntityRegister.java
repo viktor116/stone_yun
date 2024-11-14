@@ -1,20 +1,17 @@
 package com.soybean.entity;
 
 
+import com.soybean.entity.client.model.ExampleChestModel;
+import com.soybean.entity.client.renderer.ExampleInventoryBER;
 import com.soybean.entity.client.renderer.InvertMinecartRenderer;
-import com.soybean.entity.client.renderer.MinecartHatRenderer;
 import com.soybean.entity.client.renderer.WheatRenderer;
 import com.soybean.entity.custom.InvertMinecartEntity;
 import com.soybean.entity.custom.WheatEntity;
-import com.soybean.items.ItemsRegister;
-import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
-import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
+import com.soybean.init.BlockEntityTypeInit;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.minecraft.client.item.ModelPredicateProviderRegistry;
-import net.minecraft.client.render.block.BlockModelRenderer;
-import software.bernie.geckolib.renderer.GeoArmorRenderer;
-import software.bernie.geckolib.renderer.GeoItemRenderer;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 
 /**
  * @author soybean
@@ -32,6 +29,7 @@ public class EntityRegister {
     public static void initializeClient(){
         EntityRendererRegistry.register(InvertMinecartEntity.MINECART, InvertMinecartRenderer::new);
         EntityRendererRegistry.register(WheatEntity.WHEAT, WheatRenderer::new);
-
+        EntityModelLayerRegistry.registerModelLayer(ExampleChestModel.LAYER_LOCATION, ExampleChestModel::getTexturedModelData);
+        BlockEntityRendererFactories.register(BlockEntityTypeInit.EXAMPLE_INVENTORY_BLOCK_ENTITY, ExampleInventoryBER::new);
     }
 }

@@ -28,7 +28,7 @@ import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
 public class InventoryBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<BlockPosPayload> {
-    public static final Text TITLE = Text.translatable("container." + InitValue.MOD_ID + ".cactus_inventory");
+    public static final Text TITLE = Text.translatable("container." + InitValue.MOD_ID + ".example_inventory");
 
     private final SimpleInventory inventory = new SimpleInventory(36) {
         @Override
