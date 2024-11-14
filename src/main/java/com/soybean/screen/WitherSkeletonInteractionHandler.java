@@ -2,20 +2,30 @@ package com.soybean.screen;
 
 import com.soybean.config.InitValue;
 import com.soybean.init.BlockInit;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.entity.ai.TargetPredicate;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.mob.WitherSkeletonEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.*;
+import net.minecraft.screen.slot.Slot;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.village.Merchant;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOfferList;
 import net.minecraft.village.TradedItem;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -28,35 +38,31 @@ import java.util.Optional;
 public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
 
     private final ScreenHandlerContext context;
-    public WitherSkeletonInteractionHandler(int syncId, PlayerInventory playerInventory) {
-        super(syncId, playerInventory);
-        PlayerEntity player = playerInventory.player;
-        this.context = ScreenHandlerContext.create(player.getWorld(), player.getBlockPos());
+    private final Merchant merchant;
+    private final TradeOfferList tradeOffers;
 
-        // 创建并设置默认交易物品
-        TradeOfferList offers = new TradeOfferList();
-        addDefaultTrades(offers);
-        Merchant merchant = createMerchant(player, offers);
+    public WitherSkeletonInteractionHandler(int syncId, PlayerInventory playerInventory) {
+        super(syncId, playerInventory, createMerchant(playerInventory.player));
+        this.merchant = createMerchant(playerInventory.player);
+        this.context = ScreenHandlerContext.create(playerInventory.player.getWorld(), playerInventory.player.getBlockPos());
+        this.tradeOffers = new TradeOfferList();
+        addDefaultTrades(this.tradeOffers);
+
         // 将默认交易物品设置到商人
-        merchant.setOffersFromServer(offers);
-        this.setOffers(offers); // 重要！需要同时设置给ScreenHandler
+        merchant.setOffersFromServer(this.tradeOffers);
+        this.setOffers(this.tradeOffers);
     }
 
 
     public static void handleRightClick(WitherSkeletonEntity skeleton, PlayerEntity player) {
         if (skeleton instanceof IMerchantWither iMerchantWither) {
-            // 创建交易清单
-            TradeOfferList offers = new TradeOfferList();
-            offers.addAll(WitherSkeletonTradeInterface.TRADES);
-            Merchant merchant = iMerchantWither.getMerchant();
-            // 设置交易选项
-            merchant.setOffersFromServer(offers);
-
             // 打开交易界面
+            TradeOfferList tradeOffers1 = new TradeOfferList();
+            addDefaultTrades(tradeOffers1);
             player.openHandledScreen(new SimpleNamedScreenHandlerFactory(
                     (syncId, inv, p) -> {
-                        MerchantScreenHandler handler = new WitherSkeletonInteractionHandler(syncId, inv);
-                        InitValue.LOGGER.info("Created merchant screen handler");
+                        WitherSkeletonInteractionHandler handler = new WitherSkeletonInteractionHandler(syncId, inv);
+                        handler.setOffers(tradeOffers1);
                         return handler;
                     },
                     Text.translatable("merchant." + InitValue.MOD_ID + ".witherskeleton")
@@ -65,68 +71,121 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
         }
     }
 
+    public static void handleRightClickOnDragon(PlayerEntity player) {
+            TradeOfferList tradeOffers1 = new TradeOfferList();
+            addDragonTrades(tradeOffers1);
+            player.openHandledScreen(new SimpleNamedScreenHandlerFactory(
+                    (syncId, inv, p) -> {
+                        WitherSkeletonInteractionHandler handler = new WitherSkeletonInteractionHandler(syncId, inv);
+                        handler.setOffers(tradeOffers1);
+                        return handler;
+                    },
+                    Text.translatable("merchant." + InitValue.MOD_ID + ".dragon")
+            ));
+            player.incrementStat(Stats.TRADED_WITH_VILLAGER);
+
+    }
+
     @Override
     public boolean canUse(PlayerEntity player) {
         return true;
     }
 
-    private void addDefaultTrades(TradeOfferList offers) {
-        // 假设你的默认交易是交换某种物品
-        // 这里的示例是简单的，假设我们用金锭与骨头交换
+    @Override
+    public void onClosed(PlayerEntity player) {
+        super.onClosed(player);
 
-        // 第一个交易：用1个金锭换1个钻石
+        // 获取当前玩家的位置信息
+        BlockPos pos = player.getBlockPos();
+
+        // 创建目标筛选器，排除创意模式玩家
+        TargetPredicate targetPredicate = TargetPredicate.createNonAttackable().setBaseMaxDistance(15.0);
+
+        // 在这个位置寻找 WitherSkeletonEntity（假设是附近的）
+        World world = player.getWorld();
+        WitherSkeletonEntity skeleton = world.getClosestEntity(WitherSkeletonEntity.class,
+                targetPredicate,
+                player,
+                pos.getX(), pos.getY(), pos.getZ(),
+                new Box(pos).expand(10)); // 可以根据需要调整搜索范围
+
+        // 如果找到了 WitherSkeletonEntity，杀死它
+        if (skeleton != null) {
+            skeleton.kill();  // 杀死 WitherSkeletonEntity
+        }
+    }
+
+    private static void addDefaultTrades(TradeOfferList offers) {
+        // 假设你的默认交易是交换某种物品
+
         offers.add(new TradeOffer(
-                new TradedItem(Items.BONE, 32),  // 第一个输入物品(物品, 数量, 最大数量)
+                new TradedItem(Items.EMERALD, 64),  // 第一个输入物品(物品, 数量, 最大数量)
                 Optional.empty(),                     // 第二个输入物品(可选)
                 new ItemStack(Items.WITHER_SKELETON_SKULL),  // 输出物品
                 0,      // 当前使用次数
-                8,      // 最大使用次数
+                100,      // 最大使用次数
                 1,      // 经验值
                 0.05f   // 价格乘数
         ));
-        // 第二个交易：用1个骨头换2个铁锭
+    }
+    private static void addDragonTrades(TradeOfferList offers){
         offers.add(new TradeOffer(
-                new TradedItem(Items.DIAMOND, 2),  // 第一个输入物品
-                Optional.of(new TradedItem(Items.OBSIDIAN, 5)),  // 第二个输入物品
-                new ItemStack(Items.NETHERITE_SCRAP),  // 输出物品
+                new TradedItem(Items.EMERALD_BLOCK, 64),  // 第一个输入物品
+                Optional.empty(),
+//                Optional.of(new TradedItem(Items.OBSIDIAN, 5)),  // 第二个输入物品
+                new ItemStack(Items.DRAGON_EGG),  // 输出物品
                 0,      // 当前使用次数
-                4,      // 最大使用次数
+                100,      // 最大使用次数
                 5,      // 经验值
                 0.1f    // 价格乘数
-        ));}
+        ));
+        offers.add(new TradeOffer(
+                new TradedItem(Items.EMERALD, 64),  // 第一个输入物品
+                Optional.empty(),
+//                Optional.of(new TradedItem(Items.OBSIDIAN, 5)),  // 第二个输入物品
+                new ItemStack(Items.EXPERIENCE_BOTTLE),  // 输出物品
+                0,      // 当前使用次数
+                100,      // 最大使用次数
+                5,      // 经验值
+                0.1f    // 价格乘数
+        ));
+    }
 
-    private Merchant createMerchant(PlayerEntity player, TradeOfferList offers) {
+    private static Merchant createMerchant(PlayerEntity player) {
+
         return new Merchant() {
-            private TradeOfferList tradeOffers = offers; // 添加一个成员变量存储交易列表
+            private TradeOfferList offers = new TradeOfferList();
+            private PlayerEntity customer;
+            private int experience = 0;
 
             @Override
             public void setOffersFromServer(TradeOfferList offers) {
-                this.tradeOffers = offers; // 实现设置交易列表的方法
+                this.offers = offers;
             }
 
             @Override
             public TradeOfferList getOffers() {
-                return this.tradeOffers; // 返回存储的交易列表
+                return this.offers;
             }
 
             @Override
             public void trade(TradeOffer offer) {
-                offer.use(); // 实现交易逻辑
+                offer.use();
             }
 
             @Override
             public void onSellingItem(ItemStack stack) {
-
+                // 可以在这里添加出售物品时的额外逻辑
             }
 
             @Override
             public int getExperience() {
-                return 0;
+                return this.experience;
             }
 
             @Override
             public void setExperienceFromServer(int experience) {
-
+                this.experience = experience;
             }
 
             @Override
@@ -136,7 +195,7 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
 
             @Override
             public SoundEvent getYesSound() {
-                return SoundEvents.ENTITY_VILLAGER_YES; // 设置交易音效
+                return SoundEvents.ENTITY_VILLAGER_YES;
             }
 
             @Override
@@ -146,15 +205,32 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
 
             @Override
             public void setCustomer(@Nullable PlayerEntity customer) {
-
+                this.customer = customer;
             }
 
             @Nullable
             @Override
             public PlayerEntity getCustomer() {
-                return player;
+                return this.customer;
             }
 
+            public boolean canRefreshTrades() {
+                return true;
+            }
         };
+    }
+
+    @Override
+    protected boolean insertItem(ItemStack stack, int startIndex, int endIndex, boolean fromLast) {
+        return super.insertItem(stack, startIndex, endIndex, fromLast);
+    }
+
+    @Override
+    public ItemStack quickMove(PlayerEntity player, int index) {
+        return super.quickMove(player,index);
+    }
+
+    public TradeOfferList getOffers() {
+        return this.tradeOffers;
     }
 }
