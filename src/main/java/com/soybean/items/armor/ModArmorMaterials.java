@@ -47,10 +47,10 @@ public class ModArmorMaterials {
 //    }
     public static final RegistryEntry<ArmorMaterial> COAL_MATERIAL = registerArmorMaterial("coal",
         ()-> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
-            map.put(ArmorItem.Type.HELMET, 3);
-            map.put(ArmorItem.Type.CHESTPLATE, 8);
+            map.put(ArmorItem.Type.HELMET, 2);
+            map.put(ArmorItem.Type.CHESTPLATE, 5);
             map.put(ArmorItem.Type.LEGGINGS, 6);
-            map.put(ArmorItem.Type.BOOTS, 3);
+            map.put(ArmorItem.Type.BOOTS, 2);
             map.put(ArmorItem.Type.BODY, 11);
         }), 5, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(Items.COAL),
                 List.of(new ArmorMaterial.Layer(Identifier.of(InitValue.MOD_ID, "coal"))),0,0));
