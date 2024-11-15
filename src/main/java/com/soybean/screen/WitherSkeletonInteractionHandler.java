@@ -54,21 +54,19 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
     }
 
 
-    public static void handleRightClick(WitherSkeletonEntity skeleton, PlayerEntity player) {
-        if (skeleton instanceof IMerchantWither iMerchantWither) {
-            // 打开交易界面
-            TradeOfferList tradeOffers1 = new TradeOfferList();
-            addDefaultTrades(tradeOffers1);
-            player.openHandledScreen(new SimpleNamedScreenHandlerFactory(
-                    (syncId, inv, p) -> {
-                        WitherSkeletonInteractionHandler handler = new WitherSkeletonInteractionHandler(syncId, inv);
-                        handler.setOffers(tradeOffers1);
-                        return handler;
-                    },
-                    Text.translatable("merchant." + InitValue.MOD_ID + ".witherskeleton")
-            ));
-            player.incrementStat(Stats.TRADED_WITH_VILLAGER);
-        }
+    public static void handleRightClick(PlayerEntity player) {
+        // 打开交易界面
+        TradeOfferList tradeOffers1 = new TradeOfferList();
+        addDefaultTrades(tradeOffers1);
+        player.openHandledScreen(new SimpleNamedScreenHandlerFactory(
+                (syncId, inv, p) -> {
+                    WitherSkeletonInteractionHandler handler = new WitherSkeletonInteractionHandler(syncId, inv);
+                    handler.setOffers(tradeOffers1);
+                    return handler;
+                },
+                Text.translatable("merchant." + InitValue.MOD_ID + ".witherskeleton")
+        ));
+        player.incrementStat(Stats.TRADED_WITH_VILLAGER);
     }
 
     public static void handleRightClickOnDragon(PlayerEntity player) {
@@ -222,12 +220,150 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
 
     @Override
     protected boolean insertItem(ItemStack stack, int startIndex, int endIndex, boolean fromLast) {
-        return super.insertItem(stack, startIndex, endIndex, fromLast);
+        boolean bl = false;
+        int i = startIndex;
+
+        if (fromLast) {
+            i = endIndex - 1;
+        }
+
+        if (stack.isStackable()) {
+            while (!stack.isEmpty()) {
+                if (fromLast) {
+                    if (i < startIndex) {
+                        break;
+                    }
+                } else if (i >= endIndex) {
+                    break;
+                }
+
+                Slot slot = this.slots.get(i);
+                ItemStack slotStack = slot.getStack();
+
+                if (!slotStack.isEmpty() && ItemStack.areItemsAndComponentsEqual(stack, slotStack)) {
+                    int j = slotStack.getCount() + stack.getCount();
+                    int maxCount = Math.min(slot.getMaxItemCount(), stack.getMaxCount());
+
+                    if (j <= maxCount) {
+                        stack.setCount(0);
+                        slotStack.setCount(j);
+                        slot.markDirty();
+                        bl = true;
+                    } else if (slotStack.getCount() < maxCount) {
+                        int k = maxCount - slotStack.getCount();
+                        stack.decrement(k);
+                        slotStack.setCount(maxCount);
+                        slot.markDirty();
+                        bl = true;
+                    }
+                }
+
+                if (fromLast) {
+                    --i;
+                } else {
+                    ++i;
+                }
+            }
+        }
+
+        if (!stack.isEmpty()) {
+            if (fromLast) {
+                i = endIndex - 1;
+            } else {
+                i = startIndex;
+            }
+
+            while (true) {
+                if (fromLast) {
+                    if (i < startIndex) {
+                        break;
+                    }
+                } else if (i >= endIndex) {
+                    break;
+                }
+
+                Slot slot = this.slots.get(i);
+                ItemStack slotStack = slot.getStack();
+
+                if (slotStack.isEmpty() && slot.canInsert(stack)) {
+                    if (stack.getCount() > slot.getMaxItemCount()) {
+                        slot.setStack(stack.split(slot.getMaxItemCount()));
+                    } else {
+                        slot.setStack(stack.split(stack.getCount()));
+                    }
+
+                    slot.markDirty();
+                    bl = true;
+                    break;
+                }
+
+                if (fromLast) {
+                    --i;
+                } else {
+                    ++i;
+                }
+            }
+        }
+
+        return bl;
     }
 
     @Override
     public ItemStack quickMove(PlayerEntity player, int index) {
-        return super.quickMove(player,index);
+//        return super.quickMove(player,index);
+        ItemStack itemStack = ItemStack.EMPTY;
+        Slot slot = this.slots.get(index);
+
+        if (slot != null && slot.hasStack()) {
+            ItemStack slotStack = slot.getStack();
+            itemStack = slotStack.copy();
+
+            if (index == 2) {
+                // 如果是输出槽
+                if (!this.insertItem(slotStack, 3, 39, true)) {
+                    return ItemStack.EMPTY;
+                }
+
+                slot.onQuickTransfer(slotStack, itemStack);
+            } else if (index != 0 && index != 1) {
+                // 如果不是输入槽
+                if (index >= 3 && index < 30) {
+                    // 从物品栏移动到快捷栏
+                    if (!this.insertItem(slotStack, 30, 39, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                } else if (index >= 30 && index < 39) {
+                    // 从快捷栏移动到物品栏
+                    if (!this.insertItem(slotStack, 3, 30, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+            } else {
+                // 如果是输入槽，移动到物品栏或快捷栏
+                if (!this.insertItem(slotStack, 3, 39, false)) {
+                    return ItemStack.EMPTY;
+                }
+            }
+
+            if (slotStack.isEmpty()) {
+                slot.setStack(ItemStack.EMPTY);
+            } else {
+                slot.markDirty();
+            }
+
+            if (slotStack.getCount() == itemStack.getCount()) {
+                return ItemStack.EMPTY;
+            }
+
+            slot.onTakeItem(player, slotStack);
+        }
+
+        return itemStack;
+    }
+
+    // 确保交易列表可以正确更新
+    public void setCanRestock(boolean canRestock) {
+        this.merchant.getOffers().forEach(offer -> offer.resetUses());
     }
 
     public TradeOfferList getOffers() {

@@ -90,12 +90,13 @@ public class WitherSkeletonMerchantScreen extends HandledScreen<WitherSkeletonIn
             }));
             k += 20;
         }
+        // 确保交易列表被正确初始化
+        this.handler.setCanRestock(true);
 
     }
 
     protected void drawForeground(DrawContext context, int mouseX, int mouseY) {
         int i = ((WitherSkeletonInteractionHandler)this.handler).getLevelProgress();
-        InitValue.LOGGER.info("list is empty? {}",context);
         if (i > 0 && i <= 5 && ((WitherSkeletonInteractionHandler)this.handler).isLeveled()) {
             Text text = Text.translatable("merchant.title", new Object[]{this.title, Text.translatable("merchant.level." + i)});
             int j = this.textRenderer.getWidth(text);
@@ -116,7 +117,6 @@ public class WitherSkeletonMerchantScreen extends HandledScreen<WitherSkeletonIn
         context.drawTexture(TEXTURE, i, j, 0, 0.0F, 0.0F, this.backgroundWidth, this.backgroundHeight, 512, 256);
 //        TradeOfferList tradeOfferList = ((WitherSkeletonInteractionHandler)this.handler).getRecipes();
         TradeOfferList tradeOfferList = this.handler.getOffers();
-        InitValue.LOGGER.info("list is empty? {}",tradeOfferList.isEmpty());
         if (!tradeOfferList.isEmpty()) {
             int k = this.selectedIndex;
             if (k < 0 || k >= tradeOfferList.size()) {
