@@ -4,6 +4,7 @@ import com.soybean.block.ModBlock;
 import com.soybean.entity.EntityRegister;
 import com.soybean.init.ScreenHandlerTypeInit;
 import com.soybean.items.ItemsRegister;
+import com.soybean.screen.client.WitherSkeletonMerchantScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.gui.screen.ingame.CraftingScreen;
@@ -15,6 +16,7 @@ public class StoneClient implements ClientModInitializer {
     public void onInitializeClient() {
         ModBlock.initializeClient();
         EntityRegister.initializeClient();
+
         ScreenHandlerTypeInit.initializeClient();
     }
 }

@@ -1,6 +1,5 @@
 package com.soybean.init;
 
-import com.soybean.block.custom.inventory.ExampleInventoryBlock;
 import com.soybean.config.InitValue;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -13,10 +12,6 @@ import net.minecraft.registry.Registry;
 import java.util.List;
 
 public class BlockInit {
-    public static final ExampleInventoryBlock EXAMPLE_INVENTORY_BLOCK = registerWithItem("example_inventory_block",
-            new ExampleInventoryBlock(AbstractBlock.Settings.create()
-                    .strength(1.5F, 6.0F)
-                    .requiresTool()));
 
     public static <T extends Block> T register(String name, T block) {
         return Registry.register(Registries.BLOCK, InitValue.id(name), block);

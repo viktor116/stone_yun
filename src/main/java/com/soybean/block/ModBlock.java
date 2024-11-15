@@ -2,7 +2,6 @@ package com.soybean.block;
 
 import com.soybean.block.custom.DemoBlock;
 import com.soybean.block.custom.StoneCraftTableBlock;
-import com.soybean.block.custom.inventory.ExampleInventoryBlock;
 import com.soybean.block.custom.inventory.entity.DemoBlockEntity;
 import com.soybean.config.InitValue;
 import com.soybean.screen.StoneCraftingScreenHandler;

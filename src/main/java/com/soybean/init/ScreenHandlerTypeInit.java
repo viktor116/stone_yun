@@ -2,9 +2,7 @@ package com.soybean.init;
 
 import com.soybean.config.InitValue;
 import com.soybean.network.BlockPosPayload;
-import com.soybean.screen.ExampleInventoryScreenHandler;
 import com.soybean.screen.WitherSkeletonInteractionHandler;
-import com.soybean.screen.client.ExampleInventoryBlockScreen;
 import com.soybean.screen.client.WitherSkeletonMerchantScreen;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
@@ -18,11 +16,6 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 
 public class ScreenHandlerTypeInit {
-
-    public static final ScreenHandlerType<ExampleInventoryScreenHandler> EXAMPLE_INVENTORY_SCREEN_HANDLER =
-            register("example_inventory", ExampleInventoryScreenHandler::new, BlockPosPayload.PACKET_CODEC);
-
-    // 修改凋灵骷髅商人的Screen Handler注册
     public static final ScreenHandlerType<WitherSkeletonInteractionHandler> WITHER_SKELETON_MERCHANT_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, InitValue.id("witherskeleton_merchant"),
                     new ScreenHandlerType<>((syncId, inventory) ->
@@ -35,11 +28,9 @@ public class ScreenHandlerTypeInit {
         return Registry.register(Registries.SCREEN_HANDLER, InitValue.id(name), new ExtendedScreenHandlerType<>(factory, codec));
     }
     public static void initialize() {
-
     }
 
     public static void initializeClient() {
-        HandledScreens.register(ScreenHandlerTypeInit.EXAMPLE_INVENTORY_SCREEN_HANDLER, ExampleInventoryBlockScreen::new);
         HandledScreens.register(ScreenHandlerTypeInit.WITHER_SKELETON_MERCHANT_SCREEN_HANDLER, WitherSkeletonMerchantScreen::new);
     }
 }

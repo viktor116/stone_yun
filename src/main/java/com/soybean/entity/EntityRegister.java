@@ -1,8 +1,6 @@
 package com.soybean.entity;
 
 
-import com.soybean.entity.client.model.ExampleChestModel;
-import com.soybean.entity.client.renderer.ExampleInventoryBER;
 import com.soybean.entity.client.renderer.InvertMinecartRenderer;
 import com.soybean.entity.client.renderer.WheatRenderer;
 import com.soybean.entity.custom.InvertMinecartEntity;
@@ -29,7 +27,5 @@ public class EntityRegister {
     public static void initializeClient(){
         EntityRendererRegistry.register(InvertMinecartEntity.MINECART, InvertMinecartRenderer::new);
         EntityRendererRegistry.register(WheatEntity.WHEAT, WheatRenderer::new);
-        EntityModelLayerRegistry.registerModelLayer(ExampleChestModel.LAYER_LOCATION, ExampleChestModel::getTexturedModelData);
-        BlockEntityRendererFactories.register(BlockEntityTypeInit.EXAMPLE_INVENTORY_BLOCK_ENTITY, ExampleInventoryBER::new);
     }
 }

@@ -21,7 +21,7 @@ public class Stone implements ModInitializer {
 		BlockEntityTypeInit.initialize();
 		BlockInit.initialize();
 		ItemInit.initialize();
-		ScreenHandlerTypeInit.initialize();
+		//ScreenHandlerTypeInit.initialize();
 
 		ModBlock.initialize();
 		EnchantmentRegister.Initialize();
