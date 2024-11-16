@@ -36,5 +36,8 @@
 	},
 	"suggests": {
 		"another-mod": "*"
+	},
+	"custom": {
+		"fabric-registry-sync-v0": false
 	}
 }

@@ -26,6 +26,8 @@ import java.util.Iterator;
  * @date 2024/11/14 13:38
  * @description
  */
+
+@Environment(EnvType.CLIENT)
 public class WitherSkeletonMerchantScreen extends HandledScreen<WitherSkeletonInteractionHandler> {
     private static final Identifier OUT_OF_STOCK_TEXTURE = Identifier.ofVanilla("container/villager/out_of_stock");
     private static final Identifier EXPERIENCE_BAR_BACKGROUND_TEXTURE = Identifier.ofVanilla("container/villager/experience_bar_background");

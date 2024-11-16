@@ -1,5 +1,7 @@
 package com.soybean.entity.client.renderer;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.OverlayTexture;
@@ -20,6 +22,8 @@ import net.minecraft.util.math.Vec3d;
  * @date 2024/11/2 10:31
  * @description
  */
+
+@Environment(EnvType.CLIENT)
 public class InvertMinecartRenderer extends MinecartEntityRenderer {
     public InvertMinecartRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, EntityModelLayers.MINECART);  // 使用默认的矿车模型层

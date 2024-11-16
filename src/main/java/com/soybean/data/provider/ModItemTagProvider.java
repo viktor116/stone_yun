@@ -28,12 +28,20 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ItemTags.PICKAXES)
                 .add(ItemsRegister.STONE_PICKAXE);
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
-                .add(ItemsRegister.COAL_HELMET);
+                .add(ItemsRegister.COAL_HELMET)
+                .add(ItemsRegister.MINECART_HAT);
         getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
                 .add(ItemsRegister.COAL_CHESTPLATE);
         getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
                 .add(ItemsRegister.COAL_LEGGINGS);
         getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
                 .add(ItemsRegister.COAL_BOOTS);
+        getOrCreateTagBuilder(ItemTags.BOATS)
+                .add(ItemsRegister.INVERT_MINECART);
+        getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS)
+                .add(ItemsRegister.GRASS)
+                .add(ItemsRegister.WHEAT);
+        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
+                .add(ItemsRegister.HORSE_ARMOR_NETHERITE);
     }
 }

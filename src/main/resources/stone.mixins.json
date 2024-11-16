@@ -4,10 +4,12 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"ExampleMixin",
-		"ItemRendererMixin",
-		"HeldItemRendererMixin",
 		"WitherSkeletonEntityMixin",
 		"EnderDragonEntityMixin"
+	],
+	"client": [
+		"ItemRendererMixin",
+		"HeldItemRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

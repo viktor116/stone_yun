@@ -18,18 +18,14 @@ public class Stone implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		BlockEntityTypeInit.initialize();
-		BlockInit.initialize();
-		ItemInit.initialize();
-		ScreenHandlerTypeInit.initialize();
-
+		ItemsRegister.initialize();
+		EntityRegister.initialize();
 		ModBlock.initialize();
 		EnchantmentRegister.Initialize();
 		ModArmorMaterials.initialize();
 		EventRegister.Initialize();
-		ItemsRegister.initialize();
-		EntityRegister.initialize();
 		PortalsRegister.Initialize();
+		ScreenHandlerTypeInit.initialize();
 		InitValue.LOGGER.info("make in soybean =v=!");
 	}
 }
