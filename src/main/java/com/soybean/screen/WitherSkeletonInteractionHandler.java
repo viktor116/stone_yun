@@ -141,7 +141,7 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
                 new TradedItem(Items.YELLOW_BED, 1),  // 第一个输入物品
                 Optional.empty(),
 //                Optional.of(new TradedItem(Items.OBSIDIAN, 5)),  // 第二个输入物品
-                new ItemStack(Items.EXPERIENCE_BOTTLE),  // 输出物品
+                new ItemStack(Items.EXPERIENCE_BOTTLE,64),  // 输出物品
                 0,      // 当前使用次数
                 100,      // 最大使用次数
                 5,      // 经验值
