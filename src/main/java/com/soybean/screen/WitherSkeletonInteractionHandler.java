@@ -128,8 +128,8 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
     }
     private static void addDragonTrades(TradeOfferList offers){
         offers.add(new TradeOffer(
-                new TradedItem(Items.EMERALD_BLOCK, 64),  // 第一个输入物品
-                Optional.empty(),
+                new TradedItem(Items.YELLOW_BED, 1),  // 第一个输入物品
+                Optional.of(new TradedItem(Items.YELLOW_BED, 1)),
 //                Optional.of(new TradedItem(Items.OBSIDIAN, 5)),  // 第二个输入物品
                 new ItemStack(Items.DRAGON_EGG),  // 输出物品
                 0,      // 当前使用次数
@@ -138,7 +138,7 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
                 0.1f    // 价格乘数
         ));
         offers.add(new TradeOffer(
-                new TradedItem(Items.EMERALD, 64),  // 第一个输入物品
+                new TradedItem(Items.YELLOW_BED, 1),  // 第一个输入物品
                 Optional.empty(),
 //                Optional.of(new TradedItem(Items.OBSIDIAN, 5)),  // 第二个输入物品
                 new ItemStack(Items.EXPERIENCE_BOTTLE),  // 输出物品
