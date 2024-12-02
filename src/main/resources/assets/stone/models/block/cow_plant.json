@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/crop",
   "textures": {
-    "crop": "stone:block/wheat_stage0"
+    "crop": "stone:block/place_holder"
   }
 }

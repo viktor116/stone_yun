@@ -30,5 +30,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.INVERT_BUCKET,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.INVERT_BOAT,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.COW_PLANT,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.WHEAT_MEAL,Models.GENERATED);
     }
 }

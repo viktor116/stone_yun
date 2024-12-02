@@ -1,12 +1,16 @@
 package com.soybean.block;
 
+import com.soybean.block.client.renderer.CowPlantBlockRenderer;
 import com.soybean.block.custom.CowPlantBlock;
 import com.soybean.block.custom.DemoBlock;
 import com.soybean.block.custom.StoneCraftTableBlock;
+import com.soybean.block.custom.entity.CowPlantBlockEntity;
 import com.soybean.block.custom.inventory.entity.DemoBlockEntity;
 import com.soybean.config.InitValue;
 import com.soybean.screen.StoneCraftingScreenHandler;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.enums.NoteBlockInstrument;
@@ -40,13 +44,25 @@ public class ModBlock {
     public static final Block FIRE = register("fire",new FireBlock(AbstractBlock.Settings.create().mapColor(MapColor.ORANGE)),true);
     public static final Block NETHER_PORTAL = register("nether_portal",new NetherPortalBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_PURPLE)),true);
     public static final Block COAL_ORE = register("coal_ore", new ExperienceDroppingBlock(UniformIntProvider.create(0, 2), AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)),true);
-    public static final CropBlock CUSTOM_CROP = registerCrop("cow_plant", new CowPlantBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP)));
+    public static final Block COW_PLANT = register("cow_plant", new CowPlantBlock(AbstractBlock.Settings.create()
+            .nonOpaque()
+            .noCollision()
+            .ticksRandomly()
+            .breakInstantly()
+            .sounds(BlockSoundGroup.CROP)),false);
+
     public static final ScreenHandlerType<StoneCraftingScreenHandler> STONE_CRAFTING_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of(InitValue.MOD_ID, "stone_crafting_table"),
                     new ScreenHandlerType<>(StoneCraftingScreenHandler::new, FeatureSet.empty()));
 
     public static final BlockEntityType<DemoBlockEntity> DEMO_BLOCK_ENTITY =Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(InitValue.MOD_ID, "demo_block_entity"),
             BlockEntityType.Builder.create(DemoBlockEntity::new, CACTUS).build(null));
+
+    public static final BlockEntityType<CowPlantBlockEntity> COW_PLANT_TYPE = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE,
+            Identifier.of(InitValue.MOD_ID, "cow_plant"),
+            FabricBlockEntityTypeBuilder.create(CowPlantBlockEntity::new, ModBlock.COW_PLANT).build(null)
+    );
     public static void initialize() {
 
     }
@@ -58,7 +74,9 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlock(CACTUS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FIRE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(NETHER_PORTAL, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),CUSTOM_CROP);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), COW_PLANT);
+        BlockEntityRendererRegistry.register(COW_PLANT_TYPE, CowPlantBlockRenderer::new);
+
     }
 
     public static Block register(String id, Block block, boolean shouldRegisterItem) {
