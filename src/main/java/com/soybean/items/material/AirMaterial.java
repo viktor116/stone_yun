@@ -18,7 +18,7 @@ public class AirMaterial implements ToolMaterial {
 
     @Override
     public float getMiningSpeedMultiplier() {
-        return 50F;
+        return 4F;
     }
 
     @Override

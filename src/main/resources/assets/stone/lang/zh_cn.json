@@ -16,16 +16,25 @@
   "item.stone.coal_horse_armor": "下届合金马铠",
   "item.stone.golden_apple": "金苹果",
   "item.stone.wither_spawn_egg": "凋零蛋",
+  "item.stone.raw_coal": "粗煤",
+  "item.stone.invert_bucket": "倒着的桶",
+  "item.stone.invert_boat": "倒着的船",
+  "item.stone.cow_plant": "小牛种子",
+
   "container.stone.cactus": "仙人掌箱",
+
   "entity.stone.wheat_entity": "小麦生物",
   "enchantment.stone.snatch": "抢劫",
 
+  "block.stone.coal_ore": "煤矿石",
   "block.stone.soul_torch": "加速火把",
   "block.stone.fire": "火焰",
   "block.stone.nether_portal": "下届传送门",
   "block.stone.stone_crafting_table": "石制工作台",
   "block.stone.cactus": "仙人掌箱",
+
   "merchant.stone.witherskeleton": "凋零骷髅交易",
+  "merchant.stone.sheep": "绵羊交易",
   "merchant.stone.dragon": "末影龙交易",
   "stone.container.crafting": "石制工作台"
 }

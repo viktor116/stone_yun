@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "fun_item:item/weapon/air_pickaxe"
+    "layer0": "stone:item/weapon/air_pickaxe"
   }
 }

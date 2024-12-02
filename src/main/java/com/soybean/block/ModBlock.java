@@ -1,5 +1,6 @@
 package com.soybean.block;
 
+import com.soybean.block.custom.CowPlantBlock;
 import com.soybean.block.custom.DemoBlock;
 import com.soybean.block.custom.StoneCraftTableBlock;
 import com.soybean.block.custom.inventory.entity.DemoBlockEntity;
@@ -20,6 +21,7 @@ import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 /**
  * @author soybean
@@ -37,6 +39,8 @@ public class ModBlock {
     }).sounds(BlockSoundGroup.WOOD).dropsLike(SOUL_TORCH_BLOCK).pistonBehavior(PistonBehavior.DESTROY)),false);
     public static final Block FIRE = register("fire",new FireBlock(AbstractBlock.Settings.create().mapColor(MapColor.ORANGE)),true);
     public static final Block NETHER_PORTAL = register("nether_portal",new NetherPortalBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_PURPLE)),true);
+    public static final Block COAL_ORE = register("coal_ore", new ExperienceDroppingBlock(UniformIntProvider.create(0, 2), AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)),true);
+    public static final CropBlock CUSTOM_CROP = registerCrop("cow_plant", new CowPlantBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP)));
     public static final ScreenHandlerType<StoneCraftingScreenHandler> STONE_CRAFTING_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of(InitValue.MOD_ID, "stone_crafting_table"),
                     new ScreenHandlerType<>(StoneCraftingScreenHandler::new, FeatureSet.empty()));
@@ -54,6 +58,7 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlock(CACTUS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FIRE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(NETHER_PORTAL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),CUSTOM_CROP);
     }
 
     public static Block register(String id, Block block, boolean shouldRegisterItem) {
@@ -63,5 +68,10 @@ public class ModBlock {
             Registry.register(Registries.ITEM, itemID, blockItem);
         }
         return Registry.register(Registries.BLOCK, itemID, block);
+    }
+
+    public static CropBlock registerCrop(String id, Block block) {
+        Identifier cropIdentifier = Identifier.of(InitValue.MOD_ID, id);
+        return (CropBlock) Registry.register(Registries.BLOCK, cropIdentifier, block);
     }
 }

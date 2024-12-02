@@ -26,5 +26,9 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ItemsRegister.GOLDEN_APPLE,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.HORSE_ARMOR_NETHERITE, Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.RAW_COAL,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.INVERT_BUCKET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.INVERT_BOAT,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.COW_PLANT,Models.GENERATED);
     }
 }

@@ -3,10 +3,8 @@ package com.soybean.items;
 import com.soybean.block.ModBlock;
 import com.soybean.config.InitValue;
 import com.soybean.items.armor.ModArmorMaterials;
-import com.soybean.items.custom.GrassItem;
-import com.soybean.items.custom.InvertMinecartItem;
-import com.soybean.items.custom.MinecartHatItem;
-import com.soybean.items.custom.WheatItem;
+import com.soybean.items.custom.*;
+import com.soybean.items.custom.InvertBoatItem;
 import com.soybean.items.item.UnbreakablePickaxeItem;
 import com.soybean.items.material.AirMaterial;
 import com.soybean.items.material.StoneMaterial;
@@ -47,6 +45,10 @@ public class ItemsRegister {
     public static final Item AIR_PICKAXE = register(new UnbreakablePickaxeItem(AirMaterial.INSTANCE,new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(AirMaterial.INSTANCE, 999.0F, 999F)).maxCount(1)),"air_pickaxe");
     public static final Item HORSE_ARMOR_NETHERITE = register(new AnimalArmorItem(ModArmorMaterials.COAL_MATERIAL, AnimalArmorItem.Type.EQUESTRIAN,false, new Item.Settings().maxCount(1)),"coal_horse_armor");
     public static final Item GOLDEN_APPLE = register(new SwordItem(StoneMaterial.INSTANCE,new Item.Settings().maxCount(1).maxDamage(131).rarity(Rarity.RARE)),"golden_apple");
+    public static final Item RAW_COAL = register(new Item(new Item.Settings()),"raw_coal");
+    public static final Item INVERT_BUCKET = register(new InvertBucketItem(ArmorMaterials.IRON, ArmorItem.Type.HELMET,new Item.Settings().maxCount(1)),"invert_bucket");
+    public static final Item INVERT_BOAT = register(new InvertBoatItem(ArmorMaterials.LEATHER,ArmorItem.Type.HELMET,new Item.Settings().maxCount(1)),"invert_boat");
+    public static final Item COW_PLANT = register(new Item(new Item.Settings()),"cow_plant");
     public static final Item WITHER_SPAWN_EGG = register(new SpawnEggItem(EntityType.WITHER, // 实体类型为凋零
             0x303030, 0xA0A0A0, new Item.Settings()), "wither_spawn_egg");
     public static void initialize() {
@@ -73,6 +75,11 @@ public class ItemsRegister {
             itemGroup.add(ModBlock.CACTUS.asItem());
             itemGroup.add(ModBlock.NETHER_PORTAL.asItem());
             itemGroup.add(ModBlock.FIRE.asItem());
+            itemGroup.add(RAW_COAL);
+            itemGroup.add(ModBlock.COAL_ORE);
+            itemGroup.add(INVERT_BUCKET);
+            itemGroup.add(INVERT_BOAT);
+            itemGroup.add(COW_PLANT);
 //            itemGroup.add(BlockInit.EXAMPLE_INVENTORY_BLOCK.asItem());
         });
 

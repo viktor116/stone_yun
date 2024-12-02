@@ -29,7 +29,8 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
                 .add(ItemsRegister.STONE_PICKAXE);
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
                 .add(ItemsRegister.COAL_HELMET)
-                .add(ItemsRegister.MINECART_HAT);
+                .add(ItemsRegister.MINECART_HAT)
+                .add(ItemsRegister.INVERT_BUCKET);
         getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
                 .add(ItemsRegister.COAL_CHESTPLATE);
         getOrCreateTagBuilder(ItemTags.LEG_ARMOR)

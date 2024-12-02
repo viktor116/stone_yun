@@ -7,6 +7,7 @@ import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonPart;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.WitherSkeletonEntity;
+import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.util.ActionResult;
 
 public class EventRegister {
@@ -18,6 +19,10 @@ public class EventRegister {
             }
             if (entity instanceof WitherSkeletonEntity) {
                 WitherSkeletonInteractionHandler.handleRightClick(player);
+                return ActionResult.SUCCESS;
+            }
+            if(entity instanceof SheepEntity){
+                WitherSkeletonInteractionHandler.handleRightClickOnSheep(player);
                 return ActionResult.SUCCESS;
             }
             return ActionResult.PASS;

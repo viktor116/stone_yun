@@ -9,7 +9,8 @@
 	],
 	"client": [
 		"ItemRendererMixin",
-		"HeldItemRendererMixin"
+		"HeldItemRendererMixin",
+		"ArmorFeatureRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

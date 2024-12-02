@@ -69,6 +69,20 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
         player.incrementStat(Stats.TRADED_WITH_VILLAGER);
     }
 
+    public static void handleRightClickOnSheep(PlayerEntity player) {
+        TradeOfferList tradeOffers1 = new TradeOfferList();
+        addSheepTrades(tradeOffers1);
+        player.openHandledScreen(new SimpleNamedScreenHandlerFactory(
+                (syncId, inv, p) -> {
+                    WitherSkeletonInteractionHandler handler = new WitherSkeletonInteractionHandler(syncId, inv);
+                    handler.setOffers(tradeOffers1);
+                    return handler;
+                },
+                Text.translatable("merchant." + InitValue.MOD_ID + ".sheep")
+        ));
+        player.incrementStat(Stats.TRADED_WITH_VILLAGER);
+    }
+
     public static void handleRightClickOnDragon(PlayerEntity player) {
             TradeOfferList tradeOffers1 = new TradeOfferList();
             addDragonTrades(tradeOffers1);
@@ -81,7 +95,6 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
                     Text.translatable("merchant." + InitValue.MOD_ID + ".dragon")
             ));
             player.incrementStat(Stats.TRADED_WITH_VILLAGER);
-
     }
 
     @Override
@@ -120,6 +133,20 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
                 new TradedItem(Items.EMERALD, 64),  // 第一个输入物品(物品, 数量, 最大数量)
                 Optional.empty(),                     // 第二个输入物品(可选)
                 new ItemStack(Items.WITHER_SKELETON_SKULL),  // 输出物品
+                0,      // 当前使用次数
+                100,      // 最大使用次数
+                1,      // 经验值
+                0.05f   // 价格乘数
+        ));
+    }
+
+    private static void addSheepTrades(TradeOfferList offers) {
+        // 假设你的默认交易是交换某种物品
+
+        offers.add(new TradeOffer(
+                new TradedItem(Items.END_ROD, 1),  // 第一个输入物品(物品, 数量, 最大数量)
+                Optional.of(new TradedItem(Items.STICKY_PISTON, 1)),// 第二个输入物品(可选)
+                new ItemStack(Items.WHITE_WOOL,3),  // 输出物品
                 0,      // 当前使用次数
                 100,      // 最大使用次数
                 1,      // 经验值

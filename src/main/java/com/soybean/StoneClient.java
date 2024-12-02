@@ -7,8 +7,11 @@ import com.soybean.items.ItemsRegister;
 import com.soybean.screen.client.WitherSkeletonMerchantScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.CraftingScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
+import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.screen.ScreenHandlerType;
 
 public class StoneClient implements ClientModInitializer {
@@ -18,5 +21,6 @@ public class StoneClient implements ClientModInitializer {
         EntityRegister.initializeClient();
 
         ScreenHandlerTypeInit.initializeClient();
+
     }
 }
