@@ -50,6 +50,7 @@ public class ItemsRegister {
     public static final Item INVERT_BUCKET = register(new InvertBucketItem(ArmorMaterials.IRON, ArmorItem.Type.HELMET,new Item.Settings().maxCount(1)),"invert_bucket");
     public static final Item INVERT_BOAT = register(new InvertBoatItem(ArmorMaterials.LEATHER,ArmorItem.Type.HELMET,new Item.Settings().maxCount(1)),"invert_boat");
     public static final Item COW_PLANT = register(new AliasedBlockItem(ModBlock.COW_PLANT,new Item.Settings()),"cow_plant");
+    public static final Item FLINT_AND_STEEL_CUSTOM =register(new FlintAndSteelCustomItem(new Item.Settings().maxCount(1).maxDamage(64)),"flint_and_steel");
     public static final Item WITHER_SPAWN_EGG = register(new SpawnEggItem(EntityType.WITHER, // 实体类型为凋零
             0x303030, 0xA0A0A0, new Item.Settings()), "wither_spawn_egg");
     public static void initialize() {
@@ -82,6 +83,8 @@ public class ItemsRegister {
             itemGroup.add(INVERT_BOAT);
             itemGroup.add(COW_PLANT);
             itemGroup.add(WHEAT_MEAL);
+            itemGroup.add(ModBlock.REACTOR);
+            itemGroup.add(FLINT_AND_STEEL_CUSTOM);
 //            itemGroup.add(BlockInit.EXAMPLE_INVENTORY_BLOCK.asItem());
         });
 

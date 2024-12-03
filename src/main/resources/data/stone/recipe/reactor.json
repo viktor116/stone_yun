@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "EEE",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "E": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "id": "stone:reactor",
+    "count": 1
+  }
+}

@@ -1,5 +1,6 @@
 package com.soybean.data.provider;
 
+import com.soybean.block.ModBlock;
 import com.soybean.items.ItemsRegister;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -19,7 +20,7 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlock.REACTOR);
     }
 
     @Override
@@ -31,5 +32,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.INVERT_BOAT,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.COW_PLANT,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.WHEAT_MEAL,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.FLINT_AND_STEEL_CUSTOM,Models.GENERATED);
     }
 }

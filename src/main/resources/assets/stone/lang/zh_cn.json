@@ -21,6 +21,7 @@
   "item.stone.invert_boat": "倒着的船",
   "item.stone.cow_plant": "小牛种子",
   "item.stone.wheat_meal": "小麦",
+  "item.stone.flint_and_steel": "打火石",
 
   "container.stone.cactus": "仙人掌箱",
 
@@ -33,6 +34,7 @@
   "block.stone.nether_portal": "下届传送门",
   "block.stone.stone_crafting_table": "石制工作台",
   "block.stone.cactus": "仙人掌箱",
+  "block.stone.reactor": "下届核反应堆",
 
   "merchant.stone.witherskeleton": "凋零骷髅交易",
   "merchant.stone.sheep": "绵羊交易",
