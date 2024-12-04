@@ -33,14 +33,14 @@ public record SwordAuraEnchantmentEffect(EnchantmentLevelBasedValue amount) impl
         
         // 获取玩家的连击次数
         int combo = playerComboMap.getOrDefault(player.getUuid(), 0);
-        
-        if (combo == 0) {
-            // 第一击：横向月牙
-            createHorizontalSlash(serverWorld, player);
-        } else {
-            // 第二击：十字斩
-            createCrossSlash(serverWorld, player);
-        }
+        // 第一击：横向月牙
+        createHorizontalSlash(serverWorld, player);
+//        if (combo == 0) {
+//
+//        } else {
+//            // 第二击：十字斩
+//            createCrossSlash(serverWorld, player);
+//        }
         
         // 更新连击计数
         playerComboMap.put(player.getUuid(), (combo + 1) % 2);
@@ -49,30 +49,64 @@ public record SwordAuraEnchantmentEffect(EnchantmentLevelBasedValue amount) impl
     private static void createHorizontalSlash(ServerWorld world, PlayerEntity player) {
         Vec3d pos = player.getEyePos();
         Vec3d look = player.getRotationVector();
-        double distance = 30.0;
+        double distance = 50.0;
         
-        // 计算起始点：在玩家前方2格处
-        Vec3d startPos = pos.add(look.multiply(2.0));
+        // 计算扇形的基本参数
+        double angleRange = Math.toRadians(120); // 120度的扇形
+        double startAngle = -angleRange / 2; // 起始角度
+        double angleStep = angleRange / 80; // 将扇形分成80份，使粒子更密集
         
-        // 创建水平直线型剑气
-        for (double x = -10.0; x <= 10.0; x += 0.2) { // 横向范围更大，更密集
-            // 在玩家视线方向的垂直平面上创建粒子
+        // 计算起始弧线的参数
+        double arcRadius = 3.0; // 起始弧线的半径
+        Vec3d arcCenter = pos.add(look.multiply(2.0)); // 弧线中心点
+        
+        // 创建扇形剑气
+        for (double angle = startAngle; angle <= angleRange/2; angle += angleStep) {
+            // 计算当前角度的方向向量
             Vec3d right = look.crossProduct(new Vec3d(0, 1, 0)).normalize();
-            Vec3d particleOffset = right.multiply(x);
+            Vec3d direction = rotateVector(look, right, angle);
             
-            // 从起始点开始向前延伸
+            // 计算起始弧线上的点
+            Vec3d arcPoint = arcCenter.add(
+                right.multiply(Math.sin(angle) * arcRadius)
+                    .add(look.multiply(Math.cos(angle) * arcRadius))
+            );
+            
+            // 从弧线上的点发射粒子
             for (double d = 0; d < distance; d += 0.3) {
-                Vec3d particlePos = startPos.add(
-                    look.x * d + particleOffset.x,
-                    look.y * d + particleOffset.y,
-                    look.z * d + particleOffset.z
-                );
-                
+                Vec3d particlePos = arcPoint.add(direction.multiply(d));
                 spawnParticlesAndDamage(world, player, particlePos);
             }
         }
         
+        // 添加额外的粒子来增强弧线的视觉效果
+        for (double angle = startAngle; angle <= angleRange/2; angle += angleStep/2) {
+            Vec3d right = look.crossProduct(new Vec3d(0, 1, 0)).normalize();
+            Vec3d arcPoint = arcCenter.add(
+                right.multiply(Math.sin(angle) * arcRadius)
+                    .add(look.multiply(Math.cos(angle) * arcRadius))
+            );
+            
+            // 在弧线上生成更密集的粒子
+            for (int i = 0; i < 3; i++) {
+                world.spawnParticles(ParticleTypes.SMOKE,
+                    arcPoint.x, arcPoint.y, arcPoint.z,
+                    1, 0.1, 0.1, 0.1, 0.01);
+            }
+        }
+        
         playSlashEffect(world, player, 1.2f);
+    }
+
+    // 辅助方法：在水平面上旋转向量
+    private static Vec3d rotateVector(Vec3d forward, Vec3d right, double angle) {
+        double cos = Math.cos(angle);
+        double sin = Math.sin(angle);
+        return new Vec3d(
+            forward.x * cos + right.x * sin,
+            forward.y * cos + right.y * sin,
+            forward.z * cos + right.z * sin
+        );
     }
 
     private static void createCrossSlash(ServerWorld world, PlayerEntity player) {
