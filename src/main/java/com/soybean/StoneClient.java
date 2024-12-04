@@ -2,6 +2,7 @@ package com.soybean;
 
 import com.soybean.block.ModBlock;
 import com.soybean.entity.EntityRegister;
+import com.soybean.entity.EntityRegisterClient;
 import com.soybean.init.ScreenHandlerTypeInit;
 import com.soybean.items.ItemsRegister;
 import com.soybean.screen.client.WitherSkeletonMerchantScreen;
@@ -18,7 +19,7 @@ public class StoneClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ModBlock.initializeClient();
-        EntityRegister.initializeClient();
+        EntityRegisterClient.initializeClient();
 
         ScreenHandlerTypeInit.initializeClient();
 

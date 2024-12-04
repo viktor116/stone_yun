@@ -42,5 +42,13 @@ public class PortalsRegister {
                 .destDimID(Identifier.of("the_end"))
                 .tintColor(219, 227, 162)
                 .registerPortal();
+
+        //天堂之门
+        CustomPortalBuilder.beginPortal()
+                .frameBlock(Blocks.GLOWSTONE)
+                .lightWithItem(Items.WATER_BUCKET)
+                .destDimID(Identifier.of("world"))
+                .tintColor(35, 79, 204)
+                .registerPortal();
     }
 }

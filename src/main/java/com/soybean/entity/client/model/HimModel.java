@@ -1,8 +1,11 @@
 package com.soybean.entity.client.model;
 
+import com.soybean.config.InitValue;
 import com.soybean.entity.custom.HimEntity;
 import net.minecraft.client.model.*;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
 /**
@@ -18,6 +21,8 @@ public class HimModel extends SinglePartEntityModel<HimEntity> {
     private final ModelPart leftArm;
     private final ModelPart rightLeg;
     private final ModelPart leftLeg;
+
+    public static final EntityModelLayer HIM_LAYER = new EntityModelLayer(Identifier.of(InitValue.MOD_ID, "him"), "main");
 
     public HimModel(ModelPart root) {
         this.root = root;

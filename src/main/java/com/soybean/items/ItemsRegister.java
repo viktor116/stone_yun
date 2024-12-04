@@ -5,6 +5,7 @@ import com.soybean.config.InitValue;
 import com.soybean.items.armor.ModArmorMaterials;
 import com.soybean.items.custom.*;
 import com.soybean.items.custom.InvertBoatItem;
+import com.soybean.items.item.PurpleBoatItem;
 import com.soybean.items.item.UnbreakablePickaxeItem;
 import com.soybean.items.material.AirMaterial;
 import com.soybean.items.material.StoneMaterial;
@@ -53,6 +54,10 @@ public class ItemsRegister {
     public static final Item FLINT_AND_STEEL_CUSTOM =register(new FlintAndSteelCustomItem(new Item.Settings().maxCount(1).maxDamage(64)),"flint_and_steel");
     public static final Item WITHER_SPAWN_EGG = register(new SpawnEggItem(EntityType.WITHER, // 实体类型为凋零
             0x303030, 0xA0A0A0, new Item.Settings()), "wither_spawn_egg");
+    public static final Item BLAZE_PEARL = register(new EnderPearlItem(new Item.Settings().maxCount(16)),"blaze_pearl");
+    public static final Item ENDER_ROD = register(new Item(new Item.Settings()),"ender_rod");
+    public static final Item ENDER_POWDER = register(new Item(new Item.Settings()),"ender_powder");
+    public static final Item PURPLE_BOAT = register(new PurpleBoatItem(new Item.Settings()),"purple_boat");
     public static void initialize() {
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);
         ItemGroupEvents.modifyEntriesEvent(FUN_ITEM_GROUP_KEY).register(itemGroup->{
@@ -85,7 +90,10 @@ public class ItemsRegister {
             itemGroup.add(WHEAT_MEAL);
             itemGroup.add(ModBlock.REACTOR);
             itemGroup.add(FLINT_AND_STEEL_CUSTOM);
-//            itemGroup.add(BlockInit.EXAMPLE_INVENTORY_BLOCK.asItem());
+            itemGroup.add(ENDER_ROD);
+            itemGroup.add(ENDER_POWDER);
+            itemGroup.add(BLAZE_PEARL);
+            itemGroup.add(PURPLE_BOAT);
         });
 
     }
