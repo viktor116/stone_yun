@@ -2,7 +2,9 @@ package com.soybean.enchant;
 
 import com.mojang.serialization.MapCodec;
 import com.soybean.config.InitValue;
+import com.soybean.enchant.effect.FlameAdditionEnchantmentEffect;
 import com.soybean.enchant.effect.SnatchEnchantmentEffect;
+import com.soybean.enchant.effect.SwordAuraEnchantmentEffect;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -25,9 +27,12 @@ import java.util.Optional;
 public class EnchantmentRegister {
 
     public static final RegistryKey<Enchantment> SNATCH = of("snatch");
+    public static final RegistryKey<Enchantment> FLAME_ADDITION = of("flame_addition");
+    public static final RegistryKey<Enchantment> SWORD_AURA = of("sword_aura");
 
     public static final MapCodec<SnatchEnchantmentEffect> SNATCH_EFFECT = register("snatch", SnatchEnchantmentEffect.CODEC);
-
+    public static final MapCodec<FlameAdditionEnchantmentEffect> FLAME_EFFECT = register("flame_addition", FlameAdditionEnchantmentEffect.CODEC);
+    public static final MapCodec<SwordAuraEnchantmentEffect> SWORD_AURA_EFFECT = register("sword_aura", SwordAuraEnchantmentEffect.CODEC);
     private static <T extends EnchantmentEntityEffect> MapCodec<T> register(String name ,MapCodec<T> codec){
         return Registry.register(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE,getId(name),codec);
     }
@@ -44,6 +49,15 @@ public class EnchantmentRegister {
         return Identifier.of(InitValue.MOD_ID, name);
     }
 
+    public static Optional<RegistryEntry.Reference<Enchantment>> getEnchantmentEntry(World world, RegistryKey<Enchantment> enchantmentKey) {
+        DynamicRegistryManager manager = world.getRegistryManager();
+        return manager.get(RegistryKeys.ENCHANTMENT).getEntry(enchantmentKey);
+    }
+
+    public static int getEnchantmentLevel(World world, RegistryKey<Enchantment> enchantmentKey, ItemStack stack) {
+        Optional<RegistryEntry.Reference<Enchantment>> entry = getEnchantmentEntry(world, enchantmentKey);
+        return entry.map(reference -> EnchantmentHelper.getLevel(reference, stack)).orElse(0);
+    }
     public static ItemStack enchantBook(ItemStack eBook, World world, Identifier enchantmentId, int level) {
         DynamicRegistryManager manager = world.getRegistryManager();
         Optional<RegistryEntry.Reference<Enchantment>> reference = manager.get(RegistryKeys.ENCHANTMENT).getEntry(enchantmentId);

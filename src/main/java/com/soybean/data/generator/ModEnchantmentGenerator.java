@@ -1,7 +1,9 @@
 package com.soybean.data.generator;
 
 import com.soybean.enchant.EnchantmentRegister;
+import com.soybean.enchant.effect.FlameAdditionEnchantmentEffect;
 import com.soybean.enchant.effect.SnatchEnchantmentEffect;
+import com.soybean.enchant.effect.SwordAuraEnchantmentEffect;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceCondition;
@@ -46,6 +48,30 @@ public class ModEnchantmentGenerator extends FabricDynamicRegistryProvider {
                 EnchantmentEffectTarget.ATTACKER,
                 EnchantmentEffectTarget.VICTIM,
                 new SnatchEnchantmentEffect(EnchantmentLevelBasedValue.linear(0.5f))));
+        register(entries, EnchantmentRegister.FLAME_ADDITION,Enchantment.builder(
+                Enchantment.definition(
+                        itemLookup.getOrThrow(ItemTags.PICKAXES),
+                        15, //probability
+                        1, //max level
+                        Enchantment.leveledCost(1,10), //cost per level(base)
+                        Enchantment.leveledCost(1,15),  //cost per level(max)
+                        7, //anvil cost
+                        AttributeModifierSlot.HAND
+                )).addEffect(EnchantmentEffectComponentTypes.HIT_BLOCK,
+                new FlameAdditionEnchantmentEffect(EnchantmentLevelBasedValue.linear(0.5f))));
+        register(entries, EnchantmentRegister.SWORD_AURA,Enchantment.builder(
+                Enchantment.definition(
+                        itemLookup.getOrThrow(ItemTags.SWORDS),
+                        15, //probability
+                        1, //max level
+                        Enchantment.leveledCost(1,10), //cost per level(base)
+                        Enchantment.leveledCost(1,15),  //cost per level(max)
+                        10, //anvil cost
+                        AttributeModifierSlot.HAND
+                )).addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,
+                EnchantmentEffectTarget.ATTACKER,
+                EnchantmentEffectTarget.VICTIM,
+                new SwordAuraEnchantmentEffect(EnchantmentLevelBasedValue.linear(0.5f))));
     }
 
     private static void register(Entries entries, RegistryKey<Enchantment> key, Enchantment.Builder builder, ResourceCondition... resourceConditions){

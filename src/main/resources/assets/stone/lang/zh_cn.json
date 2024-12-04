@@ -27,10 +27,13 @@
   "item.stone.ender_powder": "末影粉",
   "item.stone.purple_boat": "末影船",
 
+
   "container.stone.cactus": "仙人掌箱",
 
   "entity.stone.wheat_entity": "小麦生物",
   "enchantment.stone.snatch": "抢劫",
+  "enchantment.stone.flame_addition": "火焰附加",
+  "enchantment.stone.sword_aura": "剑气",
 
   "block.stone.coal_ore": "煤矿石",
   "block.stone.soul_torch": "加速火把",
