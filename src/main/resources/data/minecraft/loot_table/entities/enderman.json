@@ -3,6 +3,11 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:killed_by_player"
+        }
+      ],
       "entries": [
         {
           "type": "minecraft:item",
@@ -26,11 +31,11 @@
               "function": "minecraft:enchanted_count_increase"
             }
           ],
-          "name": "stone:blaze_pearl"
+          "name": "stone:ender_rod"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "minecraft:entities/enderman"
+  "random_sequence": "minecraft:entities/blaze"
 }

@@ -5,6 +5,7 @@ import com.soybean.config.InitValue;
 import com.soybean.items.armor.ModArmorMaterials;
 import com.soybean.items.custom.*;
 import com.soybean.items.custom.InvertBoatItem;
+import com.soybean.items.item.CodFishingRodItem;
 import com.soybean.items.item.PurpleBoatItem;
 import com.soybean.items.item.UnbreakablePickaxeItem;
 import com.soybean.items.material.AirMaterial;
@@ -58,6 +59,7 @@ public class ItemsRegister {
     public static final Item ENDER_ROD = register(new Item(new Item.Settings()),"ender_rod");
     public static final Item ENDER_POWDER = register(new Item(new Item.Settings()),"ender_powder");
     public static final Item PURPLE_BOAT = register(new PurpleBoatItem(new Item.Settings()),"purple_boat");
+    public static final Item COD_FISHING_ROD = register(new CodFishingRodItem(new Item.Settings().maxCount(1).maxDamage(64)),"cod_fishing_rod");
     public static void initialize() {
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);
         ItemGroupEvents.modifyEntriesEvent(FUN_ITEM_GROUP_KEY).register(itemGroup->{
@@ -94,6 +96,7 @@ public class ItemsRegister {
             itemGroup.add(ENDER_POWDER);
             itemGroup.add(BLAZE_PEARL);
             itemGroup.add(PURPLE_BOAT);
+            itemGroup.add(COD_FISHING_ROD);
         });
 
     }

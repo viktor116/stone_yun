@@ -5,12 +5,14 @@
 	"mixins": [
 		"ExampleMixin",
 		"WitherSkeletonEntityMixin",
-		"EnderDragonEntityMixin"
+		"EnderDragonEntityMixin",
+		"FishingBobberEntityMixin"
 	],
 	"client": [
 		"ItemRendererMixin",
 		"HeldItemRendererMixin",
-		"ArmorFeatureRendererMixin"
+		"ArmorFeatureRendererMixin",
+		"FishingBobberEntityRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

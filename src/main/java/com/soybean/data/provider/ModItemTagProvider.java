@@ -3,6 +3,7 @@ package com.soybean.data.provider;
 import com.soybean.items.ItemsRegister;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -44,5 +45,7 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
                 .add(ItemsRegister.WHEAT);
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
                 .add(ItemsRegister.HORSE_ARMOR_NETHERITE);
+        getOrCreateTagBuilder(ConventionalItemTags.FISHING_ROD_TOOLS)
+                .add(ItemsRegister.COD_FISHING_ROD);
     }
 }

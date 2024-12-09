@@ -26,6 +26,6 @@ public class Stone implements ModInitializer {
 		EventRegister.Initialize();
 		PortalsRegister.Initialize();
 		ScreenHandlerTypeInit.initialize();
-		InitValue.LOGGER.info("make in soybean =v=!");
+		InitValue.LOGGER.info("make in soybeani =v=!");
 	}
 }
