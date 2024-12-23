@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:skeleton_skull"
+  },
+  "result": {
+    "id": "minecraft:wither_skeleton_skull"
+  },
+  "experience": 0.1,
+  "cookingtime": 200
+}

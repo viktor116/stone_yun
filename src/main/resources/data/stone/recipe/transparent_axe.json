@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "/#",
+    "/ "
+  ],
+  "key": {
+    "#": {
+      "item": "stone:transparent_block"
+    },
+    "/": {
+      "item": "stone:transparent_stick"
+    }
+  },
+  "result": {
+    "id": "stone:transparent_axe",
+    "count": 1
+  }
+}

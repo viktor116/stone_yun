@@ -60,8 +60,13 @@ public class ItemsRegister {
     public static final Item ENDER_POWDER = register(new Item(new Item.Settings()),"ender_powder");
     public static final Item PURPLE_BOAT = register(new PurpleBoatItem(new Item.Settings()),"purple_boat");
     public static final Item COD_FISHING_ROD = register(new CodFishingRodItem(new Item.Settings().maxCount(1).maxDamage(64)),"cod_fishing_rod");
+    public static final Item TRANSPARENT_STICK= register(new Item(new Item.Settings()),"transparent_stick");
+    public static final Item TRANSPARENT_SWORD= register(new SwordItem(ToolMaterials.WOOD,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 3, -2.4F))),"transparent_sword");
+    public static final Item TRANSPARENT_AXE= register(new AxeItem(ToolMaterials.WOOD, (new Item.Settings()).attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.WOOD, 6.0F, -3.2F))),"transparent_axe");
+    public static final Item TRANSPARENT_PICKAXE = register(new PickaxeItem(ToolMaterials.WOOD, (new Item.Settings()).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.WOOD, 1.0F, -2.8F))),"transparent_pickaxe");
     public static void initialize() {
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);
+        Registry.register(Registries.ITEM_GROUP, TRANSPARENT_GROUP_KEY, TRANSPARENT_ITEM_GROUP);
         ItemGroupEvents.modifyEntriesEvent(FUN_ITEM_GROUP_KEY).register(itemGroup->{
             itemGroup.add(AIR_PICKAXE);
             itemGroup.add(STONE_STICK);
@@ -98,16 +103,27 @@ public class ItemsRegister {
             itemGroup.add(PURPLE_BOAT);
             itemGroup.add(COD_FISHING_ROD);
         });
-
+        ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
+            itemGroup.add(ModBlock.TRANSPARENT_BLOCK);
+            itemGroup.add(TRANSPARENT_STICK);
+            itemGroup.add(TRANSPARENT_SWORD);
+            itemGroup.add(TRANSPARENT_AXE);
+            itemGroup.add(TRANSPARENT_PICKAXE);
+            itemGroup.add(ModBlock.AIR_CRAFT_TABLE);
+        });
     }
 
     //物品组注册
     public static final RegistryKey<ItemGroup> FUN_ITEM_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(InitValue.MOD_ID, "item_group"));
+    public static final RegistryKey<ItemGroup> TRANSPARENT_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(InitValue.MOD_ID, "transparent_group"));
     public static final ItemGroup ABSTRACT_CUSTOM_ITEM_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(Items.ARROW))
             .displayName(Text.translatable("itemGroup.soybean"))
             .build();
-
+    public static final ItemGroup TRANSPARENT_ITEM_GROUP = FabricItemGroup.builder()
+            .icon(() -> new ItemStack(Items.GLASS))
+            .displayName(Text.translatable("transparent_item_group.soybean"))
+            .build();
 
 
     //通用注册

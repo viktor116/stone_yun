@@ -1,6 +1,7 @@
 package com.soybean.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import com.soybean.Stone;
 import com.soybean.screen.StoneCraftingScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.AbstractBlock;
@@ -21,14 +22,21 @@ import net.minecraft.world.World;
 
 public class StoneCraftTableBlock extends Block {
     public static final MapCodec<StoneCraftTableBlock> CODEC = createCodec(StoneCraftTableBlock::new);
-    private static final Text TITLE = Text.translatable("block.stone.stone_crafting_table");
-
+    private final Text TITLE ;
+    private static String STONE_TITLE_KEY = "block.stone.stone_crafting_table";
+    public static String AIR_BLOCK_TITLE_KEY = "block.stone.air_crafting_table";
     public MapCodec<? extends StoneCraftTableBlock> getCodec() {
         return CODEC;
     }
 
     public StoneCraftTableBlock(AbstractBlock.Settings settings) {
         super(settings);
+        TITLE = Text.translatable(STONE_TITLE_KEY);
+    }
+
+    public StoneCraftTableBlock(AbstractBlock.Settings settings,String title) {
+        super(settings);
+        TITLE = Text.translatable(title);
     }
 
     @Override

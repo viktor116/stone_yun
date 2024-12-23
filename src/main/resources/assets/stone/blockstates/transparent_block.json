@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "stone:block/transparent_block"
+    }
+  }
+}

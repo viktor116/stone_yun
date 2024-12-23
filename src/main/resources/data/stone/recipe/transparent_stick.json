@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "/",
+    "/"
+  ],
+  "key": {
+    "/": {
+      "item": "stone:transparent_block"
+    }
+  },
+  "result": {
+    "id": "stone:transparent_stick",
+    "count": 4
+  }
+}

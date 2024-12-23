@@ -1,5 +1,6 @@
 {
   "itemGroup.soybean": "陨风&豆浆",
+  "transparent_item_group.soybean": "透明物品",
   "item.stone.stone_stick": "石棍",
   "item.stone.invert_minecart": "反转矿车",
   "item.stone.minecart_hat": "矿车头盔",
@@ -27,7 +28,10 @@
   "item.stone.ender_powder": "末影粉",
   "item.stone.purple_boat": "末地船",
   "item.stone.cod_fishing_rod": "鳕鱼",
-
+  "item.stone.transparent_stick": "空气棍",
+  "item.stone.transparent_sword": "空气剑",
+  "item.stone.transparent_axe": "空气斧",
+  "item.stone.transparent_pickaxe": "空气稿",
 
   "container.stone.cactus": "仙人掌箱",
 
@@ -41,8 +45,10 @@
   "block.stone.fire": "火焰",
   "block.stone.nether_portal": "下届传送门",
   "block.stone.stone_crafting_table": "石制工作台",
+  "block.stone.transparent_block": "空气方块",
   "block.stone.cactus": "仙人掌箱",
   "block.stone.reactor": "下届核反应堆",
+  "block.stone.air_crafting_table": "空气工作台",
 
   "merchant.stone.witherskeleton": "凋零骷髅交易",
   "merchant.stone.sheep": "绵羊交易",

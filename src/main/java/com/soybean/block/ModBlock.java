@@ -34,6 +34,7 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
  */
 public class ModBlock {
     public static final Block STONE_CRAFT_TABLE = register("stone_crafting_table", new StoneCraftTableBlock(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.5F).sounds(BlockSoundGroup.STONE)), true);
+    public static final Block AIR_CRAFT_TABLE = register("air_crafting_table", new StoneCraftTableBlock(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.5F).sounds(BlockSoundGroup.STONE).nonOpaque(),StoneCraftTableBlock.AIR_BLOCK_TITLE_KEY), true);
     public static final Block CACTUS = register("cactus", new DemoBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).ticksRandomly().strength(0.4F).sounds(BlockSoundGroup.WOOL).pistonBehavior(PistonBehavior.DESTROY).nonOpaque()), true);
     public static final Block SOUL_TORCH_BLOCK = register("soul_torch", new TorchBlock(ParticleTypes.SOUL_FIRE_FLAME, AbstractBlock.Settings.create().noCollision().breakInstantly().luminance((state) -> {
         return 10;
@@ -45,6 +46,7 @@ public class ModBlock {
     public static final Block NETHER_PORTAL = register("nether_portal",new NetherPortalBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_PURPLE)),true);
     public static final Block COAL_ORE = register("coal_ore", new ExperienceDroppingBlock(UniformIntProvider.create(0, 2), AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)),true);
     public static final Block REACTOR = register("reactor", new Block(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)),true);
+    public static final Block TRANSPARENT_BLOCK = register("transparent_block", new Block(AbstractBlock.Settings.create().mapColor(MapColor.GRAY).instrument(NoteBlockInstrument.BASEDRUM).nonOpaque() ),true);
     public static final Block COW_PLANT = register("cow_plant", new CowPlantBlock(AbstractBlock.Settings.create()
             .nonOpaque()
             .noCollision()
@@ -70,14 +72,15 @@ public class ModBlock {
 
     public static void initializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(STONE_CRAFT_TABLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AIR_CRAFT_TABLE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SOUL_TORCH_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SOUL_WALL_TORCH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(CACTUS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FIRE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(NETHER_PORTAL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(TRANSPARENT_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), COW_PLANT);
         BlockEntityRendererRegistry.register(COW_PLANT_TYPE, CowPlantBlockRenderer::new);
-
     }
 
     public static Block register(String id, Block block, boolean shouldRegisterItem) {

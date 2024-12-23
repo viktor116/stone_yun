@@ -6,7 +6,8 @@
 		"ExampleMixin",
 		"WitherSkeletonEntityMixin",
 		"EnderDragonEntityMixin",
-		"FishingBobberEntityMixin"
+		"FishingBobberEntityMixin",
+		"PlayerEntityRendererMixin"
 	],
 	"client": [
 		"ItemRendererMixin",
