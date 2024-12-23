@@ -1,5 +1,6 @@
 package com.soybean.mixin;
 
+import com.soybean.config.InitValue;
 import com.soybean.manager.HeadlessPlayerManager;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -25,19 +26,19 @@ public abstract class PlayerEntityRendererMixin {
         if (HeadlessPlayerManager.isPlayerHeadless(player.getUuid())) {
             // 使头部模型不可见
             PlayerEntityModel<?> model = ((PlayerEntityRenderer)(Object)this).getModel();
-            model.head.visible = false;
-            model.hat.visible = false;
+            model.head.hidden = true;
+            model.hat.hidden = true;
         }
     }
 
     @Inject(method = "render", at = @At("RETURN"),cancellable = true)
     private void afterRender(AbstractClientPlayerEntity player, float f, float g, MatrixStack matrixStack,
                              VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci) {
-        if (HeadlessPlayerManager.isPlayerHeadless(player.getUuid())) {
+        if (!HeadlessPlayerManager.isPlayerHeadless(player.getUuid())) {
             // 恢复头部模型可见性，以免影响其他玩家的渲染
             PlayerEntityModel<?> model = ((PlayerEntityRenderer)(Object)this).getModel();
-            model.head.visible = true;
-            model.hat.visible = true;
+            model.head.hidden = false;
+            model.hat.hidden = false;
         }
     }
 }

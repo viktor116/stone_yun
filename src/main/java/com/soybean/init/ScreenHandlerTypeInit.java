@@ -1,7 +1,6 @@
 package com.soybean.init;
 
 import com.soybean.config.InitValue;
-import com.soybean.network.BlockPosPayload;
 import com.soybean.screen.WitherSkeletonInteractionHandler;
 import com.soybean.screen.client.WitherSkeletonMerchantScreen;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;

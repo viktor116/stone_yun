@@ -3,8 +3,10 @@ package com.soybean;
 import com.soybean.block.ModBlock;
 import com.soybean.entity.EntityRegister;
 import com.soybean.entity.EntityRegisterClient;
+import com.soybean.event.EventRegister;
 import com.soybean.init.ScreenHandlerTypeInit;
 import com.soybean.items.ItemsRegister;
+import com.soybean.network.NetworkRegister;
 import com.soybean.screen.client.WitherSkeletonMerchantScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
@@ -20,8 +22,8 @@ public class StoneClient implements ClientModInitializer {
     public void onInitializeClient() {
         ModBlock.initializeClient();
         EntityRegisterClient.initializeClient();
-
         ScreenHandlerTypeInit.initializeClient();
-
+        EventRegister.InitializeClient();
+        NetworkRegister.initClient();
     }
 }

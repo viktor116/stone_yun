@@ -12,4 +12,8 @@ public class EventRegister {
         EventUseItem.register();
         EventTick.register();
     }
+
+    public static void InitializeClient(){
+        EventTick.registerClient();
+    }
 }

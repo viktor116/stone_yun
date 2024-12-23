@@ -1,6 +1,7 @@
 package com.soybean.event.impl;
 
 import com.mojang.authlib.GameProfile;
+import com.soybean.config.InitValue;
 import com.soybean.manager.HeadlessPlayerManager;
 import com.soybean.screen.WitherSkeletonInteractionHandler;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
@@ -17,6 +18,7 @@ import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.PlayerHeadItem;
 import net.minecraft.item.ShearsItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
@@ -45,10 +47,22 @@ public class EventUseEntity {
                 return ActionResult.SUCCESS;
             }
             if (entity instanceof PlayerEntity targetPlayer && !world.isClient) {
+                ItemStack stackInHand = player.getStackInHand(hand);
                 if (HeadlessPlayerManager.isPlayerHeadless(targetPlayer.getUuid())) {
+                    if(stackInHand.getItem() instanceof PlayerHeadItem playerHeadItem){
+                        String nameHead = playerHeadItem.getName(stackInHand).getString();
+                        if(nameHead.contains(targetPlayer.getName().getString())){
+                            HeadlessPlayerManager.removeHeadlessState(targetPlayer.getUuid());
+                            InitValue.LOGGER.info("这个头是这个玩家的");
+                            if(!player.isInCreativeMode()){
+                                stackInHand.decrement(1);
+                            }
+                            return ActionResult.SUCCESS;
+                        }
+                    }
                     return ActionResult.PASS;
                 }
-                ItemStack stackInHand = player.getStackInHand(hand);
+
                 if(stackInHand.getItem() instanceof ShearsItem){
                     if(!player.isInCreativeMode()){
                         stackInHand.setDamage(stackInHand.getDamage()+1);
@@ -70,8 +84,8 @@ public class EventUseEntity {
                             headStack
                     );
 
-                    // 设置玩家为无头状态（持续10秒）
-                    HeadlessPlayerManager.setPlayerHeadless(targetPlayer, 200);
+                    // 设置玩家为无头状态（持续1min * 60）
+                    HeadlessPlayerManager.setPlayerHeadless(targetPlayer, 1200*60);
 
                     // 设置物品的速度，使其稍微弹起
                     itemEntity.setVelocity(
@@ -96,6 +110,7 @@ public class EventUseEntity {
                             1.0F,
                             1.0F
                     );
+
                     return ActionResult.SUCCESS;
                 }
             }
