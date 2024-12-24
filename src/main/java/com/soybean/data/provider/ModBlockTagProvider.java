@@ -30,7 +30,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlock.CONCRETE);
         // 矿石通用标签（可以视情况添加）
+        getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlock.MAIN_WORLD_DEBRIS);
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(ModBlock.MAIN_WORLD_DEBRIS)
                 .add(ModBlock.COAL_ORE)
                 .add(ModBlock.CONCRETE);
 

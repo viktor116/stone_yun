@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#//",
+    "// "
+  ],
+  "key": {
+    "#": {
+      "item": "stone:main_world_scrap"
+    },
+    "/": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "id": "stone:main_world_ingot",
+    "count": 1
+  }
+}

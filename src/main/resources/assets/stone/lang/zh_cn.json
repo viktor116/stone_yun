@@ -13,6 +13,13 @@
   "item.stone.coal_chestplate": "煤炭胸甲",
   "item.stone.coal_leggings": "煤炭护腿",
   "item.stone.coal_boots": "煤炭靴子",
+  "item.stone.cactus_helmet": "仙人掌头盔",
+  "item.stone.cactus_chestplate": "仙人掌胸甲",
+  "item.stone.cactus_leggings": "仙人掌护腿",
+  "item.stone.cactus_boots": "仙人掌靴子",
+  "item.stone.cactus_sword": "仙人掌剑",
+  "item.stone.cactus_axe": "仙人掌斧",
+  "item.stone.cactus_pickaxe": "仙人掌稿",
   "item.stone.air_pickaxe": "",
   "item.stone.coal_horse_armor": "下届合金马铠",
   "item.stone.golden_apple": "金苹果",
@@ -36,6 +43,8 @@
   "item.stone.water_transparent_bucket": "空气水桶",
   "item.stone.lava_transparent_bucket": "空气岩浆桶",
   "item.stone.concrete_pickaxe": "混凝土稿",
+  "item.stone.main_world_ingot": "主世界合金锭",
+  "item.stone.main_world_scrap": "主世界碎片",
 
 
   "container.stone.cactus": "仙人掌箱",
@@ -55,6 +64,8 @@
   "block.stone.reactor": "下界核反应堆",
   "block.stone.air_crafting_table": "空气工作台",
   "block.stone.concrete": "混凝土",
+  "block.stone.main_world_debris": "主世界残骸",
+
 
   "merchant.stone.witherskeleton": "凋零骷髅交易",
   "merchant.stone.sheep": "绵羊交易",

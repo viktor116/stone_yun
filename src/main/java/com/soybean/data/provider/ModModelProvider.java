@@ -26,6 +26,7 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.REACTOR);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.CONCRETE);
+
     }
 
     @Override
@@ -46,5 +47,14 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.TRANSPARENT_BUCKET_WATER,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.TRANSPARENT_BUCKET_LAVA,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.CONCRETE_PICKAXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.CACTUS_AXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.CACTUS_SWORD,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.CACTUS_PICKAXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.CACTUS_HELMET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.CACTUS_CHESTPLATE,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.CACTUS_LEGGINGS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.CACTUS_BOOTS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.MAIN_WORLD_INGOT,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.MAIN_WORLD_SCRAP,Models.GENERATED);
     }
 }

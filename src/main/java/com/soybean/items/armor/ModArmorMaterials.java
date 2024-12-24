@@ -54,6 +54,20 @@ public class ModArmorMaterials {
             map.put(ArmorItem.Type.BODY, 11);
         }), 5, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(Items.COAL),
                 List.of(new ArmorMaterial.Layer(Identifier.of(InitValue.MOD_ID, "coal"))),0,0));
+    public static final RegistryEntry<ArmorMaterial> CACTUS_MATERIAL = registerArmorMaterial("cactus",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+                map.put(ArmorItem.Type.HELMET, 2);  // 头盔防护值 1
+                map.put(ArmorItem.Type.CHESTPLATE, 5);  // 胸甲防护值 3
+                map.put(ArmorItem.Type.LEGGINGS, 4);  // 裤子防护值 2
+                map.put(ArmorItem.Type.BOOTS, 1);  // 靴子防护值 1
+            }),
+                    15,  // 总耐久度类似于链甲
+                    SoundEvents.ITEM_ARMOR_EQUIP_IRON,  // 使用铁装备的音效
+                    () -> Ingredient.ofItems(Items.CACTUS),  // 使用仙人掌作为修复材料
+                    List.of(new ArmorMaterial.Layer(Identifier.of(InitValue.MOD_ID, "cactus"))), // 定义纹理
+                    0,  // 硬度
+                    0  // 击退抗性
+            ));
 
     public static void initialize() {
 

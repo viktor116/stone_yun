@@ -70,6 +70,16 @@ public class ItemsRegister {
     public static final Item TRANSPARENT_BUCKET_WATER = register(new TransparentBucketItem(Fluids.WATER, new Item.Settings().maxCount(1).recipeRemainder(TRANSPARENT_BUCKET)),"water_transparent_bucket");
     public static final Item TRANSPARENT_BUCKET_LAVA = register(new TransparentBucketItem(Fluids.LAVA, new Item.Settings().maxCount(1).recipeRemainder(TRANSPARENT_BUCKET)),"lava_transparent_bucket");
     public static final Item CONCRETE_PICKAXE = register(new PickaxeItem(ToolMaterials.IRON, (new Item.Settings()).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.IRON, 1.0F, -2.8F))),"concrete_pickaxe");
+    public static final Item CACTUS_HELMET = register(new ArmorItem(ModArmorMaterials.CACTUS_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(15))), "cactus_helmet");
+    public static final Item CACTUS_CHESTPLATE = register(new ArmorItem(ModArmorMaterials.CACTUS_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(15))), "cactus_chestplate");
+    public static final Item CACTUS_LEGGINGS = register(new ArmorItem(ModArmorMaterials.CACTUS_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(15))), "cactus_leggings");
+    public static final Item CACTUS_BOOTS = register(new ArmorItem(ModArmorMaterials.CACTUS_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15))), "cactus_boots");
+    public static final Item CACTUS_SWORD= register(new SwordItem(ToolMaterials.STONE,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 3, -2.4F))),"cactus_sword");
+    public static final Item CACTUS_AXE= register(new AxeItem(ToolMaterials.STONE, (new Item.Settings()).attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.STONE, 6.0F, -3.2F))),"cactus_axe");
+    public static final Item CACTUS_PICKAXE = register(new PickaxeItem(ToolMaterials.STONE, (new Item.Settings()).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.STONE, 1.0F, -2.8F))),"cactus_pickaxe");
+    public static final Item MAIN_WORLD_INGOT = register(new Item(new Item.Settings()),"main_world_ingot");
+    public static final Item MAIN_WORLD_SCRAP = register(new Item(new Item.Settings()),"main_world_scrap");
+
     public static void initialize() {
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);
         Registry.register(Registries.ITEM_GROUP, TRANSPARENT_GROUP_KEY, TRANSPARENT_ITEM_GROUP);
@@ -110,6 +120,16 @@ public class ItemsRegister {
             itemGroup.add(COD_FISHING_ROD);
             itemGroup.add(ModBlock.CONCRETE);
             itemGroup.add(CONCRETE_PICKAXE);
+            itemGroup.add(CACTUS_HELMET);
+            itemGroup.add(CACTUS_CHESTPLATE);
+            itemGroup.add(CACTUS_LEGGINGS);
+            itemGroup.add(CACTUS_BOOTS);
+            itemGroup.add(CACTUS_SWORD);
+            itemGroup.add(CACTUS_AXE);
+            itemGroup.add(CACTUS_PICKAXE);
+            itemGroup.add(MAIN_WORLD_INGOT);
+            itemGroup.add(MAIN_WORLD_SCRAP);
+            itemGroup.add(ModBlock.MAIN_WORLD_DEBRIS);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

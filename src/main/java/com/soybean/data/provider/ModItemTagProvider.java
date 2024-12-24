@@ -24,24 +24,31 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ItemTags.SWORDS)
                 .add(ItemsRegister.GOLDEN_APPLE)
                 .add(ItemsRegister.STONE_SWORD)
+                .add(ItemsRegister.CACTUS_SWORD)
                 .add(ItemsRegister.TRANSPARENT_SWORD);
 
         getOrCreateTagBuilder(ItemTags.AXES)
                 .add(ItemsRegister.STONE_AXE)
+                .add(ItemsRegister.CACTUS_AXE)
                 .add(ItemsRegister.TRANSPARENT_AXE);
         getOrCreateTagBuilder(ItemTags.PICKAXES)
                 .add(ItemsRegister.STONE_PICKAXE)
+                .add(ItemsRegister.CACTUS_PICKAXE)
                 .add(ItemsRegister.TRANSPARENT_PICKAXE)
                 .add(ItemsRegister.CONCRETE_PICKAXE);
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
                 .add(ItemsRegister.COAL_HELMET)
                 .add(ItemsRegister.MINECART_HAT)
+                .add(ItemsRegister.CACTUS_HELMET)
                 .add(ItemsRegister.INVERT_BUCKET);
         getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
+                .add(ItemsRegister.CACTUS_CHESTPLATE)
                 .add(ItemsRegister.COAL_CHESTPLATE);
         getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
+                .add(ItemsRegister.CACTUS_LEGGINGS)
                 .add(ItemsRegister.COAL_LEGGINGS);
         getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
+                .add(ItemsRegister.CACTUS_BOOTS)
                 .add(ItemsRegister.COAL_BOOTS);
         getOrCreateTagBuilder(ItemTags.BOATS)
                 .add(ItemsRegister.INVERT_MINECART);

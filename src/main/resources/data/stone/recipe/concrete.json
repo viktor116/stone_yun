@@ -5,7 +5,7 @@
       "item": "minecraft:sand"
     },
     {
-      "item": "minecraft:water_bucket"
+      "item": "stone:water_transparent_bucket"
     },
     {
       "item": "minecraft:stone"
@@ -13,9 +13,9 @@
   ],
   "result": {
     "id": "stone:concrete",
-    "count": 2
+    "count": 4
   },
   "crafting_remainder": {
-    "item": "minecraft:bucket"
+    "item": "stone:transparent_bucket"
   }
 }
