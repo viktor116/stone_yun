@@ -32,6 +32,11 @@
   "item.stone.transparent_sword": "空气剑",
   "item.stone.transparent_axe": "空气斧",
   "item.stone.transparent_pickaxe": "空气稿",
+  "item.stone.transparent_bucket": "空气桶",
+  "item.stone.water_transparent_bucket": "空气水桶",
+  "item.stone.lava_transparent_bucket": "空气岩浆桶",
+  "item.stone.concrete_pickaxe": "混凝土稿",
+
 
   "container.stone.cactus": "仙人掌箱",
 
@@ -49,6 +54,7 @@
   "block.stone.cactus": "仙人掌箱",
   "block.stone.reactor": "下届核反应堆",
   "block.stone.air_crafting_table": "空气工作台",
+  "block.stone.concrete": "混凝土",
 
   "merchant.stone.witherskeleton": "凋零骷髅交易",
   "merchant.stone.sheep": "绵羊交易",

@@ -25,6 +25,7 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.REACTOR);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlock.CONCRETE);
     }
 
     @Override
@@ -41,5 +42,9 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.ENDER_ROD,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.ENDER_POWDER,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.PURPLE_BOAT,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.TRANSPARENT_BUCKET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.TRANSPARENT_BUCKET_WATER,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.TRANSPARENT_BUCKET_LAVA,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.CONCRETE_PICKAXE,Models.HANDHELD);
     }
 }

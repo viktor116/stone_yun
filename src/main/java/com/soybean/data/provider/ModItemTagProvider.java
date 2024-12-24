@@ -25,12 +25,14 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
                 .add(ItemsRegister.GOLDEN_APPLE)
                 .add(ItemsRegister.STONE_SWORD)
                 .add(ItemsRegister.TRANSPARENT_SWORD);
+
         getOrCreateTagBuilder(ItemTags.AXES)
                 .add(ItemsRegister.STONE_AXE)
                 .add(ItemsRegister.TRANSPARENT_AXE);
         getOrCreateTagBuilder(ItemTags.PICKAXES)
                 .add(ItemsRegister.STONE_PICKAXE)
-                .add(ItemsRegister.TRANSPARENT_PICKAXE);
+                .add(ItemsRegister.TRANSPARENT_PICKAXE)
+                .add(ItemsRegister.CONCRETE_PICKAXE);
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
                 .add(ItemsRegister.COAL_HELMET)
                 .add(ItemsRegister.MINECART_HAT)

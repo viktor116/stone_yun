@@ -7,6 +7,7 @@ import com.soybean.items.custom.*;
 import com.soybean.items.custom.InvertBoatItem;
 import com.soybean.items.item.CodFishingRodItem;
 import com.soybean.items.item.PurpleBoatItem;
+import com.soybean.items.item.TransparentBucketItem;
 import com.soybean.items.item.UnbreakablePickaxeItem;
 import com.soybean.items.material.AirMaterial;
 import com.soybean.items.material.StoneMaterial;
@@ -14,6 +15,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.registry.*;
 import net.minecraft.text.Text;
@@ -64,6 +66,10 @@ public class ItemsRegister {
     public static final Item TRANSPARENT_SWORD= register(new SwordItem(ToolMaterials.WOOD,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 3, -2.4F))),"transparent_sword");
     public static final Item TRANSPARENT_AXE= register(new AxeItem(ToolMaterials.WOOD, (new Item.Settings()).attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.WOOD, 6.0F, -3.2F))),"transparent_axe");
     public static final Item TRANSPARENT_PICKAXE = register(new PickaxeItem(ToolMaterials.WOOD, (new Item.Settings()).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.WOOD, 1.0F, -2.8F))),"transparent_pickaxe");
+    public static final Item TRANSPARENT_BUCKET = register(new TransparentBucketItem(Fluids.EMPTY, new Item.Settings().maxCount(16)),"transparent_bucket");
+    public static final Item TRANSPARENT_BUCKET_WATER = register(new TransparentBucketItem(Fluids.WATER, new Item.Settings().maxCount(1).recipeRemainder(TRANSPARENT_BUCKET)),"water_transparent_bucket");
+    public static final Item TRANSPARENT_BUCKET_LAVA = register(new TransparentBucketItem(Fluids.LAVA, new Item.Settings().maxCount(1).recipeRemainder(TRANSPARENT_BUCKET)),"lava_transparent_bucket");
+    public static final Item CONCRETE_PICKAXE = register(new PickaxeItem(ToolMaterials.IRON, (new Item.Settings()).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.IRON, 1.0F, -2.8F))),"concrete_pickaxe");
     public static void initialize() {
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);
         Registry.register(Registries.ITEM_GROUP, TRANSPARENT_GROUP_KEY, TRANSPARENT_ITEM_GROUP);
@@ -102,6 +108,8 @@ public class ItemsRegister {
             itemGroup.add(BLAZE_PEARL);
             itemGroup.add(PURPLE_BOAT);
             itemGroup.add(COD_FISHING_ROD);
+            itemGroup.add(ModBlock.CONCRETE);
+            itemGroup.add(CONCRETE_PICKAXE);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);
@@ -110,6 +118,9 @@ public class ItemsRegister {
             itemGroup.add(TRANSPARENT_AXE);
             itemGroup.add(TRANSPARENT_PICKAXE);
             itemGroup.add(ModBlock.AIR_CRAFT_TABLE);
+            itemGroup.add(TRANSPARENT_BUCKET);
+            itemGroup.add(TRANSPARENT_BUCKET_WATER);
+            itemGroup.add(TRANSPARENT_BUCKET_LAVA);
         });
     }
 
