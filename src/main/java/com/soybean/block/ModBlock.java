@@ -80,6 +80,7 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlock(FIRE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(NETHER_PORTAL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(TRANSPARENT_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(CONCRETE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), COW_PLANT);
         BlockEntityRendererRegistry.register(COW_PLANT_TYPE, CowPlantBlockRenderer::new);
     }
