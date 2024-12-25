@@ -79,6 +79,7 @@ public class ItemsRegister {
     public static final Item CACTUS_PICKAXE = register(new PickaxeItem(ToolMaterials.STONE, (new Item.Settings()).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.STONE, 1.0F, -2.8F))),"cactus_pickaxe");
     public static final Item MAIN_WORLD_INGOT = register(new Item(new Item.Settings()),"main_world_ingot");
     public static final Item MAIN_WORLD_SCRAP = register(new Item(new Item.Settings()),"main_world_scrap");
+    public static final Item GOLD_DEBRIS = register(new Item(new Item.Settings()),"gold_debris");
 
     public static void initialize() {
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);
@@ -130,6 +131,8 @@ public class ItemsRegister {
             itemGroup.add(MAIN_WORLD_INGOT);
             itemGroup.add(MAIN_WORLD_SCRAP);
             itemGroup.add(ModBlock.MAIN_WORLD_DEBRIS);
+            itemGroup.add(GOLD_DEBRIS);
+            itemGroup.add(ModBlock.HORIZONTAL_NETHER_PORTAL);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

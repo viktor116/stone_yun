@@ -13,6 +13,7 @@ import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonPart;
+import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.entity.mob.WitherSkeletonEntity;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,10 +22,14 @@ import net.minecraft.item.Items;
 import net.minecraft.item.PlayerHeadItem;
 import net.minecraft.item.ShearsItem;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.screen.MerchantScreenHandler;
+import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import net.minecraft.village.Merchant;
+import net.minecraft.village.SimpleMerchant;
 
 /**
  * @author soybean
@@ -46,6 +51,10 @@ public class EventUseEntity {
                 WitherSkeletonInteractionHandler.handleRightClickOnSheep(player);
                 return ActionResult.SUCCESS;
             }
+            if(entity instanceof PiglinEntity){
+                WitherSkeletonInteractionHandler.handleRightClickOnPiglin(player);
+                return ActionResult.SUCCESS;
+            }
             if (entity instanceof PlayerEntity targetPlayer && !world.isClient) {
                 ItemStack stackInHand = player.getStackInHand(hand);
                 if (HeadlessPlayerManager.isPlayerHeadless(targetPlayer.getUuid())) {
@@ -53,7 +62,6 @@ public class EventUseEntity {
                         String nameHead = playerHeadItem.getName(stackInHand).getString();
                         if(nameHead.contains(targetPlayer.getName().getString())){
                             HeadlessPlayerManager.removeHeadlessState(targetPlayer.getUuid());
-                            InitValue.LOGGER.info("这个头是这个玩家的");
                             if(!player.isInCreativeMode()){
                                 stackInHand.decrement(1);
                             }

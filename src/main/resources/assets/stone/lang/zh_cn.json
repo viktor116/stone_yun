@@ -45,6 +45,7 @@
   "item.stone.concrete_pickaxe": "混凝土稿",
   "item.stone.main_world_ingot": "主世界合金锭",
   "item.stone.main_world_scrap": "主世界碎片",
+  "item.stone.gold_debris": "金碎",
 
 
   "container.stone.cactus": "仙人掌箱",
@@ -65,10 +66,12 @@
   "block.stone.air_crafting_table": "空气工作台",
   "block.stone.concrete": "混凝土",
   "block.stone.main_world_debris": "主世界残骸",
+  "block.stone.horizontal_nether_portal": "水平下界传送门",
 
 
   "merchant.stone.witherskeleton": "凋零骷髅交易",
   "merchant.stone.sheep": "绵羊交易",
   "merchant.stone.dragon": "末影龙交易",
+  "merchant.stone.piglin": "猪灵交易",
   "stone.container.crafting": "石制工作台"
 }

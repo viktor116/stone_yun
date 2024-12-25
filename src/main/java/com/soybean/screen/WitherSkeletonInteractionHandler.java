@@ -2,6 +2,7 @@ package com.soybean.screen;
 
 import com.soybean.config.InitValue;
 import com.soybean.init.BlockInit;
+import com.soybean.items.ItemsRegister;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.ai.TargetPredicate;
@@ -21,10 +22,7 @@ import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-import net.minecraft.village.Merchant;
-import net.minecraft.village.TradeOffer;
-import net.minecraft.village.TradeOfferList;
-import net.minecraft.village.TradedItem;
+import net.minecraft.village.*;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -97,6 +95,21 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
             player.incrementStat(Stats.TRADED_WITH_VILLAGER);
     }
 
+    public static void handleRightClickOnPiglin(PlayerEntity player) {
+        if (player.getWorld().isClient) {
+            return;
+        }
+        PiglinMerchant merchant = new PiglinMerchant(player);
+
+        // 创建交易列表
+        TradeOfferList offers = new TradeOfferList();
+        addPiglinTrades(offers);
+        merchant.setOffersFromServer(offers);
+        // 使用 sendOffers 方法来处理界面打开和数据同步
+        merchant.sendOffers(player, Text.translatable("merchant." + InitValue.MOD_ID + ".piglin"), 1);  // levelProgress);
+        player.incrementStat(Stats.TRADED_WITH_VILLAGER);
+    }
+
     @Override
     public boolean canUse(PlayerEntity player) {
         return true;
@@ -133,6 +146,30 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
                 new TradedItem(Items.EMERALD, 64),  // 第一个输入物品(物品, 数量, 最大数量)
                 Optional.empty(),                     // 第二个输入物品(可选)
                 new ItemStack(Items.WITHER_SKELETON_SKULL),  // 输出物品
+                0,      // 当前使用次数
+                100,      // 最大使用次数
+                1,      // 经验值
+                0.05f   // 价格乘数
+        ));
+    }
+
+    private static void addPiglinTrades(TradeOfferList offers) {
+        // 假设你的默认交易是交换某种物品
+
+        offers.add(new TradeOffer(
+                new TradedItem(ItemsRegister.GOLD_DEBRIS, 1),  // 第一个输入物品(物品, 数量, 最大数量)
+                Optional.empty(),// 第二个输入物品(可选)
+                new ItemStack(ItemsRegister.ENDER_ROD,64),  // 输出物品
+                0,      // 当前使用次数
+                100,      // 最大使用次数
+                1,      // 经验值
+                0.05f   // 价格乘数
+        ));
+
+        offers.add(new TradeOffer(
+                new TradedItem(ItemsRegister.GOLD_DEBRIS, 1),  // 第一个输入物品(物品, 数量, 最大数量)
+                Optional.empty(),// 第二个输入物品(可选)
+                new ItemStack(ItemsRegister.BLAZE_PEARL,16),  // 输出物品
                 0,      // 当前使用次数
                 100,      // 最大使用次数
                 1,      // 经验值

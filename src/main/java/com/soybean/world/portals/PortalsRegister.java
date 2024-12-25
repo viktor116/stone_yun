@@ -1,10 +1,13 @@
 package com.soybean.world.portals;
 
+import com.soybean.block.ModBlock;
 import com.soybean.items.ItemsRegister;
+import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.kyrptonaught.customportalapi.util.PortalLink;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 
 /**
@@ -50,5 +53,13 @@ public class PortalsRegister {
                 .destDimID(Identifier.of("world"))
                 .tintColor(35, 79, 204)
                 .registerPortal();
+
+        //水平地狱传送门
+//        CustomPortalBuilder.beginPortal()
+//                .frameBlock(Blocks.COBBLESTONE)
+//                .destDimID(Identifier.of("the_nether")) // 自定义目标维度
+//                .flatPortal() // 设置为水平传送门
+//                .tintColor(131, 66, 184) // 自定义颜色
+//                .registerPortal(); // 注册传送门
     }
 }
