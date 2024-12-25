@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import com.soybean.config.InitValue;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.particle.ParticleTypes;
@@ -11,6 +12,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
@@ -19,6 +21,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.*;
 import net.minecraft.world.border.WorldBorder;
 import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.world.dimension.NetherPortal;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -68,5 +71,23 @@ public class HorizontalNetherPortalBlock extends NetherPortalBlock {
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return state.get(AXIS) == Direction.Axis.Z ? Z_SHAPE : X_SHAPE;
+    }
+
+    private static TeleportTarget getExitPortalTarget(ServerWorld world, BlockLocating.Rectangle exitPortalRectangle, Direction.Axis axis, Vec3d positionInPortal, Entity entity, Vec3d velocity, float yaw, float pitch, TeleportTarget.PostDimensionTransition postDimensionTransition) {
+        BlockPos blockPos = exitPortalRectangle.lowerLeft;
+        BlockState blockState = world.getBlockState(blockPos);
+        Direction.Axis axis2 = (Direction.Axis)blockState.getOrEmpty(Properties.HORIZONTAL_AXIS).orElse(Direction.Axis.X);
+        double d = (double)exitPortalRectangle.width;
+        double e = (double)exitPortalRectangle.height;
+        EntityDimensions entityDimensions = entity.getDimensions(entity.getPose());
+        int i = axis == axis2 ? 0 : 90;
+        Vec3d vec3d = axis == axis2 ? velocity : new Vec3d(velocity.z, velocity.y, -velocity.x);
+        double f = (double)entityDimensions.width() / 2.0 + (d - (double)entityDimensions.width()) * positionInPortal.getX();
+        double g = (e - (double)entityDimensions.height()) * positionInPortal.getY();
+        double h = 0.5 + positionInPortal.getZ();
+        boolean bl = axis2 == Direction.Axis.X;
+        Vec3d vec3d2 = new Vec3d((double)blockPos.getX() + (bl ? f : h), (double)blockPos.getY() + g, (double)blockPos.getZ() + (bl ? h : f));
+        Vec3d vec3d3 = HorizontalNetherPortal.findOpenPosition(vec3d2, world, entity, entityDimensions);
+        return new TeleportTarget(world, vec3d3, vec3d, yaw + (float)i, pitch, postDimensionTransition);
     }
 }

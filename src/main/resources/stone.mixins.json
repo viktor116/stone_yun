@@ -8,7 +8,9 @@
 		"EnderDragonEntityMixin",
 		"FishingBobberEntityMixin",
 		"PlayerEntityRendererMixin",
-		"EdibleMixin"
+		"EdibleMixin",
+		"PortalForcerMixin",
+		"NetherPortalMixin"
 	],
 	"client": [
 		"ItemRendererMixin",

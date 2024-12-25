@@ -43,12 +43,13 @@ public class ModBlock {
     }).sounds(BlockSoundGroup.WOOD).dropsLike(SOUL_TORCH_BLOCK).pistonBehavior(PistonBehavior.DESTROY)),false);
     public static final Block FIRE = register("fire",new FireBlock(AbstractBlock.Settings.create().mapColor(MapColor.ORANGE)),true);
     public static final Block NETHER_PORTAL = register("nether_portal",new NetherPortalBlock(AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.PALE_PURPLE)),true);
-    public static final Block HORIZONTAL_NETHER_PORTAL = register("horizontal_nether_portal", new HorizontalNetherPortalBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_PURPLE).noCollision().strength(-1.0F).nonOpaque().sounds(BlockSoundGroup.GLASS).luminance((state) -> 11)), true);
+    public static final Block HORIZONTAL_NETHER_PORTAL = register("horizontal_nether_portal", new CustomPortalBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_PURPLE).noCollision().strength(-1.0F).nonOpaque().sounds(BlockSoundGroup.GLASS).luminance((state) -> 11)), true);
     public static final Block COAL_ORE = register("coal_ore", new ExperienceDroppingBlock(UniformIntProvider.create(0, 2), AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)),true);
     public static final Block REACTOR = register("reactor", new Block(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)),true);
     public static final Block TRANSPARENT_BLOCK = register("transparent_block", new Block(AbstractBlock.Settings.create().mapColor(MapColor.GRAY).instrument(NoteBlockInstrument.BASEDRUM).nonOpaque() ),true);
     public static final Block CONCRETE = register("concrete", new Block(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2F, 3.0F)),true);
     public static final Block MAIN_WORLD_DEBRIS = register("main_world_debris", new Block(AbstractBlock.Settings.create().mapColor(MapColor.BLACK).requiresTool().strength(30.0F, 1200.0F).sounds(BlockSoundGroup.ANCIENT_DEBRIS)),true);
+    public static final Block OBSIDIAN = register("obsidian", new Block(AbstractBlock.Settings.create().mapColor(MapColor.BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(50.0F, 1200.0F)),true);
     public static final Block COW_PLANT = register("cow_plant", new CowPlantBlock(AbstractBlock.Settings.create()
             .nonOpaque()
             .noCollision()

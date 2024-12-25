@@ -133,6 +133,7 @@ public class ItemsRegister {
             itemGroup.add(ModBlock.MAIN_WORLD_DEBRIS);
             itemGroup.add(GOLD_DEBRIS);
             itemGroup.add(ModBlock.HORIZONTAL_NETHER_PORTAL);
+            itemGroup.add(ModBlock.OBSIDIAN);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

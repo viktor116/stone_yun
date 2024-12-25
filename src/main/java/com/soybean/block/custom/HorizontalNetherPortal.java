@@ -2,123 +2,201 @@ package com.soybean.block.custom;
 
 import com.soybean.block.ModBlock;
 import net.minecraft.block.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityDimensions;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.*;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.*;
+import net.minecraft.world.dimension.NetherPortal;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
  * @author soybean
  * @date 2024/12/25 12:52
  * @description
  */
-public class HorizontalNetherPortal {
+public class HorizontalNetherPortal extends NetherPortal {
     private static final int MIN_WIDTH = 2;
-    private static final int MAX_WIDTH = 21;
+    public static final int MAX_WIDTH = 21;
     private static final int MIN_HEIGHT = 3;
-    private static final int MAX_HEIGHT = 21;
-
+    public static final int MAX_HEIGHT = 21;
+    private static final AbstractBlock.ContextPredicate IS_VALID_FRAME_BLOCK = (state, world, pos) -> {
+        return state.isOf(Blocks.OBSIDIAN);
+    };
+    private static final float FALLBACK_THRESHOLD = 4.0F;
+    private static final double HEIGHT_STRETCH = 1.0;
     private final WorldAccess world;
     private final Direction.Axis axis;
-    private final Direction rightDir;
-    private final Direction leftDir;
-    private final Direction topDir;
-    private final Direction bottomDir;
-    private final BlockPos bottomLeft;
-    private int width;
+    private final Direction negativeDir;
+    private int foundPortalBlocks;
+    @Nullable
+    private BlockPos lowerCorner;
     private int height;
+    private final int width;
 
     public HorizontalNetherPortal(WorldAccess world, BlockPos pos, Direction.Axis axis) {
+        super( world,pos, axis);
         this.world = world;
         this.axis = axis;
-
-        this.rightDir = axis == Direction.Axis.X ? Direction.EAST : Direction.SOUTH;
-        this.leftDir = rightDir.getOpposite();
-        this.topDir = axis == Direction.Axis.X ? Direction.SOUTH : Direction.EAST;
-        this.bottomDir = topDir.getOpposite();
-
-        BlockPos.Mutable mutable = pos.mutableCopy();
-
-        // Find bottom-left corner
-        while (world.getBlockState(mutable.move(leftDir)).isOf(Blocks.OBSIDIAN)) {
-            if (width >= MAX_WIDTH) break;
-            width++;
+        this.negativeDir = axis == Direction.Axis.X ? Direction.WEST : Direction.SOUTH;
+        this.lowerCorner = this.getLowerCorner(pos);
+        if (this.lowerCorner == null) {
+            this.lowerCorner = pos;
+            this.width = 1;
+            this.height = 1;
+        } else {
+            this.width = this.getWidth();
+            if (this.width > 0) {
+                this.height = this.getHeight();
+            }
         }
-        mutable.move(rightDir);
 
-        while (world.getBlockState(mutable.move(bottomDir)).isOf(Blocks.OBSIDIAN)) {
-            if (height >= MAX_HEIGHT) break;
-            height++;
+    }
+    @Nullable
+    private BlockPos getLowerCorner(BlockPos pos) {
+        for(int i = Math.max(this.world.getBottomY(), pos.getY() - 21); pos.getY() > i && validStateInsidePortal(this.world.getBlockState(pos.down())); pos = pos.down()) {
         }
-        mutable.move(topDir);
 
-        this.bottomLeft = mutable.toImmutable();
+        Direction direction = this.negativeDir.getOpposite();
+        int j = this.getWidth(pos, direction) - 1;
+        return j < 0 ? null : pos.offset(direction, j);
     }
 
-    public boolean wasAlreadyValid() {
-        if (width < MIN_WIDTH || width > MAX_WIDTH || height < MIN_HEIGHT || height > MAX_HEIGHT) {
-            return false;
-        }
-
-        return validateFrame();
+    private int getWidth() {
+        int i = this.getWidth(this.lowerCorner, this.negativeDir);
+        return i >= 2 && i <= 21 ? i : 0;
     }
 
-    private boolean validateFrame() {
-        BlockPos.Mutable mutable = bottomLeft.mutableCopy();
+    private int getWidth(BlockPos pos, Direction direction) {
+        BlockPos.Mutable mutable = new BlockPos.Mutable();
 
-        // Validate horizontal edges
-        for (int i = 0; i <= width; i++) {
-            if (!isObsidian(mutable) || !isObsidian(mutable.move(topDir, height))) {
-                return false;
+        for(int i = 0; i <= 21; ++i) {
+            mutable.set(pos).move(direction, i);
+            BlockState blockState = this.world.getBlockState(mutable);
+            if (!validStateInsidePortal(blockState)) {
+                if (IS_VALID_FRAME_BLOCK.test(blockState, this.world, mutable)) {
+                    return i;
+                }
+                break;
             }
-            mutable.move(topDir, -height).move(rightDir);
+
+            BlockState blockState2 = this.world.getBlockState(mutable.move(Direction.DOWN));
+            if (!IS_VALID_FRAME_BLOCK.test(blockState2, this.world, mutable)) {
+                break;
+            }
         }
-        mutable.move(rightDir, -width);
 
-        // Validate vertical edges
-        for (int i = 0; i <= height; i++) {
-            if (!isObsidian(mutable) || !isObsidian(mutable.move(rightDir, width))) {
+        return 0;
+    }
+
+    private int getHeight() {
+        BlockPos.Mutable mutable = new BlockPos.Mutable();
+        int i = this.getPotentialHeight(mutable);
+        return i >= 3 && i <= 21 && this.isHorizontalFrameValid(mutable, i) ? i : 0;
+    }
+
+    private boolean isHorizontalFrameValid(BlockPos.Mutable pos, int height) {
+        for(int i = 0; i < this.width; ++i) {
+            BlockPos.Mutable mutable = pos.set(this.lowerCorner).move(Direction.UP, height).move(this.negativeDir, i);
+            if (!IS_VALID_FRAME_BLOCK.test(this.world.getBlockState(mutable), this.world, mutable)) {
                 return false;
             }
-            mutable.move(rightDir, -width).move(topDir);
         }
 
         return true;
     }
 
-    private boolean isObsidian(BlockPos pos) {
-        return world.getBlockState(pos).isOf(Blocks.OBSIDIAN);
-    }
-
-    public static Optional<HorizontalNetherPortal> createPortal(WorldAccess world, BlockPos pos) {
-        Optional<HorizontalNetherPortal> xPortal = createPortalInAxis(world, pos, Direction.Axis.X);
-        if (xPortal.isPresent()) return xPortal;
-
-        return createPortalInAxis(world, pos, Direction.Axis.Z);
-    }
-
-    private static Optional<HorizontalNetherPortal> createPortalInAxis(WorldAccess world, BlockPos pos, Direction.Axis axis) {
-        HorizontalNetherPortal portal = new HorizontalNetherPortal(world, pos, axis);
-        if (portal.wasAlreadyValid()) {
-            portal.createPortalBlocks();
-            return Optional.of(portal);
-        }
-        return Optional.empty();
-    }
-
-    private void createPortalBlocks() {
-        BlockPos.Mutable mutable = bottomLeft.mutableCopy().move(Direction.UP);
-        BlockState portalState = ModBlock.HORIZONTAL_NETHER_PORTAL.getDefaultState().with(NetherPortalBlock.AXIS, axis);
-
-        for (int w = 0; w < width; w++) {
-            for (int h = 0; h < height; h++) {
-                world.setBlockState(mutable.move(rightDir, w).move(topDir, h), portalState, Block.NOTIFY_ALL);
+    private int getPotentialHeight(BlockPos.Mutable pos) {
+        for(int i = 0; i < 21; ++i) {
+            pos.set(this.lowerCorner).move(Direction.UP, i).move(this.negativeDir, -1);
+            if (!IS_VALID_FRAME_BLOCK.test(this.world.getBlockState(pos), this.world, pos)) {
+                return i;
             }
-            mutable.move(rightDir, -width).move(topDir, -height);
+
+            pos.set(this.lowerCorner).move(Direction.UP, i).move(this.negativeDir, this.width);
+            if (!IS_VALID_FRAME_BLOCK.test(this.world.getBlockState(pos), this.world, pos)) {
+                return i;
+            }
+
+            for(int j = 0; j < this.width; ++j) {
+                pos.set(this.lowerCorner).move(Direction.UP, i).move(this.negativeDir, j);
+                BlockState blockState = this.world.getBlockState(pos);
+                if (!validStateInsidePortal(blockState)) {
+                    return i;
+                }
+
+                if (blockState.isOf(Blocks.NETHER_PORTAL)) {
+                    ++this.foundPortalBlocks;
+                }
+            }
         }
+
+        return 21;
     }
 
+    private static boolean validStateInsidePortal(BlockState state) {
+        return state.isAir() || state.isIn(BlockTags.FIRE) || state.isOf(Blocks.NETHER_PORTAL);
+    }
+
+    public boolean isValid() {
+        return this.lowerCorner != null && this.width >= 2 && this.width <= 21 && this.height >= 3 && this.height <= 21;
+    }
+
+    public void createPortal() {
+        BlockState blockState = (BlockState)Blocks.NETHER_PORTAL.getDefaultState().with(NetherPortalBlock.AXIS, this.axis);
+        BlockPos.iterate(this.lowerCorner, this.lowerCorner.offset(Direction.UP, this.height - 1).offset(this.negativeDir, this.width - 1)).forEach((pos) -> {
+            this.world.setBlockState(pos, blockState, 18);
+        });
+    }
+
+    public boolean wasAlreadyValid() {
+        return this.isValid() && this.foundPortalBlocks == this.width * this.height;
+    }
+
+    public static Vec3d entityPosInPortal(BlockLocating.Rectangle portalRect, Direction.Axis portalAxis, Vec3d entityPos, EntityDimensions entityDimensions) {
+        double d = (double)portalRect.width - (double)entityDimensions.width();
+        double e = (double)portalRect.height - (double)entityDimensions.height();
+        BlockPos blockPos = portalRect.lowerLeft;
+        double g;
+        double f;
+        if (d > 0.0) {
+            f = (double)blockPos.getComponentAlongAxis(portalAxis) + (double)entityDimensions.width() / 2.0;
+            g = MathHelper.clamp(MathHelper.getLerpProgress(entityPos.getComponentAlongAxis(portalAxis) - f, 0.0, d), 0.0, 1.0);
+        } else {
+            g = 0.5;
+        }
+
+        Direction.Axis axis;
+        if (e > 0.0) {
+            axis = Direction.Axis.Y;
+            f = MathHelper.clamp(MathHelper.getLerpProgress(entityPos.getComponentAlongAxis(axis) - (double)blockPos.getComponentAlongAxis(axis), 0.0, e), 0.0, 1.0);
+        } else {
+            f = 0.0;
+        }
+
+        axis = portalAxis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
+        double h = entityPos.getComponentAlongAxis(axis) - ((double)blockPos.getComponentAlongAxis(axis) + 0.5);
+        return new Vec3d(g, f, h);
+    }
+
+    public static Vec3d findOpenPosition(Vec3d fallback, ServerWorld world, Entity entity, EntityDimensions dimensions) {
+        if (!(dimensions.width() > 4.0F) && !(dimensions.height() > 4.0F)) {
+            double d = (double)dimensions.height() / 2.0;
+            Vec3d vec3d = fallback.add(0.0, d, 0.0);
+            VoxelShape voxelShape = VoxelShapes.cuboid(Box.of(vec3d, (double)dimensions.width(), 0.0, (double)dimensions.width()).stretch(0.0, 1.0, 0.0).expand(1.0E-6));
+            Optional<Vec3d> optional = world.findClosestCollision(entity, voxelShape, vec3d, (double)dimensions.width(), (double)dimensions.height(), (double)dimensions.width());
+            Optional<Vec3d> optional2 = optional.map((pos) -> {
+                return pos.subtract(0.0, d, 0.0);
+            });
+            return (Vec3d)optional2.orElse(fallback);
+        } else {
+            return fallback;
+        }
+    }
 }

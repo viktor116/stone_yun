@@ -55,11 +55,12 @@ public class PortalsRegister {
                 .registerPortal();
 
         //水平地狱传送门
-//        CustomPortalBuilder.beginPortal()
-//                .frameBlock(Blocks.COBBLESTONE)
-//                .destDimID(Identifier.of("the_nether")) // 自定义目标维度
-//                .flatPortal() // 设置为水平传送门
-//                .tintColor(131, 66, 184) // 自定义颜色
-//                .registerPortal(); // 注册传送门
+        CustomPortalBuilder.beginPortal()
+                .customPortalBlock((CustomPortalBlock) ModBlock.HORIZONTAL_NETHER_PORTAL)
+                .frameBlock(ModBlock.OBSIDIAN)
+                .destDimID(Identifier.of("the_nether")) // 自定义目标维度
+                .flatPortal() // 设置为水平传送门
+                .tintColor(209, 69, 233) // 自定义颜色
+                .registerPortal(); // 注册传送门
     }
 }
