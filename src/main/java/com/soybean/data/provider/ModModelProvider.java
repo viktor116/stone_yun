@@ -57,5 +57,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.MAIN_WORLD_INGOT,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.MAIN_WORLD_SCRAP,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.GOLD_DEBRIS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.CACTUS_STICK,Models.GENERATED);
     }
 }

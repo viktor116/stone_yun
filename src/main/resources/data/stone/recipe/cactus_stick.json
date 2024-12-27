@@ -2,19 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "/",
-    "/",
-    "#"
+    "/"
   ],
   "key": {
-    "#": {
-      "item": "stone:cactus_stick"
-    },
     "/": {
       "item": "minecraft:cactus"
     }
   },
   "result": {
-    "id": "stone:cactus_sword",
+    "id": "stone:cactus_stick",
     "count": 1
   }
 }
