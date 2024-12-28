@@ -11,6 +11,7 @@ import com.soybean.items.item.TransparentBucketItem;
 import com.soybean.items.item.UnbreakablePickaxeItem;
 import com.soybean.items.material.AirMaterial;
 import com.soybean.items.material.StoneMaterial;
+import com.soybean.items.recipes.ModRecipes;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
@@ -83,6 +84,7 @@ public class ItemsRegister {
     public static final Item CACTUS_STICK = register(new Item(new Item.Settings()),"cactus_stick");
 
     public static void initialize() {
+        ModRecipes.registerRecipes();
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);
         Registry.register(Registries.ITEM_GROUP, TRANSPARENT_GROUP_KEY, TRANSPARENT_ITEM_GROUP);
         ItemGroupEvents.modifyEntriesEvent(FUN_ITEM_GROUP_KEY).register(itemGroup->{
