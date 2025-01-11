@@ -2,15 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "###",
-    "#//",
-    "// "
+    "/ #",
+    "///"
   ],
   "key": {
-    "#": {
+    "/": {
       "item": "stone:main_world_scrap"
     },
-    "/": {
-      "item": "minecraft:gold_ingot"
+    "#": {
+      "item": "minecraft:iron_ingot"
     }
   },
   "result": {

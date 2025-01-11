@@ -1,0 +1,19 @@
+{
+  "type": "stone:water_lava_to_cobblestone",
+  "category": "misc",
+  "pattern": [
+    "WL"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:water_bucket"
+    },
+    "L": {
+      "item": "minecraft:lava_bucket"
+    }
+  },
+  "result": {
+    "item": "minecraft:cobblestone",
+    "count": 1
+  }
+}
