@@ -58,5 +58,17 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.MAIN_WORLD_SCRAP,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.GOLD_DEBRIS,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.CACTUS_STICK,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.HUMAN_FLESH,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.COOKED_HUMAN_FLESH,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.BIT_DIAMOND_SWORD,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.BIT_DIAMOND_AXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.BIT_DIAMOND_PICKAXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.ENDER_SWORD,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.FLAME_SWORD,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.BROKEN_BOW,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.MAIN_WORLD_HELMET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.MAIN_WORLD_CHESTPLATE,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.MAIN_WORLD_LEGGINGS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.MAIN_WORLD_BOOTS,Models.GENERATED);
     }
 }

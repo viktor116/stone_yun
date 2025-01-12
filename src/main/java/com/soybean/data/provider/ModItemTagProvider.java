@@ -25,31 +25,46 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
                 .add(ItemsRegister.GOLDEN_APPLE)
                 .add(ItemsRegister.STONE_SWORD)
                 .add(ItemsRegister.CACTUS_SWORD)
+                .add(ItemsRegister.ENDER_SWORD)
+                .add(ItemsRegister.FLAME_SWORD)
+                .add(ItemsRegister.BIT_DIAMOND_SWORD)
                 .add(ItemsRegister.TRANSPARENT_SWORD);
 
         getOrCreateTagBuilder(ItemTags.AXES)
                 .add(ItemsRegister.STONE_AXE)
                 .add(ItemsRegister.CACTUS_AXE)
+                .add(ItemsRegister.BIT_DIAMOND_AXE)
                 .add(ItemsRegister.TRANSPARENT_AXE);
+
         getOrCreateTagBuilder(ItemTags.PICKAXES)
                 .add(ItemsRegister.STONE_PICKAXE)
                 .add(ItemsRegister.CACTUS_PICKAXE)
                 .add(ItemsRegister.TRANSPARENT_PICKAXE)
+                .add(ItemsRegister.BIT_DIAMOND_PICKAXE)
                 .add(ItemsRegister.CONCRETE_PICKAXE);
+
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
                 .add(ItemsRegister.COAL_HELMET)
                 .add(ItemsRegister.MINECART_HAT)
                 .add(ItemsRegister.CACTUS_HELMET)
+                .add(ItemsRegister.MAIN_WORLD_HELMET)
                 .add(ItemsRegister.INVERT_BUCKET);
+
         getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
                 .add(ItemsRegister.CACTUS_CHESTPLATE)
+                .add(ItemsRegister.MAIN_WORLD_CHESTPLATE)
                 .add(ItemsRegister.COAL_CHESTPLATE);
+
         getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
                 .add(ItemsRegister.CACTUS_LEGGINGS)
+                .add(ItemsRegister.MAIN_WORLD_LEGGINGS)
                 .add(ItemsRegister.COAL_LEGGINGS);
+
         getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
                 .add(ItemsRegister.CACTUS_BOOTS)
+                .add(ItemsRegister.MAIN_WORLD_BOOTS)
                 .add(ItemsRegister.COAL_BOOTS);
+
         getOrCreateTagBuilder(ItemTags.BOATS)
                 .add(ItemsRegister.INVERT_MINECART);
         getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS)
@@ -59,5 +74,8 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
                 .add(ItemsRegister.HORSE_ARMOR_NETHERITE);
         getOrCreateTagBuilder(ConventionalItemTags.FISHING_ROD_TOOLS)
                 .add(ItemsRegister.COD_FISHING_ROD);
+
+        getOrCreateTagBuilder(ItemTags.BOW_ENCHANTABLE)
+                .add(ItemsRegister.WITHER_BOW);
     }
 }

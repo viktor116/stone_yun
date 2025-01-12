@@ -1,10 +1,7 @@
 package com.soybean.items.armor;
 
 import com.soybean.config.InitValue;
-import net.minecraft.item.AnimalArmorItem;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -68,7 +65,21 @@ public class ModArmorMaterials {
                     0,  // 硬度
                     0  // 击退抗性
             ));
-
+    public static final RegistryEntry<ArmorMaterial> MAIN_WORD_MATERIAL = registerArmorMaterial("main_world",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+                map.put(ArmorItem.Type.BOOTS, 3);
+                map.put(ArmorItem.Type.LEGGINGS, 6);
+                map.put(ArmorItem.Type.CHESTPLATE, 8);
+                map.put(ArmorItem.Type.HELMET, 3);
+                map.put(ArmorItem.Type.BODY, 11);
+            }),
+                    15,  // 总耐久度类似于链甲
+                    SoundEvents.ITEM_ARMOR_EQUIP_IRON,  // 使用铁装备的音效
+                    () -> Ingredient.ofItems(Items.CACTUS),  // 使用仙人掌作为修复材料
+                    List.of(new ArmorMaterial.Layer(Identifier.of(InitValue.MOD_ID, "main_world"))), // 定义纹理
+                    3,  // 硬度
+                    0.1f  // 击退抗性
+            ));
     public static void initialize() {
 
     };

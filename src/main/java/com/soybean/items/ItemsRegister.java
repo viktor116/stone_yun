@@ -82,6 +82,19 @@ public class ItemsRegister {
     public static final Item MAIN_WORLD_SCRAP = register(new Item(new Item.Settings()),"main_world_scrap");
     public static final Item GOLD_DEBRIS = register(new Item(new Item.Settings()),"gold_debris");
     public static final Item CACTUS_STICK = register(new Item(new Item.Settings()),"cactus_stick");
+    public static final Item HUMAN_FLESH = register(new Item(new Item.Settings()),"human_flesh");
+    public static final Item COOKED_HUMAN_FLESH = register(new Item(new Item.Settings()),"cooked_human_flesh");
+    public static final Item BIT_DIAMOND_SWORD = register(new SwordItem(ToolMaterials.DIAMOND,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 3, -2.4F))),"bit_diamond_sword");
+    public static final Item BIT_DIAMOND_AXE = register(new AxeItem(ToolMaterials.DIAMOND,new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 5.0F, -3.0F))),"bit_diamond_axe");
+    public static final Item BIT_DIAMOND_PICKAXE = register(new PickaxeItem(ToolMaterials.DIAMOND, (new Item.Settings()).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 1.0F, -2.8F))),"bit_diamond_pickaxe");
+    public static final Item ENDER_SWORD = register(new SwordItem(ToolMaterials.NETHERITE,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 3, -2.4F))),"ender_sword");
+    public static final Item FLAME_SWORD = register(new SwordItem(ToolMaterials.NETHERITE,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 3, -2.4F))),"flame_sword");
+    public static final Item BROKEN_BOW = register(new Item(new Item.Settings()),"broken_bow");
+    public static final Item WITHER_BOW = register(new Item(new Item.Settings()),"wither_bow");
+    public static final Item MAIN_WORLD_HELMET = register(new ArmorItem(ModArmorMaterials.MAIN_WORD_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(15))), "main_world_helmet");
+    public static final Item MAIN_WORLD_CHESTPLATE = register(new ArmorItem(ModArmorMaterials.MAIN_WORD_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(15))), "main_world_chestplate");
+    public static final Item MAIN_WORLD_LEGGINGS = register(new ArmorItem(ModArmorMaterials.MAIN_WORD_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(15))), "main_world_leggings");
+    public static final Item MAIN_WORLD_BOOTS = register(new ArmorItem(ModArmorMaterials.MAIN_WORD_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15))), "main_world_boots");
 
     public static void initialize() {
         ModRecipes.registerRecipes();
@@ -138,6 +151,20 @@ public class ItemsRegister {
             itemGroup.add(GOLD_DEBRIS);
             itemGroup.add(ModBlock.HORIZONTAL_NETHER_PORTAL);
             itemGroup.add(ModBlock.OBSIDIAN);
+            itemGroup.add(HUMAN_FLESH);
+            itemGroup.add(COOKED_HUMAN_FLESH);
+            itemGroup.add(BIT_DIAMOND_SWORD);
+            itemGroup.add(BIT_DIAMOND_AXE);
+            itemGroup.add(BIT_DIAMOND_PICKAXE);
+            itemGroup.add(ENDER_SWORD);
+            itemGroup.add(FLAME_SWORD);
+            itemGroup.add(BROKEN_BOW);
+            itemGroup.add(WITHER_BOW);
+            itemGroup.add(MAIN_WORLD_HELMET);
+            itemGroup.add(MAIN_WORLD_CHESTPLATE);
+            itemGroup.add(MAIN_WORLD_LEGGINGS);
+            itemGroup.add(MAIN_WORLD_BOOTS);
+
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);
