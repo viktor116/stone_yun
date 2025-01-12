@@ -16,7 +16,8 @@
 		"ItemRendererMixin",
 		"HeldItemRendererMixin",
 		"ArmorFeatureRendererMixin",
-		"FishingBobberEntityRendererMixin"
+		"FishingBobberEntityRendererMixin",
+		"AbstractClientPlayerEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

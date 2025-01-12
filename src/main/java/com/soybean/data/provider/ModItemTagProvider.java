@@ -76,6 +76,7 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
                 .add(ItemsRegister.COD_FISHING_ROD);
 
         getOrCreateTagBuilder(ItemTags.BOW_ENCHANTABLE)
-                .add(ItemsRegister.WITHER_BOW);
+                .add(ItemsRegister.WITHER_BOW)
+                .add(ItemsRegister.THE_END_BOW);
     }
 }

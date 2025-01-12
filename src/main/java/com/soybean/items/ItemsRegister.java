@@ -90,12 +90,12 @@ public class ItemsRegister {
     public static final Item ENDER_SWORD = register(new SwordItem(ToolMaterials.NETHERITE,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 3, -2.4F))),"ender_sword");
     public static final Item FLAME_SWORD = register(new SwordItem(ToolMaterials.NETHERITE,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 3, -2.4F))),"flame_sword");
     public static final Item BROKEN_BOW = register(new Item(new Item.Settings()),"broken_bow");
-    public static final Item WITHER_BOW = register(new Item(new Item.Settings()),"wither_bow");
+    public static final Item WITHER_BOW = register(new BowItem(new Item.Settings().maxDamage(384)),"wither_bow");
     public static final Item MAIN_WORLD_HELMET = register(new ArmorItem(ModArmorMaterials.MAIN_WORD_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(15))), "main_world_helmet");
     public static final Item MAIN_WORLD_CHESTPLATE = register(new ArmorItem(ModArmorMaterials.MAIN_WORD_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(15))), "main_world_chestplate");
     public static final Item MAIN_WORLD_LEGGINGS = register(new ArmorItem(ModArmorMaterials.MAIN_WORD_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(15))), "main_world_leggings");
     public static final Item MAIN_WORLD_BOOTS = register(new ArmorItem(ModArmorMaterials.MAIN_WORD_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15))), "main_world_boots");
-
+    public static final Item THE_END_BOW = register(new BowItem(new Item.Settings().maxDamage(778)),"the_end_bow");
     public static void initialize() {
         ModRecipes.registerRecipes();
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);
@@ -164,7 +164,7 @@ public class ItemsRegister {
             itemGroup.add(MAIN_WORLD_CHESTPLATE);
             itemGroup.add(MAIN_WORLD_LEGGINGS);
             itemGroup.add(MAIN_WORLD_BOOTS);
-
+            itemGroup.add(THE_END_BOW);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);
