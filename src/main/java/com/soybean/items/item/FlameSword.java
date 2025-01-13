@@ -1,11 +1,16 @@
 package com.soybean.items.item;
 
+import com.soybean.config.InitValue;
+import net.minecraft.client.particle.DamageParticle;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
@@ -14,10 +19,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author soybean
@@ -26,109 +28,169 @@ import java.util.Set;
  */
 public class FlameSword extends SwordItem {
     private static final int FIRE_DURATION = 100;
+    private Map<UUID, List<DamageParticle>> activeParticles = new HashMap<>();
+
+    private class DamageParticle {
+        Vec3d position;
+        Vec3d velocity;
+        int lifetime;
+        UUID id;
+
+        DamageParticle(Vec3d pos, Vec3d vel) {
+            this.position = pos;
+            this.velocity = vel;
+            this.lifetime = 0;
+            this.id = UUID.randomUUID();
+        }
+    }
+
     public FlameSword(ToolMaterial toolMaterial, Settings settings) {
         super(toolMaterial, settings);
     }
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        launchFireballs(user, world);
-        return TypedActionResult.success(user.getStackInHand(hand));
-    }
-    private void launchFireballs(PlayerEntity playerEntity, World world) {
-        // 获取玩家视角方向
-        Vec3d lookDirection = playerEntity.getRotationVector();
-        Vec3d playerPos = playerEntity.getPos();
-
-
-        world.playSound(
-                null, // null 表示所有玩家都能听到
-                playerEntity.getX(),
-                playerEntity.getY(),
-                playerEntity.getZ(),
-                SoundEvents.ITEM_FIRECHARGE_USE, // 火焰发射音效
-                SoundCategory.PLAYERS,
-                1.0F, // 音量
-                1.0F  // 音调
-        );
-
-        // 存储所有火焰粒子的路径点
-        List<Vec3d> pathPoints = new ArrayList<>();
-        double pathStepLength = 1.0; // 每隔1格检查一次
-        int maxDistance = 30; // 最大射程
-
-        double radius = 5.0;  // 半圆的半径
-        int particleCount = 30;  // 半圆粒子数量
-        int arcDegrees = 180;  // 角度范围，半圆为180度
-        double angleStep = Math.toRadians(arcDegrees) / (particleCount - 1);
-        // 发射大量火焰粒子
-        for (int i = 0; i < particleCount; i++) {
-            double angle = -arcDegrees / 2.0 + i * (arcDegrees / (double)(particleCount - 1));
-            double offsetX = Math.cos(Math.toRadians(angle)) * radius;
-            double offsetZ = Math.sin(Math.toRadians(angle)) * radius;
-
-            // 旋转粒子方向，使其与玩家视角对齐
-            Vec3d rotatedOffset = rotateVector(offsetX, 0, offsetZ, lookDirection);
-            Vec3d startPos = playerPos.add(rotatedOffset.x, playerEntity.getEyeY() - 0.1, rotatedOffset.z);
-            world.addParticle(
-                    ParticleTypes.FLAME,
-                    startPos.x,
-                    startPos.y,
-                    startPos.z,
-                    lookDirection.x * 0.5,
-                    lookDirection.y * 0.5,
-                    lookDirection.z * 0.5
-            );
-
-            // 为每个粒子生成路径点
-            for (double step = 0; step <= maxDistance; step += pathStepLength) {
-                Vec3d pathPoint = new Vec3d(
-                        startPos.x + lookDirection.x * step,
-                        startPos.y + lookDirection.y * step,
-                        startPos.z + lookDirection.z * step
-                );
-                pathPoints.add(pathPoint);
-            }
+    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        if (!world.isClient() && entity instanceof PlayerEntity) {
+            updateParticles((PlayerEntity)entity, world);
         }
+    }
 
-        // 检测范围内的实体
-        double checkRadius = 2.0; // 每个检查点的检测半径
+    private void updateParticles(PlayerEntity player, World world) {
+        UUID playerId = player.getUuid();
+        List<DamageParticle> particles = activeParticles.getOrDefault(playerId, new ArrayList<>());
 
-        // 获取可能受影响的实体
-        Box totalArea = Box.from(playerPos).expand(15, 15, 15);
-        List<LivingEntity> nearbyEntities = world.getEntitiesByClass(
-                LivingEntity.class,
-                totalArea,
-                e -> e != playerEntity
-        );
+        if (!particles.isEmpty()) {
+            Iterator<DamageParticle> iterator = particles.iterator();
+            while (iterator.hasNext()) {
+                DamageParticle particle = iterator.next();
+                // 更新粒子位置
+                particle.position = particle.position.add(particle.velocity);
+                particle.lifetime++;
 
-        // 用于记录已经受到伤害的实体，防止重复伤害
-        Set<LivingEntity> damagedEntities = new HashSet<>();
+                // 生成视觉效果
+                ((ServerWorld)world).spawnParticles(
+                        ParticleTypes.FLAME,
+                        particle.position.x,
+                        particle.position.y,
+                        particle.position.z,
+                        1, 0.1, 0.1, 0.1, 0
+                );
 
-        // 检查每个实体是否在任何路径点的范围内
-        for (LivingEntity entity : nearbyEntities) {
-            if (damagedEntities.contains(entity)) {
-                continue;
-            }
+                // 检测碰撞和伤害
+                Box hitbox = Box.from(particle.position).expand(1.0);
+                List<LivingEntity> entities = world.getEntitiesByClass(
+                        LivingEntity.class,
+                        hitbox,
+                        entity -> entity != player
+                );
 
-            for (Vec3d pathPoint : pathPoints) {
-                // 检查实体是否在检查点的范围内
-                if (entity.getBoundingBox().intersects(
-                        Box.from(pathPoint).expand(checkRadius)
-                )) {
+                for (LivingEntity entity : entities) {
                     entity.setOnFireFor(FIRE_DURATION);
-                    entity.damage(playerEntity.getDamageSources().inFire(), 5.0f);
-                    damagedEntities.add(entity);
-                    break;
+                    entity.damage(player.getDamageSources().inFire(), 20.0f);
+                }
+
+
+
+                // 移除超出距离的粒子
+                if (particle.lifetime > 100) { // 30格距离约等于60tick
+                    iterator.remove();
                 }
             }
+
+            if (particles.isEmpty()) {
+                activeParticles.remove(playerId);
+            } else {
+                activeParticles.put(playerId, particles);
+            }
         }
     }
 
-    private Vec3d rotateVector(double x, double y, double z, Vec3d direction) {
-        double yaw = Math.atan2(direction.z, direction.x) - Math.PI / 2; // 修正角度
-        double cos = Math.cos(yaw);
-        double sin = Math.sin(yaw);
-        return new Vec3d(x * cos - z * sin, y, x * sin + z * cos);
+    @Override
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        launchFireballs(user, world);
+        ItemStack stackInHand = user.getStackInHand(hand);
+        stackInHand.damage(1,user, EquipmentSlot.MAINHAND);
+        return TypedActionResult.success(stackInHand);
+    }
+    private void launchFireballs(PlayerEntity playerEntity, World world) {
+        if (!world.isClient()) {
+            // 获取玩家位置和朝向
+            Vec3d lookDir = playerEntity.getRotationVector();
+            Vec3d playerPos = playerEntity.getEyePos();
+
+            // 水平方向计算
+            Vec3d horizontalLook = new Vec3d(lookDir.x, lookDir.y, lookDir.z).normalize();
+            Vec3d rightVec;
+            if (Math.abs(lookDir.y) > 0.99) {
+                // 当玩家垂直向上或向下看时，使用固定的右向量
+                rightVec = new Vec3d(1, 0, 1);
+            }else{
+                rightVec = horizontalLook.crossProduct(new Vec3d(0,1, 0)).normalize();
+            }
+
+            // 半圆参数
+            double radius = 5.0;
+            int particleCount = 80;
+            int layerCount = 3;
+            double spreadAngle = Math.PI;
+            double forwardOffset = 2.0;
+            double particleSpeed = 1; // 粒子飞行速度
+
+            List<DamageParticle> newParticles = new ArrayList<>();
+
+            // 为每一层生成粒子
+            for (int layer = 0; layer < layerCount; layer++) {
+                double layerOffset = (layer - (layerCount - 1) / 2.0) * 0.3;
+
+                for (int i = 0; i < particleCount; i++) {
+                    double angle = -spreadAngle/2 + (spreadAngle * i / (particleCount - 1));
+
+                    Vec3d basePos = playerPos.add(lookDir.multiply(forwardOffset));
+
+                    // 修改这里：根据角度调整半径，使末端也向外扩展
+                    double adjustedRadius = radius * (1.0 + Math.abs(angle / (spreadAngle/2)) * 0.5);
+
+                    Vec3d horizontalOffset = lookDir.multiply(Math.cos(angle) * adjustedRadius)
+                            .add(rightVec.multiply(Math.sin(angle) * adjustedRadius));
+
+                    Vec3d finalOffset = new Vec3d(
+                            horizontalOffset.x,
+                            layerOffset+horizontalOffset.y,
+                            horizontalOffset.z
+                    );
+
+                    Vec3d particlePos = basePos.add(finalOffset);
+
+                    // 计算粒子的速度向量（主要是向前）
+                    Vec3d velocity = horizontalLook.multiply(particleSpeed);
+
+                    // 创建新的伤害粒子
+                    newParticles.add(new DamageParticle(particlePos, velocity));
+
+                    // 初始视觉效果
+                    ((ServerWorld)world).spawnParticles(
+                            ParticleTypes.FLAME,
+                            particlePos.x, particlePos.y, particlePos.z,
+                            1,
+                            velocity.x * 0.1, velocity.y * 0.1, velocity.z * 0.1,
+                            0.02
+                    );
+                }
+            }
+
+
+            // 添加新的粒子到跟踪列表
+            activeParticles.put(playerEntity.getUuid(), newParticles);
+
+            // 播放音效
+            world.playSound(
+                    null,
+                    playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(),
+                    SoundEvents.ITEM_FIRECHARGE_USE,
+                    SoundCategory.PLAYERS,
+                    1.0F,
+                    1.0F + (world.random.nextFloat() - world.random.nextFloat()) * 0.2F
+            );
+        }
     }
 }
