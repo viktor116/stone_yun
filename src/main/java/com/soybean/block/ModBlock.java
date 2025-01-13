@@ -50,6 +50,13 @@ public class ModBlock {
     public static final Block CONCRETE = register("concrete", new Block(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2F, 3.0F)),true);
     public static final Block MAIN_WORLD_DEBRIS = register("main_world_debris", new Block(AbstractBlock.Settings.create().mapColor(MapColor.BLACK).requiresTool().strength(30.0F, 1200.0F).sounds(BlockSoundGroup.ANCIENT_DEBRIS)),true);
     public static final Block OBSIDIAN = register("obsidian", new Block(AbstractBlock.Settings.create().mapColor(MapColor.BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(50.0F, 1200.0F)),true);
+    public static final Block BIG_TORCH_BLOCK = register("big_torch", new BigTorchBlock(ParticleTypes.FLAME, AbstractBlock.Settings.create().noCollision().breakInstantly().luminance((state) -> {
+        return 15;
+    })), false);
+    public static final Block BIG_WALL_TORCH = register("big_wall_torch", new BigWallTorchBlock(ParticleTypes.FLAME, AbstractBlock.Settings.create().noCollision().breakInstantly().luminance((state) -> {
+        return 15;
+    }).sounds(BlockSoundGroup.WOOD).dropsLike(BIG_TORCH_BLOCK).pistonBehavior(PistonBehavior.DESTROY)),false);
+
     public static final Block COW_PLANT = register("cow_plant", new CowPlantBlock(AbstractBlock.Settings.create()
             .nonOpaque()
             .noCollision()
@@ -78,6 +85,8 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlock(AIR_CRAFT_TABLE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SOUL_TORCH_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SOUL_WALL_TORCH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BIG_TORCH_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BIG_WALL_TORCH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(CACTUS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FIRE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(NETHER_PORTAL, RenderLayer.getTranslucent());

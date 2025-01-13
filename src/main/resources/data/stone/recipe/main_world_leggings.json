@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  },
+  "base": {
+    "item": "minecraft:diamond_leggings"
+  },
+  "addition": {
+    "item": "stone:main_world_ingot"
+  },
+  "result": {
+    "count": 1,
+    "id": "stone:main_world_leggings"
+  }
+}

@@ -1,21 +1,15 @@
 package com.soybean.screen;
 
 import com.soybean.config.InitValue;
-import com.soybean.init.BlockInit;
 import com.soybean.items.ItemsRegister;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.ai.TargetPredicate;
-import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.mob.WitherSkeletonEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.*;
 import net.minecraft.screen.slot.Slot;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
@@ -99,7 +93,7 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
         if (player.getWorld().isClient) {
             return;
         }
-        PiglinMerchant merchant = new PiglinMerchant(player);
+        CommonMerchant merchant = new CommonMerchant(player);
 
         // 创建交易列表
         TradeOfferList offers = new TradeOfferList();
@@ -107,6 +101,36 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
         merchant.setOffersFromServer(offers);
         // 使用 sendOffers 方法来处理界面打开和数据同步
         merchant.sendOffers(player, Text.translatable("merchant." + InitValue.MOD_ID + ".piglin"), 1);  // levelProgress);
+        player.incrementStat(Stats.TRADED_WITH_VILLAGER);
+    }
+
+    public static void handleRightClickOnEnderman(PlayerEntity player) {
+        if (player.getWorld().isClient) {
+            return;
+        }
+        CommonMerchant merchant = new CommonMerchant(player);
+
+        // 创建交易列表
+        TradeOfferList offers = new TradeOfferList();
+        addEnderManTrades(offers);
+        merchant.setOffersFromServer(offers);
+        // 使用 sendOffers 方法来处理界面打开和数据同步
+        merchant.sendOffers(player, Text.translatable("merchant." + InitValue.MOD_ID + ".enderman"), 1);  // levelProgress);
+        player.incrementStat(Stats.TRADED_WITH_VILLAGER);
+    }
+
+    public static void handleRightClickOnBlaze(PlayerEntity player) {
+        if (player.getWorld().isClient) {
+            return;
+        }
+        CommonMerchant merchant = new CommonMerchant(player);
+
+        // 创建交易列表
+        TradeOfferList offers = new TradeOfferList();
+        addBlazeManTrades(offers);
+        merchant.setOffersFromServer(offers);
+        // 使用 sendOffers 方法来处理界面打开和数据同步
+        merchant.sendOffers(player, Text.translatable("merchant." + InitValue.MOD_ID + ".blaze"), 1);  // levelProgress);
         player.incrementStat(Stats.TRADED_WITH_VILLAGER);
     }
 
@@ -152,6 +176,35 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
                 0.05f   // 价格乘数
         ));
     }
+
+    private static void addEnderManTrades(TradeOfferList offers) {
+        // 假设你的默认交易是交换某种物品
+
+        offers.add(new TradeOffer(
+                new TradedItem(Items.EMERALD, 1),  // 第一个输入物品(物品, 数量, 最大数量)
+                Optional.empty(),// 第二个输入物品(可选)
+                new ItemStack(ItemsRegister.ENDER_SWORD,1),  // 输出物品
+                0,      // 当前使用次数
+                12,      // 最大使用次数
+                1,      // 经验值
+                0.05f   // 价格乘数
+        ));
+    }
+
+    private static void addBlazeManTrades(TradeOfferList offers) {
+        // 假设你的默认交易是交换某种物品
+
+        offers.add(new TradeOffer(
+                new TradedItem(Items.EMERALD, 1),  // 第一个输入物品(物品, 数量, 最大数量)
+                Optional.empty(),// 第二个输入物品(可选)
+                new ItemStack(ItemsRegister.FLAME_SWORD,1),  // 输出物品
+                0,      // 当前使用次数
+                12,      // 最大使用次数
+                1,      // 经验值
+                0.05f   // 价格乘数
+        ));
+    }
+
 
     private static void addPiglinTrades(TradeOfferList offers) {
         // 假设你的默认交易是交换某种物品

@@ -61,6 +61,7 @@
   "item.stone.main_world_leggings": "主世界合金护腿",
   "item.stone.main_world_boots": "主世界合金靴子",
   "item.stone.the_end_bow": "终末之弓",
+  "item.stone.ashes": "骨灰",
 
 
   "container.stone.cactus": "仙人掌箱",
@@ -72,6 +73,7 @@
 
   "block.stone.coal_ore": "煤矿石",
   "block.stone.soul_torch": "加速火把",
+  "block.stone.big_torch": "大型火把",
   "block.stone.fire": "火焰",
   "block.stone.nether_portal": "下界传送门",
   "block.stone.stone_crafting_table": "石制工作台",
@@ -89,5 +91,7 @@
   "merchant.stone.sheep": "绵羊交易",
   "merchant.stone.dragon": "末影龙交易",
   "merchant.stone.piglin": "猪灵交易",
+  "merchant.stone.enderman": "末影人交易",
+  "merchant.stone.blaze": "烈焰人交易",
   "stone.container.crafting": "石制工作台"
 }

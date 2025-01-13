@@ -13,6 +13,8 @@ import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonPart;
+import net.minecraft.entity.mob.BlazeEntity;
+import net.minecraft.entity.mob.EndermanEntity;
 import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.entity.mob.WitherSkeletonEntity;
 import net.minecraft.entity.passive.SheepEntity;
@@ -53,6 +55,14 @@ public class EventUseEntity {
             }
             if(entity instanceof PiglinEntity){
                 WitherSkeletonInteractionHandler.handleRightClickOnPiglin(player);
+                return ActionResult.SUCCESS;
+            }
+            if(entity instanceof EndermanEntity){
+                WitherSkeletonInteractionHandler.handleRightClickOnEnderman(player);
+                return ActionResult.SUCCESS;
+            }
+            if(entity instanceof BlazeEntity){
+                WitherSkeletonInteractionHandler.handleRightClickOnBlaze(player);
                 return ActionResult.SUCCESS;
             }
             if (entity instanceof PlayerEntity targetPlayer && !world.isClient) {

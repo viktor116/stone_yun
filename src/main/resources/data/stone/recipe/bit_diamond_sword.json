@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "/",
+    "E",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "/": {
+      "item": "minecraft:diamond"
+    },
+    "E": {
+      "item": "minecraft:oak_planks"
+    }
+  },
+  "result": {
+    "id": "stone:bit_diamond_sword",
+    "count": 1
+  }
+}

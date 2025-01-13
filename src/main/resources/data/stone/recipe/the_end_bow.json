@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "stone:wither_bow"
+    },
+    {
+      "item": "stone:ender_sword"
+    },
+    {
+      "item": "stone:flame_sword"
+    }
+  ],
+  "result": {
+    "id": "stone:the_end_bow",
+    "count": 1
+  }
+}

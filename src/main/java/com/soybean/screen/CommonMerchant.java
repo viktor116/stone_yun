@@ -19,13 +19,13 @@ import java.util.OptionalInt;
  * @date 2024/12/25 11:53
  * @description
  */
-public class PiglinMerchant implements Merchant {
+public class CommonMerchant implements Merchant {
     private final PlayerEntity player;
     private TradeOfferList offers;
     private int levelProgress;
     private boolean canRefresh;
 
-    public PiglinMerchant(PlayerEntity player) {
+    public CommonMerchant(PlayerEntity player) {
         this.player = player;
         this.offers = new TradeOfferList();
         this.levelProgress = 1;
