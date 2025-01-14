@@ -32,7 +32,7 @@ public class Stone implements ModInitializer {
 		PortalsRegister.Initialize();
 		ScreenHandlerTypeInit.initialize();
 		NetworkRegister.init();
-		ModModelPredicates.registerModelPredicates();
+
 
 		InitValue.LOGGER.info("make in soybeani =v=!");
 	}

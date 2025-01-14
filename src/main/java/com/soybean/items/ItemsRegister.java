@@ -96,7 +96,7 @@ public class ItemsRegister {
     public static final Item MAIN_WORLD_LEGGINGS = register(new ArmorItem(ModArmorMaterials.MAIN_WORD_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(15))), "main_world_leggings");
     public static final Item MAIN_WORLD_BOOTS = register(new ArmorItem(ModArmorMaterials.MAIN_WORD_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15))), "main_world_boots");
     public static final Item THE_END_BOW = register(new TheEndBowItem(new Item.Settings().maxDamage(778)),"the_end_bow");
-    public static final Item ASHES = register(new BowItem(new Item.Settings()),"ashes");
+    public static final Item ASHES = register(new Item(new Item.Settings()),"ashes");
     public static void initialize() {
         ModRecipes.registerRecipes();
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);

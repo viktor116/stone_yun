@@ -8,6 +8,7 @@ import com.soybean.init.ScreenHandlerTypeInit;
 import com.soybean.items.ItemsRegister;
 import com.soybean.network.NetworkRegister;
 import com.soybean.screen.client.WitherSkeletonMerchantScreen;
+import com.soybean.utils.ModModelPredicates;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
@@ -25,5 +26,6 @@ public class StoneClient implements ClientModInitializer {
         ScreenHandlerTypeInit.initializeClient();
         EventRegister.InitializeClient();
         NetworkRegister.initClient();
+        ModModelPredicates.registerModelPredicates();
     }
 }
