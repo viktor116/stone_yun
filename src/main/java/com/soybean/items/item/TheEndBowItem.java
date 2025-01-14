@@ -14,7 +14,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.particle.ParticleType;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -36,6 +38,8 @@ import java.util.*;
 public class TheEndBowItem extends BowItem {
 
     private Map<UUID, List<RingParticle>> activeRings = new HashMap<>();
+
+    private int roundTick = 0;
 
     private class RingParticle {
         Vec3d position;
@@ -66,6 +70,7 @@ public class TheEndBowItem extends BowItem {
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
         if (world.isClient) {
             if(user instanceof PlayerEntity player) {
+                roundTick++;
                 // 获取玩家的位置和视线方向
                 Vec3d lookDir = player.getRotationVector();
                 Vec3d playerPos = player.getEyePos();
@@ -92,45 +97,71 @@ public class TheEndBowItem extends BowItem {
                 // 创建环绕粒子效果
                 double radius = 0.8 + progress * 0.5; // 圆环半径
                 int particleCount = 20 + (int)(progress * 10); // 粒子数量
+                int particleCount2 = particleCount / 3;
+                handleRoundParticles(world,upVec,rightVec,particleCount,radius,basePos,ParticleTypes.REVERSE_PORTAL);
+                handleRoundParticles(world,upVec,rightVec,particleCount2, radius, basePos, ParticleTypes.DRAGON_BREATH);
 
-                for (int i = 0; i < particleCount; i++) {
-                    double angle = i * (Math.PI * 2 / particleCount);
-
-                    // 计算圆环上的点
-                    Vec3d circlePos = basePos.add(
-                            rightVec.multiply(Math.cos(angle) * radius).add(
-                                    upVec.multiply(Math.sin(angle) * radius))
-                    );
-
-                    // 添加粒子效果
-                    world.addParticle(
-                            ParticleTypes.REVERSE_PORTAL,
-                            circlePos.x, circlePos.y, circlePos.z,
-                            0, // 粒子速度设为0使其保持在原位
-                            0,
-                            0
-                    );
-
-                    if (world.random.nextFloat() < 0.3) {
-                        // 计算从圆心指向粒子位置的方向向量
-                        Vec3d spreadDir = new Vec3d(
-                                circlePos.x - basePos.x,
-                                circlePos.y - basePos.y,
-                                circlePos.z - basePos.z
-                        ).normalize();
-
-                        // 添加一些随机性到扩散方向
-                        double spreadSpeed = 0.15 + world.random.nextDouble() * 0.1;
-
-                        world.addParticle(
-                                ParticleTypes.REVERSE_PORTAL,
-                                circlePos.x, circlePos.y, circlePos.z,
-                                spreadDir.x * spreadSpeed,
-                                spreadDir.y * spreadSpeed,
-                                spreadDir.z * spreadSpeed
-                        );
-                    }
+                if(roundTick >= 20){
+                    basePos = basePos.add(lookDir.multiply(6));
+                    radius += 2;
+                    particleCount += particleCount * 2;
+                    particleCount2 = particleCount / 3;
+                    handleRoundParticles(world,upVec,rightVec,particleCount,radius,basePos,ParticleTypes.REVERSE_PORTAL);
+                    handleRoundParticles(world, upVec, rightVec, particleCount2, radius, basePos, ParticleTypes.DRAGON_BREATH);
                 }
+                if(roundTick >= 40){
+                    basePos = basePos.add(lookDir.multiply(7));
+                    radius += 3;
+                    particleCount += particleCount*2;
+                    particleCount2 = particleCount / 3;
+                    handleRoundParticles(world,upVec,rightVec,particleCount,radius,basePos,ParticleTypes.REVERSE_PORTAL);
+                    handleRoundParticles(world, upVec, rightVec, particleCount2, radius, basePos, ParticleTypes.DRAGON_BREATH);
+                }
+                if(roundTick >= 60){
+                    basePos = basePos.add(lookDir.multiply(8));
+                    radius += 3;
+                    particleCount += particleCount*2;
+                    particleCount2 = particleCount / 3;
+                    handleRoundParticles(world,upVec,rightVec,particleCount,radius,basePos,ParticleTypes.REVERSE_PORTAL);
+                    handleRoundParticles(world, upVec, rightVec, particleCount2, radius, basePos, ParticleTypes.DRAGON_BREATH);
+                }
+            }
+        }
+    }
+
+    private static void handleRoundParticles(World world,Vec3d upVec,Vec3d rightVec,int particleCount, double radius, Vec3d basePos, SimpleParticleType particleType){
+        for (int i = 0; i < particleCount; i++) {
+            double angle = i * (Math.PI * 2 / particleCount);
+
+            // 计算圆环上的点
+            Vec3d circlePos = basePos.add(
+                    rightVec.multiply(Math.cos(angle) * radius).add(
+                            upVec.multiply(Math.sin(angle) * radius))
+            );
+
+            world.addParticle(
+                    ParticleTypes.REVERSE_PORTAL,
+                    circlePos.x, circlePos.y, circlePos.z,
+                    0, // 粒子速度设为0使其保持在原位
+                    0,
+                    0
+            );
+            if (world.random.nextFloat() < 0.3) {
+                // 计算从圆心指向粒子位置的方向向量
+                Vec3d spreadDir = new Vec3d(
+                        circlePos.x - basePos.x,
+                        circlePos.y - basePos.y,
+                        circlePos.z - basePos.z
+                ).normalize();
+                // 添加一些随机性到扩散方向
+                double spreadSpeed = 0.15 + world.random.nextDouble() * 0.1;
+                world.addParticle(
+                        particleType,
+                        circlePos.x, circlePos.y, circlePos.z,
+                        spreadDir.x * spreadSpeed,
+                        spreadDir.y * spreadSpeed,
+                        spreadDir.z * spreadSpeed
+                );
             }
         }
     }
@@ -165,7 +196,7 @@ public class TheEndBowItem extends BowItem {
                 }
 
                 // 移除超出距离的环
-                if (ring.lifetime > 100) {
+                if (ring.lifetime > 150) {
                     iterator.remove();
                 }
             }
@@ -191,7 +222,7 @@ public class TheEndBowItem extends BowItem {
 
         // 创建环形粒子
         double radius = 0.8 + ring.strength * 0.3;
-        int particleCount = 40;
+        int particleCount = 80;
 
         for (int i = 0; i < particleCount; i++) {
             double angle = i * (Math.PI * 2 / particleCount);
@@ -202,8 +233,25 @@ public class TheEndBowItem extends BowItem {
 
             ((ServerWorld)world).spawnParticles(
                     ParticleTypes.REVERSE_PORTAL,
-                    circlePos.x, circlePos.y, circlePos.z,
+                    circlePos.x,
+                    circlePos.y,
+                    circlePos.z,
                     1, 0, 0, 0, 0
+            );
+
+            ((ServerWorld)world).spawnParticles(
+                    ParticleTypes.DRAGON_BREATH,
+                    circlePos.x + (world.random.nextGaussian()*2 - 1f),
+                    circlePos.y + (world.random.nextGaussian()*2 - 1f),
+                    circlePos.z +(world.random.nextGaussian()*2 - 1f),
+                    2, 0, 0, 0, 0
+            );
+            ((ServerWorld)world).spawnParticles(
+                    ParticleTypes.REVERSE_PORTAL,
+                    circlePos.x + (world.random.nextGaussian()*2 - 1f),
+                    circlePos.y + (world.random.nextGaussian()*2 - 1f),
+                    circlePos.z +(world.random.nextGaussian()*2 - 1f),
+                    2, 0, 0, 0, 0
             );
         }
     }
@@ -213,6 +261,7 @@ public class TheEndBowItem extends BowItem {
         if (!(user instanceof PlayerEntity playerEntity)) {
             return;
         }
+        roundTick = 0;
 
         float progress = BowItem.getPullProgress(this.getMaxUseTime(stack, user) - remainingUseTicks);
 
