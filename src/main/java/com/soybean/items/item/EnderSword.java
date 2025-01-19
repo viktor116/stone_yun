@@ -89,7 +89,7 @@ public class EnderSword extends SwordItem {
                 if(!world.isClient()) {
                     for (LivingEntity entity : entities) {
                         Vec3d velocity = particle.velocity;
-                        entity.setPos(entity.getX() + velocity.x * 150, entity.getY(), entity.getZ() + velocity.z * 150);
+                        entity.setPos(entity.getX() + velocity.x * 10000, entity.getY(), entity.getZ() + velocity.z * 10000);
                     }
                 }
 
