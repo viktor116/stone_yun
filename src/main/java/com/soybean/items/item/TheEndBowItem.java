@@ -1,10 +1,14 @@
 package com.soybean.items.item;
 
 import com.soybean.enchant.EnchantmentRegister;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
+import net.minecraft.entity.boss.dragon.EnderDragonPart;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,6 +20,7 @@ import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -174,21 +179,31 @@ public class TheEndBowItem extends BowItem {
                 createRingParticles(world, ring);
 
                 // 检测碰撞和伤害
-                Box hitbox = Box.from(ring.position).expand(1.0);
-                List<LivingEntity> entities = world.getEntitiesByClass(
-                        LivingEntity.class,
+                Box hitbox = Box.from(ring.position).expand(5.0);
+                List<Entity> entities = world.getEntitiesByClass(
+                        Entity.class, // 改为检测所有实体
                         hitbox,
-                        entity -> entity != player
+                        entity -> entity != player && (entity instanceof LivingEntity || entity instanceof EnderDragonPart)
                 );
 
-                for (LivingEntity entity : entities) {
-                    float damage = 50.0F * ring.strength;
-                    entity.damage(world.getDamageSources().magic(), damage);
-                    entity.addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 60));
+                for (Entity entity : entities) {
+                    float damage = 500.0F * ring.strength;
+
+                    if (entity instanceof EnderDragonPart dragonPart) {
+                        // 对末影龙部位造成伤害
+                        dragonPart.damage(world.getDamageSources().playerAttack(player), damage);
+                    } else if (entity instanceof EnderDragonEntity) {
+                        // 对末影龙本体造成伤害
+                        entity.damage(world.getDamageSources().playerAttack(player), damage);
+                    } else if (entity instanceof LivingEntity livingEntity) {
+                        // 对其他生物造成伤害
+                        livingEntity.damage(world.getDamageSources().magic(), damage);
+                        livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 60));
+                    }
                 }
 
                 // 移除超出距离的环
-                if (ring.lifetime > 150) {
+                if (ring.lifetime > 200) {
                     iterator.remove();
                 }
             }
@@ -213,8 +228,8 @@ public class TheEndBowItem extends BowItem {
         Vec3d upVec = rightVec.crossProduct(direction).normalize();
 
         // 创建环形粒子
-        double radius = 0.8 + ring.strength * 0.3;
-        int particleCount = 80;
+        double radius = 5 + ring.strength * 0.3;
+        int particleCount = 100;
 
         for (int i = 0; i < particleCount; i++) {
             double angle = i * (Math.PI * 2 / particleCount);
@@ -222,7 +237,22 @@ public class TheEndBowItem extends BowItem {
                     rightVec.multiply(Math.cos(angle) * radius).add(
                             upVec.multiply(Math.sin(angle) * radius))
             );
+            destroyBlockAtPosition(world, circlePos);
 
+            // 为随机偏移的龙息粒子位置破坏方块
+            Vec3d randomPos1 = new Vec3d(
+                    circlePos.x + (world.random.nextGaussian()*2 - 1f),
+                    circlePos.y + (world.random.nextGaussian()*2 - 1f),
+                    circlePos.z + (world.random.nextGaussian()*2 - 1f)
+            );
+            destroyBlockAtPosition(world, randomPos1);
+
+            Vec3d randomPos2 = new Vec3d(
+                    circlePos.x + (world.random.nextGaussian()*2 - 1f),
+                    circlePos.y + (world.random.nextGaussian()*2 - 1f),
+                    circlePos.z + (world.random.nextGaussian()*2 - 1f)
+            );
+            destroyBlockAtPosition(world, randomPos2);
             ((ServerWorld)world).spawnParticles(
                     ParticleTypes.REVERSE_PORTAL,
                     circlePos.x,
@@ -233,18 +263,40 @@ public class TheEndBowItem extends BowItem {
 
             ((ServerWorld)world).spawnParticles(
                     ParticleTypes.DRAGON_BREATH,
-                    circlePos.x + (world.random.nextGaussian()*2 - 1f),
-                    circlePos.y + (world.random.nextGaussian()*2 - 1f),
-                    circlePos.z +(world.random.nextGaussian()*2 - 1f),
-                    2, 0, 0, 0, 0
+                    randomPos1.x,
+                    randomPos1.y,
+                    randomPos1.z,
+                    3, 1, 1, 1, 0
             );
+
             ((ServerWorld)world).spawnParticles(
                     ParticleTypes.REVERSE_PORTAL,
-                    circlePos.x + (world.random.nextGaussian()*2 - 1f),
-                    circlePos.y + (world.random.nextGaussian()*2 - 1f),
-                    circlePos.z +(world.random.nextGaussian()*2 - 1f),
-                    2, 0, 0, 0, 0
+                    randomPos2.x,
+                    randomPos2.y,
+                    randomPos2.z,
+                    3, 1, 1, 1, 0
             );
+        }
+    }
+
+    private void destroyBlockAtPosition(World world, Vec3d position) {
+        BlockPos blockPos = new BlockPos(
+                (int)Math.floor(position.x),
+                (int)Math.floor(position.y),
+                (int)Math.floor(position.z)
+        );
+
+        if (!world.isClient) {
+            BlockState blockState = world.getBlockState(blockPos);
+            if (!blockState.isAir() &&
+                    !blockState.isOf(Blocks.BEDROCK) &&
+                    !blockState.isOf(Blocks.END_PORTAL_FRAME) &&
+                    !blockState.isOf(Blocks.END_PORTAL) &&
+                    blockState.getHardness(world, blockPos) >= 0) {
+
+                // 破坏方块
+                world.breakBlock(blockPos, false);
+            }
         }
     }
 
@@ -278,7 +330,7 @@ public class TheEndBowItem extends BowItem {
                 float strength = progress * 2.0F;
                 Vec3d rotation = playerEntity.getRotationVector();
                 Vec3d startPos = playerEntity.getEyePos();
-                Vec3d velocity = rotation.multiply(1); // 调整速度
+                Vec3d velocity = rotation.multiply(1.5); // 调整速度
 
                 // 创建新的能量环
                 RingParticle ring = new RingParticle(startPos, velocity, strength);
