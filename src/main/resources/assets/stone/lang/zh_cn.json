@@ -62,6 +62,8 @@
   "item.stone.main_world_boots": "主世界合金靴子",
   "item.stone.the_end_bow": "终末之弓",
   "item.stone.ashes": "骨灰",
+  "item.stone.apple_ingot": "苹果金",
+  "item.stone.gold_apple_ingot": "附魔苹果金",
 
 
   "container.stone.cactus": "仙人掌箱",
@@ -85,6 +87,7 @@
   "block.stone.main_world_debris": "主世界残骸",
   "block.stone.obsidian": "黑曜石",
   "block.stone.horizontal_nether_portal": "水平下界传送门",
+  "block.stone.apple_block": "苹果块",
 
 
   "merchant.stone.witherskeleton": "凋零骷髅交易",

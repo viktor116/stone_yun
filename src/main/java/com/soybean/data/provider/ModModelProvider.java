@@ -71,5 +71,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.MAIN_WORLD_LEGGINGS,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.MAIN_WORLD_BOOTS,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.ASHES,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.APPLE_INGOT,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.GOLD_APPLE_INGOT,Models.GENERATED);
     }
 }

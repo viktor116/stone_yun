@@ -12,6 +12,7 @@ import com.soybean.items.recipes.ModRecipes;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.component.type.FoodComponents;
 import net.minecraft.entity.EntityType;
@@ -97,6 +98,10 @@ public class ItemsRegister {
     public static final Item MAIN_WORLD_BOOTS = register(new ArmorItem(ModArmorMaterials.MAIN_WORD_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15))), "main_world_boots");
     public static final Item THE_END_BOW = register(new TheEndBowItem(new Item.Settings().maxDamage(778)),"the_end_bow");
     public static final Item ASHES = register(new Item(new Item.Settings()),"ashes");
+    public static final Item APPLE_INGOT = register(new Item(new Item.Settings().food(FoodComponents.APPLE)), "apple_ingot");
+
+    public static final Item GOLD_APPLE_INGOT = register(new Item(new Item.Settings().rarity(Rarity.EPIC).food(FoodComponents.ENCHANTED_GOLDEN_APPLE).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)), "gold_apple_ingot");
+
     public static void initialize() {
         ModRecipes.registerRecipes();
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);
@@ -168,6 +173,9 @@ public class ItemsRegister {
             itemGroup.add(MAIN_WORLD_BOOTS);
             itemGroup.add(ASHES);
             itemGroup.add(THE_END_BOW);
+            itemGroup.add(APPLE_INGOT);
+            itemGroup.add(GOLD_APPLE_INGOT);
+            itemGroup.add(ModBlock.APPLE_BLOCK);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);
