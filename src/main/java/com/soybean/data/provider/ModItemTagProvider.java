@@ -23,6 +23,7 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(ItemTags.SWORDS)
                 .add(ItemsRegister.GOLDEN_APPLE)
+                .add(ItemsRegister.APPLE_INGOT_SWORD)
                 .add(ItemsRegister.STONE_SWORD)
                 .add(ItemsRegister.CACTUS_SWORD)
                 .add(ItemsRegister.ENDER_SWORD)

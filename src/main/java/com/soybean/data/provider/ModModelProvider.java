@@ -73,5 +73,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.ASHES,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.APPLE_INGOT,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.GOLD_APPLE_INGOT,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.APPLE_INGOT_SWORD,Models.GENERATED);
     }
 }

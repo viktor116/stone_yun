@@ -98,8 +98,8 @@ public class ItemsRegister {
     public static final Item MAIN_WORLD_BOOTS = register(new ArmorItem(ModArmorMaterials.MAIN_WORD_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15))), "main_world_boots");
     public static final Item THE_END_BOW = register(new TheEndBowItem(new Item.Settings().maxDamage(778)),"the_end_bow");
     public static final Item ASHES = register(new Item(new Item.Settings()),"ashes");
-    public static final Item APPLE_INGOT = register(new Item(new Item.Settings().food(FoodComponents.APPLE)), "apple_ingot");
-
+    public static final Item APPLE_INGOT = register(new Item((new Item.Settings()).rarity(Rarity.RARE).food(FoodComponents.GOLDEN_APPLE)), "apple_ingot");
+    public static final Item APPLE_INGOT_SWORD = register(new SwordItem(StoneMaterial.INSTANCE,new Item.Settings().maxCount(1).maxDamage(131)),"apple_ingot_sword");
     public static final Item GOLD_APPLE_INGOT = register(new Item(new Item.Settings().rarity(Rarity.EPIC).food(FoodComponents.ENCHANTED_GOLDEN_APPLE).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)), "gold_apple_ingot");
 
     public static void initialize() {
@@ -174,6 +174,7 @@ public class ItemsRegister {
             itemGroup.add(ASHES);
             itemGroup.add(THE_END_BOW);
             itemGroup.add(APPLE_INGOT);
+            itemGroup.add(APPLE_INGOT_SWORD);
             itemGroup.add(GOLD_APPLE_INGOT);
             itemGroup.add(ModBlock.APPLE_BLOCK);
         });
