@@ -101,6 +101,7 @@ public class ItemsRegister {
     public static final Item APPLE_INGOT = register(new Item((new Item.Settings()).rarity(Rarity.RARE).food(FoodComponents.GOLDEN_APPLE)), "apple_ingot");
     public static final Item APPLE_INGOT_SWORD = register(new SwordItem(StoneMaterial.INSTANCE,new Item.Settings().maxCount(1).maxDamage(131)),"apple_ingot_sword");
     public static final Item GOLD_APPLE_INGOT = register(new Item(new Item.Settings().rarity(Rarity.EPIC).food(FoodComponents.ENCHANTED_GOLDEN_APPLE).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)), "gold_apple_ingot");
+    public static final Item GOLD_CARROT_NUGGET = register(new Item(new Item.Settings().food(FoodComponents.GOLDEN_CARROT)), "gold_carrot_nugget");
 
     public static void initialize() {
         ModRecipes.registerRecipes();
@@ -177,6 +178,7 @@ public class ItemsRegister {
             itemGroup.add(APPLE_INGOT_SWORD);
             itemGroup.add(GOLD_APPLE_INGOT);
             itemGroup.add(ModBlock.APPLE_BLOCK);
+            itemGroup.add(GOLD_CARROT_NUGGET);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);
