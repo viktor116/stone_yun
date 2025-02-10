@@ -69,6 +69,9 @@
   "item.stone.air": "空气",
   "item.stone.sand_block_spawn_egg": "沙子生物",
   "item.stone.dirt_block_spawn_egg": "泥土生物",
+  "item.stone.diamond_stick_axe": "钻石木斧",
+  "item.stone.diamond_stick_sword": "钻石木剑",
+  "item.stone.diamond_stick_pickaxe": "钻石木稿",
 
   "item.minecraft.potion.effect.resistance": "抗性提升药水",
   "item.minecraft.splash_potion.effect.resistance": "喷溅型抗性提升药水",

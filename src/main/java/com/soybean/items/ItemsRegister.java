@@ -108,6 +108,10 @@ public class ItemsRegister {
     public static final Item AIR = register(new Item(new Item.Settings()), "air");
     public static final Item SAND_BLOCK_SPAWN_EGG = register(new SpawnEggItem(CustomBlockEntity.SAND_BLOCK, 0xC1C1C1, 0x494949, new Item.Settings()),"sand_block_spawn_egg");
     public static final Item DIRT_BLOCK_SPAWN_EGG = register(new SpawnEggItem(CustomBlockEntity.DIRT_BLOCK, 0xC1C1C1, 0x494949, new Item.Settings()),"dirt_block_spawn_egg");
+    public static final Item DIAMOND_STICK_SWORD = register(new SwordItem(ToolMaterials.DIAMOND,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 3, -2.4F))),"diamond_stick_sword");
+    public static final Item DIAMOND_STICK_AXE = register(new AxeItem(ToolMaterials.DIAMOND,new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 5.0F, -3.0F))),"diamond_stick_axe");
+    public static final Item DIAMOND_STICK_PICKAXE = register(new PickaxeItem(ToolMaterials.DIAMOND, (new Item.Settings()).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 1.0F, -2.8F))),"diamond_stick_pickaxe");
+
     public static void initialize() {
         ModRecipes.registerRecipes();
         PotionRegister.init(); //药水初始化
@@ -187,6 +191,9 @@ public class ItemsRegister {
             itemGroup.add(GOLD_CARROT_NUGGET);
             itemGroup.add(SAND_BLOCK_SPAWN_EGG);
             itemGroup.add(DIRT_BLOCK_SPAWN_EGG);
+            itemGroup.add(DIAMOND_STICK_SWORD);
+            itemGroup.add(DIAMOND_STICK_AXE);
+            itemGroup.add(DIAMOND_STICK_PICKAXE);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

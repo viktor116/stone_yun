@@ -29,12 +29,14 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
                 .add(ItemsRegister.ENDER_SWORD)
                 .add(ItemsRegister.FLAME_SWORD)
                 .add(ItemsRegister.BIT_DIAMOND_SWORD)
+                .add(ItemsRegister.DIAMOND_STICK_SWORD)
                 .add(ItemsRegister.TRANSPARENT_SWORD);
 
         getOrCreateTagBuilder(ItemTags.AXES)
                 .add(ItemsRegister.STONE_AXE)
                 .add(ItemsRegister.CACTUS_AXE)
                 .add(ItemsRegister.BIT_DIAMOND_AXE)
+                .add(ItemsRegister.DIAMOND_STICK_AXE)
                 .add(ItemsRegister.TRANSPARENT_AXE);
 
         getOrCreateTagBuilder(ItemTags.PICKAXES)
@@ -42,6 +44,7 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
                 .add(ItemsRegister.CACTUS_PICKAXE)
                 .add(ItemsRegister.TRANSPARENT_PICKAXE)
                 .add(ItemsRegister.BIT_DIAMOND_PICKAXE)
+                .add(ItemsRegister.DIAMOND_STICK_PICKAXE)
                 .add(ItemsRegister.CONCRETE_PICKAXE);
 
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
