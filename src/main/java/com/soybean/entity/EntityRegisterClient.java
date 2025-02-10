@@ -2,6 +2,7 @@ package com.soybean.entity;
 
 import com.soybean.entity.client.model.HimModel;
 import com.soybean.entity.client.renderer.*;
+import com.soybean.entity.custom.CustomBlockEntity;
 import com.soybean.entity.custom.InvertMinecartEntity;
 import com.soybean.entity.custom.WheatEntity;
 import net.fabricmc.api.EnvType;
@@ -26,5 +27,7 @@ public class EntityRegisterClient {
                 TexturedModelData.of(HimModel.getModelData(), 64, 64)
         );
         EntityRendererRegistry.register(EntityRegister.PURPLE_BOAT_TYPE, PurpleBoatEntityRenderer::new);
+        EntityRendererRegistry.register(CustomBlockEntity.SAND_BLOCK,CustomBlockEntityRenderer::new);
+        EntityRendererRegistry.register(CustomBlockEntity.DIRT_BLOCK,CustomBlockEntityRenderer::new);
     }
 }

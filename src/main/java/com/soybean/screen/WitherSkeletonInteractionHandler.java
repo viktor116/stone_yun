@@ -134,6 +134,21 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
         player.incrementStat(Stats.TRADED_WITH_VILLAGER);
     }
 
+    public static void handleRightClickOnCommonVillager(PlayerEntity player) {
+        if (player.getWorld().isClient) {
+            return;
+        }
+        CommonMerchant merchant = new CommonMerchant(player);
+
+        // 创建交易列表
+        TradeOfferList offers = new TradeOfferList();
+        addCommonVillagerTrades(offers);
+        merchant.setOffersFromServer(offers);
+        // 使用 sendOffers 方法来处理界面打开和数据同步
+        merchant.sendOffers(player, Text.translatable("merchant." + InitValue.MOD_ID + ".common_villager"), 1);  // levelProgress);
+        player.incrementStat(Stats.TRADED_WITH_VILLAGER);
+    }
+
     @Override
     public boolean canUse(PlayerEntity player) {
         return true;
@@ -205,6 +220,19 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
         ));
     }
 
+    private static void addCommonVillagerTrades(TradeOfferList offers) {
+        // 假设你的默认交易是交换某种物品
+
+        offers.add(new TradeOffer(
+                new TradedItem(ItemsRegister.AIR, 1),  // 第一个输入物品(物品, 数量, 最大数量)
+                Optional.empty(),// 第二个输入物品(可选)
+                new ItemStack(Items.EMERALD,64),  // 输出物品
+                0,      // 当前使用次数
+                12,      // 最大使用次数
+                1,      // 经验值
+                0.05f   // 价格乘数
+        ));
+    }
 
     private static void addPiglinTrades(TradeOfferList offers) {
         // 假设你的默认交易是交换某种物品

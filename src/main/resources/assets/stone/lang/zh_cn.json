@@ -66,7 +66,17 @@
   "item.stone.gold_apple_ingot": "附魔苹果金",
   "item.stone.apple_ingot_sword": "苹果金",
   "item.stone.gold_carrot_nugget": "胡萝卜金",
+  "item.stone.air": "空气",
+  "item.stone.sand_block_spawn_egg": "沙子生物",
+  "item.stone.dirt_block_spawn_egg": "泥土生物",
 
+  "item.minecraft.potion.effect.resistance": "抗性提升药水",
+  "item.minecraft.splash_potion.effect.resistance": "喷溅型抗性提升药水",
+  "item.minecraft.lingering_potion.effect.resistance": "滞留型抗性提升药水",
+
+  "item.minecraft.potion.effect.absorption": "伤害吸收药水",
+  "item.minecraft.splash_potion.effect.absorption": "喷溅型伤害吸收药水",
+  "item.minecraft.lingering_potion.effect.absorption": "滞留型伤害吸收药水",
 
   "container.stone.cactus": "仙人掌箱",
 
@@ -98,5 +108,6 @@
   "merchant.stone.piglin": "猪灵交易",
   "merchant.stone.enderman": "末影人交易",
   "merchant.stone.blaze": "烈焰人交易",
+  "merchant.stone.common_villager": "普通村民",
   "stone.container.crafting": "石制工作台"
 }

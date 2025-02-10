@@ -2,6 +2,7 @@ package com.soybean.entity;
 
 
 import com.soybean.config.InitValue;
+import com.soybean.entity.custom.CustomBlockEntity;
 import com.soybean.entity.custom.HimEntity;
 import com.soybean.entity.custom.WheatEntity;
 import com.soybean.entity.vehicle.InvertBoatEntity;
@@ -51,6 +52,7 @@ public class EntityRegister {
     public static void initialize(){
         FabricDefaultAttributeRegistry.register(WheatEntity.WHEAT, WheatEntity.createAttributes());
         FabricDefaultAttributeRegistry.register(HIM, HimEntity.createAttributes());
+        FabricDefaultAttributeRegistry.register(CustomBlockEntity.SAND_BLOCK,CustomBlockEntity.createAttributes());
+        FabricDefaultAttributeRegistry.register(CustomBlockEntity.DIRT_BLOCK,CustomBlockEntity.createAttributes());
     }
-
 }

@@ -2,12 +2,15 @@ package com.soybean.items;
 
 import com.soybean.block.ModBlock;
 import com.soybean.config.InitValue;
+import com.soybean.entity.client.renderer.CustomBlockEntityRenderer;
+import com.soybean.entity.custom.CustomBlockEntity;
 import com.soybean.items.armor.ModArmorMaterials;
 import com.soybean.items.custom.*;
 import com.soybean.items.custom.InvertBoatItem;
 import com.soybean.items.item.*;
 import com.soybean.items.material.AirMaterial;
 import com.soybean.items.material.StoneMaterial;
+import com.soybean.items.potion.PotionRegister;
 import com.soybean.items.recipes.ModRecipes;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -102,9 +105,12 @@ public class ItemsRegister {
     public static final Item APPLE_INGOT_SWORD = register(new SwordItem(StoneMaterial.INSTANCE,new Item.Settings().maxCount(1).maxDamage(131)),"apple_ingot_sword");
     public static final Item GOLD_APPLE_INGOT = register(new Item(new Item.Settings().rarity(Rarity.EPIC).food(FoodComponents.ENCHANTED_GOLDEN_APPLE).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)), "gold_apple_ingot");
     public static final Item GOLD_CARROT_NUGGET = register(new Item(new Item.Settings().food(FoodComponents.GOLDEN_CARROT)), "gold_carrot_nugget");
-
+    public static final Item AIR = register(new Item(new Item.Settings()), "air");
+    public static final Item SAND_BLOCK_SPAWN_EGG = register(new SpawnEggItem(CustomBlockEntity.SAND_BLOCK, 0xC1C1C1, 0x494949, new Item.Settings()),"sand_block_spawn_egg");
+    public static final Item DIRT_BLOCK_SPAWN_EGG = register(new SpawnEggItem(CustomBlockEntity.DIRT_BLOCK, 0xC1C1C1, 0x494949, new Item.Settings()),"dirt_block_spawn_egg");
     public static void initialize() {
         ModRecipes.registerRecipes();
+        PotionRegister.init(); //药水初始化
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);
         Registry.register(Registries.ITEM_GROUP, TRANSPARENT_GROUP_KEY, TRANSPARENT_ITEM_GROUP);
         ItemGroupEvents.modifyEntriesEvent(FUN_ITEM_GROUP_KEY).register(itemGroup->{
@@ -179,6 +185,8 @@ public class ItemsRegister {
             itemGroup.add(GOLD_APPLE_INGOT);
             itemGroup.add(ModBlock.APPLE_BLOCK);
             itemGroup.add(GOLD_CARROT_NUGGET);
+            itemGroup.add(SAND_BLOCK_SPAWN_EGG);
+            itemGroup.add(DIRT_BLOCK_SPAWN_EGG);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);
@@ -190,6 +198,7 @@ public class ItemsRegister {
             itemGroup.add(TRANSPARENT_BUCKET);
             itemGroup.add(TRANSPARENT_BUCKET_WATER);
             itemGroup.add(TRANSPARENT_BUCKET_LAVA);
+            itemGroup.add(AIR);
         });
     }
 

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#S#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:potion"
+    },
+    "S": {
+      "item": "minecraft:apple"
+    }
+  },
+  "result": {
+    "id": "minecraft:enchanted_golden_apple",
+    "count": 1
+  }
+}

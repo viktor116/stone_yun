@@ -18,6 +18,7 @@ import net.minecraft.entity.mob.EndermanEntity;
 import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.entity.mob.WitherSkeletonEntity;
 import net.minecraft.entity.passive.SheepEntity;
+import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -32,6 +33,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.village.Merchant;
 import net.minecraft.village.SimpleMerchant;
+import net.minecraft.village.VillagerProfession;
 
 /**
  * @author soybean
@@ -65,6 +67,14 @@ public class EventUseEntity {
                 WitherSkeletonInteractionHandler.handleRightClickOnBlaze(player);
                 return ActionResult.SUCCESS;
             }
+            if(entity instanceof VillagerEntity villager){
+                VillagerProfession profession = villager.getVillagerData().getProfession();
+                if(profession == VillagerProfession.NONE){
+                    WitherSkeletonInteractionHandler.handleRightClickOnCommonVillager(player);
+                }
+            }
+
+
             if (entity instanceof PlayerEntity targetPlayer && !world.isClient) {
                 ItemStack stackInHand = player.getStackInHand(hand);
                 if (HeadlessPlayerManager.isPlayerHeadless(targetPlayer.getUuid())) {
