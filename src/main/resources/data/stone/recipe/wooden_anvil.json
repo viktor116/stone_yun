@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "///",
+    " # ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "/": {
+      "item": "minecraft:oak_planks"
+    }
+  },
+  "result": {
+    "id": "stone:wooden_anvil",
+    "count": 1
+  }
+}

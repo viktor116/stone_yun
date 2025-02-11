@@ -3,10 +3,8 @@ package com.soybean.data.provider;
 import com.soybean.block.ModBlock;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -36,6 +34,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlock.MAIN_WORLD_DEBRIS)
                 .add(ModBlock.COAL_ORE)
                 .add(ModBlock.CONCRETE);
+        getOrCreateTagBuilder(BlockTags.ANVIL)
+                .add(ModBlock.WOODEN_ANVIL);
 
     }
 }

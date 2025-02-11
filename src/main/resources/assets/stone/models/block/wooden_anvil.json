@@ -1,0 +1,6 @@
+{
+  "parent": "stone:block/template_anvil",
+  "textures": {
+    "top": "stone:block/wooden_anvil_top"
+  }
+}

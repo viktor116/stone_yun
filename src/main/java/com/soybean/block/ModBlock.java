@@ -41,7 +41,12 @@ public class ModBlock {
     public static final Block SOUL_WALL_TORCH = register("soul_wall_torch", new WallTorchBlock(ParticleTypes.SOUL_FIRE_FLAME, AbstractBlock.Settings.create().noCollision().breakInstantly().luminance((state) -> {
         return 10;
     }).sounds(BlockSoundGroup.WOOD).dropsLike(SOUL_TORCH_BLOCK).pistonBehavior(PistonBehavior.DESTROY)),false);
-    public static final Block FIRE = register("fire",new FireBlock(AbstractBlock.Settings.create().mapColor(MapColor.ORANGE)),true);
+    public static final Block STATIC_FIRE = register("static_fire",new CanDigFireBlock(AbstractBlock.Settings.create().mapColor(MapColor.BRIGHT_RED).strength(0.5f).noCollision().breakInstantly().luminance((state) -> {
+        return 15;
+    }).sounds(BlockSoundGroup.WOOL)),true);
+    public static final Block FIRE = register("fire",new FireBlock(AbstractBlock.Settings.create().mapColor(MapColor.BRIGHT_RED).replaceable().noCollision().breakInstantly().luminance((state) -> {
+        return 15;
+    }).sounds(BlockSoundGroup.WOOL).pistonBehavior(PistonBehavior.DESTROY)),true);
     public static final Block NETHER_PORTAL = register("nether_portal",new NetherPortalBlock(AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.PALE_PURPLE)),true);
     public static final Block HORIZONTAL_NETHER_PORTAL = register("horizontal_nether_portal", new CustomPortalBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_PURPLE).noCollision().strength(-1.0F).nonOpaque().sounds(BlockSoundGroup.GLASS).luminance((state) -> 11)), true);
     public static final Block COAL_ORE = register("coal_ore", new ExperienceDroppingBlock(UniformIntProvider.create(0, 2), AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)),true);
@@ -57,7 +62,7 @@ public class ModBlock {
         return 15;
     }).sounds(BlockSoundGroup.WOOD).dropsLike(BIG_TORCH_BLOCK).pistonBehavior(PistonBehavior.DESTROY)),false);
     public static final Block APPLE_BLOCK = register("apple_block", new Block(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(1F).sounds(BlockSoundGroup.GRASS)), true);
-
+    public static final Block WOODEN_ANVIL =  register("wooden_anvil", new AnvilBlock(AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).requiresTool().strength(5.0F, 1200.0F).sounds(BlockSoundGroup.ANVIL).pistonBehavior(PistonBehavior.BLOCK)),true);
 
 
     public static final Block COW_PLANT = register("cow_plant", new CowPlantBlock(AbstractBlock.Settings.create()
@@ -91,12 +96,14 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlock(BIG_TORCH_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BIG_WALL_TORCH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(CACTUS, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(FIRE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(FIRE, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(STATIC_FIRE, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(NETHER_PORTAL, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(HORIZONTAL_NETHER_PORTAL, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(TRANSPARENT_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(CONCRETE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(APPLE_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(WOODEN_ANVIL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), COW_PLANT);
 
         BlockEntityRendererRegistry.register(COW_PLANT_TYPE, CowPlantBlockRenderer::new);

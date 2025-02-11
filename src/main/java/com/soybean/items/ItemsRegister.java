@@ -2,7 +2,6 @@ package com.soybean.items;
 
 import com.soybean.block.ModBlock;
 import com.soybean.config.InitValue;
-import com.soybean.entity.client.renderer.CustomBlockEntityRenderer;
 import com.soybean.entity.custom.CustomBlockEntity;
 import com.soybean.items.armor.ModArmorMaterials;
 import com.soybean.items.custom.*;
@@ -111,7 +110,8 @@ public class ItemsRegister {
     public static final Item DIAMOND_STICK_SWORD = register(new SwordItem(ToolMaterials.DIAMOND,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 3, -2.4F))),"diamond_stick_sword");
     public static final Item DIAMOND_STICK_AXE = register(new AxeItem(ToolMaterials.DIAMOND,new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 5.0F, -3.0F))),"diamond_stick_axe");
     public static final Item DIAMOND_STICK_PICKAXE = register(new PickaxeItem(ToolMaterials.DIAMOND, (new Item.Settings()).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 1.0F, -2.8F))),"diamond_stick_pickaxe");
-
+    public static final Item FLINT_AND_STEEL_DIG_FIRE = register(new FlintAndSteelDigFireItem(new Item.Settings().maxCount(1).maxDamage(64)), "flint_and_steel_dig_fire");
+    public static final Item COD_SPAWN_EGG = register(new SpawnEggItem(EntityType.COD,0xac976b, 0xddd6c8,new Item.Settings()),"cod_spawn_egg");
     public static void initialize() {
         ModRecipes.registerRecipes();
         PotionRegister.init(); //药水初始化
@@ -194,6 +194,9 @@ public class ItemsRegister {
             itemGroup.add(DIAMOND_STICK_SWORD);
             itemGroup.add(DIAMOND_STICK_AXE);
             itemGroup.add(DIAMOND_STICK_PICKAXE);
+            itemGroup.add(ModBlock.WOODEN_ANVIL);
+            itemGroup.add(FLINT_AND_STEEL_DIG_FIRE);
+            itemGroup.add(COD_SPAWN_EGG);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

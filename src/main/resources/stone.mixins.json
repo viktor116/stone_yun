@@ -10,7 +10,8 @@
 		"PlayerEntityRendererMixin",
 		"EdibleMixin",
 		"PortalForcerMixin",
-		"NetherPortalMixin"
+		"NetherPortalMixin",
+		"NetherPortalBlockMixin"
 	],
 	"client": [
 		"ItemRendererMixin",

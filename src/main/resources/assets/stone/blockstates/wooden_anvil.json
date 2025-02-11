@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "stone:block/wooden_anvil",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "stone:block/wooden_anvil",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "stone:block/wooden_anvil"
+    },
+    "facing=west": {
+      "model": "stone:block/wooden_anvil",
+      "y": 90
+    }
+  }
+}

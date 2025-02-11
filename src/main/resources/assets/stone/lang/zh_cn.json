@@ -72,11 +72,13 @@
   "item.stone.diamond_stick_axe": "钻石木斧",
   "item.stone.diamond_stick_sword": "钻石木剑",
   "item.stone.diamond_stick_pickaxe": "钻石木稿",
+  "item.stone.flint_and_steel_dig_fire": "打火石",
+  "item.stone.cod_spawn_egg": "鳕鱼刷怪蛋",
+
 
   "item.minecraft.potion.effect.resistance": "抗性提升药水",
   "item.minecraft.splash_potion.effect.resistance": "喷溅型抗性提升药水",
   "item.minecraft.lingering_potion.effect.resistance": "滞留型抗性提升药水",
-
   "item.minecraft.potion.effect.absorption": "伤害吸收药水",
   "item.minecraft.splash_potion.effect.absorption": "喷溅型伤害吸收药水",
   "item.minecraft.lingering_potion.effect.absorption": "滞留型伤害吸收药水",
@@ -92,6 +94,7 @@
   "block.stone.soul_torch": "加速火把",
   "block.stone.big_torch": "大型火把",
   "block.stone.fire": "火焰",
+  "block.stone.static_fire": "可挖掘火焰",
   "block.stone.nether_portal": "下界传送门",
   "block.stone.stone_crafting_table": "石制工作台",
   "block.stone.transparent_block": "空气方块",
@@ -103,6 +106,7 @@
   "block.stone.obsidian": "黑曜石",
   "block.stone.horizontal_nether_portal": "水平下界传送门",
   "block.stone.apple_block": "苹果块",
+  "block.stone.wooden_anvil": "木砧",
 
 
   "merchant.stone.witherskeleton": "凋零骷髅交易",

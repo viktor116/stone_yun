@@ -29,7 +29,7 @@ public abstract class EdibleMixin {
     @Inject(method = "use", at = @At("HEAD"), cancellable = true)
     private void edibleUse(World world, PlayerEntity user, Hand hand, CallbackInfoReturnable<TypedActionResult<ItemStack>> cir) {
         ItemStack stack = user.getStackInHand(hand);
-        if (stack.isOf(Items.LEATHER) || stack.isOf(Items.SUGAR_CANE) || stack.isOf(Items.SUGAR) || stack.isOf(Items.RABBIT_HIDE)) {
+        if (isEdible(stack)) {
             if (user.canConsume(false)) { // 检查玩家是否可以食用
                 user.setCurrentHand(hand); // 开始食用动画
                 cir.setReturnValue(TypedActionResult.consume(stack));
@@ -41,14 +41,14 @@ public abstract class EdibleMixin {
 
     @Inject(method = "getUseAction", at = @At("HEAD"), cancellable = true)
     private void makeEdible(ItemStack stack, CallbackInfoReturnable<UseAction> cir) {
-        if (stack.isOf(Items.LEATHER) || stack.isOf(Items.SUGAR_CANE) || stack.isOf(Items.SUGAR) || stack.isOf(Items.RABBIT_HIDE)) {
+        if (isEdible(stack)) {
             cir.setReturnValue(UseAction.EAT); // 设置为食物动作
         }
     }
 
     @Inject(method = "getMaxUseTime", at = @At("HEAD"), cancellable = true)
     private void setMaxUseTime(ItemStack stack, LivingEntity user, CallbackInfoReturnable<Integer> cir) {
-        if (stack.isOf(Items.LEATHER) || stack.isOf(Items.SUGAR_CANE) || stack.isOf(Items.SUGAR) || stack.isOf(Items.RABBIT_HIDE)) {
+        if (isEdible(stack)) {
             cir.setReturnValue(32); // 设置食用时间为 32 tick
         }
     }
@@ -79,7 +79,21 @@ public abstract class EdibleMixin {
                 stack.decrement(1);
             }
             cir.setReturnValue(stack);
+        } else if (stack.isOf(Items.PUMPKIN)) {
+            if (user instanceof PlayerEntity player) {
+                player.getHungerManager().add(5, 1.0f);
+                stack.decrement(1);
+            }
+            cir.setReturnValue(stack);
         }
+    }
+
+    private static boolean isEdible(ItemStack stack) {
+        return stack.isOf(Items.LEATHER) ||
+                stack.isOf(Items.SUGAR_CANE) ||
+                stack.isOf(Items.SUGAR) ||
+                stack.isOf(Items.RABBIT_HIDE) ||
+                stack.isOf(Items.PUMPKIN);
     }
 }
 

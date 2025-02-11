@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:stone"
+    },
+    {
+      "item": "stone:fire"
+    }
+  ],
+  "result": {
+    "id": "stone:flint_and_steel_dig_fire",
+    "count": 1
+  }
+}

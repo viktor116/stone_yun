@@ -101,6 +101,9 @@ public record FlameAdditionEnchantmentEffect(EnchantmentLevelBasedValue amount) 
         if (input.isOf(Items.RAW_COPPER)) {
             return new ItemStack(Items.COPPER_INGOT, input.getCount());
         }
+        if(input.isOf(Items.COBBLESTONE)){
+            return new ItemStack(Items.STONE, input.getCount());
+        }
         return null;
     }
 }

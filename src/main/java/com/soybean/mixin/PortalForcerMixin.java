@@ -4,6 +4,7 @@ import com.soybean.block.ModBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.NetherPortalBlock;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
@@ -34,13 +35,11 @@ public abstract class PortalForcerMixin {
 //        Direction direction = Direction.get(Direction.AxisDirection.POSITIVE, axis);
 //        WorldBorder worldBorder = this.world.getWorldBorder();
 //
-//        // 查找合适的位置创建水平传送门
 //        int maxY = Math.min(this.world.getTopY(), this.world.getBottomY() + this.world.getLogicalHeight()) - 1;
 //        BlockPos.Mutable mutable = pos.mutableCopy();
 //        BlockPos portalPos = null;
 //        double minDistance = -1.0;
 //
-//        // 在16格范围内寻找合适的位置
 //        for (BlockPos.Mutable searchPos : BlockPos.iterateInSquare(pos, 16, Direction.EAST, Direction.SOUTH)) {
 //            if (!worldBorder.contains(searchPos)) {
 //                continue;
@@ -68,7 +67,7 @@ public abstract class PortalForcerMixin {
 //
 //        // 创建水平传送门结构
 //        BlockState obsidian = Blocks.OBSIDIAN.getDefaultState();
-//        BlockState portalBlock = ModBlock.HORIZONTAL_NETHER_PORTAL.getDefaultState().with(Properties.HORIZONTAL_AXIS, axis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X);
+//        BlockState portalBlock = (BlockState)Blocks.NETHER_PORTAL.getDefaultState().with(NetherPortalBlock.AXIS, axis);
 //
 //        // 放置黑曜石框架
 //        for (int x = -1; x <= 1; x++) {
