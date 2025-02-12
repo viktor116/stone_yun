@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "# #",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "stone:fire"
+    }
+  },
+  "result": {
+    "id": "minecraft:chainmail_leggings",
+    "count": 1
+  }
+}
