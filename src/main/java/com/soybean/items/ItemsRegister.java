@@ -112,6 +112,9 @@ public class ItemsRegister {
     public static final Item DIAMOND_STICK_PICKAXE = register(new PickaxeItem(ToolMaterials.DIAMOND, (new Item.Settings()).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 1.0F, -2.8F))),"diamond_stick_pickaxe");
     public static final Item FLINT_AND_STEEL_DIG_FIRE = register(new FlintAndSteelDigFireItem(new Item.Settings().maxCount(1).maxDamage(64)), "flint_and_steel_dig_fire");
     public static final Item COD_SPAWN_EGG = register(new SpawnEggItem(EntityType.COD,0xac976b, 0xddd6c8,new Item.Settings()),"cod_spawn_egg");
+    public static final Item NETHER_FISH = register(new Item(new Item.Settings().food(FoodComponents.COD)),"nether_fish");
+    public static final Item WARDEN_BUCKET = register(new Item(new Item.Settings().maxCount(1)),"warden_bucket");
+
     public static void initialize() {
         ModRecipes.registerRecipes();
         PotionRegister.init(); //药水初始化
@@ -197,6 +200,8 @@ public class ItemsRegister {
             itemGroup.add(ModBlock.WOODEN_ANVIL);
             itemGroup.add(FLINT_AND_STEEL_DIG_FIRE);
             itemGroup.add(COD_SPAWN_EGG);
+            itemGroup.add(NETHER_FISH);
+            itemGroup.add(WARDEN_BUCKET);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);
