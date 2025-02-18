@@ -113,7 +113,7 @@ public class ItemsRegister {
     public static final Item FLINT_AND_STEEL_DIG_FIRE = register(new FlintAndSteelDigFireItem(new Item.Settings().maxCount(1).maxDamage(64)), "flint_and_steel_dig_fire");
     public static final Item COD_SPAWN_EGG = register(new SpawnEggItem(EntityType.COD,0xac976b, 0xddd6c8,new Item.Settings()),"cod_spawn_egg");
     public static final Item NETHER_FISH = register(new Item(new Item.Settings().food(FoodComponents.COD)),"nether_fish");
-    public static final Item WARDEN_BUCKET = register(new Item(new Item.Settings().maxCount(1)),"warden_bucket");
+    public static final Item WARDEN_BUCKET = register(new WardenBucketItem(new Item.Settings().maxCount(1)),"warden_bucket");
 
     public static void initialize() {
         ModRecipes.registerRecipes();

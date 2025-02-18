@@ -2,6 +2,8 @@ package com.soybean.event.impl;
 
 import com.mojang.authlib.GameProfile;
 import com.soybean.config.InitValue;
+import com.soybean.items.ItemsRegister;
+import com.soybean.items.item.WardenBucketItem;
 import com.soybean.manager.HeadlessPlayerManager;
 import com.soybean.screen.WitherSkeletonInteractionHandler;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
@@ -13,17 +15,11 @@ import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonPart;
-import net.minecraft.entity.mob.BlazeEntity;
-import net.minecraft.entity.mob.EndermanEntity;
-import net.minecraft.entity.mob.PiglinEntity;
-import net.minecraft.entity.mob.WitherSkeletonEntity;
+import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.PlayerHeadItem;
-import net.minecraft.item.ShearsItem;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.MerchantScreenHandler;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
@@ -72,8 +68,29 @@ public class EventUseEntity {
                 if(profession == VillagerProfession.NONE){
                     WitherSkeletonInteractionHandler.handleRightClickOnCommonVillager(player);
                 }
+                return ActionResult.SUCCESS;
             }
-
+            if(entity instanceof WardenEntity wardenEntity){
+                ItemStack stackInHand = player.getStackInHand(hand);
+                if(stackInHand.getItem() instanceof BucketItem){
+                    wardenEntity.discard();
+                    ItemStack wardenBucket  = ItemsRegister.WARDEN_BUCKET.getDefaultStack();
+                    if (stackInHand.getCount() == 1) {
+                        player.setStackInHand(hand, wardenBucket);
+                    } else {
+                        stackInHand.decrement(1);
+                        if (!player.getInventory().insertStack(wardenBucket)) {
+                            // 如果物品栏满了，在玩家位置生成物品实体
+                            double x = player.getX();
+                            double y = player.getY();
+                            double z = player.getZ();
+                            ItemEntity itemEntity = new ItemEntity(world, x, y, z, wardenBucket);
+                            world.spawnEntity(itemEntity);
+                        }
+                    }
+                }
+                return ActionResult.SUCCESS;
+            }
 
             if (entity instanceof PlayerEntity targetPlayer && !world.isClient) {
                 ItemStack stackInHand = player.getStackInHand(hand);

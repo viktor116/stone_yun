@@ -256,6 +256,16 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
                 1,      // 经验值
                 0.05f   // 价格乘数
         ));
+
+        offers.add(new TradeOffer(
+                new TradedItem(ItemsRegister.GOLD_DEBRIS, 1),  // 第一个输入物品(物品, 数量, 最大数量)
+                Optional.empty(),// 第二个输入物品(可选)
+                new ItemStack(ItemsRegister.NETHER_FISH,32),  // 输出物品
+                0,      // 当前使用次数
+                100,      // 最大使用次数
+                1,      // 经验值
+                0.05f   // 价格乘数
+        ));
     }
 
     private static void addSheepTrades(TradeOfferList offers) {
