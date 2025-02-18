@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "stone:item/nether_fish"
+    "layer0": "stone:item/guardian_bucket"
   }
 }

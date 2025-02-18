@@ -70,11 +70,34 @@ public class EventUseEntity {
                 }
                 return ActionResult.SUCCESS;
             }
+            //监守者
             if(entity instanceof WardenEntity wardenEntity){
                 ItemStack stackInHand = player.getStackInHand(hand);
                 if(stackInHand.getItem() instanceof BucketItem){
                     wardenEntity.discard();
                     ItemStack wardenBucket  = ItemsRegister.WARDEN_BUCKET.getDefaultStack();
+                    if (stackInHand.getCount() == 1) {
+                        player.setStackInHand(hand, wardenBucket);
+                    } else {
+                        stackInHand.decrement(1);
+                        if (!player.getInventory().insertStack(wardenBucket)) {
+                            // 如果物品栏满了，在玩家位置生成物品实体
+                            double x = player.getX();
+                            double y = player.getY();
+                            double z = player.getZ();
+                            ItemEntity itemEntity = new ItemEntity(world, x, y, z, wardenBucket);
+                            world.spawnEntity(itemEntity);
+                        }
+                    }
+                }
+                return ActionResult.SUCCESS;
+            }
+            //守卫者
+            if(entity instanceof GuardianEntity guardianEntity){
+                ItemStack stackInHand = player.getStackInHand(hand);
+                if(stackInHand.getItem() instanceof BucketItem){
+                    guardianEntity.discard();
+                    ItemStack wardenBucket  = ItemsRegister.GUARDIAN_BUCKET.getDefaultStack();
                     if (stackInHand.getCount() == 1) {
                         player.setStackInHand(hand, wardenBucket);
                     } else {

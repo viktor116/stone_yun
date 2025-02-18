@@ -78,8 +78,9 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.DIAMOND_STICK_AXE,Models.HANDHELD);
         itemModelGenerator.register(ItemsRegister.DIAMOND_STICK_SWORD,Models.HANDHELD);
         itemModelGenerator.register(ItemsRegister.DIAMOND_STICK_PICKAXE,Models.HANDHELD);
-        itemModelGenerator.register(ItemsRegister.NETHER_FISH,Models.HANDHELD);
-        itemModelGenerator.register(ItemsRegister.WARDEN_BUCKET,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.NETHER_FISH,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.GUARDIAN_BUCKET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.WARDEN_BUCKET,Models.GENERATED);
 
         itemModelGenerator.register(ItemsRegister.SAND_BLOCK_SPAWN_EGG, new Model(Optional.of(Identifier.ofVanilla("block/sand")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.DIRT_BLOCK_SPAWN_EGG, new Model(Optional.of(Identifier.ofVanilla("block/dirt")), Optional.empty()));

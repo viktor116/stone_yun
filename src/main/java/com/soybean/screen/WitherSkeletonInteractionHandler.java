@@ -76,17 +76,18 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
     }
 
     public static void handleRightClickOnDragon(PlayerEntity player) {
-            TradeOfferList tradeOffers1 = new TradeOfferList();
-            addDragonTrades(tradeOffers1);
-            player.openHandledScreen(new SimpleNamedScreenHandlerFactory(
-                    (syncId, inv, p) -> {
-                        WitherSkeletonInteractionHandler handler = new WitherSkeletonInteractionHandler(syncId, inv);
-                        handler.setOffers(tradeOffers1);
-                        return handler;
-                    },
-                    Text.translatable("merchant." + InitValue.MOD_ID + ".dragon")
-            ));
-            player.incrementStat(Stats.TRADED_WITH_VILLAGER);
+            if (player.getWorld().isClient) {
+                return;
+            }
+        CommonMerchant merchant = new CommonMerchant(player);
+
+        // 创建交易列表
+        TradeOfferList offers = new TradeOfferList();
+        addDragonTrades(offers);
+        merchant.setOffersFromServer(offers);
+        // 使用 sendOffers 方法来处理界面打开和数据同步
+        merchant.sendOffers(player, Text.translatable("merchant." + InitValue.MOD_ID + ".dragon"), 1);  // levelProgress);
+        player.incrementStat(Stats.TRADED_WITH_VILLAGER);
     }
 
     public static void handleRightClickOnPiglin(PlayerEntity player) {
@@ -283,8 +284,8 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
     }
     private static void addDragonTrades(TradeOfferList offers){
         offers.add(new TradeOffer(
-                new TradedItem(Items.YELLOW_BED, 1),  // 第一个输入物品
-                Optional.of(new TradedItem(Items.YELLOW_BED, 1)),
+                new TradedItem(Items.EMERALD, 64),  // 第一个输入物品
+                Optional.empty(),
 //                Optional.of(new TradedItem(Items.OBSIDIAN, 5)),  // 第二个输入物品
                 new ItemStack(Items.DRAGON_EGG),  // 输出物品
                 0,      // 当前使用次数
@@ -293,7 +294,7 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
                 0.1f    // 价格乘数
         ));
         offers.add(new TradeOffer(
-                new TradedItem(Items.YELLOW_BED, 1),  // 第一个输入物品
+                new TradedItem(Items.EMERALD, 64),  // 第一个输入物品
                 Optional.empty(),
 //                Optional.of(new TradedItem(Items.OBSIDIAN, 5)),  // 第二个输入物品
                 new ItemStack(Items.EXPERIENCE_BOTTLE,64),  // 输出物品
