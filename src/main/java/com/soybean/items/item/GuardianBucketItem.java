@@ -48,10 +48,11 @@ public class GuardianBucketItem extends Item {
                 assert guardianEntity != null;
                 guardianEntity.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
                 world.spawnEntity(guardianEntity);
+                world.playSound(player, player.getBlockPos(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.5F, 2.6F + (world.random.nextFloat() - world.random.nextFloat()) * 0.8F);
                 return TypedActionResult.success(stack2, world.isClient());
             }
         }
-        return super.use(world, player, hand);
+        return TypedActionResult.success(itemStack, world.isClient());
     }
 
 

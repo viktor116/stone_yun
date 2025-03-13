@@ -115,6 +115,24 @@ public class ItemsRegister {
     public static final Item NETHER_FISH = register(new Item(new Item.Settings().food(FoodComponents.COD)),"nether_fish");
     public static final Item WARDEN_BUCKET = register(new WardenBucketItem(new Item.Settings().maxCount(1)),"warden_bucket");
     public static final Item GUARDIAN_BUCKET = register(new GuardianBucketItem(new Item.Settings().maxCount(1)), "guardian_bucket");
+    public static final Item LOW_ENCHANT_APPLE = register(new Item(new Item.Settings()), "low_enchant_apple");
+    public static final Item COPPER_APPLE = register(new Item(new Item.Settings()), "copper_apple");
+    public static final Item DIRT_STICK = register(new Item(new Item.Settings()), "dirt_stick");
+    public static final Item DIRT_SWORD = register(new Item(new Item.Settings()), "dirt_sword");
+    public static final Item DIRT_AXE = register(new Item(new Item.Settings()), "dirt_axe");
+    public static final Item DIRT_PICKAXE = register(new Item(new Item.Settings()), "dirt_pickaxe");
+    public static final Item DIRT_BUCKET = register(new Item(new Item.Settings()), "dirt_bucket");
+    public static final Item DIRT_LAVA_BUCKET = register(new Item(new Item.Settings()), "dirt_lava_bucket");
+    public static final Item DIRT_WATER_BUCKET = register(new Item(new Item.Settings()), "dirt_water_bucket");
+    public static final Item FRIED_EGG = register(new Item(new Item.Settings()), "fried_egg");
+    public static final Item FLIP_BOW= register(new Item(new Item.Settings()), "flip_bow");
+    public static final Item FLIP_FISHING_ROD = register(new Item(new Item.Settings()), "flip_fishing_rod");
+    public static final Item COAL_INGOT = register(new Item(new Item.Settings()), "coal_ingot");
+    public static final Item LEAF_INGOT = register(new Item(new Item.Settings()), "leaf_ingot");
+    public static final Item LEAF_HELMET = register(new Item(new Item.Settings()), "leaf_helmet");
+    public static final Item LEAF_CHESTPLATE = register(new Item(new Item.Settings()), "leaf_chestplate");
+    public static final Item LEAF_LEGGINGS = register(new Item(new Item.Settings()), "leaf_leggings");
+    public static final Item LEAF_BOOTS = register(new Item(new Item.Settings()), "leaf_boots");
     public static void initialize() {
         ModRecipes.registerRecipes();
         PotionRegister.init(); //药水初始化
@@ -203,6 +221,24 @@ public class ItemsRegister {
             itemGroup.add(NETHER_FISH);
             itemGroup.add(GUARDIAN_BUCKET);
             itemGroup.add(WARDEN_BUCKET);
+            itemGroup.add(LOW_ENCHANT_APPLE);
+            itemGroup.add(COPPER_APPLE);
+            itemGroup.add(DIRT_STICK);
+            itemGroup.add(DIRT_SWORD);
+            itemGroup.add(DIRT_AXE);
+            itemGroup.add(DIRT_PICKAXE);
+            itemGroup.add(DIRT_BUCKET);
+            itemGroup.add(DIRT_LAVA_BUCKET);
+            itemGroup.add(DIRT_WATER_BUCKET);
+            itemGroup.add(FRIED_EGG);
+            itemGroup.add(FLIP_BOW);
+            itemGroup.add(FLIP_FISHING_ROD);
+            itemGroup.add(COAL_INGOT);
+            itemGroup.add(LEAF_INGOT);
+            itemGroup.add(LEAF_HELMET);
+            itemGroup.add(LEAF_CHESTPLATE);
+            itemGroup.add(LEAF_LEGGINGS);
+            itemGroup.add(LEAF_BOOTS);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

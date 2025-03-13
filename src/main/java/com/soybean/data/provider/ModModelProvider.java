@@ -81,6 +81,24 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.NETHER_FISH,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.GUARDIAN_BUCKET,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.WARDEN_BUCKET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.LOW_ENCHANT_APPLE,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.COPPER_APPLE,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.DIRT_STICK,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.DIRT_SWORD,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.DIRT_PICKAXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.DIRT_AXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.FLIP_BOW,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.FLIP_FISHING_ROD,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.DIRT_BUCKET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.DIRT_WATER_BUCKET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.DIRT_LAVA_BUCKET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.FRIED_EGG,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.COAL_INGOT,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.LEAF_INGOT,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.LEAF_HELMET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.LEAF_CHESTPLATE,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.LEAF_LEGGINGS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.LEAF_BOOTS,Models.GENERATED);
 
         itemModelGenerator.register(ItemsRegister.SAND_BLOCK_SPAWN_EGG, new Model(Optional.of(Identifier.ofVanilla("block/sand")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.DIRT_BLOCK_SPAWN_EGG, new Model(Optional.of(Identifier.ofVanilla("block/dirt")), Optional.empty()));

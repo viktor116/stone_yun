@@ -30,6 +30,7 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
                 .add(ItemsRegister.FLAME_SWORD)
                 .add(ItemsRegister.BIT_DIAMOND_SWORD)
                 .add(ItemsRegister.DIAMOND_STICK_SWORD)
+                .add(ItemsRegister.DIRT_SWORD)
                 .add(ItemsRegister.TRANSPARENT_SWORD);
 
         getOrCreateTagBuilder(ItemTags.AXES)
@@ -37,6 +38,7 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
                 .add(ItemsRegister.CACTUS_AXE)
                 .add(ItemsRegister.BIT_DIAMOND_AXE)
                 .add(ItemsRegister.DIAMOND_STICK_AXE)
+                .add(ItemsRegister.DIRT_AXE)
                 .add(ItemsRegister.TRANSPARENT_AXE);
 
         getOrCreateTagBuilder(ItemTags.PICKAXES)
@@ -45,6 +47,7 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
                 .add(ItemsRegister.TRANSPARENT_PICKAXE)
                 .add(ItemsRegister.BIT_DIAMOND_PICKAXE)
                 .add(ItemsRegister.DIAMOND_STICK_PICKAXE)
+                .add(ItemsRegister.DIRT_PICKAXE)
                 .add(ItemsRegister.CONCRETE_PICKAXE);
 
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
@@ -52,21 +55,25 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
                 .add(ItemsRegister.MINECART_HAT)
                 .add(ItemsRegister.CACTUS_HELMET)
                 .add(ItemsRegister.MAIN_WORLD_HELMET)
+                .add(ItemsRegister.LEAF_HELMET)
                 .add(ItemsRegister.INVERT_BUCKET);
 
         getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
                 .add(ItemsRegister.CACTUS_CHESTPLATE)
                 .add(ItemsRegister.MAIN_WORLD_CHESTPLATE)
+                .add(ItemsRegister.LEAF_CHESTPLATE)
                 .add(ItemsRegister.COAL_CHESTPLATE);
 
         getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
                 .add(ItemsRegister.CACTUS_LEGGINGS)
                 .add(ItemsRegister.MAIN_WORLD_LEGGINGS)
+                .add(ItemsRegister.LEAF_LEGGINGS)
                 .add(ItemsRegister.COAL_LEGGINGS);
 
         getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
                 .add(ItemsRegister.CACTUS_BOOTS)
                 .add(ItemsRegister.MAIN_WORLD_BOOTS)
+                .add(ItemsRegister.LEAF_BOOTS)
                 .add(ItemsRegister.COAL_BOOTS);
 
         getOrCreateTagBuilder(ItemTags.BOATS)

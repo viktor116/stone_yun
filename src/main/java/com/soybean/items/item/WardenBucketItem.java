@@ -74,6 +74,7 @@ public class WardenBucketItem extends Item {
                             5.0F,
                             1.0F
                     );
+                    world.playSound(player, player.getBlockPos(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.5F, 2.6F + (world.random.nextFloat() - world.random.nextFloat()) * 0.8F);
 
                     // 触发Warden的感知
                     wardenEntity.increaseAngerAt(player, 150, true);
@@ -81,7 +82,7 @@ public class WardenBucketItem extends Item {
                 return TypedActionResult.success(stack2, world.isClient());
             }
         }
-        return super.use(world, player, hand);
+        return TypedActionResult.success(itemStack, world.isClient());
     }
 
 
