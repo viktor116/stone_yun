@@ -63,6 +63,10 @@ public class EventUseEntity {
                 WitherSkeletonInteractionHandler.handleRightClickOnBlaze(player);
                 return ActionResult.SUCCESS;
             }
+            if(entity instanceof SpiderEntity){
+                WitherSkeletonInteractionHandler.handleRightClickOnSpider(player);
+                return ActionResult.SUCCESS;
+            }
             if(entity instanceof VillagerEntity villager){
                 VillagerProfession profession = villager.getVillagerData().getProfession();
                 if(profession == VillagerProfession.NONE){

@@ -42,6 +42,7 @@ public class StoneCraftingScreenHandler extends CraftingScreenHandler {
     public boolean canUse(PlayerEntity player) {
         // 确保只有在方块存在的时候才能使用
         return canUse(context, player, ModBlock.STONE_CRAFT_TABLE) ||
-                canUse(context, player, ModBlock.AIR_CRAFT_TABLE) ;
+                canUse(context, player, ModBlock.AIR_CRAFT_TABLE) ||
+                canUse(context,player, ModBlock.DIRT_CRAFT_TABLE);
     }
 }

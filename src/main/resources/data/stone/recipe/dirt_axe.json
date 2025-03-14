@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "/S",
+    "/ "
+  ],
+  "key": {
+    "/": {
+      "item": "stone:dirt_stick"
+    },
+    "S": {
+      "item": "minecraft:dirt"
+    }
+  },
+  "result": {
+    "id": "stone:dirt_axe",
+    "count": 1
+  }
+}

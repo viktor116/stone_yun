@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "# #",
     "###",
+    "# #",
     "# #"
   ],
   "key": {
     "#": {
-      "item": "stone:coal_ingot"
+      "item": "stone:leaf_ingot"
     }
   },
   "result": {
-    "id": "stone:coal_horse_armor",
+    "id": "stone:leaf_leggings",
     "count": 1
   }
 }

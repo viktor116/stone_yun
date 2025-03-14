@@ -26,6 +26,7 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.REACTOR);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.CONCRETE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlock.LEAF_ORE);
 
     }
 

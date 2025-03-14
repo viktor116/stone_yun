@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "S",
+    "/"
+  ],
+  "key": {
+    "/": {
+      "item": "stone:dirt_stick"
+    },
+    "S": {
+      "item": "minecraft:dirt"
+    }
+  },
+  "result": {
+    "id": "stone:dirt_sword",
+    "count": 1
+  }
+}

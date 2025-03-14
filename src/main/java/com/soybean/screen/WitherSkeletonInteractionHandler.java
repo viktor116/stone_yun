@@ -150,6 +150,21 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
         player.incrementStat(Stats.TRADED_WITH_VILLAGER);
     }
 
+    //蜘蛛交易
+    public static void handleRightClickOnSpider(PlayerEntity player) {
+        if (player.getWorld().isClient) {
+            return;
+        }
+        CommonMerchant merchant = new CommonMerchant(player);
+
+        // 创建交易列表
+        TradeOfferList offers = new TradeOfferList();
+        addSpiderTrades(offers);
+        merchant.setOffersFromServer(offers);
+        merchant.sendOffers(player, Text.translatable("merchant." + InitValue.MOD_ID + ".spider"), 1);  // levelProgress);
+        player.incrementStat(Stats.TRADED_WITH_VILLAGER);
+    }
+
     @Override
     public boolean canUse(PlayerEntity player) {
         return true;
@@ -214,6 +229,20 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
                 new TradedItem(Items.EMERALD, 1),  // 第一个输入物品(物品, 数量, 最大数量)
                 Optional.empty(),// 第二个输入物品(可选)
                 new ItemStack(ItemsRegister.FLAME_SWORD,1),  // 输出物品
+                0,      // 当前使用次数
+                12,      // 最大使用次数
+                1,      // 经验值
+                0.05f   // 价格乘数
+        ));
+    }
+
+    //蜘蛛交易
+    private static void addSpiderTrades(TradeOfferList offers) {
+        // 假设你的默认交易是交换某种物品
+        offers.add(new TradeOffer(
+                new TradedItem(Items.EMERALD, 1),  // 第一个输入物品(物品, 数量, 最大数量)
+                Optional.empty(),// 第二个输入物品(可选)
+                new ItemStack(Items.STRING,4),  // 输出物品
                 0,      // 当前使用次数
                 12,      // 最大使用次数
                 1,      // 经验值

@@ -1,0 +1,20 @@
+package com.soybean.items.client;
+
+import com.soybean.block.ModBlock;
+import com.soybean.items.ItemsRegister;
+import com.soybean.items.client.custom.CustomBedItemRenderer;
+import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.block.BlockRenderManager;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
+
+/**
+ * @author soybean
+ * @date 2025/3/14 13:32
+ * @description
+ */
+public class ItemRendererRegister {
+    public static void init(){
+        BuiltinItemRendererRegistry.INSTANCE.register(ItemsRegister.FLIP_WHITE_BED, new CustomBedItemRenderer());
+    }
+}

@@ -1,17 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "# #",
-    "###",
-    "# #"
+    "S S",
+    " S "
   ],
   "key": {
-    "#": {
-      "item": "stone:coal_ingot"
+    "S": {
+      "item": "minecraft:dirt"
     }
   },
   "result": {
-    "id": "stone:coal_horse_armor",
+    "id": "stone:dirt_bucket",
     "count": 1
   }
 }

@@ -1,17 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "# #",
-    "###",
+    "///",
     "###"
   ],
   "key": {
+    "/": {
+      "item": "minecraft:white_wool"
+    },
     "#": {
-      "item": "stone:coal_ingot"
+      "item": "minecraft:oak_planks"
     }
   },
   "result": {
-    "id": "stone:coal_chestplate",
+    "id": "stone:flip_white_bed",
     "count": 1
   }
 }

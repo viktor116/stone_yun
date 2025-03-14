@@ -1,22 +1,27 @@
 package com.soybean.block;
 
 import com.soybean.block.client.renderer.CowPlantBlockRenderer;
+import com.soybean.block.client.renderer.CustomBedBlockEntityRenderer;
 import com.soybean.block.custom.*;
 import com.soybean.block.custom.entity.CowPlantBlockEntity;
+import com.soybean.block.custom.entity.CustomBedBlockEntity;
 import com.soybean.block.custom.inventory.entity.DemoBlockEntity;
 import com.soybean.config.InitValue;
 import com.soybean.screen.StoneCraftingScreenHandler;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -34,6 +39,7 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 public class ModBlock {
     public static final Block STONE_CRAFT_TABLE = register("stone_crafting_table", new StoneCraftTableBlock(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.5F).sounds(BlockSoundGroup.STONE)), true);
     public static final Block AIR_CRAFT_TABLE = register("air_crafting_table", new StoneCraftTableBlock(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.5F).sounds(BlockSoundGroup.STONE).nonOpaque(),StoneCraftTableBlock.AIR_BLOCK_TITLE_KEY), true);
+    public static final Block DIRT_CRAFT_TABLE = register("dirt_crafting_table", new StoneCraftTableBlock(AbstractBlock.Settings.create().mapColor(MapColor.BROWN).instrument(NoteBlockInstrument.BASS).strength(2.5F).sounds(BlockSoundGroup.STONE),StoneCraftTableBlock.DIRT_BLOCK_TITLE_KEY), true);
     public static final Block CACTUS = register("cactus", new DemoBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).ticksRandomly().strength(0.4F).sounds(BlockSoundGroup.WOOL).pistonBehavior(PistonBehavior.DESTROY).nonOpaque()), true);
     public static final Block SOUL_TORCH_BLOCK = register("soul_torch", new TorchBlock(ParticleTypes.SOUL_FIRE_FLAME, AbstractBlock.Settings.create().noCollision().breakInstantly().luminance((state) -> {
         return 10;
@@ -63,8 +69,8 @@ public class ModBlock {
     }).sounds(BlockSoundGroup.WOOD).dropsLike(BIG_TORCH_BLOCK).pistonBehavior(PistonBehavior.DESTROY)),false);
     public static final Block APPLE_BLOCK = register("apple_block", new Block(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(1F).sounds(BlockSoundGroup.GRASS)), true);
     public static final Block WOODEN_ANVIL =  register("wooden_anvil", new AnvilBlock(AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).requiresTool().strength(5.0F, 1200.0F).sounds(BlockSoundGroup.ANVIL).pistonBehavior(PistonBehavior.BLOCK)),true);
-
-
+    public static final Block LEAF_ORE = register("leaf_ore", new Block(AbstractBlock.Settings.create().mapColor(MapColor.GREEN).instrument(NoteBlockInstrument.BASS).strength(2F, 3.0F)),true);
+    public static final Block FLIP_WHITE_BED = register("flip_white_bed",createBedBlock(),false);
     public static final Block COW_PLANT = register("cow_plant", new CowPlantBlock(AbstractBlock.Settings.create()
             .nonOpaque()
             .noCollision()
@@ -84,8 +90,13 @@ public class ModBlock {
             Identifier.of(InitValue.MOD_ID, "cow_plant"),
             FabricBlockEntityTypeBuilder.create(CowPlantBlockEntity::new, ModBlock.COW_PLANT).build(null)
     );
-    public static void initialize() {
 
+    public static final BlockEntityType<CustomBedBlockEntity> FLIP_WHITE_BED_ENTITY = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE,
+            Identifier.of(InitValue.MOD_ID, "flip_white_bed"),
+            BlockEntityType.Builder.create(CustomBedBlockEntity::new, FLIP_WHITE_BED).build(null));
+    public static void initialize() {
+        FuelRegistry.INSTANCE.add(Items.RAW_IRON, 1600);
     }
 
     public static void initializeClient() {
@@ -107,6 +118,7 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), COW_PLANT);
 
         BlockEntityRendererRegistry.register(COW_PLANT_TYPE, CowPlantBlockRenderer::new);
+        BlockEntityRendererFactories.register(FLIP_WHITE_BED_ENTITY, CustomBedBlockEntityRenderer::new);
     }
 
     public static Block register(String id, Block block, boolean shouldRegisterItem) {
@@ -118,8 +130,23 @@ public class ModBlock {
         return Registry.register(Registries.BLOCK, itemID, block);
     }
 
+    public static Block register(String id, Block block, boolean shouldRegisterItem,int maxCount) {
+        Identifier itemID = Identifier.of(InitValue.MOD_ID, id);
+        if (shouldRegisterItem) {
+            BlockItem blockItem = new BlockItem(block, new Item.Settings().maxCount(maxCount));
+            Registry.register(Registries.ITEM, itemID, blockItem);
+        }
+        return Registry.register(Registries.BLOCK, itemID, block);
+    }
+
     public static CropBlock registerCrop(String id, Block block) {
         Identifier cropIdentifier = Identifier.of(InitValue.MOD_ID, id);
         return (CropBlock) Registry.register(Registries.BLOCK, cropIdentifier, block);
+    }
+
+    private static Block createBedBlock() {
+        return new CustomBedBlock(AbstractBlock.Settings.create().mapColor((state) -> {
+            return MapColor.WHITE;
+        }).sounds(BlockSoundGroup.WOOD).strength(0.2F).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY));
     }
 }

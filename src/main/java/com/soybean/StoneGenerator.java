@@ -1,6 +1,7 @@
 package com.soybean;
 
 import com.soybean.data.generator.ModEnchantmentGenerator;
+import com.soybean.data.provider.ModBlockLootTableProvider;
 import com.soybean.data.provider.ModBlockTagProvider;
 import com.soybean.data.provider.ModItemTagProvider;
 import com.soybean.data.provider.ModModelProvider;
@@ -14,6 +15,7 @@ public class StoneGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(ModEnchantmentGenerator::new);
         pack.addProvider(ModModelProvider::new);
         pack.addProvider(ModItemTagProvider::new);
+        pack.addProvider(ModBlockLootTableProvider::new);
         pack.addProvider(ModBlockTagProvider::new);
     }
 }

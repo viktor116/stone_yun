@@ -103,6 +103,13 @@
   "item.minecraft.potion.effect.absorption": "伤害吸收药水",
   "item.minecraft.splash_potion.effect.absorption": "喷溅型伤害吸收药水",
   "item.minecraft.lingering_potion.effect.absorption": "滞留型伤害吸收药水",
+  "item.minecraft.potion.effect.wither": "凋零药水",
+  "item.minecraft.splash_potion.effect.wither": "喷溅型凋零药水",
+  "item.minecraft.lingering_potion.effect.wither": "滞留型凋零药水",
+  "item.minecraft.potion.effect.hunger": "饥饿药水",
+  "item.minecraft.splash_potion.effect.hunger": "喷溅型饥饿药水",
+  "item.minecraft.lingering_potion.effect.hunger": "滞留型饥饿药水",
+
 
   "container.stone.cactus": "仙人掌箱",
 
@@ -122,12 +129,15 @@
   "block.stone.cactus": "仙人掌箱",
   "block.stone.reactor": "下界核反应堆",
   "block.stone.air_crafting_table": "空气工作台",
+  "block.stone.dirt_crafting_table": "泥土工作台",
   "block.stone.concrete": "混凝土",
   "block.stone.main_world_debris": "主世界残骸",
   "block.stone.obsidian": "黑曜石",
   "block.stone.horizontal_nether_portal": "水平下界传送门",
   "block.stone.apple_block": "苹果块",
   "block.stone.wooden_anvil": "木砧",
+  "block.stone.leaf_ore": "叶绿矿",
+  "block.stone.flip_white_bed": "倒着的床",
 
 
   "merchant.stone.witherskeleton": "凋零骷髅交易",
@@ -137,5 +147,7 @@
   "merchant.stone.enderman": "末影人交易",
   "merchant.stone.blaze": "烈焰人交易",
   "merchant.stone.common_villager": "普通村民",
+  "merchant.stone.spider": "蜘蛛交易",
+
   "stone.container.crafting": "石制工作台"
 }

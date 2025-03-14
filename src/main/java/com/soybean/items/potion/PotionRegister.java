@@ -39,6 +39,16 @@ public class PotionRegister {
                     StatusEffects.ABSORPTION,
                     20*60*2,
                     3)));
+    public static final Potion WITHER = Registry.register(Registries.POTION,InitValue.id("wither"),
+            new Potion("wither", new StatusEffectInstance(
+                    StatusEffects.WITHER,
+                    20*20,
+                    1)));
+    public static final Potion HUNGER = Registry.register(Registries.POTION,InitValue.id("hunger"),
+            new Potion("hunger", new StatusEffectInstance(
+                    StatusEffects.HUNGER,
+                    20*60*3,
+                    0)));
 
     public static void init(){
         FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> {

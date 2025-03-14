@@ -11,7 +11,8 @@
 		"EdibleMixin",
 		"PortalForcerMixin",
 		"NetherPortalMixin",
-		"NetherPortalBlockMixin"
+		"NetherPortalBlockMixin",
+		"AbstractFurnaceBlockEntityMixin"
 	],
 	"client": [
 		"ItemRendererMixin",

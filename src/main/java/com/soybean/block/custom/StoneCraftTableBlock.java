@@ -25,6 +25,7 @@ public class StoneCraftTableBlock extends Block {
     private final Text TITLE ;
     private static String STONE_TITLE_KEY = "block.stone.stone_crafting_table";
     public static String AIR_BLOCK_TITLE_KEY = "block.stone.air_crafting_table";
+    public static String DIRT_BLOCK_TITLE_KEY = "block.stone.dirt_crafting_table";
     public MapCodec<? extends StoneCraftTableBlock> getCodec() {
         return CODEC;
     }

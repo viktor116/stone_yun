@@ -1,6 +1,7 @@
 package com.soybean.items.armor;
 
 import com.soybean.config.InitValue;
+import com.soybean.items.ItemsRegister;
 import net.minecraft.item.*;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
@@ -51,6 +52,8 @@ public class ModArmorMaterials {
             map.put(ArmorItem.Type.BODY, 11);
         }), 5, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(Items.COAL),
                 List.of(new ArmorMaterial.Layer(Identifier.of(InitValue.MOD_ID, "coal"))),0,0));
+
+    //仙人掌套
     public static final RegistryEntry<ArmorMaterial> CACTUS_MATERIAL = registerArmorMaterial("cactus",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
                 map.put(ArmorItem.Type.HELMET, 2);  // 头盔防护值 1
@@ -65,6 +68,7 @@ public class ModArmorMaterials {
                     0,  // 硬度
                     0  // 击退抗性
             ));
+    //主世界合金套
     public static final RegistryEntry<ArmorMaterial> MAIN_WORD_MATERIAL = registerArmorMaterial("main_world",
             () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
                 map.put(ArmorItem.Type.BOOTS, 3);
@@ -80,6 +84,16 @@ public class ModArmorMaterials {
                     3,  // 硬度
                     0.1f  // 击退抗性
             ));
+    //叶绿套
+    public static final RegistryEntry<ArmorMaterial> LEAF_MATERIAL = registerArmorMaterial("leaf",
+            ()-> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+                map.put(ArmorItem.Type.HELMET, 3);
+                map.put(ArmorItem.Type.CHESTPLATE, 8);
+                map.put(ArmorItem.Type.LEGGINGS, 6);
+                map.put(ArmorItem.Type.BOOTS, 3);
+                map.put(ArmorItem.Type.BODY, 11);
+            }), 5, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(ItemsRegister.LEAF_INGOT),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(InitValue.MOD_ID, "leaf"))),0,0));
     public static void initialize() {
 
     };
