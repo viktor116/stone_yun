@@ -5,10 +5,10 @@
     "###"
   ],
   "key": {
-    "/": {
+    "#": {
       "item": "minecraft:white_wool"
     },
-    "#": {
+    "/": {
       "item": "minecraft:oak_planks"
     }
   },
