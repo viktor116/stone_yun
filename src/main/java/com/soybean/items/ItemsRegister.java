@@ -116,7 +116,7 @@ public class ItemsRegister {
     public static final Item NETHER_FISH = register(new Item(new Item.Settings().food(FoodComponents.COD)),"nether_fish");
     public static final Item WARDEN_BUCKET = register(new WardenBucketItem(new Item.Settings().maxCount(1)),"warden_bucket");
     public static final Item GUARDIAN_BUCKET = register(new GuardianBucketItem(new Item.Settings().maxCount(1)), "guardian_bucket");
-    public static final Item LOW_ENCHANT_APPLE = register(new Item(new Item.Settings().component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true).rarity(Rarity.EPIC)), "low_enchant_apple");
+    public static final Item LOW_ENCHANT_APPLE = register(new Item(new Item.Settings().food(FoodRegister.LOW_ENCHANT_APPLE).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true).rarity(Rarity.EPIC)), "low_enchant_apple");
     public static final Item COPPER_APPLE = register(new Item(new Item.Settings().food(FoodRegister.COPPER_APPLE).rarity(Rarity.RARE)), "copper_apple");
     public static final Item DIRT_STICK = register(new Item(new Item.Settings()), "dirt_stick");
     public static final Item DIRT_SWORD = register(new SwordItem(ToolMaterials.WOOD,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 3, -2.4F))), "dirt_sword");
