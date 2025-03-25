@@ -13,7 +13,7 @@
     }
   },
   "result": {
-    "id": "stone:flip_white_bed",
+    "id": "stone:invert_red_bed",
     "count": 1
   }
 }

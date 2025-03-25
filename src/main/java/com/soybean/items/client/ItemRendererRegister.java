@@ -1,8 +1,10 @@
 package com.soybean.items.client;
 
 import com.soybean.block.ModBlock;
+import com.soybean.block.client.renderer.InvertRedBlockEntityRenderer;
 import com.soybean.items.ItemsRegister;
 import com.soybean.items.client.custom.CustomBedItemRenderer;
+import com.soybean.items.client.custom.InvertRedItemRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.block.BlockRenderManager;
@@ -16,5 +18,7 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 public class ItemRendererRegister {
     public static void init(){
         BuiltinItemRendererRegistry.INSTANCE.register(ItemsRegister.FLIP_WHITE_BED, new CustomBedItemRenderer());
+        BuiltinItemRendererRegistry.INSTANCE.register(ItemsRegister.INVERT_RED_BED, new InvertRedItemRenderer());
     }
+
 }

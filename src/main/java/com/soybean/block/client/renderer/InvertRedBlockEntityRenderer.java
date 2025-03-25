@@ -67,11 +67,17 @@ public class InvertRedBlockEntityRenderer implements BlockEntityRenderer<InvertR
         matrices.push();
         matrices.translate(0.0F, 0.5625F, isFoot ? -1.0F : 0.0F);
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90.0F));
-//        matrices.translate(0.5, 1, 1);
-        // Invert the bed by rotating 180 degrees around X-axis
+        matrices.translate(0.5F, 0.5F, 0.5F);
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(180.0F));
-//        matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(180.0F + direction.asRotation()));
-//        matrices.translate(-0.5F, -0.5F, -0.5F);
+        //修改床的朝向
+        if(direction == Direction.NORTH || direction == Direction.SOUTH) {
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(direction.asRotation()));
+        } else {
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(180.0f + direction.asRotation()));
+        }
+
+        matrices.translate(-0.5F, -0.5F, -0.5F);
+        matrices.translate(0f,0f,0.5);
         VertexConsumer vertexConsumer = sprite.getVertexConsumer(vertexConsumers, RenderLayer::getEntitySolid);
         part.render(matrices, vertexConsumer, light, overlay);
         matrices.pop();
