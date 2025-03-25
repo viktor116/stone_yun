@@ -1,6 +1,7 @@
 package com.soybean.block.custom;
 
-import com.soybean.block.custom.entity.CustomBedBlockEntity;
+import com.soybean.block.custom.entity.FlipWhiteBedEntity;
+import com.soybean.block.custom.entity.InvertRedBedEntity;
 import net.minecraft.block.BedBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -13,13 +14,20 @@ import net.minecraft.util.math.BlockPos;
  * @description
  */
 public class CustomBedBlock extends BedBlock {
-    public CustomBedBlock(Settings settings) {
-        super(DyeColor.WHITE, settings);
+
+    public DyeColor color;
+    public CustomBedBlock(Settings settings, DyeColor color) {
+        super(color, settings);
+        this.color = color;
     }
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new CustomBedBlockEntity(pos, state);  // 返回自定义的 BlockEntity
+        if(this.color == DyeColor.WHITE) {
+            return new FlipWhiteBedEntity(pos, state);  // 返回自定义的 BlockEntity
+        }else {
+            return new InvertRedBedEntity(pos, state);
+        }
     }
 
 }

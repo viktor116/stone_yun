@@ -94,6 +94,23 @@ public class ModArmorMaterials {
                 map.put(ArmorItem.Type.BODY, 11);
             }), 5, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(ItemsRegister.LEAF_INGOT),
                     List.of(new ArmorMaterial.Layer(Identifier.of(InitValue.MOD_ID, "leaf"))),0,0));
+
+    //发光地衣套
+    public static final RegistryEntry<ArmorMaterial> LICHEN_MATERIAL = registerArmorMaterial("lichen",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+                map.put(ArmorItem.Type.BOOTS, 3);
+                map.put(ArmorItem.Type.LEGGINGS, 6);
+                map.put(ArmorItem.Type.CHESTPLATE, 8);
+                map.put(ArmorItem.Type.HELMET, 3);
+                map.put(ArmorItem.Type.BODY, 11);
+            }),
+                    15,  // 总耐久度类似于链甲
+                    SoundEvents.ITEM_ARMOR_EQUIP_IRON,  // 使用铁装备的音效
+                    () -> Ingredient.ofItems(Items.CACTUS),  // 使用仙人掌作为修复材料
+                    List.of(new ArmorMaterial.Layer(Identifier.of(InitValue.MOD_ID, "lichen"))), // 定义纹理
+                    2f,  // 硬度
+                    0f  // 击退抗性
+            ));
     public static void initialize() {
 
     };

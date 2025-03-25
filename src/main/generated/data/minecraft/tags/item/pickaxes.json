@@ -6,6 +6,8 @@
     "stone:bit_diamond_pickaxe",
     "stone:diamond_stick_pickaxe",
     "stone:dirt_pickaxe",
+    "stone:lichen_pickaxe",
+    "stone:copper_pickaxe",
     "stone:concrete_pickaxe"
   ]
 }

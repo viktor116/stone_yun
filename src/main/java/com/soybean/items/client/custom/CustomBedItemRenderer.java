@@ -1,23 +1,15 @@
 package com.soybean.items.client.custom;
 
-import com.soybean.block.ModBlock;
-import com.soybean.block.custom.entity.CustomBedBlockEntity;
 import com.soybean.config.InitValue;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
-import net.minecraft.block.BedBlock;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.enums.BedPart;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.block.BlockRenderManager;
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.render.entity.model.EntityModelLoader;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
@@ -25,7 +17,6 @@ import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.RotationAxis;
 
@@ -34,34 +25,6 @@ import net.minecraft.util.math.RotationAxis;
  * @date 2025/3/14 13:31
  * @description
  */
-//@Environment(EnvType.CLIENT)
-//public class CustomBedItemRenderer implements BuiltinItemRendererRegistry.DynamicItemRenderer {
-//    private BlockRenderManager blockRenderManager;
-//
-//    public CustomBedItemRenderer() {
-//        MinecraftClient client = MinecraftClient.getInstance();
-//        this.blockRenderManager = client.getBlockRenderManager();
-//    }
-//
-//    @Override
-//    public void render(ItemStack stack, ModelTransformationMode mode, MatrixStack matrices,
-//                       VertexConsumerProvider vertexConsumers, int light, int overlay) {
-//        if (blockRenderManager == null) {
-//            MinecraftClient client = MinecraftClient.getInstance();
-//            this.blockRenderManager = client.getBlockRenderManager();
-//        }
-//        matrices.push();
-//
-//        this.blockRenderManager.renderBlockAsEntity(
-//                ModBlock.FLIP_WHITE_BED.getDefaultState().with(BedBlock.PART, BedPart.HEAD),
-//                matrices, vertexConsumers, light, overlay);
-//
-////        this.blockRenderManager.renderBlockAsEntity(
-////                Blocks.YELLOW_BED.getDefaultState().with(BedBlock.PART, BedPart.HEAD),
-////                matrices, vertexConsumers, light, overlay);
-//        matrices.pop();
-//    }
-//}
 
 @Environment(EnvType.CLIENT)
 public class CustomBedItemRenderer implements BuiltinItemRendererRegistry.DynamicItemRenderer {

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "stone:block/glow_berry_wall_torch"
+    },
+    "facing=north": {
+      "model": "stone:block/glow_berry_wall_torch",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "stone:block/glow_berry_wall_torch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "stone:block/glow_berry_wall_torch",
+      "y": 180
+    }
+  }
+}

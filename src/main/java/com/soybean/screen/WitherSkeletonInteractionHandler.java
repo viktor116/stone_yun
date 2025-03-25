@@ -240,9 +240,9 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
     private static void addSpiderTrades(TradeOfferList offers) {
         // 假设你的默认交易是交换某种物品
         offers.add(new TradeOffer(
-                new TradedItem(Items.EMERALD, 1),  // 第一个输入物品(物品, 数量, 最大数量)
+                new TradedItem(Items.SPIDER_EYE, 1),  // 第一个输入物品(物品, 数量, 最大数量)
                 Optional.empty(),// 第二个输入物品(可选)
-                new ItemStack(Items.STRING,4),  // 输出物品
+                new ItemStack(Items.COBWEB,4),  // 输出物品
                 0,      // 当前使用次数
                 12,      // 最大使用次数
                 1,      // 经验值

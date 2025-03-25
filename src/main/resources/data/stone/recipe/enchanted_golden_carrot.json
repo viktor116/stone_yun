@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#S#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:gold_block"
+    },
+    "S": {
+      "item": "minecraft:carrot"
+    }
+  },
+  "result": {
+    "id": "stone:enchanted_golden_carrot",
+    "count": 1
+  }
+}

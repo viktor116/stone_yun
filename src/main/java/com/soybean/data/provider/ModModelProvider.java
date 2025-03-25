@@ -1,6 +1,7 @@
 package com.soybean.data.provider;
 
 import com.soybean.block.ModBlock;
+import com.soybean.config.InitValue;
 import com.soybean.items.ItemsRegister;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -100,7 +101,17 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.LEAF_CHESTPLATE,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.LEAF_LEGGINGS,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.LEAF_BOOTS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.COPPER_PICKAXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.LICHEN_PICKAXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.LICHEN_SWORD,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.LICHEN_HELMET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.LICHEN_CHESTPLATE,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.LICHEN_LEGGINGS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.LICHEN_BOOTS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.BLAZE_EYE, Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.CAKE, Models.GENERATED);
 
+        itemModelGenerator.register(ItemsRegister.ENCHANT_GOLD_CARROT, new Model(Optional.of(Identifier.ofVanilla("item/golden_carrot")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.SAND_BLOCK_SPAWN_EGG, new Model(Optional.of(Identifier.ofVanilla("block/sand")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.DIRT_BLOCK_SPAWN_EGG, new Model(Optional.of(Identifier.ofVanilla("block/dirt")), Optional.empty()));
 

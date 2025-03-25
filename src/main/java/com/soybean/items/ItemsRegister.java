@@ -27,7 +27,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.math.Direction;
 
-
 /**
  * @author soybean
  * @date 2024/10/8 15:44
@@ -91,7 +90,7 @@ public class ItemsRegister {
     public static final Item BIT_DIAMOND_SWORD = register(new SwordItem(ToolMaterials.DIAMOND,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 3, -2.4F))),"bit_diamond_sword");
     public static final Item BIT_DIAMOND_AXE = register(new AxeItem(ToolMaterials.DIAMOND,new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 5.0F, -3.0F))),"bit_diamond_axe");
     public static final Item BIT_DIAMOND_PICKAXE = register(new PickaxeItem(ToolMaterials.DIAMOND, (new Item.Settings()).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 1.0F, -2.8F))),"bit_diamond_pickaxe");
-    public static final Item ENDER_SWORD = register(new EnderSword(ToolMaterials.NETHERITE,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 3, -2.4F))),"ender_sword");
+    public static final Item ENDER_SWORD = register(new EnderSword(ToolMaterials.NETHERITE,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 3, -2.4F)).maxDamage(100)),"ender_sword");
     public static final Item FLAME_SWORD = register(new FlameSword(ToolMaterials.NETHERITE,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 3, -2.4F))),"flame_sword");
     public static final Item BROKEN_BOW = register(new Item(new Item.Settings()),"broken_bow");
     public static final Item WITHER_BOW = register(new BowItem(new Item.Settings().maxDamage(384)),"wither_bow");
@@ -135,11 +134,25 @@ public class ItemsRegister {
     public static final Item LEAF_LEGGINGS = register(new ArmorItem(ModArmorMaterials.LEAF_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(15))), "leaf_leggings");
     public static final Item LEAF_BOOTS = register(new ArmorItem(ModArmorMaterials.LEAF_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15))), "leaf_boots");
     public static final Item FLIP_WHITE_BED = register(new BedItem(ModBlock.FLIP_WHITE_BED,new Item.Settings().maxCount(1)), "flip_white_bed");
+    public static final Item GLOW_BERRY_TORCH = register(new VerticallyAttachableBlockItem(ModBlock.BLOW_BERRY_TORCH_BLOCK, ModBlock.BLOW_BERRY_WALL_TORCH, new Item.Settings(), Direction.DOWN),"glow_berry_torch");
+    public static final Item INVERT_RED_BED = register(new BedItem(ModBlock.INVERT_RED_BED,new Item.Settings().maxCount(1)), "invert_red_bed");
+    public static final Item COPPER_PICKAXE = register(new PickaxeItem(ToolMaterials.DIAMOND, (new Item.Settings()).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 1.0F, -2.8F))), "copper_pickaxe");
+    public static final Item LICHEN_PICKAXE = register(new PickaxeItem(ToolMaterials.DIAMOND, (new Item.Settings()).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 1.0F, -2.8F))), "lichen_pickaxe");
+    public static final Item LICHEN_SWORD = register(new SwordItem(ToolMaterials.DIAMOND,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 3, -2.4F))), "lichen_sword");
+    public static final Item LICHEN_HELMET = register(new LightEmittingArmorItem(ModArmorMaterials.LICHEN_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(15)), 10), "lichen_helmet");
+    public static final Item LICHEN_CHESTPLATE = register(new LightEmittingArmorItem(ModArmorMaterials.LICHEN_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(15)), 10), "lichen_chestplate");
+    public static final Item LICHEN_LEGGINGS = register(new LightEmittingArmorItem(ModArmorMaterials.LICHEN_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(15)), 10), "lichen_leggings");
+    public static final Item LICHEN_BOOTS = register(new LightEmittingArmorItem(ModArmorMaterials.LICHEN_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15)), 10), "lichen_boots");
+    public static final Item ENCHANT_GOLD_CARROT = register(new Item(new Item.Settings().food(FoodComponents.GOLDEN_APPLE).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true).rarity(Rarity.EPIC)), "enchanted_golden_carrot");
+    public static final Item BLAZE_EYE = register(new Item(new Item.Settings()), "blaze_eye");
+    public static final Item CAKE = register(new BlockItem(ModBlock.CAKE,(new Item.Settings()).maxCount(1)), "cake");
+
     public static void initialize() {
         ModRecipes.registerRecipes();
         PotionRegister.init(); //药水初始化
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);
         Registry.register(Registries.ITEM_GROUP, TRANSPARENT_GROUP_KEY, TRANSPARENT_ITEM_GROUP);
+
         ItemGroupEvents.modifyEntriesEvent(FUN_ITEM_GROUP_KEY).register(itemGroup->{
             itemGroup.add(AIR_PICKAXE);
             itemGroup.add(STONE_STICK);
@@ -244,6 +257,18 @@ public class ItemsRegister {
             itemGroup.add(LEAF_CHESTPLATE);
             itemGroup.add(LEAF_LEGGINGS);
             itemGroup.add(LEAF_BOOTS);
+            itemGroup.add(GLOW_BERRY_TORCH);
+            itemGroup.add(INVERT_RED_BED);
+            itemGroup.add(COPPER_PICKAXE);
+            itemGroup.add(LICHEN_PICKAXE);
+            itemGroup.add(LICHEN_SWORD);
+            itemGroup.add(LICHEN_HELMET);
+            itemGroup.add(LICHEN_CHESTPLATE);
+            itemGroup.add(LICHEN_LEGGINGS);
+            itemGroup.add(LICHEN_BOOTS);
+            itemGroup.add(ENCHANT_GOLD_CARROT);
+            itemGroup.add(BLAZE_EYE);
+            itemGroup.add(CAKE);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

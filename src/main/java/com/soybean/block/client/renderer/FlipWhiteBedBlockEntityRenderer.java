@@ -1,6 +1,6 @@
 package com.soybean.block.client.renderer;
 
-import com.soybean.block.custom.entity.CustomBedBlockEntity;
+import com.soybean.block.custom.entity.FlipWhiteBedEntity;
 import com.soybean.config.InitValue;
 import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import net.fabricmc.api.EnvType;
@@ -34,11 +34,11 @@ import net.minecraft.world.World;
  * @description
  */
 @Environment(EnvType.CLIENT)
-public class CustomBedBlockEntityRenderer implements BlockEntityRenderer<CustomBedBlockEntity> {
+public class FlipWhiteBedBlockEntityRenderer implements BlockEntityRenderer<FlipWhiteBedEntity> {
     private final ModelPart bedHead;
     private final ModelPart bedFoot;
 
-    public CustomBedBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
+    public FlipWhiteBedBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
         this.bedHead = ctx.getLayerModelPart(EntityModelLayers.BED_HEAD);
         this.bedFoot = ctx.getLayerModelPart(EntityModelLayers.BED_FOOT);
     }
@@ -74,7 +74,7 @@ public class CustomBedBlockEntityRenderer implements BlockEntityRenderer<CustomB
     }
 
     @Override
-    public void render(CustomBedBlockEntity bedBlockEntity, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, int j) {
+    public void render(FlipWhiteBedEntity bedBlockEntity, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, int j) {
         SpriteIdentifier spriteIdentifier = new SpriteIdentifier(
                 TexturedRenderLayers.BEDS_ATLAS_TEXTURE, // 使用 Minecraft 的 BED 纹理图集
                 Identifier.of(InitValue.MOD_ID, "entity/bed/" + bedBlockEntity.getSpecialName()) // 你的材质路径

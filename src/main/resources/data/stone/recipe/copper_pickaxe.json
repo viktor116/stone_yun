@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    " / ",
+    " / "
+  ],
+  "key": {
+    "/": {
+      "item": "minecraft:stick"
+    },
+    "S": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "result": {
+    "id": "stone:copper_pickaxe",
+    "count": 1
+  }
+}

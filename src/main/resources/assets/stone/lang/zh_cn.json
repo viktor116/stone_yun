@@ -95,7 +95,15 @@
   "item.stone.leaf_chestplate": "叶绿胸甲",
   "item.stone.leaf_leggings": "叶绿护腿",
   "item.stone.leaf_boots": "叶绿靴子",
-
+  "item.stone.copper_pickaxe": "铜镐",
+  "item.stone.lichen_pickaxe": "发光地衣镐",
+  "item.stone.lichen_sword": "发光地衣剑",
+  "item.stone.lichen_helmet": "发光地衣头盔",
+  "item.stone.lichen_chestplate": "发光地衣胸甲",
+  "item.stone.lichen_leggings": "发光地衣护腿",
+  "item.stone.lichen_boots": "发光地衣靴子",
+  "item.stone.enchanted_golden_carrot": "附魔金胡萝卜",
+  "item.stone.blaze_eye": "烈焰之眼",
 
   "item.minecraft.potion.effect.resistance": "抗性提升药水",
   "item.minecraft.splash_potion.effect.resistance": "喷溅型抗性提升药水",
@@ -110,7 +118,6 @@
   "item.minecraft.splash_potion.effect.hunger": "喷溅型饥饿药水",
   "item.minecraft.lingering_potion.effect.hunger": "滞留型饥饿药水",
 
-
   "container.stone.cactus": "仙人掌箱",
 
   "entity.stone.wheat_entity": "小麦生物",
@@ -120,6 +127,7 @@
 
   "block.stone.coal_ore": "煤矿石",
   "block.stone.soul_torch": "加速火把",
+  "block.stone.glow_berry_torch": "发光浆果火把",
   "block.stone.big_torch": "大型火把",
   "block.stone.fire": "火焰",
   "block.stone.static_fire": "可挖掘火焰",
@@ -138,6 +146,8 @@
   "block.stone.wooden_anvil": "木砧",
   "block.stone.leaf_ore": "叶绿矿",
   "block.stone.flip_white_bed": "倒着的床",
+  "block.stone.invert_red_bed": "倒着的床",
+  "block.stone.cake": "糕蛋",
 
 
   "merchant.stone.witherskeleton": "凋零骷髅交易",

@@ -12,14 +12,16 @@
 		"PortalForcerMixin",
 		"NetherPortalMixin",
 		"NetherPortalBlockMixin",
-		"AbstractFurnaceBlockEntityMixin"
+		"AbstractFurnaceBlockEntityMixin",
+		"ComposterMixin"
 	],
 	"client": [
 		"ItemRendererMixin",
 		"HeldItemRendererMixin",
 		"ArmorFeatureRendererMixin",
 		"FishingBobberEntityRendererMixin",
-		"AbstractClientPlayerEntityMixin"
+		"AbstractClientPlayerEntityMixin",
+		"DynamicLightMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
