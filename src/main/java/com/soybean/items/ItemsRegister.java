@@ -143,7 +143,7 @@ public class ItemsRegister {
     public static final Item LICHEN_CHESTPLATE = register(new LightEmittingArmorItem(ModArmorMaterials.LICHEN_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(15)), 10), "lichen_chestplate");
     public static final Item LICHEN_LEGGINGS = register(new LightEmittingArmorItem(ModArmorMaterials.LICHEN_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(15)), 10), "lichen_leggings");
     public static final Item LICHEN_BOOTS = register(new LightEmittingArmorItem(ModArmorMaterials.LICHEN_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15)), 10), "lichen_boots");
-    public static final Item ENCHANT_GOLD_CARROT = register(new Item(new Item.Settings().food(FoodComponents.GOLDEN_CARROT).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true).rarity(Rarity.EPIC)), "enchanted_golden_carrot");
+    public static final Item ENCHANT_GOLD_CARROT = register(new Item(new Item.Settings().food(FoodRegister.ENCHANTED_GOLDEN_CARROT).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true).rarity(Rarity.EPIC)), "enchanted_golden_carrot");
     public static final Item BLAZE_EYE = register(new BlazeEyeItem(new Item.Settings()), "blaze_eye");
     public static final Item CAKE = register(new BlockItem(ModBlock.CAKE,(new Item.Settings()).maxCount(1)), "cake");
 

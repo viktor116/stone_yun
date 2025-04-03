@@ -18,4 +18,9 @@ public class FoodRegister {
             .statusEffect(new StatusEffectInstance(StatusEffects.WITHER, 20*20, 0), 1.0f)
             .alwaysEdible().build();
     public static final FoodComponent FRIED_EGG = new FoodComponent.Builder().nutrition(5).saturationModifier(1.2f).build();
+    public static final FoodComponent ENCHANTED_GOLDEN_CARROT = new FoodComponent.Builder().nutrition(4).saturationModifier(1.2F)
+            .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 20*40, 1), 1.0F)
+            .statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 20*60*10, 1), 1.0F)
+            .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 20*60*10, 0), 1.0F)
+            .statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 20*60*4, 3), 1.0F).alwaysEdible().build();
 }
