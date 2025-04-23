@@ -28,6 +28,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.REACTOR);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.CONCRETE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.LEAF_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlock.COMPRESS_GOLD_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlock.COOKED_COBBLESTONE);
 
     }
 
@@ -110,6 +112,11 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.LICHEN_BOOTS,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.BLAZE_EYE, Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.CAKE, Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.ALUMINUM_INGOT,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.DOUBLE_ENCHANTED_GOLDEN_APPLE,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.HORSE_ARMOR_LICHEN,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.SUPER_STRENGTH_POTION,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.TOTEM_OF_DEAD_BACK,Models.GENERATED);
 
         itemModelGenerator.register(ItemsRegister.ENCHANT_GOLD_CARROT, new Model(Optional.of(Identifier.ofVanilla("item/golden_carrot")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.SAND_BLOCK_SPAWN_EGG, new Model(Optional.of(Identifier.ofVanilla("block/sand")), Optional.empty()));

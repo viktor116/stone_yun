@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:beef"
+    }
+  },
+  "result": {
+    "id": "stone:beef_furnace",
+    "count": 1
+  }
+}

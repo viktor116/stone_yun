@@ -3,6 +3,7 @@ package com.soybean.entity;
 
 import com.soybean.config.InitValue;
 import com.soybean.entity.custom.CustomBlockEntity;
+import com.soybean.entity.custom.EyeOfBlazeEntity;
 import com.soybean.entity.custom.HimEntity;
 import com.soybean.entity.custom.WheatEntity;
 import com.soybean.entity.vehicle.InvertBoatEntity;
@@ -45,6 +46,15 @@ public class EntityRegister {
             Identifier.of(InitValue.MOD_ID, "purple_boat"),
             FabricEntityTypeBuilder.<PurpleBoatEntity>create(SpawnGroup.MISC, PurpleBoatEntity::new)
                     .dimensions(EntityDimensions.fixed(1.375F, 0.5625F))
+                    .trackRangeBlocks(10)
+                    .build()
+    );
+
+    public static final EntityType<EyeOfBlazeEntity> BLAZE_EYE_ENTITY = Registry.register(
+            Registries.ENTITY_TYPE,
+            Identifier.of(InitValue.MOD_ID, "blaze_eye"),
+            FabricEntityTypeBuilder.<EyeOfBlazeEntity>create(SpawnGroup.MISC, EyeOfBlazeEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.25F, 0.25F))
                     .trackRangeBlocks(10)
                     .build()
     );

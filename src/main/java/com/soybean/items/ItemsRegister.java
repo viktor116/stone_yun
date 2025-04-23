@@ -113,7 +113,7 @@ public class ItemsRegister {
     public static final Item FLINT_AND_STEEL_DIG_FIRE = register(new FlintAndSteelDigFireItem(new Item.Settings().maxCount(1).maxDamage(64)), "flint_and_steel_dig_fire");
     public static final Item COD_SPAWN_EGG = register(new SpawnEggItem(EntityType.COD,0xac976b, 0xddd6c8,new Item.Settings()),"cod_spawn_egg");
     public static final Item NETHER_FISH = register(new Item(new Item.Settings().food(FoodComponents.COD)),"nether_fish");
-    public static final Item WARDEN_BUCKET = register(new WardenBucketItem(new Item.Settings().maxCount(1)),"warden_bucket");
+    public static final Item WARDEN_BUCKET = register(new WardenBucketItem(new Item.Settings().maxCount(1).food(FoodRegister.WARDEN_BUCKET)),"warden_bucket");
     public static final Item GUARDIAN_BUCKET = register(new GuardianBucketItem(new Item.Settings().maxCount(1)), "guardian_bucket");
     public static final Item LOW_ENCHANT_APPLE = register(new Item(new Item.Settings().food(FoodRegister.LOW_ENCHANT_APPLE).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true).rarity(Rarity.EPIC)), "low_enchant_apple");
     public static final Item COPPER_APPLE = register(new Item(new Item.Settings().food(FoodRegister.COPPER_APPLE).rarity(Rarity.RARE)), "copper_apple");
@@ -146,6 +146,13 @@ public class ItemsRegister {
     public static final Item ENCHANT_GOLD_CARROT = register(new Item(new Item.Settings().food(FoodRegister.ENCHANTED_GOLDEN_CARROT).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true).rarity(Rarity.EPIC)), "enchanted_golden_carrot");
     public static final Item BLAZE_EYE = register(new BlazeEyeItem(new Item.Settings()), "blaze_eye");
     public static final Item CAKE = register(new BlockItem(ModBlock.CAKE,(new Item.Settings()).maxCount(1)), "cake");
+    public static final Item DOUBLE_ENCHANTED_GOLDEN_APPLE = register(new Item(new Item.Settings().rarity(Rarity.EPIC).food(FoodComponents.ENCHANTED_GOLDEN_APPLE).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true)), "double_enchanted_golden_apple");
+    public static final Item ALUMINUM_INGOT = register(new Item(new Item.Settings()), "aluminum_ingot");
+    public static final Item COOKED_COBBLESTONE = register(new BlockItem(ModBlock.COOKED_COBBLESTONE,new Item.Settings().food(FoodRegister.COOKED_COBBLESTONE)), "cooked_cobblestone");
+    public static final Item HORSE_ARMOR_LICHEN = register(new AnimalArmorItem(ModArmorMaterials.LICHEN_MATERIAL, AnimalArmorItem.Type.EQUESTRIAN,false, new Item.Settings().maxCount(1)),"lichen_horse_armor");
+    public static final Item SUPER_STRENGTH_POTION = register(new Item(new Item.Settings().maxCount(1).food(FoodRegister.SUPER_STRENGTH_POTION)),"super_strength_potion");
+    public static final Item TOTEM_OF_DEAD_BACK = register(new Item(new Item.Settings().rarity(Rarity.EPIC).maxCount(1)),"totem_of_dead_back");
+
 
     public static void initialize() {
         ModRecipes.registerRecipes();
@@ -269,6 +276,14 @@ public class ItemsRegister {
             itemGroup.add(ENCHANT_GOLD_CARROT);
             itemGroup.add(BLAZE_EYE);
             itemGroup.add(CAKE);
+            itemGroup.add(ModBlock.COMPRESS_GOLD_BLOCK);
+            itemGroup.add(DOUBLE_ENCHANTED_GOLDEN_APPLE);
+            itemGroup.add(ALUMINUM_INGOT);
+            itemGroup.add(ModBlock.BEEF_FURNACE);
+            itemGroup.add(COOKED_COBBLESTONE);
+            itemGroup.add(HORSE_ARMOR_LICHEN);
+            itemGroup.add(SUPER_STRENGTH_POTION);
+            itemGroup.add(TOTEM_OF_DEAD_BACK);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

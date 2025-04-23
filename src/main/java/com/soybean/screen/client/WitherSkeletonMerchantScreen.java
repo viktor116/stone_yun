@@ -1,8 +1,7 @@
 package com.soybean.screen.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.soybean.config.InitValue;
-import com.soybean.screen.WitherSkeletonInteractionHandler;
+import com.soybean.screen.handler.WitherSkeletonInteractionHandler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.DrawContext;

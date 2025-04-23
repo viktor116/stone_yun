@@ -2,14 +2,14 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "stone:ender_powder"
+      "item": "minecraft:copper_ingot"
     },
     {
-      "item": "stone:blaze_pearl"
+      "item": "stone:aluminum_ingot"
     }
   ],
   "result": {
-    "id": "stone:blaze_eye",
+    "id": "minecraft:gold_ingot",
     "count": 1
   }
 }

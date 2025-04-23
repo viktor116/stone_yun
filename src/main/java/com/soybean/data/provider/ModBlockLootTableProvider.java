@@ -21,5 +21,7 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
         addDrop(ModBlock.LEAF_ORE);
         addDrop(ModBlock.DIRT_CRAFT_TABLE);
+        addDrop(ModBlock.COMPRESS_GOLD_BLOCK);
+        addDrop(ModBlock.BEEF_FURNACE);
     }
 }

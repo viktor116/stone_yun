@@ -102,8 +102,13 @@
   "item.stone.lichen_chestplate": "发光地衣胸甲",
   "item.stone.lichen_leggings": "发光地衣护腿",
   "item.stone.lichen_boots": "发光地衣靴子",
-  "item.stone.enchanted_golden_carrot": "附魔金胡萝卜",
+  "item.stone.enchanted_golden_carrot": "附魔附魔金胡萝卜",
   "item.stone.blaze_eye": "烈焰之眼",
+  "item.stone.double_enchanted_golden_apple": "附魔附魔金苹果",
+  "item.stone.aluminum_ingot": "铝锭",
+  "item.stone.lichen_horse_armor": "发光地衣马铠",
+  "item.stone.super_strength_potion": "超级力量药水",
+  "item.stone.totem_of_dead_back": "死亡回溯图腾",
 
   "item.minecraft.potion.effect.resistance": "抗性提升药水",
   "item.minecraft.splash_potion.effect.resistance": "喷溅型抗性提升药水",
@@ -148,6 +153,9 @@
   "block.stone.flip_white_bed": "倒着的床",
   "block.stone.invert_red_bed": "倒着的床",
   "block.stone.cake": "糕蛋",
+  "block.stone.compress_gold_block": "压缩金块",
+  "block.stone.beef_furnace": "牛肉熔炉",
+  "block.stone.cooked_cobblestone": "烤圆石",
 
 
   "merchant.stone.witherskeleton": "凋零骷髅交易",

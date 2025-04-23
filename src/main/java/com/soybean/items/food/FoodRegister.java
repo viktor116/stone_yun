@@ -23,4 +23,9 @@ public class FoodRegister {
             .statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 20*60*10, 1), 1.0F)
             .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 20*60*10, 0), 1.0F)
             .statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 20*60*4, 3), 1.0F).alwaysEdible().build();
+    public static final FoodComponent COOKED_COBBLESTONE = new FoodComponent.Builder().nutrition(8).saturationModifier(2f).build();
+    public static final FoodComponent WARDEN_BUCKET = new FoodComponent.Builder().nutrition(12).saturationModifier(4f).build();
+    public static final FoodComponent SUPER_STRENGTH_POTION = new FoodComponent.Builder().nutrition(0).saturationModifier(0)
+            .statusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20*30, 19), 1.0f)
+            .alwaysEdible().build();
 }

@@ -1,15 +1,12 @@
 package com.soybean.event.impl;
 
 import com.mojang.authlib.GameProfile;
-import com.soybean.config.InitValue;
 import com.soybean.items.ItemsRegister;
-import com.soybean.items.item.WardenBucketItem;
 import com.soybean.manager.HeadlessPlayerManager;
-import com.soybean.screen.WitherSkeletonInteractionHandler;
-import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import com.soybean.screen.action.PlayerAction;
+import com.soybean.screen.handler.WitherSkeletonInteractionHandler;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
-import net.minecraft.block.entity.SkullBlockEntity;
-import net.minecraft.component.ComponentType;
+import net.minecraft.client.render.entity.model.SkullEntityModel;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.ItemEntity;
@@ -20,15 +17,9 @@ import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.screen.MerchantScreenHandler;
-import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
-import net.minecraft.village.Merchant;
-import net.minecraft.village.SimpleMerchant;
 import net.minecraft.village.VillagerProfession;
 
 /**
@@ -65,6 +56,10 @@ public class EventUseEntity {
             }
             if(entity instanceof SpiderEntity){
                 WitherSkeletonInteractionHandler.handleRightClickOnSpider(player);
+                return ActionResult.SUCCESS;
+            }
+            if(entity instanceof SkeletonEntity){
+                PlayerAction.openSkullScreen(player);
                 return ActionResult.SUCCESS;
             }
             if(entity instanceof VillagerEntity villager){

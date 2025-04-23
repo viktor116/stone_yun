@@ -36,9 +36,9 @@ public class WardenBucketItem extends Item {
         ItemStack itemStack = player.getStackInHand(hand);
         BlockHitResult blockHitResult = raycast(world, player,RaycastContext.FluidHandling.NONE);
         if (blockHitResult.getType() == HitResult.Type.MISS) {
-            return TypedActionResult.pass(itemStack);
+            return super.use(world, player, hand);
         } else if (blockHitResult.getType() != HitResult.Type.BLOCK) {
-            return TypedActionResult.pass(itemStack);
+            return super.use(world, player, hand);
         } else {
             if(!world.isClient){
                 BlockPos blockPos = blockHitResult.getBlockPos();
@@ -78,11 +78,12 @@ public class WardenBucketItem extends Item {
 
                     // 触发Warden的感知
                     wardenEntity.increaseAngerAt(player, 150, true);
+                    return TypedActionResult.success(stack2, world.isClient());
                 }
-                return TypedActionResult.success(stack2, world.isClient());
+                return super.use(world, player, hand);
             }
         }
-        return TypedActionResult.success(itemStack, world.isClient());
+        return super.use(world, player, hand);
     }
 
 

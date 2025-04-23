@@ -1,4 +1,4 @@
-package com.soybean.screen;
+package com.soybean.screen.handler;
 
 import com.soybean.config.InitValue;
 import com.soybean.items.ItemsRegister;

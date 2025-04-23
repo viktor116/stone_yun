@@ -1,4 +1,4 @@
-package com.soybean.screen;
+package com.soybean.screen.handler;
 
 import net.minecraft.village.Merchant;
 

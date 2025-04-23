@@ -1,6 +1,6 @@
 package com.soybean.mixin;
 
-import com.soybean.screen.IMerchantWither;
+import com.soybean.screen.handler.IMerchantWither;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.mob.HostileEntity;

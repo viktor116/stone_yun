@@ -13,7 +13,8 @@
 		"NetherPortalMixin",
 		"NetherPortalBlockMixin",
 		"AbstractFurnaceBlockEntityMixin",
-		"ComposterMixin"
+		"ComposterMixin",
+		"MixinAbstractHorseEntity"
 	],
 	"client": [
 		"ItemRendererMixin",

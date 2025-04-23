@@ -96,5 +96,8 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ItemTags.BOW_ENCHANTABLE)
                 .add(ItemsRegister.WITHER_BOW)
                 .add(ItemsRegister.THE_END_BOW);
+
+        getOrCreateTagBuilder(ItemTags.HORSE_FOOD)
+                .add(ItemsRegister.DOUBLE_ENCHANTED_GOLDEN_APPLE);
     }
 }
