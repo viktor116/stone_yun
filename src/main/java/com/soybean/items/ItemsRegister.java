@@ -138,7 +138,7 @@ public class ItemsRegister {
     public static final Item INVERT_RED_BED = register(new BedItem(ModBlock.INVERT_RED_BED,new Item.Settings().maxCount(1)), "invert_red_bed");
     public static final Item COPPER_PICKAXE = register(new PickaxeItem(ToolMaterials.DIAMOND, (new Item.Settings()).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 1.0F, -2.8F))), "copper_pickaxe");
     public static final Item LICHEN_PICKAXE = register(new PickaxeItem(ToolMaterials.DIAMOND, (new Item.Settings()).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 1.0F, -2.8F))), "lichen_pickaxe");
-    public static final Item LICHEN_SWORD = register(new SwordItem(ToolMaterials.DIAMOND,new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 3, -2.4F))), "lichen_sword");
+    public static final Item LICHEN_SWORD = register(new LichenSwordItem(new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 3, -2.4F))), "lichen_sword");
     public static final Item LICHEN_HELMET = register(new LightEmittingArmorItem(ModArmorMaterials.LICHEN_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(15)), 10), "lichen_helmet");
     public static final Item LICHEN_CHESTPLATE = register(new LightEmittingArmorItem(ModArmorMaterials.LICHEN_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(15)), 10), "lichen_chestplate");
     public static final Item LICHEN_LEGGINGS = register(new LightEmittingArmorItem(ModArmorMaterials.LICHEN_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(15)), 10), "lichen_leggings");

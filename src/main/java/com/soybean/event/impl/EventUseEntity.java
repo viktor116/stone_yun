@@ -29,6 +29,8 @@ import net.minecraft.village.VillagerProfession;
  */
 public class EventUseEntity {
     public static void register(){
+
+
         UseEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
             if (entity instanceof EnderDragonEntity || entity instanceof EnderDragonPart) {
                 WitherSkeletonInteractionHandler.handleRightClickOnDragon(player);
@@ -58,8 +60,8 @@ public class EventUseEntity {
                 WitherSkeletonInteractionHandler.handleRightClickOnSpider(player);
                 return ActionResult.SUCCESS;
             }
-            if(entity instanceof SkeletonEntity){
-                PlayerAction.openSkullScreen(player);
+            if(entity instanceof SkeletonEntity skeleton){
+                PlayerAction.openSkullScreen(player,skeleton);
                 return ActionResult.SUCCESS;
             }
             if(entity instanceof VillagerEntity villager){
