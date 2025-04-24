@@ -31,7 +31,13 @@ public class EntityRegisterClient {
         EntityRendererRegistry.register(EntityRegister.PURPLE_BOAT_TYPE, PurpleBoatEntityRenderer::new);
         EntityRendererRegistry.register(CustomBlockEntity.SAND_BLOCK,CustomBlockEntityRenderer::new);
         EntityRendererRegistry.register(CustomBlockEntity.DIRT_BLOCK,CustomBlockEntityRenderer::new);
+        EntityRendererRegistry.register(EntityRegister.LICHEN_SWORD,LichenSwordEntityRenderer::new);
+
         EntityRendererRegistry.register(EntityRegister.BLAZE_EYE_ENTITY, (context) -> {
+            return new FlyingItemEntityRenderer(context, 1.0F, true);
+        });
+
+        EntityRendererRegistry.register(EntityRegister.TOTEM_OF_DEAD_ENTITY, (context) -> {
             return new FlyingItemEntityRenderer(context, 1.0F, true);
         });
     }

@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "stone:block/horizontal_black_nether_portal"
+  }
+}

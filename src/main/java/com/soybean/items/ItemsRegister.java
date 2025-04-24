@@ -151,7 +151,7 @@ public class ItemsRegister {
     public static final Item COOKED_COBBLESTONE = register(new BlockItem(ModBlock.COOKED_COBBLESTONE,new Item.Settings().food(FoodRegister.COOKED_COBBLESTONE)), "cooked_cobblestone");
     public static final Item HORSE_ARMOR_LICHEN = register(new AnimalArmorItem(ModArmorMaterials.LICHEN_MATERIAL, AnimalArmorItem.Type.EQUESTRIAN,false, new Item.Settings().maxCount(1)),"lichen_horse_armor");
     public static final Item SUPER_STRENGTH_POTION = register(new Item(new Item.Settings().maxCount(1).food(FoodRegister.SUPER_STRENGTH_POTION)),"super_strength_potion");
-    public static final Item TOTEM_OF_DEAD_BACK = register(new Item(new Item.Settings().rarity(Rarity.EPIC).maxCount(1)),"totem_of_dead_back");
+    public static final Item TOTEM_OF_DEAD_BACK = register(new TotemOfDeadItem(new Item.Settings().rarity(Rarity.EPIC).maxCount(1)),"totem_of_dead_back");
 
 
     public static void initialize() {
@@ -284,6 +284,7 @@ public class ItemsRegister {
             itemGroup.add(HORSE_ARMOR_LICHEN);
             itemGroup.add(SUPER_STRENGTH_POTION);
             itemGroup.add(TOTEM_OF_DEAD_BACK);
+            itemGroup.add(ModBlock.HORIZONTAL_BLACK_NETHER_PORTAL);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

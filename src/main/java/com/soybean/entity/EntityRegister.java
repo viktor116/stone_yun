@@ -2,14 +2,12 @@ package com.soybean.entity;
 
 
 import com.soybean.config.InitValue;
-import com.soybean.entity.custom.CustomBlockEntity;
-import com.soybean.entity.custom.EyeOfBlazeEntity;
-import com.soybean.entity.custom.HimEntity;
-import com.soybean.entity.custom.WheatEntity;
+import com.soybean.entity.custom.*;
 import com.soybean.entity.vehicle.InvertBoatEntity;
 import com.soybean.entity.vehicle.PurpleBoatEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -58,6 +56,30 @@ public class EntityRegister {
                     .trackRangeBlocks(10)
                     .build()
     );
+
+    public static final EntityType<TotemOfDeadEntity> TOTEM_OF_DEAD_ENTITY = Registry.register(
+            Registries.ENTITY_TYPE,
+            Identifier.of(InitValue.MOD_ID, "totem_of_dead_entity"),
+            FabricEntityTypeBuilder.<TotemOfDeadEntity>create(SpawnGroup.MISC, TotemOfDeadEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.25F, 0.25F))
+                    .trackRangeBlocks(10)
+                    .build()
+    );
+
+
+    public static final EntityType<LichenSwordEntity> LICHEN_SWORD = register(
+            "lichen_sword",
+            FabricEntityTypeBuilder.<LichenSwordEntity>create(SpawnGroup.MISC, LichenSwordEntity::new)
+                    .dimensions(EntityDimensions.fixed(1f, 1f))
+                    .trackRangeBlocks(4)
+                    .trackedUpdateRate(20)
+                    .build()
+    );
+
+    private static <T extends Entity> EntityType<T> register(String name, EntityType<T> entityType) {
+        return Registry.register(Registries.ENTITY_TYPE, Identifier.of(InitValue.MOD_ID, name), entityType);
+    }
+
 
     public static void initialize(){
         FabricDefaultAttributeRegistry.register(WheatEntity.WHEAT, WheatEntity.createAttributes());

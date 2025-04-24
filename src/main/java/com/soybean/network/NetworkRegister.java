@@ -13,7 +13,13 @@ public class NetworkRegister {
 
     public static void init() {
         PayloadTypeRegistry.playS2C().register(HeadlessPayload.ID, HeadlessPayload.PACKET_CODEC);
+        PayloadTypeRegistry.playS2C().register(EntityUUIDPayload.ID, EntityUUIDPayload.PACKET_CODEC);
+
         PayloadTypeRegistry.playC2S().register(HeadlessPayload.ID, HeadlessPayload.PACKET_CODEC);
+        PayloadTypeRegistry.playC2S().register(EntityUUIDPayload.ID, EntityUUIDPayload.PACKET_CODEC);
+
+        ServerPlayNetworking.registerGlobalReceiver(EntityUUIDPayload.ID, EntityUUIDPayload::receive);
+
         ServerPlayNetworking.registerGlobalReceiver(
                 HeadlessPayload.ID,
                 (payload, context) -> {

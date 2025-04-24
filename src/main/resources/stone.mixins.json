@@ -22,7 +22,9 @@
 		"ArmorFeatureRendererMixin",
 		"FishingBobberEntityRendererMixin",
 		"AbstractClientPlayerEntityMixin",
-		"DynamicLightMixin"
+		"DynamicLightMixin",
+		"MinecraftClientMixin",
+		"CameraMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

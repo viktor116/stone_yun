@@ -10,6 +10,7 @@ import com.soybean.items.ItemsRegister;
 import com.soybean.items.armor.ModArmorMaterials;
 import com.soybean.network.NetworkRegister;
 import com.soybean.screen.ScreenRegister;
+import com.soybean.utils.ServerEachTickTaskManager;
 import com.soybean.world.portals.PortalsRegister;
 import net.fabricmc.api.ModInitializer;
 
@@ -28,6 +29,7 @@ public class Stone implements ModInitializer {
 		ScreenHandlerTypeInit.initialize();
 		NetworkRegister.init();
 		ScreenRegister.init();
+		ServerEachTickTaskManager.init();
 
 		InitValue.LOGGER.info("make in soybeani =v=!");
 	}

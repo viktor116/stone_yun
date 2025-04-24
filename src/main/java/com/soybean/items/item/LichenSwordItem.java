@@ -1,5 +1,6 @@
 package com.soybean.items.item;
 
+import com.soybean.entity.custom.LichenSwordEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
@@ -54,7 +55,7 @@ public class LichenSwordItem extends Item implements ProjectileItem {
     }
 
     public UseAction getUseAction(ItemStack stack) {
-        return UseAction.SPEAR;
+        return UseAction.BOW;
     }
 
     public int getMaxUseTime(ItemStack stack, LivingEntity user) {
@@ -62,67 +63,39 @@ public class LichenSwordItem extends Item implements ProjectileItem {
     }
 
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-        if (user instanceof PlayerEntity playerEntity) {
-            int var6 = this.getMaxUseTime(stack, user) - remainingUseTicks;
-            if (var6 >= 10) {
-                float f = EnchantmentHelper.getTridentSpinAttackStrength(stack, playerEntity);
-                if (!(f > 0.0F) || playerEntity.isTouchingWaterOrRain()) {
-                    if (!isAboutToBreak(stack)) {
-                        RegistryEntry<SoundEvent> registryEntry = (RegistryEntry)EnchantmentHelper.getEffect(stack, EnchantmentEffectComponentTypes.TRIDENT_SOUND).orElse(SoundEvents.ITEM_TRIDENT_THROW);
-                        if (!world.isClient) {
-                            stack.damage(1, playerEntity, LivingEntity.getSlotForHand(user.getActiveHand()));
-                            if (f == 0.0F) {
-                                TridentEntity tridentEntity = new TridentEntity(world, playerEntity, stack);
-                                tridentEntity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 2.5F, 1.0F);
-                                if (playerEntity.isInCreativeMode()) {
-                                    tridentEntity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
-                                }
+        if (!(user instanceof PlayerEntity playerEntity)) return;
 
-                                world.spawnEntity(tridentEntity);
-                                world.playSoundFromEntity((PlayerEntity)null, tridentEntity, (SoundEvent)registryEntry.value(), SoundCategory.PLAYERS, 1.0F, 1.0F);
-                                if (!playerEntity.isInCreativeMode()) {
-                                    playerEntity.getInventory().removeOne(stack);
-                                }
-                            }
-                        }
+        int useDuration = this.getMaxUseTime(stack, user) - remainingUseTicks;
+        if (useDuration < MIN_DRAW_DURATION) return; // 确保至少拉了足够长的时间
 
-                        playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
-                        if (f > 0.0F) {
-                            float g = playerEntity.getYaw();
-                            float h = playerEntity.getPitch();
-                            float j = -MathHelper.sin(g * 0.017453292F) * MathHelper.cos(h * 0.017453292F);
-                            float k = -MathHelper.sin(h * 0.017453292F);
-                            float l = MathHelper.cos(g * 0.017453292F) * MathHelper.cos(h * 0.017453292F);
-                            float m = MathHelper.sqrt(j * j + k * k + l * l);
-                            j *= f / m;
-                            k *= f / m;
-                            l *= f / m;
-                            playerEntity.addVelocity((double)j, (double)k, (double)l);
-                            playerEntity.useRiptide(20, 8.0F, stack);
-                            if (playerEntity.isOnGround()) {
-                                float n = 1.1999999F;
-                                playerEntity.move(MovementType.SELF, new Vec3d(0.0, 1.1999999284744263, 0.0));
-                            }
+        if (!world.isClient) {
+            stack.damage(1, playerEntity, LivingEntity.getSlotForHand(user.getActiveHand()));
 
-                            world.playSoundFromEntity((PlayerEntity)null, playerEntity, (SoundEvent)registryEntry.value(), SoundCategory.PLAYERS, 1.0F, 1.0F);
-                        }
+            // 使用自定义的LichenSwordEntity代替TridentEntity
+            LichenSwordEntity swordEntity = new LichenSwordEntity(world, playerEntity, stack);
+            swordEntity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, THROW_SPEED, 3.0F);
 
-                    }
-                }
+            if (playerEntity.isInCreativeMode()) {
+                swordEntity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
             }
+
+            world.spawnEntity(swordEntity);
+            world.playSoundFromEntity(null, swordEntity, SoundEvents.ITEM_TRIDENT_THROW.value(), SoundCategory.PLAYERS, 1.0F, 1.0F);
+
+            if (!playerEntity.isInCreativeMode()) {
+                playerEntity.getInventory().removeOne(stack);
+            }
+
         }
+
+        playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
     }
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
-        if (isAboutToBreak(itemStack)) {
-            return TypedActionResult.fail(itemStack);
-        } else if (EnchantmentHelper.getTridentSpinAttackStrength(itemStack, user) > 0.0F && !user.isTouchingWaterOrRain()) {
-            return TypedActionResult.fail(itemStack);
-        } else {
-            user.setCurrentHand(hand);
-            return TypedActionResult.consume(itemStack);
-        }
+        // 简化条件，确保可以使用
+        user.setCurrentHand(hand);
+        return TypedActionResult.consume(itemStack);
     }
 
     private static boolean isAboutToBreak(ItemStack stack) {
@@ -141,9 +114,10 @@ public class LichenSwordItem extends Item implements ProjectileItem {
         return 1;
     }
 
+    @Override
     public ProjectileEntity createEntity(World world, Position pos, ItemStack stack, Direction direction) {
-        TridentEntity tridentEntity = new TridentEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack.copyWithCount(1));
-        tridentEntity.pickupType = PersistentProjectileEntity.PickupPermission.ALLOWED;
-        return tridentEntity;
+        LichenSwordEntity swordEntity = new LichenSwordEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack.copyWithCount(1));
+        swordEntity.pickupType = PersistentProjectileEntity.PickupPermission.ALLOWED;
+        return swordEntity;
     }
 }
