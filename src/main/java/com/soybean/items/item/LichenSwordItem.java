@@ -73,7 +73,7 @@ public class LichenSwordItem extends Item implements ProjectileItem {
 
             // 使用自定义的LichenSwordEntity代替TridentEntity
             LichenSwordEntity swordEntity = new LichenSwordEntity(world, playerEntity, stack);
-            swordEntity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, THROW_SPEED, 3.0F);
+            swordEntity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, THROW_SPEED, 0F);
 
             if (playerEntity.isInCreativeMode()) {
                 swordEntity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;

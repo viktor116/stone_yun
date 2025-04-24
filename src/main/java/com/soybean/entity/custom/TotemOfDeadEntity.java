@@ -109,9 +109,9 @@ public class TotemOfDeadEntity extends Entity implements FlyingItemEntity {
     public List<BlockPos> getExposedBlocks(World world, BlockPos origin) {
         List<BlockPos> result = new ArrayList<>();
 
-        for (int dx = -50; dx <= 50; dx++) {
-            for (int dy = -25; dy <= 25; dy++) {
-                for (int dz = -50; dz <= 50; dz++) {
+        for (int dx = -3; dx <= 3; dx++) {
+            for (int dy = -5; dy <= 5; dy++) {
+                for (int dz = -3; dz <= 3; dz++) {
                     BlockPos current = origin.add(dx, dy, dz);
                     BlockState state = world.getBlockState(current);
 
@@ -264,12 +264,12 @@ public class TotemOfDeadEntity extends Entity implements FlyingItemEntity {
 
     public void tick() {
         super.tick();
-        if (initListPos != null) {
+        if (this.age > 80 && initListPos != null) {
             int size = initListPos.size();
-            if (size > 30 && this.getWorld().getTime() % 1 == 0) {
+            if (size > 1 && this.getWorld().getTime() % 2 == 0) {
 
                 Set<BlockPos> needReplaceSet = new HashSet<>();
-                for (int i = 0; i < 30; i++) {
+                for (int i = 0; i < 1; i++) {
                     int randomInt = CommonUtils.getRandom().nextInt(0, size);
                     needReplaceSet.add(initListPos.get(randomInt));
                     size--;
@@ -289,7 +289,7 @@ public class TotemOfDeadEntity extends Entity implements FlyingItemEntity {
                         spawnFountainParticles(serverWorld, blockPos, blackDust, litBlockDust, grayDust);
 
                         // 安排定期生成粒子的任务
-                        ServerEachTickTaskManager.scheduleTask("totem_of_dead_" + UUID.randomUUID(), 100, 2, () -> {
+                        ServerEachTickTaskManager.scheduleTask("totem_of_dead_" + UUID.randomUUID().toString(), 10, 1, () -> {
                             if (serverWorld != null && serverWorld.isChunkLoaded(blockPos)) {
                                 spawnFountainParticles(serverWorld, blockPos, blackDust, litBlockDust, grayDust);
                             }
@@ -352,7 +352,7 @@ public class TotemOfDeadEntity extends Entity implements FlyingItemEntity {
         if (!this.getWorld().isClient) {
             this.setPosition(d, e, f);
             ++this.lifespan;
-            if (this.lifespan > 400 && !this.getWorld().isClient) {
+            if (this.lifespan > 600 && !this.getWorld().isClient) {
                 this.playSound(SoundEvents.ENTITY_ENDER_EYE_DEATH, 1.0F, 1.0F);
                 this.discard();
                 if (this.dropsItem) {

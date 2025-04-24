@@ -71,7 +71,7 @@ public class EntityRegister {
             "lichen_sword",
             FabricEntityTypeBuilder.<LichenSwordEntity>create(SpawnGroup.MISC, LichenSwordEntity::new)
                     .dimensions(EntityDimensions.fixed(1f, 1f))
-                    .trackRangeBlocks(4)
+                    .trackRangeBlocks(300)
                     .trackedUpdateRate(20)
                     .build()
     );
