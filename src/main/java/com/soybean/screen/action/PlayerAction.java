@@ -19,7 +19,7 @@ public class PlayerAction {
     private static final Text CONTAINER_TITLE = Text.of("骷髅身体");
 
     public static void openSkullScreen(PlayerEntity player, SkeletonEntity skeleton) {
-        SimpleInventory simpleInventory = new SimpleInventory(27);
+        SimpleInventory simpleInventory = new SimpleInventory(54);
         player.openHandledScreen(new SimpleNamedScreenHandlerFactory(
                 (syncId, playerInventory, playerEntity) ->
                         new SkullScreenHandler(
