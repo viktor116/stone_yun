@@ -35,6 +35,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlock.MAIN_WORLD_DEBRIS)
                 .add(ModBlock.COAL_ORE)
+                .add(ModBlock.ALUMINUM_ORE)
                 .add(ModBlock.CONCRETE)
                 .add(ModBlock.COMPRESS_GOLD_BLOCK);
         getOrCreateTagBuilder(BlockTags.ANVIL)

@@ -2,6 +2,7 @@
   "values": [
     "stone:main_world_debris",
     "stone:coal_ore",
+    "stone:aluminum_ore",
     "stone:concrete",
     "stone:compress_gold_block"
   ]

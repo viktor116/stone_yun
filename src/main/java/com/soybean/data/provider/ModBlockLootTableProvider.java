@@ -1,6 +1,7 @@
 package com.soybean.data.provider;
 
 import com.soybean.block.ModBlock;
+import com.soybean.items.ItemsRegister;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.registry.RegistryWrapper;
@@ -23,5 +24,6 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlock.DIRT_CRAFT_TABLE);
         addDrop(ModBlock.COMPRESS_GOLD_BLOCK);
         addDrop(ModBlock.BEEF_FURNACE);
+        addDrop(ModBlock.ALUMINUM_ORE, ItemsRegister.RAW_ALUMINUM);
     }
 }

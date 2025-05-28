@@ -66,6 +66,8 @@ public class ModBlock {
     public static final Block HORIZONTAL_BLACK_NETHER_PORTAL = register("horizontal_black_nether_portal", new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_PURPLE).noCollision().strength(-1.0F).nonOpaque().sounds(BlockSoundGroup.GLASS).luminance((state) -> 11)), true);
 
     public static final Block COAL_ORE = register("coal_ore", new ExperienceDroppingBlock(UniformIntProvider.create(0, 2), AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)),true);
+    public static final Block ALUMINUM_ORE = register("aluminum_ore", new ExperienceDroppingBlock(UniformIntProvider.create(0, 2), AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)),true);
+
     public static final Block REACTOR = register("reactor", new Block(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)),true);
     public static final Block TRANSPARENT_BLOCK = register("transparent_block", new Block(AbstractBlock.Settings.create().mapColor(MapColor.GRAY).instrument(NoteBlockInstrument.BASEDRUM).nonOpaque().strength(2F,3F) ),true);
     public static final Block CONCRETE = register("concrete", new Block(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2F, 3.0F)),true);

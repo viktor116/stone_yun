@@ -143,7 +143,7 @@ public class ItemsRegister {
     public static final Item LICHEN_CHESTPLATE = register(new LightEmittingArmorItem(ModArmorMaterials.LICHEN_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(15)), 10), "lichen_chestplate");
     public static final Item LICHEN_LEGGINGS = register(new LightEmittingArmorItem(ModArmorMaterials.LICHEN_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(15)), 10), "lichen_leggings");
     public static final Item LICHEN_BOOTS = register(new LightEmittingArmorItem(ModArmorMaterials.LICHEN_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15)), 10), "lichen_boots");
-    public static final Item ENCHANT_GOLD_CARROT = register(new Item(new Item.Settings().food(FoodRegister.ENCHANTED_GOLDEN_CARROT).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true).rarity(Rarity.EPIC)), "enchanted_golden_carrot");
+    public static final Item DOUBLE_ENCHANT_GOLD_CARROT = register(new Item(new Item.Settings().food(FoodRegister.ENCHANTED_GOLDEN_CARROT).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true).rarity(Rarity.EPIC)), "enchanted_golden_carrot");
     public static final Item BLAZE_EYE = register(new BlazeEyeItem(new Item.Settings()), "blaze_eye");
     public static final Item CAKE = register(new BlockItem(ModBlock.CAKE,(new Item.Settings()).maxCount(1)), "cake");
     public static final Item DOUBLE_ENCHANTED_GOLDEN_APPLE = register(new Item(new Item.Settings().rarity(Rarity.EPIC).food(FoodComponents.ENCHANTED_GOLDEN_APPLE).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true)), "double_enchanted_golden_apple");
@@ -152,6 +152,8 @@ public class ItemsRegister {
     public static final Item HORSE_ARMOR_LICHEN = register(new AnimalArmorItem(ModArmorMaterials.LICHEN_MATERIAL, AnimalArmorItem.Type.EQUESTRIAN,false, new Item.Settings().maxCount(1)),"lichen_horse_armor");
     public static final Item SUPER_STRENGTH_POTION = register(new Item(new Item.Settings().maxCount(1).food(FoodRegister.SUPER_STRENGTH_POTION)),"super_strength_potion");
     public static final Item TOTEM_OF_DEAD_BACK = register(new TotemOfDeadItem(new Item.Settings().rarity(Rarity.EPIC).maxCount(1)),"totem_of_dead_back");
+    public static final Item RAW_ALUMINUM = register(new Item(new Item.Settings()),"raw_aluminum");
+    public static final Item ENCHANTED_GOLDEN_CARROT = register(new Item(new Item.Settings().rarity(Rarity.EPIC).food(FoodComponents.ENCHANTED_GOLDEN_APPLE).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true)), "enchanted_golden_carrot_2");
 
 
     public static void initialize() {
@@ -273,7 +275,7 @@ public class ItemsRegister {
             itemGroup.add(LICHEN_CHESTPLATE);
             itemGroup.add(LICHEN_LEGGINGS);
             itemGroup.add(LICHEN_BOOTS);
-            itemGroup.add(ENCHANT_GOLD_CARROT);
+            itemGroup.add(DOUBLE_ENCHANT_GOLD_CARROT);
             itemGroup.add(BLAZE_EYE);
             itemGroup.add(CAKE);
             itemGroup.add(ModBlock.COMPRESS_GOLD_BLOCK);
@@ -285,6 +287,9 @@ public class ItemsRegister {
             itemGroup.add(SUPER_STRENGTH_POTION);
             itemGroup.add(TOTEM_OF_DEAD_BACK);
             itemGroup.add(ModBlock.HORIZONTAL_BLACK_NETHER_PORTAL);
+            itemGroup.add(RAW_ALUMINUM);
+            itemGroup.add(ModBlock.ALUMINUM_ORE);
+            itemGroup.add(ENCHANTED_GOLDEN_CARROT);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

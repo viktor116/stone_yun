@@ -7,10 +7,10 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:apple"
+      "item": "minecraft:gold_ingot"
     },
     "S": {
-      "item": "minecraft:gold_ingot"
+      "item": "minecraft:carrot"
     }
   },
   "result": {
