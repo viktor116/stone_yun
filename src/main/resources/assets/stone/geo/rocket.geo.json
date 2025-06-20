@@ -1,0 +1,43 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.飞弹 - Converted",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "base",
+					"parent": "root",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [-3, 9, -20], "size": [6, 4, 40], "uv": [0, 0]},
+						{"origin": [-3, 7, -23], "size": [6, 6, 3], "uv": [0, 50]}
+					]
+				},
+				{
+					"name": "wing",
+					"parent": "root",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [3, 11, -18], "size": [21, 1, 2], "uv": [0, 44]},
+						{"origin": [-24, 11, -18], "size": [21, 1, 2], "uv": [46, 44]},
+						{"origin": [3, 11, 12], "size": [18, 1, 2], "uv": [0, 47]},
+						{"origin": [-21, 11, 12], "size": [18, 1, 2], "uv": [40, 47]},
+						{"origin": [2, 10, 16], "size": [1, 18, 2], "pivot": [4, 10, 16], "rotation": [0, 0, 22.5], "uv": [18, 50]},
+						{"origin": [-3, 10, 16], "size": [1, 18, 2], "pivot": [-4, 10, 18], "rotation": [0, 0, -22.5], "uv": [24, 50]}
+					]
+				}
+			]
+		}
+	]
+}

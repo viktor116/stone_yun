@@ -11,7 +11,6 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
-import net.minecraft.entity.EntityType;
 
 /**
  * @author soybean
@@ -32,6 +31,8 @@ public class EntityRegisterClient {
         EntityRendererRegistry.register(CustomBlockEntity.SAND_BLOCK,CustomBlockEntityRenderer::new);
         EntityRendererRegistry.register(CustomBlockEntity.DIRT_BLOCK,CustomBlockEntityRenderer::new);
         EntityRendererRegistry.register(EntityRegister.LICHEN_SWORD,LichenSwordEntityRenderer::new);
+        EntityRendererRegistry.register(EntityRegister.MAGNETIC_BOMB_ENTITY_TYPE, MagneticBombEntityRenderer::new);
+        EntityRendererRegistry.register(EntityRegister.ROCKET_ENTITY_TYPE, RocketEntityRenderer::new);
 
         EntityRendererRegistry.register(EntityRegister.BLAZE_EYE_ENTITY, (context) -> {
             return new FlyingItemEntityRenderer(context, 1.0F, true);
@@ -40,5 +41,7 @@ public class EntityRegisterClient {
         EntityRendererRegistry.register(EntityRegister.TOTEM_OF_DEAD_ENTITY, (context) -> {
             return new FlyingItemEntityRenderer(context, 1.0F, true);
         });
+
+        EntityRendererRegistry.register(EntityRegister.BLUE_ARROW_ENTITY,BlueArrowEntityRenderer::new);
     }
 }

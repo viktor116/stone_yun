@@ -1,0 +1,29 @@
+{
+  "blue_arrow": {
+    "sounds": [
+      "stone:blue_arrow/blue_arrow_0",
+      "stone:blue_arrow/blue_arrow_1",
+      "stone:blue_arrow/blue_arrow_2",
+      "stone:blue_arrow/blue_arrow_3",
+      "stone:blue_arrow/blue_arrow_4",
+      "stone:blue_arrow/blue_arrow_5"
+    ]
+  },
+  "already_bomb": {
+    "sounds": [
+      "stone:misc/already_bomb"
+    ]
+  },
+  "bomb_time": {
+    "sounds": [
+      "stone:misc/bomb_time_0",
+      "stone:misc/bomb_time_1",
+      "stone:misc/bomb_time_2"
+    ]
+  },
+  "rocket_launcher": {
+    "sounds": [
+      "stone:misc/rocket_launcher"
+    ]
+  }
+}

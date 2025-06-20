@@ -18,7 +18,12 @@ import java.util.Random;
  * @description
  */
 public class CommonUtils {
+
     private static final Random RANDOM = new Random();
+    //无动画默认占位
+    public static final String DEFAULT_ANIMATION = "animations/default.animation.json";
+
+
     public static void spawnParticlesAndPlaySound(World world, Entity entity, ParticleEffect particleType, SoundEvent soundEvent, SoundCategory soundCategory, int particleCount, double particleSpeed, double particleHeight, float volume, float pitch) {
         if (!world.isClient) {
             ((ServerWorld)world).spawnParticles(particleType,

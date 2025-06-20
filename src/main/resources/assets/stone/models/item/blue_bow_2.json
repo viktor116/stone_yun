@@ -1,0 +1,6 @@
+{
+    "parent": "stone:item/blue_bow_base",
+    "textures": {
+        "layer0": "stone:item/blue_bow_2"
+    }
+}

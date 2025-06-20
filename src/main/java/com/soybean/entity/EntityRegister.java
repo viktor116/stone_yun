@@ -11,9 +11,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.World;
 
 /**
  * @author soybean
@@ -76,10 +78,36 @@ public class EntityRegister {
                     .build()
     );
 
+    public static final EntityType<BlueArrowEntity> BLUE_ARROW_ENTITY = register(
+            "blue_arrow_entity",
+            EntityType.Builder.create((EntityType<BlueArrowEntity> entityType, World world)->new BlueArrowEntity(entityType,world),SpawnGroup.MISC)
+                    .dimensions(0.5f, 0.5f)
+                    .maxTrackingRange(200)
+                    .eyeHeight(0.13F)
+                    .trackingTickInterval(20)
+                    .build());
+
+    public static final EntityType<MagneticBombEntity> MAGNETIC_BOMB_ENTITY_TYPE = register(
+            "magnetic_bomb_entity",
+            EntityType.Builder.create((EntityType<MagneticBombEntity> entityType, World world)->new MagneticBombEntity(entityType,world),SpawnGroup.MISC)
+                    .dimensions(0.5f, 0.5f)
+                    .maxTrackingRange(200)
+                    .eyeHeight(0.13F)
+                    .trackingTickInterval(20)
+                    .build());
+
+    public static final EntityType<RocketEntity> ROCKET_ENTITY_TYPE = register(
+            "rocket_entity",
+            EntityType.Builder.create((EntityType<RocketEntity> entityType, World world)->new RocketEntity(entityType,world),SpawnGroup.MISC)
+                    .dimensions(2f, 1f)
+                    .maxTrackingRange(200)
+                    .eyeHeight(0.13F)
+                    .trackingTickInterval(1)
+                    .build());
+
     private static <T extends Entity> EntityType<T> register(String name, EntityType<T> entityType) {
         return Registry.register(Registries.ENTITY_TYPE, Identifier.of(InitValue.MOD_ID, name), entityType);
     }
-
 
     public static void initialize(){
         FabricDefaultAttributeRegistry.register(WheatEntity.WHEAT, WheatEntity.createAttributes());

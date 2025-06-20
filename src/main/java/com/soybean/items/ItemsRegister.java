@@ -154,7 +154,10 @@ public class ItemsRegister {
     public static final Item TOTEM_OF_DEAD_BACK = register(new TotemOfDeadItem(new Item.Settings().rarity(Rarity.EPIC).maxCount(1)),"totem_of_dead_back");
     public static final Item RAW_ALUMINUM = register(new Item(new Item.Settings()),"raw_aluminum");
     public static final Item ENCHANTED_GOLDEN_CARROT = register(new Item(new Item.Settings().rarity(Rarity.EPIC).food(FoodComponents.ENCHANTED_GOLDEN_APPLE).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true)), "enchanted_golden_carrot_2");
-
+    public static final Item MAGNETIC_BOMB = register(new MagneticBombItem(new Item.Settings()), "magnetic_bomb");
+    public static final Item ROCKET_LAUNCHER = register(new RocketLauncherItem(new Item.Settings()), "rocket_launcher");
+    public static final Item ROCKET = register(new RocketItem(new Item.Settings()), "rocket");
+    public static final Item BLUE_BOW = register(new BlueBowItem(new Item.Settings().maxCount(1)), "blue_bow");
 
     public static void initialize() {
         ModRecipes.registerRecipes();
@@ -290,6 +293,10 @@ public class ItemsRegister {
             itemGroup.add(RAW_ALUMINUM);
             itemGroup.add(ModBlock.ALUMINUM_ORE);
             itemGroup.add(ENCHANTED_GOLDEN_CARROT);
+            itemGroup.add(MAGNETIC_BOMB);
+            itemGroup.add(ROCKET_LAUNCHER);
+            itemGroup.add(ROCKET);
+            itemGroup.add(BLUE_BOW);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

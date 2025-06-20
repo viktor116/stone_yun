@@ -9,6 +9,7 @@ public class ModModelPredicates {
     public static void registerModelPredicates(){
         registerCustomBow(ItemsRegister.WITHER_BOW);
         registerCustomBow(ItemsRegister.THE_END_BOW);
+        registerCustomBow(ItemsRegister.BLUE_BOW);
     }
     public static void registerCustomBow(Item item){
         ModelPredicateProviderRegistry.register(item, Identifier.ofVanilla("pull"), (stack, world, entity, seed) -> {
