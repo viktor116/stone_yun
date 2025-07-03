@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.minecraft.client.render.entity.model.SkullEntityModel;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonPart;
@@ -20,7 +21,11 @@ import net.minecraft.item.*;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.village.VillagerProfession;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.passive.IronGolemEntity;
+import net.minecraft.world.World;
 
 /**
  * @author soybean
@@ -48,22 +53,34 @@ public class EventUseEntity {
                 WitherSkeletonInteractionHandler.handleRightClickOnPiglin(player);
                 return ActionResult.SUCCESS;
             }
+            //末影人
             if(entity instanceof EndermanEntity){
-                WitherSkeletonInteractionHandler.handleRightClickOnEnderman(player);
+                handleEntityAsItem(entity,player);
+//                WitherSkeletonInteractionHandler.handleRightClickOnEnderman(player);
                 return ActionResult.SUCCESS;
             }
+            //烈焰人
             if(entity instanceof BlazeEntity){
-                WitherSkeletonInteractionHandler.handleRightClickOnBlaze(player);
+                handleEntityAsItem(entity,player);
+//                WitherSkeletonInteractionHandler.handleRightClickOnBlaze(player);
                 return ActionResult.SUCCESS;
             }
             if(entity instanceof SpiderEntity){
                 WitherSkeletonInteractionHandler.handleRightClickOnSpider(player);
                 return ActionResult.SUCCESS;
             }
+            //骷髅
             if(entity instanceof SkeletonEntity skeleton){
-                PlayerAction.openSkullScreen(player,skeleton);
+//                PlayerAction.openSkullScreen(player,skeleton); //打开骷髅身体
+                handleEntityAsItem(entity,player);
                 return ActionResult.SUCCESS;
             }
+            //苦力怕
+            if(entity instanceof CreeperEntity creeperEntity){
+                handleEntityAsItem(entity,player);
+                return ActionResult.SUCCESS;
+            }
+
             if(entity instanceof VillagerEntity villager){
                 VillagerProfession profession = villager.getVillagerData().getProfession();
                 if(profession == VillagerProfession.NONE){
@@ -112,6 +129,38 @@ public class EventUseEntity {
                             world.spawnEntity(itemEntity);
                         }
                     }
+                }
+                return ActionResult.SUCCESS;
+            }
+            
+            // 铁傀儡
+            if (entity instanceof IronGolemEntity ironGolem) {
+                if (!world.isClient) {
+                    // 获取铁傀儡的位置
+                    BlockPos golemPos = ironGolem.getBlockPos();
+                    
+                    // 生成4个铁块，按照铁傀儡的正确摆放方式
+                    // 铁傀儡的摆放方式：上面3个铁块（T字形），下面中间1个铁块，中间是南瓜头
+                    world.setBlockState(golemPos, Blocks.IRON_BLOCK.getDefaultState()); // 底部中心
+                    world.setBlockState(golemPos.up(), Blocks.IRON_BLOCK.getDefaultState()); // 中间（身体）
+                    world.setBlockState(golemPos.up().west(), Blocks.IRON_BLOCK.getDefaultState()); // 上面北边（左臂）
+                    world.setBlockState(golemPos.up().east(), Blocks.IRON_BLOCK.getDefaultState()); // 上面东边（右臂）
+                    
+                    // 给玩家一个南瓜头
+                    ItemStack pumpkinStack = new ItemStack(Items.CARVED_PUMPKIN);
+                    if (!player.getInventory().insertStack(pumpkinStack)) {
+                        // 如果物品栏满了，在玩家位置生成物品实体
+                        ItemEntity itemEntity = new ItemEntity(world, player.getX(), player.getY(), player.getZ(), pumpkinStack);
+                        world.spawnEntity(itemEntity);
+                    }
+                    
+                    // 播放铁傀儡攻击音效
+                    world.playSound(null, golemPos, SoundEvents.ENTITY_IRON_GOLEM_ATTACK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    
+                    // 让铁傀儡消失
+                    ironGolem.discard();
+                    
+                    return ActionResult.SUCCESS;
                 }
                 return ActionResult.SUCCESS;
             }
@@ -185,5 +234,42 @@ public class EventUseEntity {
             }
             return ActionResult.PASS;
         });
+    }
+
+    public static void handleEntityAsItem(Entity entity,PlayerEntity player){
+        World world = player.getWorld();
+        BlockPos blockPos = entity.getBlockPos();
+
+        // 播放砍伐音效
+        world.playSound(null, blockPos, SoundEvents.ENTITY_SNIFFER_DROP_SEED, SoundCategory.PLAYERS, 1.0F, 1.0F);
+
+        // 生成树皮物品
+        ItemStack stack = null;
+        if(entity instanceof CreeperEntity){
+            stack = ItemsRegister.CREEPER_ITEM.getDefaultStack();
+        }else if(entity instanceof SkeletonEntity){
+            stack = ItemsRegister.SKELETON_ITEM.getDefaultStack();
+        }else if(entity instanceof EndermanEntity){
+            stack = ItemsRegister.ENDER_MAN_ITEM.getDefaultStack();
+        }else if(entity instanceof BlazeEntity){
+            stack = ItemsRegister.FLAME_MAN_ITEM.getDefaultStack();
+        }
+
+        stack.setCount(1);
+
+        // 在方块周围随机位置生成物品实体
+        double randomX = blockPos.getX() + 0.2 + world.getRandom().nextDouble() * 0.6; // 0.2-0.8范围
+        double randomY = blockPos.getY() + 0.5;
+        double randomZ = blockPos.getZ() + 0.2 + world.getRandom().nextDouble() * 0.6; // 0.2-0.8范围
+
+        ItemEntity itemEntity = new ItemEntity(
+                world,
+                randomX,
+                randomY,
+                randomZ,
+                stack
+        );
+        entity.discard();
+        world.spawnEntity(itemEntity);
     }
 }

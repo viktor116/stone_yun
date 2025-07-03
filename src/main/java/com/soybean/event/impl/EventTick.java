@@ -36,15 +36,16 @@ public class EventTick {
     public static void codDamageHandler() {
         AtomicInteger codNum = new AtomicInteger();
         ServerTickEvents.END_WORLD_TICK.register((ServerWorld world) -> {
+            //鳕鱼
             for (Entity entity : world.iterateEntities()) {
-                if (entity instanceof CodEntity cod) {
-                    if(codNum.get() / 20 > 1){
-                        cod.damage(world.getDamageSources().generic(), 1.0F);
-                        codNum.set(0);
-                    }else {
-                        codNum.getAndIncrement();
-                    }
-                }
+//                if (entity instanceof CodEntity cod) {
+//                    if(codNum.get() / 20 > 1){
+//                        cod.damage(world.getDamageSources().generic(), 1.0F);
+//                        codNum.set(0);
+//                    }else {
+//                        codNum.getAndIncrement();
+//                    }
+//                }
             }
         });
     }

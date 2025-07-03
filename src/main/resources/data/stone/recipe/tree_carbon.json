@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": {
+    "item": "stone:tree_bark"
+  },
+  "result": {
+    "id": "stone:tree_carbon"
+  },
+  "experience": 0.1,
+  "cookingtime": 200
+}

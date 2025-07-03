@@ -104,6 +104,16 @@ public class EntityRegister {
                     .eyeHeight(0.13F)
                     .trackingTickInterval(1)
                     .build());
+    
+    // 注册床弹射物实体
+    public static final EntityType<BedProjectileEntity> BED_PROJECTILE_ENTITY = register(
+            "bed_projectile",
+            FabricEntityTypeBuilder.<BedProjectileEntity>create(SpawnGroup.MISC, BedProjectileEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.75f, 0.25f))
+                    .trackRangeBlocks(128)
+                    .trackedUpdateRate(10)
+                    .build()
+    );
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType<T> entityType) {
         return Registry.register(Registries.ENTITY_TYPE, Identifier.of(InitValue.MOD_ID, name), entityType);

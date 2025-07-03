@@ -54,10 +54,10 @@ public class RocketEntityRenderer extends GeoEntityRenderer<RocketEntity> {
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees((float)pitch));
 
         // 调试输出（可选）
-        if (entity.age % 20 == 0) {
-            System.out.println("Velocity-based rotation - Yaw: " + yaw + ", Pitch: " + pitch);
-            System.out.println("Velocity: " + velocity);
-        }
+//        if (entity.age % 20 == 0) {
+//            System.out.println("Velocity-based rotation - Yaw: " + yaw + ", Pitch: " + pitch);
+//            System.out.println("Velocity: " + velocity);
+//        }
 
         super.applyRotations(entity, matrices, ageInTicks, rotationYaw, partialTick, scale);
     }

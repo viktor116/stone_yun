@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "stone:flame_man_item"
+    }
+  ],
+  "result": {
+    "id": "stone:blaze_pearl",
+    "count": 16
+  }
+}

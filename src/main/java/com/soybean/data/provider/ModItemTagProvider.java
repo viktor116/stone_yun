@@ -42,6 +42,9 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
                 .add(ItemsRegister.DIRT_AXE)
                 .add(ItemsRegister.TRANSPARENT_AXE);
 
+        getOrCreateTagBuilder(ItemTags.WOLF_FOOD)
+                .add(ItemsRegister.SKELETON_ITEM);
+
         getOrCreateTagBuilder(ItemTags.PICKAXES)
                 .add(ItemsRegister.STONE_PICKAXE)
                 .add(ItemsRegister.CACTUS_PICKAXE)

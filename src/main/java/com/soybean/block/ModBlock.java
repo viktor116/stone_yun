@@ -94,6 +94,8 @@ public class ModBlock {
     }).sounds(BlockSoundGroup.WOOD).dropsLike(SOUL_TORCH_BLOCK).pistonBehavior(PistonBehavior.DESTROY)),false);
     public static final Block CAKE = register("cake", new CakeBlock(AbstractBlock.Settings.create().solid().strength(0.5F).sounds(BlockSoundGroup.WOOL).pistonBehavior(PistonBehavior.DESTROY)),false);
     public static final Block COMPRESS_GOLD_BLOCK = register("compress_gold_block", new Block(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).instrument(NoteBlockInstrument.BASS).requiresTool().strength(1.5F, 1.5F)),true);
+    public static final Block BEDROCK = register("bedrock", new Block(AbstractBlock.Settings.create().mapColor(MapColor.BLACK).instrument(NoteBlockInstrument.BASS).strength(1.0F, 0.5F)),true);
+    public static final Block COMPRESS_OAK_LOG_BLOCK = register("compress_oak_log", new Block(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).instrument(NoteBlockInstrument.BASS).strength(1F, 0.5F)),true);
     public static final Block COOKED_COBBLESTONE = register("cooked_cobblestone", new Block(AbstractBlock.Settings.create().mapColor(MapColor.ORANGE).instrument(NoteBlockInstrument.BASS).requiresTool().strength(0.5F)),false);
 
     public static final Block COW_PLANT = register("cow_plant", new CowPlantBlock(AbstractBlock.Settings.create()

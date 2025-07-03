@@ -43,6 +43,7 @@ public class CustomBlockEntity extends AnimalEntity{
                     .dimensions(EntityDimensions.fixed(1f, 1f))
                     .build()
     );
+    
     private int hurtTime;
     private float prevHurtTime;
 

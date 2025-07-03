@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/bow",
+    "textures": {
+        "layer0": "stone:item/end_bow_0"
+    }
+}

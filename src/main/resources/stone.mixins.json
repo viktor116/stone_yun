@@ -14,7 +14,8 @@
 		"NetherPortalBlockMixin",
 		"AbstractFurnaceBlockEntityMixin",
 		"ComposterMixin",
-		"MixinAbstractHorseEntity"
+		"MixinAbstractHorseEntity",
+		"CrossbowItemMixin"
 	],
 	"client": [
 		"ItemRendererMixin",

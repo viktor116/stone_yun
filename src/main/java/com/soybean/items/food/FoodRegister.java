@@ -28,4 +28,11 @@ public class FoodRegister {
     public static final FoodComponent SUPER_STRENGTH_POTION = new FoodComponent.Builder().nutrition(0).saturationModifier(0)
             .statusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20*30, 19), 1.0f)
             .alwaysEdible().build();
+    
+    // 树碳食物组件 - 食用后立即死亡
+    public static final FoodComponent TREE_CARBON = new FoodComponent.Builder().nutrition(0).saturationModifier(0)
+            .statusEffect(new StatusEffectInstance(StatusEffects.WITHER, 999999, 127), 1.0f) // 添加最高等级凋零效果（作为备用）
+            .statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_DAMAGE, 1, 127), 1.0f) // 添加最高等级瞬间伤害
+            .alwaysEdible().build();
+
 }

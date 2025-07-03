@@ -1,9 +1,6 @@
 package com.soybean.event;
 
-import com.soybean.event.impl.EventBreak;
-import com.soybean.event.impl.EventTick;
-import com.soybean.event.impl.EventUseEntity;
-import com.soybean.event.impl.EventUseItem;
+import com.soybean.event.impl.*;
 
 public class EventRegister {
     public static void Initialize(){
@@ -11,11 +8,12 @@ public class EventRegister {
         EventUseEntity.register();
         EventUseItem.register();
         EventTick.register();
-
-
+        EventUseBlock.register();
+        EventItemFuel.register();
     }
 
     public static void InitializeClient(){
         EventTick.registerClient();
+        EventHud.init();
     }
 }

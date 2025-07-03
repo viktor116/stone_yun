@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "stone:skeleton_item"
+    }
+  ],
+  "result": {
+    "id": "minecraft:bone",
+    "count": 5
+  }
+}

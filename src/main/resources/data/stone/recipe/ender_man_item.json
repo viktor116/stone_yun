@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "stone:ender_man_item"
+    }
+  ],
+  "result": {
+    "id": "stone:ender_rod",
+    "count": 8
+  }
+}

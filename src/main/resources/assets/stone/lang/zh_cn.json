@@ -115,6 +115,20 @@
   "item.stone.rocket_launcher": "巡飞弹发射器",
   "item.stone.rocket": "巡飞弹",
   "item.stone.blue_bow": "电击弓箭",
+  "item.stone.obsidian_bucket": "黑曜石桶",
+  "item.stone.strange_star": "奇怪的下界之星",
+  "item.stone.tree_bark": "树皮",
+  "item.stone.tree_carbon": "树皮木炭",
+  "item.stone.ten_back_potion": "回溯十年药水",
+  "item.stone.ten_front_potion": "穿越十年药水",
+  "item.stone.timer_clock": "时空短暂穿梭器",
+  "item.stone.end_bow": "终末弓",
+  "item.stone.crossbow_bed": "床子弩",
+  "item.stone.creeper_item": "苦力怕",
+  "item.stone.skeleton_item": "骷髅",
+  "item.stone.flame_man_item": "烈焰人",
+  "item.stone.ender_man_item": "末影人",
+
 
   "item.minecraft.potion.effect.resistance": "抗性提升药水",
   "item.minecraft.splash_potion.effect.resistance": "喷溅型抗性提升药水",
@@ -164,6 +178,8 @@
   "block.stone.beef_furnace": "牛肉熔炉",
   "block.stone.cooked_cobblestone": "烤圆石",
   "block.stone.aluminum_ore": "铝矿",
+  "block.stone.compress_oak_log": "压缩橡木原木",
+  "block.stone.bedrock": "基岩",
 
 
   "merchant.stone.witherskeleton": "凋零骷髅交易",

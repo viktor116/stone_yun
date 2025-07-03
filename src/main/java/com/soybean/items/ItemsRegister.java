@@ -5,6 +5,8 @@ import com.soybean.config.InitValue;
 import com.soybean.entity.custom.CustomBlockEntity;
 import com.soybean.items.armor.ModArmorMaterials;
 import com.soybean.items.custom.*;
+import com.soybean.items.custom.DreamEffectItem;
+import com.soybean.items.custom.FlashClockItem;
 import com.soybean.items.custom.InvertBoatItem;
 import com.soybean.items.food.FoodRegister;
 import com.soybean.items.item.*;
@@ -16,6 +18,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ChargedProjectilesComponent;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.component.type.FoodComponents;
 import net.minecraft.entity.EntityType;
@@ -158,6 +161,19 @@ public class ItemsRegister {
     public static final Item ROCKET_LAUNCHER = register(new RocketLauncherItem(new Item.Settings()), "rocket_launcher");
     public static final Item ROCKET = register(new RocketItem(new Item.Settings()), "rocket");
     public static final Item BLUE_BOW = register(new BlueBowItem(new Item.Settings().maxCount(1)), "blue_bow");
+    public static final Item OBSIDIAN_BUCKET = register(new ObsidianBucketItem(new Item.Settings().maxCount(1)), "obsidian_bucket");
+    public static final Item STRANGE_STAR = register(new Item(new Item.Settings().component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true)), "strange_star");
+    public static final Item TREE_BARK = register(new Item(new Item.Settings()), "tree_bark");
+    public static final Item TREE_CARBON = register(new DeadlyFoodItem(new Item.Settings().food(FoodRegister.TREE_CARBON).maxCount(16)), "tree_carbon");
+    public static final Item TEN_BACK_POTION = register(new DreamEffectItem(new Item.Settings().maxCount(1).food(FoodComponents.CARROT)), "ten_back_potion");
+    public static final Item TEN_FRONT_POTION = register(new NightmareEffectItem(new Item.Settings().maxCount(1).food(FoodComponents.CARROT)), "ten_front_potion");
+    public static final Item TIMER_CLOCK = register(new FlashClockItem(new Item.Settings().maxCount(1).maxDamage(3)), "timer_clock");
+    public static final Item END_BOW = register(new EndBowItem(new Item.Settings().maxCount(1)), "end_bow");
+    public static final Item CROSSBOW_BED = register(new CrossbowBedItem(new Item.Settings().maxCount(1).maxDamage(326).component(DataComponentTypes.CHARGED_PROJECTILES, ChargedProjectilesComponent.of(new ItemStack(Items.RED_BED)))), "crossbow_bed");
+    public static final Item CREEPER_ITEM = register(new EntityAsItem(new Item.Settings()), "creeper_item");
+    public static final Item SKELETON_ITEM = register(new EntityAsItem(new Item.Settings()), "skeleton_item");
+    public static final Item FLAME_MAN_ITEM = register(new EntityAsItem(new Item.Settings()), "flame_man_item");
+    public static final Item ENDER_MAN_ITEM = register(new EntityAsItem(new Item.Settings()), "ender_man_item");
 
     public static void initialize() {
         ModRecipes.registerRecipes();
@@ -297,6 +313,21 @@ public class ItemsRegister {
             itemGroup.add(ROCKET_LAUNCHER);
             itemGroup.add(ROCKET);
             itemGroup.add(BLUE_BOW);
+            itemGroup.add(ModBlock.BEDROCK);
+            itemGroup.add(ModBlock.COMPRESS_OAK_LOG_BLOCK);
+            itemGroup.add(OBSIDIAN_BUCKET);
+            itemGroup.add(STRANGE_STAR);
+            itemGroup.add(TREE_BARK);
+            itemGroup.add(TREE_CARBON);
+            itemGroup.add(TIMER_CLOCK);
+            itemGroup.add(TEN_BACK_POTION);
+            itemGroup.add(TEN_FRONT_POTION);
+            itemGroup.add(END_BOW);
+            itemGroup.add(CROSSBOW_BED);
+            itemGroup.add(CREEPER_ITEM);
+            itemGroup.add(ENDER_MAN_ITEM);
+            itemGroup.add(SKELETON_ITEM);
+            itemGroup.add(FLAME_MAN_ITEM);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

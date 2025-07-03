@@ -43,5 +43,8 @@ public class EntityRegisterClient {
         });
 
         EntityRendererRegistry.register(EntityRegister.BLUE_ARROW_ENTITY,BlueArrowEntityRenderer::new);
+        
+        // 注册床弹射物实体的渲染器
+        EntityRendererRegistry.register(EntityRegister.BED_PROJECTILE_ENTITY, BedProjectileRenderer::new);
     }
 }

@@ -47,12 +47,12 @@ public class PortalsRegister {
                 .registerPortal();
 
         //天堂之门
-        CustomPortalBuilder.beginPortal()
-                .frameBlock(Blocks.GLOWSTONE)
-                .lightWithItem(Items.WATER_BUCKET)
-                .destDimID(Identifier.of("world"))
-                .tintColor(35, 79, 204)
-                .registerPortal();
+//        CustomPortalBuilder.beginPortal()
+//                .frameBlock(Blocks.GLOWSTONE)
+//                .lightWithItem(Items.WATER_BUCKET)
+//                .destDimID(Identifier.of("world"))
+//                .tintColor(35, 79, 204)
+//                .registerPortal();
 
         //水平地狱传送门
         CustomPortalBuilder.beginPortal()
