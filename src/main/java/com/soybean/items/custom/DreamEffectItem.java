@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class DreamEffectItem extends Item {
     
-    private static final int EFFECT_DURATION = 300; // 效果持续15秒
+    private static final int EFFECT_DURATION = 80; // 效果持续15秒
     private static final float EFFECT_RADIUS = 5.0f; // 粒子效果半径为5格
     
     public DreamEffectItem(Settings settings) {
