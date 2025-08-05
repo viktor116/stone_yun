@@ -11,6 +11,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
+import net.minecraft.client.render.entity.PolarBearEntityRenderer;
 
 /**
  * @author soybean
@@ -46,5 +47,7 @@ public class EntityRegisterClient {
         
         // 注册床弹射物实体的渲染器
         EntityRendererRegistry.register(EntityRegister.BED_PROJECTILE_ENTITY, BedProjectileRenderer::new);
+
+        EntityRendererRegistry.register(EntityRegister.RIDEABLE_POLAR_BEAR, PolarBearEntityRenderer::new);
     }
 }

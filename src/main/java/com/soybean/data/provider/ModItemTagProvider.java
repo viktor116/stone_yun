@@ -102,5 +102,6 @@ public class ModItemTagProvider extends FabricTagProvider<Item> {
 
         getOrCreateTagBuilder(ItemTags.HORSE_FOOD)
                 .add(ItemsRegister.DOUBLE_ENCHANTED_GOLDEN_APPLE);
+
     }
 }

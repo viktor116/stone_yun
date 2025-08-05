@@ -41,6 +41,5 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.ANVIL)
                 .add(ModBlock.WOODEN_ANVIL);
 
-
     }
 }

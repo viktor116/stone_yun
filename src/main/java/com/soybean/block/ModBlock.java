@@ -62,6 +62,7 @@ public class ModBlock {
         return 15;
     }).sounds(BlockSoundGroup.WOOL).pistonBehavior(PistonBehavior.DESTROY)),true);
     public static final Block NETHER_PORTAL = register("nether_portal",new NetherPortalBlock(AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.PALE_PURPLE)),true);
+    public static final Block NETHER_PORTAL_BLOCK = register("nether_portal_block",new AxisBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_PURPLE).noCollision().strength(-1.0F).nonOpaque().sounds(BlockSoundGroup.GLASS).luminance((state) -> 11)), true);
     public static final Block HORIZONTAL_NETHER_PORTAL = register("horizontal_nether_portal", new CustomPortalBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_PURPLE).noCollision().strength(-1.0F).nonOpaque().sounds(BlockSoundGroup.GLASS).luminance((state) -> 11)), true);
     public static final Block HORIZONTAL_BLACK_NETHER_PORTAL = register("horizontal_black_nether_portal", new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_PURPLE).noCollision().strength(-1.0F).nonOpaque().sounds(BlockSoundGroup.GLASS).luminance((state) -> 11)), true);
 
@@ -70,6 +71,7 @@ public class ModBlock {
 
     public static final Block REACTOR = register("reactor", new Block(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)),true);
     public static final Block TRANSPARENT_BLOCK = register("transparent_block", new Block(AbstractBlock.Settings.create().mapColor(MapColor.GRAY).instrument(NoteBlockInstrument.BASEDRUM).nonOpaque().strength(2F,3F) ),true);
+    public static final Block TRANSLUCENT = register("translucent", new Block(AbstractBlock.Settings.create().mapColor(MapColor.GRAY).instrument(NoteBlockInstrument.BASEDRUM).strength(1F,0.5F).nonOpaque()),true);
     public static final Block CONCRETE = register("concrete", new Block(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(2F, 3.0F)),true);
     public static final Block MAIN_WORLD_DEBRIS = register("main_world_debris", new Block(AbstractBlock.Settings.create().mapColor(MapColor.BLACK).requiresTool().strength(30.0F, 1200.0F).sounds(BlockSoundGroup.ANCIENT_DEBRIS)),true);
     public static final Block OBSIDIAN = register("obsidian", new Block(AbstractBlock.Settings.create().mapColor(MapColor.BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(50.0F, 1200.0F)),true);
@@ -150,6 +152,7 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlock(FIRE, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(STATIC_FIRE, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(NETHER_PORTAL, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(NETHER_PORTAL_BLOCK, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(HORIZONTAL_NETHER_PORTAL, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(HORIZONTAL_BLACK_NETHER_PORTAL, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(TRANSPARENT_BLOCK, RenderLayer.getCutout());
@@ -159,6 +162,7 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlock(BLOW_BERRY_TORCH_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BLOW_BERRY_WALL_TORCH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BEEF_FURNACE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(TRANSLUCENT, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), COW_PLANT);
 
         BlockEntityRendererRegistry.register(COW_PLANT_TYPE, CowPlantBlockRenderer::new);

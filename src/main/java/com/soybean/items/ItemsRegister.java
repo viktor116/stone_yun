@@ -2,6 +2,7 @@ package com.soybean.items;
 
 import com.soybean.block.ModBlock;
 import com.soybean.config.InitValue;
+import com.soybean.entity.EntityRegister;
 import com.soybean.entity.custom.CustomBlockEntity;
 import com.soybean.items.armor.ModArmorMaterials;
 import com.soybean.items.custom.*;
@@ -174,9 +175,13 @@ public class ItemsRegister {
     public static final Item SKELETON_ITEM = register(new EntityAsItem(new Item.Settings()), "skeleton_item");
     public static final Item FLAME_MAN_ITEM = register(new EntityAsItem(new Item.Settings()), "flame_man_item");
     public static final Item ENDER_MAN_ITEM = register(new EntityAsItem(new Item.Settings()), "ender_man_item");
+    public static final Item BRANCH = register(new Item(new Item.Settings()), "branch");
+    public static final Item WOODEN_SHEARS = register(new ShearsItem(new Item.Settings().maxCount(1)), "wooden_shears");
+    public static final Item RIDEABLE_POLAR_BEAR_SPAWN_EGG = register(new SpawnEggItem(EntityRegister.RIDEABLE_POLAR_BEAR, // 实体类型为凋零
+            0xF0F0F0, 0x1C1C1C, new Item.Settings()), "rideable_polar_bear_spawn_egg");
 
     public static void initialize() {
-        ModRecipes.registerRecipes();
+//        ModRecipes.registerRecipes();
         PotionRegister.init(); //药水初始化
         Registry.register(Registries.ITEM_GROUP, FUN_ITEM_GROUP_KEY, ABSTRACT_CUSTOM_ITEM_GROUP);
         Registry.register(Registries.ITEM_GROUP, TRANSPARENT_GROUP_KEY, TRANSPARENT_ITEM_GROUP);
@@ -328,6 +333,10 @@ public class ItemsRegister {
             itemGroup.add(ENDER_MAN_ITEM);
             itemGroup.add(SKELETON_ITEM);
             itemGroup.add(FLAME_MAN_ITEM);
+            itemGroup.add(BRANCH);
+            itemGroup.add(WOODEN_SHEARS);
+            itemGroup.add(ModBlock.NETHER_PORTAL_BLOCK);
+            itemGroup.add(RIDEABLE_POLAR_BEAR_SPAWN_EGG);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);
@@ -340,6 +349,7 @@ public class ItemsRegister {
             itemGroup.add(TRANSPARENT_BUCKET_WATER);
             itemGroup.add(TRANSPARENT_BUCKET_LAVA);
             itemGroup.add(AIR);
+            itemGroup.add(ModBlock.TRANSLUCENT);
         });
     }
 

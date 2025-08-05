@@ -115,6 +115,13 @@ public class EntityRegister {
                     .build()
     );
 
+    public static final EntityType<RideablePolarBearEntity> RIDEABLE_POLAR_BEAR = register(
+            "rideable_polar_bear",
+            FabricEntityTypeBuilder.<RideablePolarBearEntity>create(SpawnGroup.CREATURE, RideablePolarBearEntity::new)
+                    .dimensions(EntityDimensions.fixed(1.4F, 1.4F))
+                    .build()
+    );
+
     private static <T extends Entity> EntityType<T> register(String name, EntityType<T> entityType) {
         return Registry.register(Registries.ENTITY_TYPE, Identifier.of(InitValue.MOD_ID, name), entityType);
     }
@@ -124,5 +131,6 @@ public class EntityRegister {
         FabricDefaultAttributeRegistry.register(HIM, HimEntity.createAttributes());
         FabricDefaultAttributeRegistry.register(CustomBlockEntity.SAND_BLOCK,CustomBlockEntity.createAttributes());
         FabricDefaultAttributeRegistry.register(CustomBlockEntity.DIRT_BLOCK,CustomBlockEntity.createAttributes());
+        FabricDefaultAttributeRegistry.register(RIDEABLE_POLAR_BEAR, RideablePolarBearEntity.createPolarBearAttributes());
     }
 }

@@ -128,6 +128,9 @@
   "item.stone.skeleton_item": "骷髅",
   "item.stone.flame_man_item": "烈焰人",
   "item.stone.ender_man_item": "末影人",
+  "item.stone.branch": "树枝",
+  "item.stone.wooden_shears": "木质剪刀",
+  "item.stone.rideable_polar_bear_spawn_egg": "北极熊蛋",
 
 
   "item.minecraft.potion.effect.resistance": "抗性提升药水",
@@ -180,6 +183,8 @@
   "block.stone.aluminum_ore": "铝矿",
   "block.stone.compress_oak_log": "压缩橡木原木",
   "block.stone.bedrock": "基岩",
+  "block.stone.translucent": "可透光方块",
+  "block.stone.nether_portal_block": "下界传送门方块",
 
 
   "merchant.stone.witherskeleton": "凋零骷髅交易",

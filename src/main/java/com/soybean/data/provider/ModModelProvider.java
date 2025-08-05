@@ -6,10 +6,7 @@ import com.soybean.items.ItemsRegister;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.client.Model;
-import net.minecraft.data.client.Models;
+import net.minecraft.data.client.*;
 import net.minecraft.util.Identifier;
 
 import java.util.Optional;
@@ -20,6 +17,9 @@ import java.util.Optional;
  * @description
  */
 public class ModModelProvider extends FabricModelProvider {
+
+    private final Identifier TEMPLATE_SPAWN_EGG = Identifier.ofVanilla("item/template_spawn_egg");
+
     public ModModelProvider(FabricDataOutput output) {
         super(output);
     }
@@ -33,6 +33,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.COOKED_COBBLESTONE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.ALUMINUM_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.COMPRESS_OAK_LOG_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlock.TRANSLUCENT);
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(ModBlock.OBSIDIAN, Identifier.ofVanilla("block/obsidian")));
     }
 
     @Override
@@ -127,12 +129,16 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.TEN_BACK_POTION,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.TEN_FRONT_POTION,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.TIMER_CLOCK,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.BRANCH,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.WOODEN_SHEARS,Models.HANDHELD);
 
         itemModelGenerator.register(ModBlock.BEDROCK.asItem(), new Model(Optional.of(Identifier.ofVanilla("block/bedrock")), Optional.empty()));
+        itemModelGenerator.register(ModBlock.OBSIDIAN.asItem(), new Model(Optional.of(Identifier.ofVanilla("block/obsidian")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.DOUBLE_ENCHANT_GOLD_CARROT, new Model(Optional.of(Identifier.ofVanilla("item/golden_carrot")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.ENCHANTED_GOLDEN_CARROT, new Model(Optional.of(Identifier.ofVanilla("item/golden_carrot")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.SAND_BLOCK_SPAWN_EGG, new Model(Optional.of(Identifier.ofVanilla("block/sand")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.DIRT_BLOCK_SPAWN_EGG, new Model(Optional.of(Identifier.ofVanilla("block/dirt")), Optional.empty()));
+        itemModelGenerator.register(ItemsRegister.RIDEABLE_POLAR_BEAR_SPAWN_EGG, new Model(Optional.of(TEMPLATE_SPAWN_EGG), Optional.empty()));
 
         itemModelGenerator.register(ItemsRegister.CREEPER_ITEM, new Model(Optional.of(InitValue.id("item/air")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.FLAME_MAN_ITEM, new Model(Optional.of(InitValue.id("item/air")), Optional.empty()));

@@ -27,5 +27,6 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlock.ALUMINUM_ORE, ItemsRegister.RAW_ALUMINUM);
         addDrop(ModBlock.COMPRESS_OAK_LOG_BLOCK);
         addDrop(ModBlock.BEDROCK);
+        addDrop(ModBlock.TRANSLUCENT);
     }
 }

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#S",
+    "S#"
+  ],
+  "key": {
+    "#": {
+      "item": "stone:branch"
+    },
+    "S": {
+      "item": "minecraft:short_grass"
+    }
+  },
+  "result": {
+    "id": "minecraft:torch",
+    "count": 1
+  }
+}

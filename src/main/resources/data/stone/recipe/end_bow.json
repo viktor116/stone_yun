@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "stone:broken_bow"
+    },
+    {
+      "item": "stone:strange_star"
+    }
+  ],
+  "result": {
+    "id": "stone:end_bow",
+    "count": 1
+  }
+}

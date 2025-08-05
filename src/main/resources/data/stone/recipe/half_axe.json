@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PP",
+    "SP",
+    "S "
+  ],
+  "key": {
+    "P": { "item": "minecraft:oak_slab" },
+    "S": { "item": "minecraft:stick" }
+  },
+  "result": {
+    "id": "minecraft:wooden_axe",
+    "count": 1,
+    "components": {
+      "minecraft:custom_data": {
+        "half_durability": true
+      }
+    }
+  }
+}

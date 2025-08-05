@@ -15,7 +15,8 @@
 		"AbstractFurnaceBlockEntityMixin",
 		"ComposterMixin",
 		"MixinAbstractHorseEntity",
-		"CrossbowItemMixin"
+		"CrossbowItemMixin",
+		"ItemStackDurabilityMixin"
 	],
 	"client": [
 		"ItemRendererMixin",
