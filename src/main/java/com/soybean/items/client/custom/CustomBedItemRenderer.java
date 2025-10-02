@@ -31,8 +31,9 @@ public class CustomBedItemRenderer implements BuiltinItemRendererRegistry.Dynami
     private ModelPart bedHead;
     private ModelPart bedFoot;
     private boolean initialized = false;
-
-    public CustomBedItemRenderer() {
+    private String name;
+    public CustomBedItemRenderer(String name) {
+        this.name = name;
         // Don't initialize here - we'll do it in the render method
     }
 
@@ -58,12 +59,12 @@ public class CustomBedItemRenderer implements BuiltinItemRendererRegistry.Dynami
         }
 
         // Get the bed color/type from NBT if needed
-        String bedType = "flip_white"; // Default or extract from stack.getNbt()
+//        String bedType = "flip_white"; // Default or extract from stack.getNbt()
 
         // Create sprite identifier similar to what's used in the block entity renderer
         SpriteIdentifier spriteIdentifier = new SpriteIdentifier(
                 TexturedRenderLayers.BEDS_ATLAS_TEXTURE,
-                Identifier.of(InitValue.MOD_ID, "entity/bed/" + bedType)
+                Identifier.of(InitValue.MOD_ID, "entity/bed/" + this.name)
         );
 
         // Render both parts with appropriate transformations

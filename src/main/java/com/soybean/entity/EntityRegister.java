@@ -11,7 +11,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -122,6 +121,15 @@ public class EntityRegister {
                     .build()
     );
 
+    public static final EntityType<CommonCreeperEntity> COMMON_CREEPER = Registry.register(
+            Registries.ENTITY_TYPE,
+            InitValue.id("common_creeper"),
+            EntityType.Builder.create(CommonCreeperEntity::new, SpawnGroup.MONSTER)
+                    .dimensions(0.6f, 1.7f)
+                    .maxTrackingRange(8)
+                    .build()
+    );
+
     private static <T extends Entity> EntityType<T> register(String name, EntityType<T> entityType) {
         return Registry.register(Registries.ENTITY_TYPE, Identifier.of(InitValue.MOD_ID, name), entityType);
     }
@@ -132,5 +140,6 @@ public class EntityRegister {
         FabricDefaultAttributeRegistry.register(CustomBlockEntity.SAND_BLOCK,CustomBlockEntity.createAttributes());
         FabricDefaultAttributeRegistry.register(CustomBlockEntity.DIRT_BLOCK,CustomBlockEntity.createAttributes());
         FabricDefaultAttributeRegistry.register(RIDEABLE_POLAR_BEAR, RideablePolarBearEntity.createPolarBearAttributes());
+        FabricDefaultAttributeRegistry.register(COMMON_CREEPER, CommonCreeperEntity.createCreeperAttributes());
     }
 }

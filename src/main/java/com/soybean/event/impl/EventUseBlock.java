@@ -1,19 +1,25 @@
 package com.soybean.event.impl;
 
+import com.soybean.config.InitValue;
 import com.soybean.items.ItemsRegister;
+import com.soybean.utils.CommonUtils;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.SkullBlock;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import java.util.Random;
 
 public class EventUseBlock {
     public static void register(){
@@ -91,7 +97,69 @@ public class EventUseBlock {
                     return ActionResult.SUCCESS;
                 }
             }
+
+            //  黑色燃料右键骷髅头 → 凋灵骷髅头
+            if (stackInHand.isOf(Items.BLACK_DYE)) {
+                // 检查是否是骷髅头（包括各种朝向）
+                if (blockState.isOf(Blocks.SKELETON_SKULL)) {
+                    SkullBlock skullBlock = (SkullBlock) Blocks.WITHER_SKELETON_SKULL;
+                    BlockState newBlockState = skullBlock.getDefaultState()
+                            .with(SkullBlock.ROTATION, blockState.get(SkullBlock.ROTATION)); // 保留旋转方向
+
+                    world.setBlockState(blockPos, newBlockState);
+                    world.playSound(null, blockPos, SoundEvents.ENTITY_WITHER_SPAWN, SoundCategory.HOSTILE, 1.0F, 1.0F);
+
+                    if (!player.getAbilities().creativeMode) {
+                        stackInHand.decrement(1);
+                    }
+
+                    spawnBlackParticles(world, blockPos);
+
+                    return ActionResult.SUCCESS;
+                }
+            }
             return ActionResult.PASS;
         });
+    }
+
+    // 生成黑色粒子效果（使用 SOUL 或 SMOKE）
+    private static void spawnBlackParticles(World world, BlockPos pos) {
+        double centerX = pos.getX() + 0.5;
+        double centerY = pos.getY() + 0.5;
+        double centerZ = pos.getZ() + 0.5;
+        Random random =CommonUtils.getRandom();
+        for (int i = 0; i < 30; i++) {
+            double offsetX = (random.nextDouble() - 0.5) * 1.0;
+            double offsetY = (random.nextDouble() - 0.5) * 1.0;
+            double offsetZ = (random.nextDouble() - 0.5) * 1.0;
+
+            // 使用 SOUL 粒子（蓝色黑烟）或 DARK_SMOKE（更黑）
+            world.addParticle(ParticleTypes.SOUL,
+                    centerX + offsetX,
+                    centerY + offsetY,
+                    centerZ + offsetZ,
+                    offsetX * 0.05,
+                    offsetY * 0.05,
+                    offsetZ * 0.05
+            );
+        }
+
+        // 可选：加一点烟雾
+        for (int i = 0; i < 20; i++) {
+            double r = 0.3 + random.nextDouble() * 0.4;
+            double angle = random.nextDouble() * Math.PI * 2;
+            double x = r * Math.cos(angle);
+            double z = r * Math.sin(angle);
+            double y = random.nextDouble() * 0.5;
+
+            world.addParticle(ParticleTypes.LARGE_SMOKE,
+                    centerX + x,
+                    centerY + y,
+                    centerZ + z,
+                    0,
+                    0.05,
+                    0
+            );
+        }
     }
 }

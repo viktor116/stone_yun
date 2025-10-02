@@ -39,7 +39,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlock.CONCRETE)
                 .add(ModBlock.COMPRESS_GOLD_BLOCK);
         getOrCreateTagBuilder(BlockTags.ANVIL)
-                .add(ModBlock.WOODEN_ANVIL);
+                .add(ModBlock.WOODEN_ANVIL)
+                .add(ModBlock.STONE_ANVIL);
 
     }
 }

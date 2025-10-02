@@ -35,6 +35,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.COMPRESS_OAK_LOG_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.TRANSLUCENT);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(ModBlock.OBSIDIAN, Identifier.ofVanilla("block/obsidian")));
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(ModBlock.POTATO_BLOCK, Identifier.ofVanilla("block/raw_iron_block")));
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(ModBlock.COOKED_POTATO_BLOCK, Identifier.ofVanilla("block/raw_gold_block")));
     }
 
     @Override
@@ -95,7 +97,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.DIRT_SWORD,Models.HANDHELD);
         itemModelGenerator.register(ItemsRegister.DIRT_PICKAXE,Models.HANDHELD);
         itemModelGenerator.register(ItemsRegister.DIRT_AXE,Models.HANDHELD);
-        itemModelGenerator.register(ItemsRegister.FLIP_BOW,Models.HANDHELD);
         itemModelGenerator.register(ItemsRegister.FLIP_FISHING_ROD,Models.HANDHELD);
         itemModelGenerator.register(ItemsRegister.DIRT_BUCKET,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.DIRT_WATER_BUCKET,Models.GENERATED);
@@ -131,14 +132,19 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.TIMER_CLOCK,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.BRANCH,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.WOODEN_SHEARS,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.SAP,Models.GENERATED);
 
         itemModelGenerator.register(ModBlock.BEDROCK.asItem(), new Model(Optional.of(Identifier.ofVanilla("block/bedrock")), Optional.empty()));
         itemModelGenerator.register(ModBlock.OBSIDIAN.asItem(), new Model(Optional.of(Identifier.ofVanilla("block/obsidian")), Optional.empty()));
+        itemModelGenerator.register(ModBlock.POTATO_BLOCK.asItem(), new Model(Optional.of(Identifier.ofVanilla("block/raw_iron_block")), Optional.empty()));
+        itemModelGenerator.register(ModBlock.COOKED_POTATO_BLOCK.asItem(), new Model(Optional.of(Identifier.ofVanilla("block/raw_gold_block")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.DOUBLE_ENCHANT_GOLD_CARROT, new Model(Optional.of(Identifier.ofVanilla("item/golden_carrot")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.ENCHANTED_GOLDEN_CARROT, new Model(Optional.of(Identifier.ofVanilla("item/golden_carrot")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.SAND_BLOCK_SPAWN_EGG, new Model(Optional.of(Identifier.ofVanilla("block/sand")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.DIRT_BLOCK_SPAWN_EGG, new Model(Optional.of(Identifier.ofVanilla("block/dirt")), Optional.empty()));
+        itemModelGenerator.register(ItemsRegister.BUCKET_HAT, new Model(Optional.of(Identifier.ofVanilla("item/bucket")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.RIDEABLE_POLAR_BEAR_SPAWN_EGG, new Model(Optional.of(TEMPLATE_SPAWN_EGG), Optional.empty()));
+        itemModelGenerator.register(ItemsRegister.COMMON_CREEPER_SPAWN_EGG, new Model(Optional.of(TEMPLATE_SPAWN_EGG), Optional.empty()));
 
         itemModelGenerator.register(ItemsRegister.CREEPER_ITEM, new Model(Optional.of(InitValue.id("item/air")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.FLAME_MAN_ITEM, new Model(Optional.of(InitValue.id("item/air")), Optional.empty()));

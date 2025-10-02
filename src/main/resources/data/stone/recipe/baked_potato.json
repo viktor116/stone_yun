@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "stone:cooked_potato_block"
+    }
+  ],
+  "result": {
+    "id": "minecraft:baked_potato",
+    "count": 9
+  }
+}

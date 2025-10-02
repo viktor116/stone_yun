@@ -1,6 +1,7 @@
 package com.soybean.event.impl;
 
 import com.mojang.authlib.GameProfile;
+import com.soybean.entity.custom.CommonCreeperEntity;
 import com.soybean.items.ItemsRegister;
 import com.soybean.manager.HeadlessPlayerManager;
 import com.soybean.screen.action.PlayerAction;
@@ -76,7 +77,7 @@ public class EventUseEntity {
                 return ActionResult.SUCCESS;
             }
             //苦力怕
-            if(entity instanceof CreeperEntity creeperEntity){
+            if(entity instanceof CreeperEntity creeperEntity || entity instanceof CommonCreeperEntity){
                 handleEntityAsItem(entity,player);
                 return ActionResult.SUCCESS;
             }
@@ -245,7 +246,7 @@ public class EventUseEntity {
 
         // 生成树皮物品
         ItemStack stack = null;
-        if(entity instanceof CreeperEntity){
+        if(entity instanceof CreeperEntity || entity instanceof CommonCreeperEntity){
             stack = ItemsRegister.CREEPER_ITEM.getDefaultStack();
         }else if(entity instanceof SkeletonEntity){
             stack = ItemsRegister.SKELETON_ITEM.getDefaultStack();

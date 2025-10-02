@@ -17,8 +17,8 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
  */
 public class ItemRendererRegister {
     public static void init(){
-        BuiltinItemRendererRegistry.INSTANCE.register(ItemsRegister.FLIP_WHITE_BED, new CustomBedItemRenderer());
+        BuiltinItemRendererRegistry.INSTANCE.register(ItemsRegister.FLIP_WHITE_BED, new CustomBedItemRenderer("flip_white"));
+        BuiltinItemRendererRegistry.INSTANCE.register(ItemsRegister.TNT_WHITE_BED, new CustomBedItemRenderer("tnt_white"));
         BuiltinItemRendererRegistry.INSTANCE.register(ItemsRegister.INVERT_RED_BED, new InvertRedItemRenderer());
     }
-
 }

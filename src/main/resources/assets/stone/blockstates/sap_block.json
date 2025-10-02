@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "age=0,facing=east": {
+      "model": "stone:block/sap_stage",
+      "y": 270
+    },
+    "age=0,facing=north": {
+      "model": "stone:block/sap_stage",
+      "y": 180
+    },
+    "age=0,facing=south": {
+      "model": "stone:block/sap_stage"
+    },
+    "age=0,facing=west": {
+      "model": "stone:block/sap_stage",
+      "y": 90
+    },
+    "age=1,facing=east": {
+      "model": "stone:block/sap_stage",
+      "y": 270
+    },
+    "age=1,facing=north": {
+      "model": "stone:block/sap_stage",
+      "y": 180
+    },
+    "age=1,facing=south": {
+      "model": "stone:block/sap_stage"
+    },
+    "age=1,facing=west": {
+      "model": "stone:block/sap_stage",
+      "y": 90
+    },
+    "age=2,facing=east": {
+      "model": "stone:block/sap_stage",
+      "y": 270
+    },
+    "age=2,facing=north": {
+      "model": "stone:block/sap_stage",
+      "y": 180
+    },
+    "age=2,facing=south": {
+      "model": "stone:block/sap_stage"
+    },
+    "age=2,facing=west": {
+      "model": "stone:block/sap_stage",
+      "y": 90
+    }
+  }
+}

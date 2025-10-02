@@ -19,7 +19,7 @@ public class ItemStackDurabilityMixin {
         ItemStack stack = (ItemStack) (Object) this;
 
         // 检查是否是木制工具
-        if (stack.getItem() == Items.WOODEN_AXE || stack.getItem() == Items.WOODEN_PICKAXE) {
+        if (isHalfDurationStack(stack)) {
             // 检查是否有half_durability标签
             NbtComponent customData = stack.get(DataComponentTypes.CUSTOM_DATA);
             if (customData != null) {
@@ -36,5 +36,9 @@ public class ItemStackDurabilityMixin {
                 }
             }
         }
+    }
+
+    private boolean isHalfDurationStack(ItemStack stack){
+        return stack.getItem() == Items.WOODEN_AXE || stack.getItem() == Items.WOODEN_PICKAXE || stack.getItem() == Items.STONE_PICKAXE || stack.getItem() == Items.STONE_AXE;
     }
 }

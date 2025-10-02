@@ -49,5 +49,6 @@ public class EntityRegisterClient {
         EntityRendererRegistry.register(EntityRegister.BED_PROJECTILE_ENTITY, BedProjectileRenderer::new);
 
         EntityRendererRegistry.register(EntityRegister.RIDEABLE_POLAR_BEAR, PolarBearEntityRenderer::new);
+        EntityRendererRegistry.register(EntityRegister.COMMON_CREEPER, CommonCreeperEntityRenderer::new);
     }
 }

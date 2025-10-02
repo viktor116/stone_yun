@@ -131,7 +131,8 @@
   "item.stone.branch": "树枝",
   "item.stone.wooden_shears": "木质剪刀",
   "item.stone.rideable_polar_bear_spawn_egg": "北极熊蛋",
-
+  "item.stone.common_creeper_spawn_egg": "安全爬行者",
+  "item.stone.bucket_hat": "铁桶",
 
   "item.minecraft.potion.effect.resistance": "抗性提升药水",
   "item.minecraft.splash_potion.effect.resistance": "喷溅型抗性提升药水",
@@ -185,7 +186,12 @@
   "block.stone.bedrock": "基岩",
   "block.stone.translucent": "可透光方块",
   "block.stone.nether_portal_block": "下界传送门方块",
-
+  "block.stone.stone_anvil": "石砧",
+  "block.stone.potato_block": "马铃薯块",
+  "block.stone.cooked_potato_block": "熟马铃薯块",
+  "block.stone.tnt_white_bed": "白色床",
+  "block.stone.sap_block": "树液",
+  "block.stone.air_ice_0": "空气冰",
 
   "merchant.stone.witherskeleton": "凋零骷髅交易",
   "merchant.stone.sheep": "绵羊交易",

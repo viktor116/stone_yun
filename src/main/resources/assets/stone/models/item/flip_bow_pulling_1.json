@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/bow",
+    "textures": {
+        "layer0": "stone:item/flip_bow_pulling_1"
+    }
+}

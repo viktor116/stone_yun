@@ -6,15 +6,11 @@ import com.soybean.entity.EntityRegister;
 import com.soybean.entity.custom.CustomBlockEntity;
 import com.soybean.items.armor.ModArmorMaterials;
 import com.soybean.items.custom.*;
-import com.soybean.items.custom.DreamEffectItem;
-import com.soybean.items.custom.FlashClockItem;
-import com.soybean.items.custom.InvertBoatItem;
 import com.soybean.items.food.FoodRegister;
 import com.soybean.items.item.*;
 import com.soybean.items.material.AirMaterial;
 import com.soybean.items.material.StoneMaterial;
 import com.soybean.items.potion.PotionRegister;
-import com.soybean.items.recipes.ModRecipes;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
@@ -25,7 +21,9 @@ import net.minecraft.component.type.FoodComponents;
 import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
-import net.minecraft.registry.*;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -129,7 +127,7 @@ public class ItemsRegister {
     public static final Item DIRT_LAVA_BUCKET = register(new DirtBucketItem(Fluids.LAVA, new Item.Settings().maxCount(1)), "dirt_lava_bucket");
     public static final Item DIRT_WATER_BUCKET = register(new DirtBucketItem(Fluids.WATER, new Item.Settings().maxCount(1)), "dirt_water_bucket");
     public static final Item FRIED_EGG = register(new Item(new Item.Settings().food(FoodRegister.FRIED_EGG)), "fried_egg");
-    public static final Item FLIP_BOW= register(new Item(new Item.Settings().maxCount(1)), "flip_bow");
+    public static final Item FLIP_BOW= register(new BowItem(new Item.Settings().maxDamage(384)), "flip_bow");
     public static final Item FLIP_FISHING_ROD = register(new Item(new Item.Settings().maxCount(1)), "flip_fishing_rod");
     public static final Item COAL_INGOT = register(new Item(new Item.Settings()), "coal_ingot");
     public static final Item LEAF_INGOT = register(new Item(new Item.Settings()), "leaf_ingot");
@@ -179,6 +177,11 @@ public class ItemsRegister {
     public static final Item WOODEN_SHEARS = register(new ShearsItem(new Item.Settings().maxCount(1)), "wooden_shears");
     public static final Item RIDEABLE_POLAR_BEAR_SPAWN_EGG = register(new SpawnEggItem(EntityRegister.RIDEABLE_POLAR_BEAR, // 实体类型为凋零
             0xF0F0F0, 0x1C1C1C, new Item.Settings()), "rideable_polar_bear_spawn_egg");
+    public static final Item SAP = register(new BlockItem(ModBlock.SAP_BLOCK,new Item.Settings()), "sap");
+    public static final Item TNT_WHITE_BED = register(new BedItem(ModBlock.TNT_WHITE_BED,new Item.Settings().maxCount(1)), "tnt_white_bed");
+    public static final Item COMMON_CREEPER_SPAWN_EGG = register(new SpawnEggItem(EntityRegister.COMMON_CREEPER,
+            894731, 0, new Item.Settings()), "common_creeper_spawn_egg");
+    public static final Item BUCKET_HAT = register(new BucketHatItem(), "bucket_hat");
 
     public static void initialize() {
 //        ModRecipes.registerRecipes();
@@ -337,6 +340,14 @@ public class ItemsRegister {
             itemGroup.add(WOODEN_SHEARS);
             itemGroup.add(ModBlock.NETHER_PORTAL_BLOCK);
             itemGroup.add(RIDEABLE_POLAR_BEAR_SPAWN_EGG);
+            itemGroup.add(SAP);
+            itemGroup.add(ModBlock.STONE_ANVIL);
+            itemGroup.add(ModBlock.POTATO_BLOCK);
+            itemGroup.add(ModBlock.COOKED_POTATO_BLOCK);
+            itemGroup.add(TNT_WHITE_BED);
+            itemGroup.add(COMMON_CREEPER_SPAWN_EGG);
+            itemGroup.add(ModBlock.AIR_ICE);
+            itemGroup.add(BUCKET_HAT);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

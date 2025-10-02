@@ -3,11 +3,9 @@ package com.soybean.block;
 import com.soybean.block.client.renderer.CowPlantBlockRenderer;
 import com.soybean.block.client.renderer.FlipWhiteBedBlockEntityRenderer;
 import com.soybean.block.client.renderer.InvertRedBlockEntityRenderer;
+import com.soybean.block.client.renderer.TntWhiteBedBlockEntityRenderer;
 import com.soybean.block.custom.*;
-import com.soybean.block.custom.entity.BeefFurnaceBlockEntity;
-import com.soybean.block.custom.entity.CowPlantBlockEntity;
-import com.soybean.block.custom.entity.FlipWhiteBedEntity;
-import com.soybean.block.custom.entity.InvertRedBedEntity;
+import com.soybean.block.custom.entity.*;
 import com.soybean.block.custom.inventory.entity.DemoBlockEntity;
 import com.soybean.config.InitValue;
 import com.soybean.screen.handler.StoneCraftingScreenHandler;
@@ -45,6 +43,7 @@ import java.util.function.ToIntFunction;
  * @description
  */
 public class ModBlock {
+    public static final Block AIR_ICE =  register("air_ice_0",new AirIceBlock(AbstractBlock.Settings.create().slipperiness(0.98F).ticksRandomly().strength(0.5F).nonOpaque().sounds(BlockSoundGroup.GLASS)),true);
     public static final Block STONE_CRAFT_TABLE = register("stone_crafting_table", new StoneCraftTableBlock(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.5F).sounds(BlockSoundGroup.STONE)), true);
     public static final Block AIR_CRAFT_TABLE = register("air_crafting_table", new StoneCraftTableBlock(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.5F).sounds(BlockSoundGroup.STONE).nonOpaque(),StoneCraftTableBlock.AIR_BLOCK_TITLE_KEY), true);
     public static final Block DIRT_CRAFT_TABLE = register("dirt_crafting_table", new StoneCraftTableBlock(AbstractBlock.Settings.create().mapColor(MapColor.BROWN).instrument(NoteBlockInstrument.BASS).strength(2.5F).sounds(BlockSoundGroup.STONE),StoneCraftTableBlock.DIRT_BLOCK_TITLE_KEY), true);
@@ -83,8 +82,10 @@ public class ModBlock {
     }).sounds(BlockSoundGroup.WOOD).dropsLike(BIG_TORCH_BLOCK).pistonBehavior(PistonBehavior.DESTROY)),false);
     public static final Block APPLE_BLOCK = register("apple_block", new Block(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(1F).sounds(BlockSoundGroup.GRASS)), true);
     public static final Block WOODEN_ANVIL =  register("wooden_anvil", new AnvilBlock(AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).requiresTool().strength(5.0F, 1200.0F).sounds(BlockSoundGroup.ANVIL).pistonBehavior(PistonBehavior.BLOCK)),true);
+    public static final Block STONE_ANVIL =  register("stone_anvil", new AnvilBlock(AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).requiresTool().strength(5.0F, 1200.0F).sounds(BlockSoundGroup.STONE).pistonBehavior(PistonBehavior.BLOCK)),true);
     public static final Block LEAF_ORE = register("leaf_ore", new Block(AbstractBlock.Settings.create().mapColor(MapColor.GREEN).instrument(NoteBlockInstrument.BASS).strength(2F, 3.0F)),true);
     public static final Block FLIP_WHITE_BED = register("flip_white_bed",createBedBlock(DyeColor.WHITE),false);
+    public static final Block TNT_WHITE_BED = register("tnt_white_bed",createBedBlock(DyeColor.BLACK),false);
     public static final Block INVERT_RED_BED = register("invert_red_bed",createBedBlock(DyeColor.RED),false);
     public static final Block BEEF_FURNACE = register("beef_furnace", new BeefFurnaceBlock(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.5F).luminance(createLightLevelFromLitBlockState(13)).sounds(BlockSoundGroup.STONE)), true);
 
@@ -99,6 +100,9 @@ public class ModBlock {
     public static final Block BEDROCK = register("bedrock", new Block(AbstractBlock.Settings.create().mapColor(MapColor.BLACK).instrument(NoteBlockInstrument.BASS).strength(1.0F, 0.5F)),true);
     public static final Block COMPRESS_OAK_LOG_BLOCK = register("compress_oak_log", new Block(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).instrument(NoteBlockInstrument.BASS).strength(1F, 0.5F)),true);
     public static final Block COOKED_COBBLESTONE = register("cooked_cobblestone", new Block(AbstractBlock.Settings.create().mapColor(MapColor.ORANGE).instrument(NoteBlockInstrument.BASS).requiresTool().strength(0.5F)),false);
+    public static final Block POTATO_BLOCK = register("potato_block", new Block(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).instrument(NoteBlockInstrument.BASS).strength(1F, 0.5F)),true);
+    public static final Block COOKED_POTATO_BLOCK = register("cooked_potato_block", new Block(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).instrument(NoteBlockInstrument.BASS).strength(1F, 0.5F)),true);
+    public static final Block SAP_BLOCK = register("sap_block", new SapBlock(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).ticksRandomly().strength(0.2F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)),false);
 
     public static final Block COW_PLANT = register("cow_plant", new CowPlantBlock(AbstractBlock.Settings.create()
             .nonOpaque()
@@ -125,6 +129,11 @@ public class ModBlock {
             Identifier.of(InitValue.MOD_ID, "flip_white_bed"),
             BlockEntityType.Builder.create(FlipWhiteBedEntity::new, FLIP_WHITE_BED).build(null));
 
+    public static final BlockEntityType<TntWhiteBedEntity> TNT_WHITE_BED_ENTITY = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE,
+            Identifier.of(InitValue.MOD_ID, "tnt_white_bed"),
+            BlockEntityType.Builder.create(TntWhiteBedEntity::new, TNT_WHITE_BED).build(null));
+
     public static final BlockEntityType<InvertRedBedEntity> INVERT_RED_BED_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE,
             Identifier.of(InitValue.MOD_ID, "invert_red_bed"),
@@ -142,6 +151,7 @@ public class ModBlock {
     }
 
     public static void initializeClient() {
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.AIR_ICE, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(STONE_CRAFT_TABLE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(AIR_CRAFT_TABLE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SOUL_TORCH_BLOCK, RenderLayer.getCutout());
@@ -159,14 +169,17 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlock(CONCRETE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(APPLE_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(WOODEN_ANVIL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(STONE_ANVIL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BLOW_BERRY_TORCH_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BLOW_BERRY_WALL_TORCH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BEEF_FURNACE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(TRANSLUCENT, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), COW_PLANT);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), SAP_BLOCK);
 
         BlockEntityRendererRegistry.register(COW_PLANT_TYPE, CowPlantBlockRenderer::new);
         BlockEntityRendererFactories.register(FLIP_WHITE_BED_ENTITY, FlipWhiteBedBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(TNT_WHITE_BED_ENTITY, TntWhiteBedBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(INVERT_RED_BED_ENTITY, InvertRedBlockEntityRenderer::new);
     }
 

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "__",
+    "/_",
+    "/ "
+  ],
+  "key": {
+    "_": {
+      "item": "minecraft:cobblestone_slab"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "minecraft:stone_axe",
+    "count": 1,
+    "components": {
+      "minecraft:custom_data": {
+        "half_durability": true
+      }
+    }
+  }
+}
