@@ -13,7 +13,7 @@ public class StoneGenerator implements DataGeneratorEntrypoint {
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
         pack.addProvider(ModEnchantmentGenerator::new);
-        pack.addProvider(ModModelProvider::new);
+        pack.addProvider(c::new);
         pack.addProvider(ModItemTagProvider::new);
         pack.addProvider(ModBlockLootTableProvider::new);
         pack.addProvider(ModBlockTagProvider::new);

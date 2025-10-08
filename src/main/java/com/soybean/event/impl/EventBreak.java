@@ -32,6 +32,13 @@ public class EventBreak {
                 FlameAdditionEnchantmentEffect.handleDrop(world, player, pos, state, blockEntity);
                 return false; // 返回 false 来取消原始的方块破坏事件
             }
+            Block block = state.getBlock();
+            if(player.getMainHandStack().getItem() == Items.WOODEN_PICKAXE){
+                if(block == Blocks.STONE){
+                    world.breakBlock(pos, false, player);
+                    Block.dropStack(world, pos, new ItemStack(Items.STONE));
+                }
+            }
             return true; // 没有附魔就正常破坏
         });
 
