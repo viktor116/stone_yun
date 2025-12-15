@@ -14,6 +14,7 @@ import com.soybean.items.potion.PotionRegister;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ChargedProjectilesComponent;
 import net.minecraft.component.type.FoodComponent;
@@ -182,6 +183,8 @@ public class ItemsRegister {
     public static final Item COMMON_CREEPER_SPAWN_EGG = register(new SpawnEggItem(EntityRegister.COMMON_CREEPER,
             894731, 0, new Item.Settings()), "common_creeper_spawn_egg");
     public static final Item BUCKET_HAT = register(new BucketHatItem(), "bucket_hat");
+    public static final Item HALF_WHITE_BED = register(new BedItem(Blocks.WHITE_BED,new Item.Settings().maxCount(1)), "half_white_bed");
+    public static final Item HALF_OAK_DOOR = register(new Item(new Item.Settings()), "half_oak_door");
 
     public static void initialize() {
 //        ModRecipes.registerRecipes();
@@ -348,6 +351,9 @@ public class ItemsRegister {
             itemGroup.add(COMMON_CREEPER_SPAWN_EGG);
             itemGroup.add(ModBlock.AIR_ICE);
             itemGroup.add(BUCKET_HAT);
+            itemGroup.add(HALF_WHITE_BED);
+            itemGroup.add(HALF_OAK_DOOR);
+            itemGroup.add(ModBlock.BROWN_GRASS);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

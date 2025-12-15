@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:oak_planks"
+    },
+    {
+      "item": "minecraft:stick"
+    },
+    {
+      "item": "stone:sap"
+    },
+    {
+      "item": "minecraft:slime_ball"
+    },
+    {
+      "item": "stone:brown_grass"
+    },
+    {
+      "item": "stone:branch"
+    }
+  ],
+  "result": {
+    "id": "minecraft:torch",
+    "count": 1
+  }
+}

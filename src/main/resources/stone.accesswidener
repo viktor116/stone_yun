@@ -1,0 +1,38 @@
+accessWidener v2 named
+
+# -----------------
+# 1. 实体/载具 (VehicleEntity)
+# -----------------
+# 使 VehicleEntity 类可访问 (accessible)
+accessible class net/minecraft/entity/vehicle/VehicleEntity
+
+# 使 VehicleEntity 的 asItem() 方法可访问
+accessible method net/minecraft/entity/vehicle/VehicleEntity asItem ()Lnet/minecraft/item/Item;
+
+# -----------------
+# 2. 实体渲染 (EntityRenderDispatcher)
+# -----------------
+# 使 EntityRenderDispatcher 类可扩展 (extendable)
+# extendable 允许该类被 Mixin 目标化，并允许向其添加字段/方法
+extendable class net/minecraft/client/render/entity/EntityRenderDispatcher
+
+# 使 EntityRenderDispatcher 的 renderers 字段可访问 (用于获取/修改渲染器 Map)
+accessible field net/minecraft/client/render/entity/EntityRenderDispatcher renderers Ljava/util/Map;
+
+# -----------------
+# 3. 渲染核心 (BufferBuilder)
+# -----------------
+# 使 BufferBuilder 的 building 字段可访问 (用于检查/修改是否处于构建状态)
+accessible field net/minecraft/client/render/BufferBuilder building Z
+
+# -----------------
+# 4. 物品渲染 (ItemRenderer)
+# -----------------
+# 使 ItemRenderer 的 renderBakedItemModel 方法可访问 (用于自定义物品模型渲染)
+accessible method net/minecraft/client/render/item/ItemRenderer renderBakedItemModel (Lnet/minecraft/client/render/model/BakedModel;Lnet/minecraft/item/ItemStack;IILnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;)V
+
+# 使 BipedEntityModel 的 rightArmPose 字段可访问 (Accessible)
+accessible field net/minecraft/client/render/entity/model/BipedEntityModel rightArmPose Lnet/minecraft/client/render/entity/model/BipedEntityModel$ArmPose;
+
+# 使 BipedEntityModel 的 leftArmPose 字段可访问 (Accessible)
+accessible field net/minecraft/client/render/entity/model/BipedEntityModel leftArmPose Lnet/minecraft/client/render/entity/model/BipedEntityModel$ArmPose;

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "result": {
+    "id": "minecraft:iron_helmet",
+    "count": 1,
+    "components": {
+      "minecraft:custom_data": {
+        "bit_durability": true
+      }
+    }
+  }
+}

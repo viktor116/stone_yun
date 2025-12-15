@@ -16,7 +16,9 @@
 		"ComposterMixin",
 		"MixinAbstractHorseEntity",
 		"CrossbowItemMixin",
-		"ItemStackDurabilityMixin"
+		"ItemStackDurabilityMixin",
+		"BlockPlaceMixin",
+		"PlayerEntityModelMixin"
 	],
 	"client": [
 		"ItemRendererMixin",

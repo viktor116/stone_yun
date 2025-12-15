@@ -39,5 +39,6 @@
 	},
 	"custom": {
 		"fabric-registry-sync-v0": false
-	}
+	},
+	"accessWidener" : "stone.accesswidener"
 }

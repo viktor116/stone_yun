@@ -19,6 +19,8 @@ import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.nbt.NbtByte;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -50,8 +52,20 @@ public class EventUseEntity {
                 WitherSkeletonInteractionHandler.handleRightClickOnSheep(player);
                 return ActionResult.SUCCESS;
             }
-            if(entity instanceof PiglinEntity){
+            // 猪灵交互处理
+            if (entity instanceof PiglinEntity piglin) {
+                // 1. 设置静止标签和禁用AI
+                if (!world.isClient) {
+                    piglin.setAiDisabled(true); // 禁用AI，阻止移动和行为
+//                    NbtCompound nbt  = new NbtCompound();
+//                    piglin.writeNbt(nbt);
+//                    // 写回实体 (会保留其他数据)
+//                    piglin.readNbt(nbt);
+                }
+
+                // 2. 处理交互 (这通常会打开交易界面)
                 WitherSkeletonInteractionHandler.handleRightClickOnPiglin(player);
+                // 确保猪灵不会乱动，但允许交互成功
                 return ActionResult.SUCCESS;
             }
             //末影人

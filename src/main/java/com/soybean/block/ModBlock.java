@@ -103,6 +103,7 @@ public class ModBlock {
     public static final Block POTATO_BLOCK = register("potato_block", new Block(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).instrument(NoteBlockInstrument.BASS).strength(1F, 0.5F)),true);
     public static final Block COOKED_POTATO_BLOCK = register("cooked_potato_block", new Block(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).instrument(NoteBlockInstrument.BASS).strength(1F, 0.5F)),true);
     public static final Block SAP_BLOCK = register("sap_block", new SapBlock(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).ticksRandomly().strength(0.2F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)),false);
+    public static final Block BROWN_GRASS= register("brown_grass", new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_GREEN).ticksRandomly().strength(0.6F).sounds(BlockSoundGroup.GRASS)),true);
 
     public static final Block COW_PLANT = register("cow_plant", new CowPlantBlock(AbstractBlock.Settings.create()
             .nonOpaque()
@@ -176,6 +177,7 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlock(TRANSLUCENT, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), COW_PLANT);
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), SAP_BLOCK);
+        BlockRenderLayerMap.INSTANCE.putBlock(BROWN_GRASS, RenderLayer.getCutout());
 
         BlockEntityRendererRegistry.register(COW_PLANT_TYPE, CowPlantBlockRenderer::new);
         BlockEntityRendererFactories.register(FLIP_WHITE_BED_ENTITY, FlipWhiteBedBlockEntityRenderer::new);

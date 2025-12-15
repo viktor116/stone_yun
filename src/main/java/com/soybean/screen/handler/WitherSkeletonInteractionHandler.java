@@ -3,11 +3,13 @@ package com.soybean.screen.handler;
 import com.soybean.config.InitValue;
 import com.soybean.items.ItemsRegister;
 import net.minecraft.entity.ai.TargetPredicate;
+import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.entity.mob.WitherSkeletonEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.*;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.sound.SoundEvent;
@@ -94,14 +96,15 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
         if (player.getWorld().isClient) {
             return;
         }
-        CommonMerchant merchant = new CommonMerchant(player);
 
-        // 创建交易列表
+        // 1. 创建交易列表
         TradeOfferList offers = new TradeOfferList();
-        addPiglinTrades(offers);
+
+        CommonMerchant merchant = new CommonMerchant(player);
         merchant.setOffersFromServer(offers);
-        // 使用 sendOffers 方法来处理界面打开和数据同步
-        merchant.sendOffers(player, Text.translatable("merchant." + InitValue.MOD_ID + ".piglin"), 1);  // levelProgress);
+        addPiglinTrades(offers);
+        merchant.sendOffers(player, Text.translatable("merchant." + InitValue.MOD_ID + ".piglin"), 1);
+
         player.incrementStat(Stats.TRADED_WITH_VILLAGER);
     }
 
@@ -176,12 +179,38 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
 
         // 获取当前玩家的位置信息
         BlockPos pos = player.getBlockPos();
+        World world = player.getWorld();
 
-        // 创建目标筛选器，排除创意模式玩家
+        if (world.isClient) {
+            return;
+        }
+        // 创建目标筛选器，寻找 PiglinEntity
         TargetPredicate targetPredicate = TargetPredicate.createNonAttackable().setBaseMaxDistance(15.0);
 
+        // 在玩家周围寻找 PiglinEntity
+        PiglinEntity piglin = world.getClosestEntity(PiglinEntity.class,
+                targetPredicate,
+                player,
+                pos.getX(), pos.getY(), pos.getZ(),
+                new Box(pos).expand(10)); // 搜索范围可以根据需要调整
+
+        // 如果找到了 PiglinEntity 并且它有我们的静止标签
+        if (piglin != null) {
+            // 读取实体的 NBT
+            NbtCompound nbt = new NbtCompound();
+            piglin.writeNbt(nbt);
+
+            // 检查自定义标签
+//            if (nbt.getBoolean("IsTrading")) {
+                piglin.setAiDisabled(false);
+
+                // 移除标签
+                nbt.remove("IsTrading");
+//                piglin.readNbt(nbt); // 重新写回
+//            }
+        }
+
         // 在这个位置寻找 WitherSkeletonEntity（假设是附近的）
-        World world = player.getWorld();
         WitherSkeletonEntity skeleton = world.getClosestEntity(WitherSkeletonEntity.class,
                 targetPredicate,
                 player,
@@ -192,6 +221,9 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
         if (skeleton != null) {
             skeleton.kill();  // 杀死 WitherSkeletonEntity
         }
+
+
+
     }
 
     private static void addDefaultTrades(TradeOfferList offers) {
@@ -266,31 +298,10 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
 
     private static void addPiglinTrades(TradeOfferList offers) {
         // 假设你的默认交易是交换某种物品
-
         offers.add(new TradeOffer(
-                new TradedItem(ItemsRegister.GOLD_DEBRIS, 1),  // 第一个输入物品(物品, 数量, 最大数量)
+                new TradedItem(Items.GOLD_INGOT, 1),  // 第一个输入物品(物品, 数量, 最大数量)
                 Optional.empty(),// 第二个输入物品(可选)
-                new ItemStack(ItemsRegister.ENDER_ROD,64),  // 输出物品
-                0,      // 当前使用次数
-                100,      // 最大使用次数
-                1,      // 经验值
-                0.05f   // 价格乘数
-        ));
-
-        offers.add(new TradeOffer(
-                new TradedItem(ItemsRegister.GOLD_DEBRIS, 1),  // 第一个输入物品(物品, 数量, 最大数量)
-                Optional.empty(),// 第二个输入物品(可选)
-                new ItemStack(ItemsRegister.BLAZE_PEARL,16),  // 输出物品
-                0,      // 当前使用次数
-                100,      // 最大使用次数
-                1,      // 经验值
-                0.05f   // 价格乘数
-        ));
-
-        offers.add(new TradeOffer(
-                new TradedItem(ItemsRegister.GOLD_DEBRIS, 1),  // 第一个输入物品(物品, 数量, 最大数量)
-                Optional.empty(),// 第二个输入物品(可选)
-                new ItemStack(ItemsRegister.NETHER_FISH,32),  // 输出物品
+                new ItemStack(ItemsRegister.BLAZE_PEARL,1),  // 输出物品
                 0,      // 当前使用次数
                 100,      // 最大使用次数
                 1,      // 经验值
@@ -554,4 +565,5 @@ public class WitherSkeletonInteractionHandler extends MerchantScreenHandler {
     public TradeOfferList getOffers() {
         return this.tradeOffers;
     }
+
 }
