@@ -133,8 +133,7 @@
   "item.stone.rideable_polar_bear_spawn_egg": "北极熊蛋",
   "item.stone.common_creeper_spawn_egg": "安全爬行者",
   "item.stone.bucket_hat": "铁桶",
-  "item.stone.half_white_bed": "只有一半的白色床",
-  "item.stone.half_oak_door": "只有一半的橡木门",
+
 
   "item.minecraft.potion.effect.resistance": "抗性提升药水",
   "item.minecraft.splash_potion.effect.resistance": "喷溅型抗性提升药水",
@@ -195,6 +194,8 @@
   "block.stone.sap_block": "树液",
   "block.stone.air_ice_0": "空气冰",
   "block.stone.brown_grass": "干草",
+  "block.stone.half_white_bed": "只有一半的白色床",
+  "block.stone.half_oak_door": "只有一半的橡木门",
 
   "merchant.stone.witherskeleton": "凋零骷髅交易",
   "merchant.stone.sheep": "绵羊交易",

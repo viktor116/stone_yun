@@ -1,9 +1,6 @@
 package com.soybean.block;
 
-import com.soybean.block.client.renderer.CowPlantBlockRenderer;
-import com.soybean.block.client.renderer.FlipWhiteBedBlockEntityRenderer;
-import com.soybean.block.client.renderer.InvertRedBlockEntityRenderer;
-import com.soybean.block.client.renderer.TntWhiteBedBlockEntityRenderer;
+import com.soybean.block.client.renderer.*;
 import com.soybean.block.custom.*;
 import com.soybean.block.custom.entity.*;
 import com.soybean.block.custom.inventory.entity.DemoBlockEntity;
@@ -87,6 +84,8 @@ public class ModBlock {
     public static final Block FLIP_WHITE_BED = register("flip_white_bed",createBedBlock(DyeColor.WHITE),false);
     public static final Block TNT_WHITE_BED = register("tnt_white_bed",createBedBlock(DyeColor.BLACK),false);
     public static final Block INVERT_RED_BED = register("invert_red_bed",createBedBlock(DyeColor.RED),false);
+    public static final Block HALF_WHITE_BED = register("half_white_bed",createBedBlock(DyeColor.YELLOW),false);
+
     public static final Block BEEF_FURNACE = register("beef_furnace", new BeefFurnaceBlock(AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASS).strength(2.5F).luminance(createLightLevelFromLitBlockState(13)).sounds(BlockSoundGroup.STONE)), true);
 
     public static final Block BLOW_BERRY_TORCH_BLOCK = register("glow_berry_torch", new TorchBlock(ParticleTypes.FLAME, AbstractBlock.Settings.create().noCollision().breakInstantly().luminance((state) -> {
@@ -103,7 +102,8 @@ public class ModBlock {
     public static final Block POTATO_BLOCK = register("potato_block", new Block(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).instrument(NoteBlockInstrument.BASS).strength(1F, 0.5F)),true);
     public static final Block COOKED_POTATO_BLOCK = register("cooked_potato_block", new Block(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).instrument(NoteBlockInstrument.BASS).strength(1F, 0.5F)),true);
     public static final Block SAP_BLOCK = register("sap_block", new SapBlock(AbstractBlock.Settings.create().mapColor(MapColor.YELLOW).ticksRandomly().strength(0.2F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque().pistonBehavior(PistonBehavior.DESTROY)),false);
-    public static final Block BROWN_GRASS= register("brown_grass", new Block(AbstractBlock.Settings.create().mapColor(MapColor.PALE_GREEN).ticksRandomly().strength(0.6F).sounds(BlockSoundGroup.GRASS)),true);
+    public static final Block BROWN_GRASS= register("brown_grass", new ShortPlantBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).replaceable().noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offset(AbstractBlock.OffsetType.XYZ).burnable().pistonBehavior(PistonBehavior.DESTROY)),true);
+    public static final Block HALF_OAK_DOOR= register("half_oak_door", new DoorBlock(BlockSetType.OAK, AbstractBlock.Settings.create().mapColor(Blocks.OAK_PLANKS.getDefaultMapColor()).instrument(NoteBlockInstrument.BASS).strength(3.0F).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY)),true);
 
     public static final Block COW_PLANT = register("cow_plant", new CowPlantBlock(AbstractBlock.Settings.create()
             .nonOpaque()
@@ -139,6 +139,11 @@ public class ModBlock {
             Registries.BLOCK_ENTITY_TYPE,
             Identifier.of(InitValue.MOD_ID, "invert_red_bed"),
             BlockEntityType.Builder.create(InvertRedBedEntity::new, INVERT_RED_BED).build(null));
+
+    public static final BlockEntityType<HalfWhiteBedEntity> HALF_WHITE_BED_ENTITY = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE,
+            Identifier.of(InitValue.MOD_ID, "half_white_bed"),
+            BlockEntityType.Builder.create(HalfWhiteBedEntity::new, HALF_WHITE_BED).build(null));
 
     public static final BlockEntityType<BeefFurnaceBlockEntity> BEEF_FURNACE_TYPE =
             Registry.register(
@@ -178,11 +183,13 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), COW_PLANT);
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), SAP_BLOCK);
         BlockRenderLayerMap.INSTANCE.putBlock(BROWN_GRASS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HALF_OAK_DOOR, RenderLayer.getCutout());
 
         BlockEntityRendererRegistry.register(COW_PLANT_TYPE, CowPlantBlockRenderer::new);
         BlockEntityRendererFactories.register(FLIP_WHITE_BED_ENTITY, FlipWhiteBedBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(TNT_WHITE_BED_ENTITY, TntWhiteBedBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(INVERT_RED_BED_ENTITY, InvertRedBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(HALF_WHITE_BED_ENTITY, HalfWhiteBlockEntityRenderer::new);
     }
 
     public static Block register(String id, Block block, boolean shouldRegisterItem) {

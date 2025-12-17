@@ -1,6 +1,7 @@
 package com.soybean.block.custom;
 
 import com.soybean.block.custom.entity.FlipWhiteBedEntity;
+import com.soybean.block.custom.entity.HalfWhiteBedEntity;
 import com.soybean.block.custom.entity.InvertRedBedEntity;
 import com.soybean.block.custom.entity.TntWhiteBedEntity;
 import net.minecraft.block.BedBlock;
@@ -28,7 +29,9 @@ public class CustomBedBlock extends BedBlock {
             return new FlipWhiteBedEntity(pos, state);  // 返回自定义的 BlockEntity
         }else if(this.color == DyeColor.BLACK){
             return new TntWhiteBedEntity(pos,state); //暂时使用黑色来替代TNT床
-        }else {
+        }else if(this.color == DyeColor.YELLOW){
+            return new HalfWhiteBedEntity(pos,state);
+        } else {
             return new InvertRedBedEntity(pos, state);
         }
     }

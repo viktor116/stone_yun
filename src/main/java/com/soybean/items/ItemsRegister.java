@@ -183,8 +183,8 @@ public class ItemsRegister {
     public static final Item COMMON_CREEPER_SPAWN_EGG = register(new SpawnEggItem(EntityRegister.COMMON_CREEPER,
             894731, 0, new Item.Settings()), "common_creeper_spawn_egg");
     public static final Item BUCKET_HAT = register(new BucketHatItem(), "bucket_hat");
-    public static final Item HALF_WHITE_BED = register(new BedItem(Blocks.WHITE_BED,new Item.Settings().maxCount(1)), "half_white_bed");
-    public static final Item HALF_OAK_DOOR = register(new Item(new Item.Settings()), "half_oak_door");
+    public static final Item HALF_WHITE_BED = register(new BedItem(ModBlock.HALF_WHITE_BED,new Item.Settings().maxCount(1)), "half_white_bed");
+    public static final Item HALF_OAK_DOOR = register(new TallBlockItem(ModBlock.HALF_OAK_DOOR,new Item.Settings()), "half_oak_door");
 
     public static void initialize() {
 //        ModRecipes.registerRecipes();

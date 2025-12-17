@@ -4,10 +4,8 @@ import com.soybean.block.ModBlock;
 import com.soybean.items.ItemsRegister;
 import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
-import net.kyrptonaught.customportalapi.util.PortalLink;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
-import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 
 /**
@@ -19,6 +17,7 @@ public class PortalsRegister {
 
     public static void Initialize(){
         registerPortals();
+        CustomPortalActivator.register(); //自定义形状传送门
     }
 
     public static void registerPortals(){
