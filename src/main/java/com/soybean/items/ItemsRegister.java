@@ -163,7 +163,7 @@ public class ItemsRegister {
     public static final Item BLUE_BOW = register(new BlueBowItem(new Item.Settings().maxCount(1)), "blue_bow");
     public static final Item OBSIDIAN_BUCKET = register(new ObsidianBucketItem(new Item.Settings().maxCount(1)), "obsidian_bucket");
     public static final Item STRANGE_STAR = register(new Item(new Item.Settings().component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true)), "strange_star");
-    public static final Item TREE_BARK = register(new Item(new Item.Settings()), "tree_bark");
+    public static final Item TREE_BARK = register(new Item(new Item.Settings().food(FoodComponents.CARROT)), "tree_bark");
     public static final Item TREE_CARBON = register(new DeadlyFoodItem(new Item.Settings().food(FoodRegister.TREE_CARBON).maxCount(16)), "tree_carbon");
     public static final Item TEN_BACK_POTION = register(new DreamEffectItem(new Item.Settings().maxCount(1).food(FoodComponents.CARROT)), "ten_back_potion");
     public static final Item TEN_FRONT_POTION = register(new NightmareEffectItem(new Item.Settings().maxCount(1).food(FoodComponents.CARROT)), "ten_front_potion");
