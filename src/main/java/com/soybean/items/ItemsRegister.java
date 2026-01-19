@@ -14,7 +14,6 @@ import com.soybean.items.potion.PotionRegister;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ChargedProjectilesComponent;
 import net.minecraft.component.type.FoodComponent;
@@ -61,6 +60,7 @@ public class ItemsRegister {
     public static final Item INVERT_BUCKET = register(new InvertBucketItem(ArmorMaterials.IRON, ArmorItem.Type.HELMET,new Item.Settings().maxCount(1)),"invert_bucket");
     public static final Item INVERT_BOAT = register(new InvertBoatItem(ArmorMaterials.LEATHER,ArmorItem.Type.HELMET,new Item.Settings().maxCount(1)),"invert_boat");
     public static final Item COW_PLANT = register(new AliasedBlockItem(ModBlock.COW_PLANT,new Item.Settings()),"cow_plant");
+    public static final Item SHEEP_PLANT = register(new AliasedBlockItem(ModBlock.SHEEP_PLANT,new Item.Settings()),"sheep_plant");
     public static final Item FLINT_AND_STEEL_CUSTOM =register(new FlintAndSteelCustomItem(new Item.Settings().maxCount(1).maxDamage(64)),"flint_and_steel");
     public static final Item WITHER_SPAWN_EGG = register(new SpawnEggItem(EntityType.WITHER, // 实体类型为凋零
             0x303030, 0xA0A0A0, new Item.Settings()), "wither_spawn_egg");
@@ -354,6 +354,7 @@ public class ItemsRegister {
             itemGroup.add(HALF_WHITE_BED);
             itemGroup.add(HALF_OAK_DOOR);
             itemGroup.add(ModBlock.BROWN_GRASS);
+            itemGroup.add(ModBlock.SHEEP_PLANT);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

@@ -112,6 +112,13 @@ public class ModBlock {
             .breakInstantly()
             .sounds(BlockSoundGroup.CROP)),false);
 
+    public static final Block SHEEP_PLANT = register("sheep_plant", new SheepPlantBlock(AbstractBlock.Settings.create()
+            .nonOpaque()
+            .noCollision()
+            .ticksRandomly()
+            .breakInstantly()
+            .sounds(BlockSoundGroup.CROP)),false);
+
     public static final ScreenHandlerType<StoneCraftingScreenHandler> STONE_CRAFTING_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of(InitValue.MOD_ID, "stone_crafting_table"),
                     new ScreenHandlerType<>(StoneCraftingScreenHandler::new, FeatureSet.empty()));
@@ -123,6 +130,12 @@ public class ModBlock {
             Registries.BLOCK_ENTITY_TYPE,
             Identifier.of(InitValue.MOD_ID, "cow_plant"),
             FabricBlockEntityTypeBuilder.create(CowPlantBlockEntity::new, ModBlock.COW_PLANT).build(null)
+    );
+
+    public static final BlockEntityType<SheepPlantBlockEntity> SHEEP_PLANT_TYPE = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE,
+            Identifier.of(InitValue.MOD_ID, "sheep_plant"),
+            FabricBlockEntityTypeBuilder.create(SheepPlantBlockEntity::new, ModBlock.SHEEP_PLANT).build(null)
     );
 
     public static final BlockEntityType<FlipWhiteBedEntity> FLIP_WHITE_BED_ENTITY = Registry.register(
@@ -181,11 +194,13 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlock(BEEF_FURNACE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(TRANSLUCENT, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), COW_PLANT);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), SHEEP_PLANT);
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), SAP_BLOCK);
         BlockRenderLayerMap.INSTANCE.putBlock(BROWN_GRASS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(HALF_OAK_DOOR, RenderLayer.getCutout());
 
         BlockEntityRendererRegistry.register(COW_PLANT_TYPE, CowPlantBlockRenderer::new);
+        BlockEntityRendererRegistry.register(SHEEP_PLANT_TYPE, SheepPlantBlockRenderer::new);
         BlockEntityRendererFactories.register(FLIP_WHITE_BED_ENTITY, FlipWhiteBedBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(TNT_WHITE_BED_ENTITY, TntWhiteBedBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(INVERT_RED_BED_ENTITY, InvertRedBlockEntityRenderer::new);

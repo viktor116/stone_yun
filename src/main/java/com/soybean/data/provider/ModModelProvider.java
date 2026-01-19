@@ -5,8 +5,10 @@ import com.soybean.config.InitValue;
 import com.soybean.items.ItemsRegister;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.block.Blocks;
-import net.minecraft.data.client.*;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.client.Model;
+import net.minecraft.data.client.Models;
 import net.minecraft.util.Identifier;
 
 import java.util.Optional;
@@ -145,6 +147,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.BUCKET_HAT, new Model(Optional.of(Identifier.ofVanilla("item/bucket")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.RIDEABLE_POLAR_BEAR_SPAWN_EGG, new Model(Optional.of(TEMPLATE_SPAWN_EGG), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.COMMON_CREEPER_SPAWN_EGG, new Model(Optional.of(TEMPLATE_SPAWN_EGG), Optional.empty()));
+        itemModelGenerator.register(ItemsRegister.SHEEP_PLANT,new Model(Optional.of(Identifier.ofVanilla("item/sheep_spawn_egg")), Optional.empty()));
 
         itemModelGenerator.register(ItemsRegister.CREEPER_ITEM, new Model(Optional.of(InitValue.id("item/air")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.FLAME_MAN_ITEM, new Model(Optional.of(InitValue.id("item/air")), Optional.empty()));
