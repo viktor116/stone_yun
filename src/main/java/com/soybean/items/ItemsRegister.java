@@ -185,6 +185,9 @@ public class ItemsRegister {
     public static final Item BUCKET_HAT = register(new BucketHatItem(), "bucket_hat");
     public static final Item HALF_WHITE_BED = register(new BedItem(ModBlock.HALF_WHITE_BED,new Item.Settings().maxCount(1)), "half_white_bed");
     public static final Item HALF_OAK_DOOR = register(new TallBlockItem(ModBlock.HALF_OAK_DOOR,new Item.Settings()), "half_oak_door");
+    public static final Item SOUL_ITEM = register(new Item(new Item.Settings()), "soul_item");
+    public static final Item WITHER_SKULL_WAND = register(new WitherSkullWandItem(new Item.Settings().maxCount(1)), "wither_skull_wand");
+    public static final Item WITHER_SKULL_CHARGED_WAND = register(new WitherSkullChargedWandItem(new Item.Settings().maxCount(1)), "wither_skull_charged_wand");
 
     public static void initialize() {
 //        ModRecipes.registerRecipes();
@@ -355,6 +358,9 @@ public class ItemsRegister {
             itemGroup.add(HALF_OAK_DOOR);
             itemGroup.add(ModBlock.BROWN_GRASS);
             itemGroup.add(ModBlock.SHEEP_PLANT);
+            itemGroup.add(SOUL_ITEM);
+            itemGroup.add(WITHER_SKULL_WAND);
+            itemGroup.add(WITHER_SKULL_CHARGED_WAND);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);

@@ -18,7 +18,9 @@
 		"CrossbowItemMixin",
 		"ItemStackDurabilityMixin",
 		"BlockPlaceMixin",
-		"PlayerEntityModelMixin"
+		"PlayerEntityModelMixin",
+		"WitherSkullEntityMixin",
+		"ExplosiveProjectileEntityMixin"
 	],
 	"client": [
 		"ItemRendererMixin",

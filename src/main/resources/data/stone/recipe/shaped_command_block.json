@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RCR",
+    "CDC",
+    "RCR"
+  ],
+  "key": {
+    "R": { "item": "minecraft:amethyst_shard"},
+    "C": { "item": "minecraft:redstone" },
+    "D": { "item": "minecraft:diamond" }
+  },
+  "result": {
+    "id": "minecraft:command_block",
+    "count": 1
+  }
+}

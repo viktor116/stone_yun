@@ -135,6 +135,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.BRANCH,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.WOODEN_SHEARS,Models.HANDHELD);
         itemModelGenerator.register(ItemsRegister.SAP,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.SOUL_ITEM,Models.GENERATED);
+
 
         itemModelGenerator.register(ModBlock.BEDROCK.asItem(), new Model(Optional.of(Identifier.ofVanilla("block/bedrock")), Optional.empty()));
         itemModelGenerator.register(ModBlock.OBSIDIAN.asItem(), new Model(Optional.of(Identifier.ofVanilla("block/obsidian")), Optional.empty()));
@@ -145,6 +147,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.SAND_BLOCK_SPAWN_EGG, new Model(Optional.of(Identifier.ofVanilla("block/sand")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.DIRT_BLOCK_SPAWN_EGG, new Model(Optional.of(Identifier.ofVanilla("block/dirt")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.BUCKET_HAT, new Model(Optional.of(Identifier.ofVanilla("item/bucket")), Optional.empty()));
+        itemModelGenerator.register(ItemsRegister.WITHER_SKULL_WAND,new Model(Optional.of(Identifier.ofVanilla("item/stick")), Optional.empty()));
+        itemModelGenerator.register(ItemsRegister.WITHER_SKULL_CHARGED_WAND,new Model(Optional.of(Identifier.of(InitValue.MOD_ID,"item/stone_stick")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.RIDEABLE_POLAR_BEAR_SPAWN_EGG, new Model(Optional.of(TEMPLATE_SPAWN_EGG), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.COMMON_CREEPER_SPAWN_EGG, new Model(Optional.of(TEMPLATE_SPAWN_EGG), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.SHEEP_PLANT,new Model(Optional.of(Identifier.ofVanilla("item/sheep_spawn_egg")), Optional.empty()));

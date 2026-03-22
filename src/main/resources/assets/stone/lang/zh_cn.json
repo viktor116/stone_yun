@@ -134,6 +134,9 @@
   "item.stone.rideable_polar_bear_spawn_egg": "北极熊蛋",
   "item.stone.common_creeper_spawn_egg": "安全爬行者",
   "item.stone.bucket_hat": "铁桶",
+  "item.stone.soul_item": "灵魂",
+  "item.stone.wither_skull_wand": "灵魂之首之杖",
+  "item.stone.wither_skull_charged_wand": "充能灵魂之首之杖",
 
 
   "item.minecraft.potion.effect.resistance": "抗性提升药水",

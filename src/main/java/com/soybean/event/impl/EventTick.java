@@ -1,10 +1,13 @@
 package com.soybean.event.impl;
 
+import com.soybean.items.recipes.DropCraftingHandler;
 import com.soybean.manager.HeadlessPlayerManager;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.server.world.ServerWorld;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -22,6 +25,8 @@ public class EventTick {
         ServerTickEvents.START_SERVER_TICK.register(server -> {
             HeadlessPlayerManager.tick();
         });
+        // 丢合成
+        ServerTickEvents.END_WORLD_TICK.register(DropCraftingHandler::onWorldTick);
 //        ServerTickEvents.START_SERVER_TICK.register((MinecraftServer server) -> {
 //            for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
 //                if (player.isTouchingWater()) {
