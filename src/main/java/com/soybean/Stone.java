@@ -15,6 +15,10 @@ import com.soybean.sound.SoundRegister;
 import com.soybean.utils.ServerEachTickTaskManager;
 import com.soybean.world.portals.PortalsRegister;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityType;
+
+import java.lang.reflect.Field;
 
 public class Stone implements ModInitializer {
 
