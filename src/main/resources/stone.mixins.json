@@ -20,7 +20,8 @@
 		"BlockPlaceMixin",
 		"PlayerEntityModelMixin",
 		"WitherSkullEntityMixin",
-		"ExplosiveProjectileEntityMixin"
+		"ExplosiveProjectileEntityMixin",
+		"AbstractPiglinEntityMixin"
 	],
 	"client": [
 		"ItemRendererMixin",
