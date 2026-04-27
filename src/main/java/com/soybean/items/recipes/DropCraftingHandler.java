@@ -11,7 +11,6 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 
@@ -64,6 +63,18 @@ public class DropCraftingHandler {
                             Items.SAND
                     ),
                     new ItemStack(Items.SOUL_SAND, 1),
+                    CraftEffect.SOUL_SAND
+            ),
+
+            // ④ 灵魂 x8 + 下界之星 → 末地传送门框架
+            new DropRecipe(
+                    List.of(
+                            ItemsRegister.SOUL_ITEM, ItemsRegister.SOUL_ITEM, ItemsRegister.SOUL_ITEM,
+                            ItemsRegister.SOUL_ITEM, ItemsRegister.SOUL_ITEM, ItemsRegister.SOUL_ITEM,
+                            ItemsRegister.SOUL_ITEM, ItemsRegister.SOUL_ITEM,
+                            Items.NETHER_STAR
+                    ),
+                    new ItemStack(Items.END_PORTAL_FRAME, 1),
                     CraftEffect.SOUL_SAND
             )
     );
