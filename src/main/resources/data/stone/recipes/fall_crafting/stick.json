@@ -1,0 +1,15 @@
+{
+  "type": "stone:fall_crafting",
+  "mode": "shaped",
+  "consume": 4,
+  "input": {
+    "item": "minecraft:stick"
+  },
+  "pattern": [
+    "P",
+    "P"
+  ],
+  "key": {
+    "P": "minecraft:oak_planks"
+  }
+}

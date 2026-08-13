@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "stone:block/extinguish_torch"
+    },
+    "lit=true": {
+      "model": "stone:block/extinguish_torch_lit"
+    }
+  }
+}

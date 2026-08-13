@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "stone:fall_oak_log" }
+  ],
+  "result": {
+    "id": "stone:fall_oak_planks",
+    "count": 4
+  }
+}

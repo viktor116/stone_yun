@@ -25,10 +25,17 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlock.COMPRESS_GOLD_BLOCK);
         addDrop(ModBlock.BEEF_FURNACE);
         addDrop(ModBlock.ALUMINUM_ORE, ItemsRegister.RAW_ALUMINUM);
+        addDrop(ModBlock.LICHEN_DIAMOND_ORE, ItemsRegister.LICHEN_DIAMOND);
+        addDrop(ModBlock.DEEPSLATE_DIAMOND_ORE, ItemsRegister.LICHEN_DIAMOND);
+        addDrop(ModBlock.FALL_OAK_LOG);
+        addDrop(ModBlock.FALL_OAK_PLANKS);
+        addDrop(ModBlock.FALL_CRAFTING_TABLE);
+        addDrop(ModBlock.FALL_FURNACE);
         addDrop(ModBlock.COMPRESS_OAK_LOG_BLOCK);
         addDrop(ModBlock.BEDROCK);
         addDrop(ModBlock.TRANSLUCENT);
         addDrop(ModBlock.POTATO_BLOCK);
         addDrop(ModBlock.COOKED_POTATO_BLOCK);
+        addDrop(ModBlock.EXTINGUISH_TORCH);
     }
 }

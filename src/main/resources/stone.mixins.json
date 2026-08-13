@@ -16,12 +16,15 @@
 		"ComposterMixin",
 		"MixinAbstractHorseEntity",
 		"CrossbowItemMixin",
+		"BowItemMixin",
 		"ItemStackDurabilityMixin",
 		"BlockPlaceMixin",
 		"PlayerEntityModelMixin",
 		"WitherSkullEntityMixin",
 		"ExplosiveProjectileEntityMixin",
-		"AbstractPiglinEntityMixin"
+		"AbstractPiglinEntityMixin",
+		"RespawnAnchorBlockMixin",
+		"PlayerEntityMixin"
 	],
 	"client": [
 		"ItemRendererMixin",

@@ -5,6 +5,8 @@ import com.soybean.block.custom.*;
 import com.soybean.block.custom.entity.*;
 import com.soybean.block.custom.inventory.entity.DemoBlockEntity;
 import com.soybean.config.InitValue;
+import com.soybean.screen.handler.FallCraftingScreenHandler;
+import com.soybean.screen.handler.FallFurnaceScreenHandler;
 import com.soybean.screen.handler.StoneCraftingScreenHandler;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
@@ -64,6 +66,14 @@ public class ModBlock {
 
     public static final Block COAL_ORE = register("coal_ore", new ExperienceDroppingBlock(UniformIntProvider.create(0, 2), AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)),true);
     public static final Block ALUMINUM_ORE = register("aluminum_ore", new ExperienceDroppingBlock(UniformIntProvider.create(0, 2), AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)),true);
+    public static final Block LICHEN_DIAMOND_ORE = register("lichen_diamond_ore", new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)),true);
+    public static final Block DEEPSLATE_DIAMOND_ORE = register("deepslate_diamond_ore", new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), AbstractBlock.Settings.create().mapColor(MapColor.DEEPSLATE_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F).sounds(BlockSoundGroup.DEEPSLATE)),true);
+    public static final Block FALL_OAK_LOG = register("fall_oak_log", new Block(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).instrument(NoteBlockInstrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD).burnable()),true);
+    public static final Block FALL_OAK_PLANKS = register("fall_oak_planks", new Block(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).instrument(NoteBlockInstrument.BASS).strength(2.0F).sounds(BlockSoundGroup.WOOD).burnable()),true);
+    public static final Block FALL_CRAFTING_TABLE = register("fall_crafting_table", new FallCraftingBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).instrument(NoteBlockInstrument.BASS).strength(2.5F).sounds(BlockSoundGroup.WOOD).burnable()),true);
+    public static final Block FALL_FURNACE = register("fall_furnace", new FallFurnaceBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F, 3.5F).sounds(BlockSoundGroup.STONE).requiresTool()),true);
+    public static final Block EXTINGUISH_TORCH = register("extinguish_torch", new ExtinguishTorchBlock(AbstractBlock.Settings.create().noCollision().breakInstantly().luminance((state) -> state.get(ExtinguishTorchBlock.LIT) ? 14 : 0)),true);
+    public static final Block MAIN_RESPAWN_ANCHOR = register("main_respawn_anchor", new MainRespawnAnchorBlock(AbstractBlock.Settings.copy(Blocks.RESPAWN_ANCHOR)),true);
 
     public static final Block REACTOR = register("reactor", new Block(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_BLUE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.0F)),true);
     public static final Block TRANSPARENT_BLOCK = register("transparent_block", new Block(AbstractBlock.Settings.create().mapColor(MapColor.GRAY).instrument(NoteBlockInstrument.BASEDRUM).nonOpaque().strength(2F,3F) ),true);
@@ -119,9 +129,22 @@ public class ModBlock {
             .breakInstantly()
             .sounds(BlockSoundGroup.CROP)),false);
 
+    public static final Block GUNPOWDER_WIRE = register("gunpowder_wire", new GunpowderWireBlock(AbstractBlock.Settings.copy(Blocks.REDSTONE_WIRE)), true);
+    public static final Block GLOWSTONE_POWDER_WIRE = register("glowstone_powder_wire", new GlowstonePowderWireBlock(AbstractBlock.Settings.copy(Blocks.REDSTONE_WIRE).luminance(state -> 15)), true);
+    public static final Block BLAZE_POWDER_WIRE = register("blaze_powder_wire", new BlazePowderWireBlock(AbstractBlock.Settings.copy(Blocks.REDSTONE_WIRE).luminance(state -> 15)), true);
+    public static final Block SUGAR_WIRE = register("sugar_wire", new SugarWireBlock(AbstractBlock.Settings.copy(Blocks.REDSTONE_WIRE)), true);
+
     public static final ScreenHandlerType<StoneCraftingScreenHandler> STONE_CRAFTING_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of(InitValue.MOD_ID, "stone_crafting_table"),
                     new ScreenHandlerType<>(StoneCraftingScreenHandler::new, FeatureSet.empty()));
+
+    public static final ScreenHandlerType<FallCraftingScreenHandler> FALL_CRAFTING_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, Identifier.of(InitValue.MOD_ID, "fall_crafting_table"),
+                    new ScreenHandlerType<>(FallCraftingScreenHandler::new, FeatureSet.empty()));
+
+    public static final ScreenHandlerType<FallFurnaceScreenHandler> FALL_FURNACE_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, Identifier.of(InitValue.MOD_ID, "fall_furnace"),
+                    new ScreenHandlerType<>(FallFurnaceScreenHandler::new, FeatureSet.empty()));
 
     public static final BlockEntityType<DemoBlockEntity> DEMO_BLOCK_ENTITY =Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(InitValue.MOD_ID, "demo_block_entity"),
             BlockEntityType.Builder.create(DemoBlockEntity::new, CACTUS).build(null));
@@ -164,6 +187,18 @@ public class ModBlock {
                     Identifier.of(InitValue.MOD_ID, "beef_furnace"),
                     BlockEntityType.Builder.create(BeefFurnaceBlockEntity::new, BEEF_FURNACE).build()
             );
+    public static final BlockEntityType<FallFurnaceBlockEntity> FALL_FURNACE_TYPE =
+            Registry.register(
+                    Registries.BLOCK_ENTITY_TYPE,
+                    Identifier.of(InitValue.MOD_ID, "fall_furnace"),
+                    BlockEntityType.Builder.create(FallFurnaceBlockEntity::new, FALL_FURNACE).build()
+            );
+    public static final BlockEntityType<ExtinguishTorchBlockEntity> EXTINGUISH_TORCH_TYPE =
+            Registry.register(
+                    Registries.BLOCK_ENTITY_TYPE,
+                    Identifier.of(InitValue.MOD_ID, "extinguish_torch"),
+                    BlockEntityType.Builder.create(ExtinguishTorchBlockEntity::new, EXTINGUISH_TORCH).build()
+            );
 
     public static void initialize() {
         FuelRegistry.INSTANCE.add(Items.RAW_IRON, 1600);
@@ -177,6 +212,7 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlock(SOUL_WALL_TORCH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BIG_TORCH_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BIG_WALL_TORCH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(EXTINGUISH_TORCH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(CACTUS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FIRE, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(STATIC_FIRE, RenderLayer.getTranslucent());
@@ -198,6 +234,11 @@ public class ModBlock {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), SAP_BLOCK);
         BlockRenderLayerMap.INSTANCE.putBlock(BROWN_GRASS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(HALF_OAK_DOOR, RenderLayer.getCutout());
+
+        BlockRenderLayerMap.INSTANCE.putBlock(GUNPOWDER_WIRE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(GLOWSTONE_POWDER_WIRE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BLAZE_POWDER_WIRE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(SUGAR_WIRE, RenderLayer.getCutout());
 
         BlockEntityRendererRegistry.register(COW_PLANT_TYPE, CowPlantBlockRenderer::new);
         BlockEntityRendererRegistry.register(SHEEP_PLANT_TYPE, SheepPlantBlockRenderer::new);

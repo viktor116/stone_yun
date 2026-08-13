@@ -4,6 +4,10 @@
     "stone:coal_ore",
     "stone:aluminum_ore",
     "stone:concrete",
-    "stone:compress_gold_block"
+    "stone:compress_gold_block",
+    "stone:lichen_diamond_ore",
+    "stone:deepslate_diamond_ore",
+    "stone:fall_furnace",
+    "stone:main_respawn_anchor"
   ]
 }

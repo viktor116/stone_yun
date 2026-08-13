@@ -121,12 +121,48 @@ public class EntityRegister {
                     .build()
     );
 
+    public static final EntityType<MaceProjectileEntity> MACE_PROJECTILE_ENTITY = register(
+            "mace_projectile",
+            FabricEntityTypeBuilder.<MaceProjectileEntity>create(SpawnGroup.MISC, MaceProjectileEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.5f, 0.5f))
+                    .trackRangeBlocks(128)
+                    .trackedUpdateRate(10)
+                    .build()
+    );
+
+    public static final EntityType<MaceBobberEntity> MACE_BOBBER_ENTITY = register(
+            "mace_bobber",
+            FabricEntityTypeBuilder.<MaceBobberEntity>create(SpawnGroup.MISC, MaceBobberEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.25f, 0.25f))
+                    .trackRangeBlocks(128)
+                    .trackedUpdateRate(10)
+                    .build()
+    );
+
+    public static final EntityType<BowProjectileEntity> BOW_PROJECTILE_ENTITY = register(
+            "bow_projectile",
+            FabricEntityTypeBuilder.<BowProjectileEntity>create(SpawnGroup.MISC, BowProjectileEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.5f, 0.5f))
+                    .trackRangeBlocks(128)
+                    .trackedUpdateRate(10)
+                    .build()
+    );
+
     public static final EntityType<CommonCreeperEntity> COMMON_CREEPER = Registry.register(
             Registries.ENTITY_TYPE,
             InitValue.id("common_creeper"),
             EntityType.Builder.create(CommonCreeperEntity::new, SpawnGroup.MONSTER)
                     .dimensions(0.6f, 1.7f)
                     .maxTrackingRange(8)
+                    .build()
+    );
+
+    public static final EntityType<RoachEntity> ROACH = Registry.register(
+            Registries.ENTITY_TYPE,
+            InitValue.id("roach"),
+            FabricEntityTypeBuilder.<RoachEntity>create(SpawnGroup.CREATURE, RoachEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.4f, 0.25f))
+                    .trackRangeBlocks(8)
                     .build()
     );
 
@@ -141,5 +177,6 @@ public class EntityRegister {
         FabricDefaultAttributeRegistry.register(CustomBlockEntity.DIRT_BLOCK,CustomBlockEntity.createAttributes());
         FabricDefaultAttributeRegistry.register(RIDEABLE_POLAR_BEAR, RideablePolarBearEntity.createPolarBearAttributes());
         FabricDefaultAttributeRegistry.register(COMMON_CREEPER, CommonCreeperEntity.createCreeperAttributes());
+        FabricDefaultAttributeRegistry.register(ROACH, RoachEntity.createRoachAttributes());
     }
 }

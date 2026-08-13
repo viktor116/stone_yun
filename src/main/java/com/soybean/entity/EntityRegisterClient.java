@@ -1,6 +1,7 @@
 package com.soybean.entity;
 
 import com.soybean.entity.client.model.HimModel;
+import com.soybean.entity.client.model.RoachModel;
 import com.soybean.entity.client.renderer.*;
 import com.soybean.entity.custom.CustomBlockEntity;
 import com.soybean.entity.custom.InvertMinecartEntity;
@@ -50,5 +51,9 @@ public class EntityRegisterClient {
 
         EntityRendererRegistry.register(EntityRegister.RIDEABLE_POLAR_BEAR, PolarBearEntityRenderer::new);
         EntityRendererRegistry.register(EntityRegister.COMMON_CREEPER, CommonCreeperEntityRenderer::new);
+        EntityRendererRegistry.register(EntityRegister.MACE_PROJECTILE_ENTITY, MaceProjectileRenderer::new);
+        EntityRendererRegistry.register(EntityRegister.MACE_BOBBER_ENTITY, MaceBobberRenderer::new);
+        EntityRendererRegistry.register(EntityRegister.BOW_PROJECTILE_ENTITY, BowProjectileRenderer::new);
+        EntityRendererRegistry.register(EntityRegister.ROACH, RoachRenderer::new);
     }
 }

@@ -1,0 +1,14 @@
+// 1.21.1	2026-08-13T12:59:15.893482	stone/Tags for minecraft:block
+ed3abb39484fad0f94cc85dcfe9e9cc7d005b316 data\minecraft\tags\block\needs_iron_tool.json
+e1da34eca9a86807f2b6f29f2a1c973edc721bb1 data\minecraft\tags\block\standing_signs.json
+3c450f9570bdd4a53080f2c06db9a9223fcc92b9 data\minecraft\tags\block\anvil.json
+9c0da8d850c923f5f4cf519da45aa69344cce504 data\minecraft\tags\block\coal_ores.json
+68ecb8c0cd9b2993e57bd55a416cb97a37b72fb5 data\minecraft\tags\block\planks.json
+81a037e85e917247b9ff39ef1e506fa3738be678 data\minecraft\tags\block\logs.json
+7e4a5ac9ec36b2e88e8e1bcd1f0482a39e634d48 data\minecraft\tags\block\wall_post_override.json
+5db895050ffea84ec8af106ecf8d103da10a0b04 data\minecraft\tags\block\needs_stone_tool.json
+799d22d2f758a1a0a973c32e1303ff9786dd6bff data\minecraft\tags\block\portals.json
+f513ebe15e6f726129035eddeed634ac56084c70 data\minecraft\tags\block\fire.json
+6c6af2dee34c9f0b27454321c313d62d086c3f74 data\minecraft\tags\block\needs_diamond_tool.json
+6dc1377f31901c094916b54a0e5d55c0e9781ac8 data\minecraft\tags\block\mineable\pickaxe.json
+f39f6b712285ee8026aab49982122d2f8e467610 data\minecraft\tags\block\mineable\axe.json

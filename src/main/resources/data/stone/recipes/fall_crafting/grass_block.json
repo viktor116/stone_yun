@@ -1,0 +1,15 @@
+{
+  "type": "stone:fall_crafting",
+  "mode": "shaped",
+  "input": {
+    "item": "minecraft:grass_block"
+  },
+  "pattern": [
+    "P",
+    "S"
+  ],
+  "key": {
+    "P": "minecraft:short_grass",
+    "S": "minecraft:dirt"
+  }
+}

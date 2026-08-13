@@ -4,5 +4,8 @@
   "item.stone.minecart_hat": "minecart hat",
   "item.stone.tree_bark": "Tree Bark",
   "block.stone.stone_crafting_table": "stone crafting table",
-  "stone.container.crafting": "stone crafting table"
+  "stone.container.crafting": "stone crafting table",
+  "item.stone.roach_spawn_egg": "Roach Spawn Egg",
+  "entity.stone.roach": "Roach",
+  "block.stone.fall_crafting_table": "Deconstruction Table"
 }

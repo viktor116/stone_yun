@@ -1,0 +1,15 @@
+{
+  "type": "stone:fall_crafting",
+  "mode": "shaped",
+  "input": {
+    "item": "minecraft:red_bed"
+  },
+  "pattern": [
+    "RRR",
+    "WWW"
+  ],
+  "key": {
+    "R": "minecraft:red_wool",
+    "W": "minecraft:oak_planks"
+  }
+}

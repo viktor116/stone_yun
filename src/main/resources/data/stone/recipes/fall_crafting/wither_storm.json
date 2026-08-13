@@ -1,0 +1,17 @@
+{
+  "type": "stone:fall_crafting",
+  "mode": "shaped",
+  "input": {
+    "item": "stone:wither_storm"
+  },
+  "pattern": [
+    "PPP",
+    "SXS",
+    " S "
+  ],
+  "key": {
+    "P": "minecraft:wither_skeleton_skull",
+    "S": "minecraft:soul_sand",
+    "X": "minecraft:command_block"
+  }
+}

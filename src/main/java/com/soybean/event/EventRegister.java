@@ -10,6 +10,7 @@ public class EventRegister {
         EventTick.register();
         EventUseBlock.register();
         EventItemFuel.register();
+        EventPowders.register();
     }
 
     public static void InitializeClient(){

@@ -1,0 +1,11 @@
+{
+  "type": "stone:fall_furnace",
+  "input": {
+    "item": "minecraft:iron_ingot"
+  },
+  "cookTime": 200,
+  "results": [
+    { "item": "minecraft:raw_iron", "count": 1 },
+    { "item": "minecraft:coal", "count": 1 }
+  ]
+}

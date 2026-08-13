@@ -1,0 +1,11 @@
+{
+  "type": "stone:fall_furnace",
+  "input": {
+    "item": "minecraft:cooked_beef"
+  },
+  "cookTime": 200,
+  "results": [
+    { "item": "minecraft:beef", "count": 1 },
+    { "item": "minecraft:coal", "count": 1 }
+  ]
+}

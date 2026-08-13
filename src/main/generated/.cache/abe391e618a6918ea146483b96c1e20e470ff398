@@ -1,0 +1,18 @@
+// 1.21.1	2026-08-13T12:59:15.893482	stone/Block Loot Tables
+79ead2a2a6e4ed1e1fbb57c84db0b773f0db3775 data\stone\loot_table\blocks\fall_oak_log.json
+f567fa6c0e81e024aefaf91f4da361674c5dd0a2 data\stone\loot_table\blocks\bedrock.json
+ae7e72e8fad3636abea074a6a06a0022ce252005 data\stone\loot_table\blocks\aluminum_ore.json
+3a71e33a786ae23fe64d3e25fe89321b817fcdf0 data\stone\loot_table\blocks\fall_oak_planks.json
+0891373ff2c80a2cfcd672e0bea1d7c2f576900f data\stone\loot_table\blocks\dirt_crafting_table.json
+c63a04f3645dfc304ddadd629ced7b5f531fdb3e data\stone\loot_table\blocks\compress_oak_log.json
+2076745be9105178d54a8043311b447edb2bc95c data\stone\loot_table\blocks\compress_gold_block.json
+b7ce0ac0d74b8cb24ee77ae6c1f39655d9e3ba72 data\stone\loot_table\blocks\fall_crafting_table.json
+f5bb7e062383d76e6e8221e63394f000717958b3 data\stone\loot_table\blocks\leaf_ore.json
+2ecb4cff698d8d0f33a803da0b7c9eb00bacd094 data\stone\loot_table\blocks\lichen_diamond_ore.json
+666ce5725afb27d8bf73bb1418391d866f4e329a data\stone\loot_table\blocks\fall_furnace.json
+f0cb422121f5a4be84de0711c00c4a395f1a4f18 data\stone\loot_table\blocks\potato_block.json
+13917ba04fad7402adedfc1ff7cf492dd179b271 data\stone\loot_table\blocks\cooked_potato_block.json
+b4ddb5908eed3e9263092d55bd2178d8144b207f data\stone\loot_table\blocks\translucent.json
+7219c24538fef41c93b62906695ad8740397dfe7 data\stone\loot_table\blocks\beef_furnace.json
+2ecb4cff698d8d0f33a803da0b7c9eb00bacd094 data\stone\loot_table\blocks\deepslate_diamond_ore.json
+daa31d8487567bc78250342c05c19cef79489ef8 data\stone\loot_table\blocks\extinguish_torch.json

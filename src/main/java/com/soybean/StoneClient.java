@@ -1,6 +1,7 @@
 package com.soybean;
 
 import com.soybean.block.ModBlock;
+import com.soybean.block.client.ModBlockColors;
 import com.soybean.entity.EntityRegisterClient;
 import com.soybean.event.EventRegister;
 import com.soybean.init.ScreenHandlerTypeInit;
@@ -16,6 +17,7 @@ public class StoneClient implements ClientModInitializer {
     public void onInitializeClient() {
         ItemRendererRegister.init();
         ModBlock.initializeClient();
+        ModBlockColors.register();
         EntityRegisterClient.initializeClient();
         ScreenHandlerTypeInit.initializeClient();
         EventRegister.InitializeClient();

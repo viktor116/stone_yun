@@ -1,0 +1,16 @@
+{
+  "type": "stone:fall_crafting",
+  "mode": "shaped",
+  "input": {
+    "item": "minecraft:wooden_pickaxe"
+  },
+  "pattern": [
+    "ttt",
+    " s ",
+    " s "
+  ],
+  "key": {
+    "t": "minecraft:oak_planks",
+    "s": "minecraft:stick"
+  }
+}

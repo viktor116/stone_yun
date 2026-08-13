@@ -1,0 +1,4 @@
+{
+  "parent": "stone:item/mace_bow",
+  "textures": { "layer0": "stone:item/mace_bow_pulling_1" }
+}

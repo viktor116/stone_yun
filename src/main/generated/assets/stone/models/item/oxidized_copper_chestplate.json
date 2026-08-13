@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "stone:item/oxidized_copper_chestplate"
+  }
+}

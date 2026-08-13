@@ -1,0 +1,11 @@
+{
+  "type": "stone:fall_crafting",
+  "mode": "shapeless",
+  "input": {
+    "item": "minecraft:ender_eye"
+  },
+  "results": [
+    { "item": "stone:blaze_pearl", "count": 1 },
+    { "item": "stone:ender_powder", "count": 1 }
+  ]
+}

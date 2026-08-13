@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PP",
+    "PP"
+  ],
+  "key": {
+    "P": { "item": "stone:fall_oak_planks" }
+  },
+  "result": {
+    "id": "stone:fall_crafting_table",
+    "count": 1
+  }
+}

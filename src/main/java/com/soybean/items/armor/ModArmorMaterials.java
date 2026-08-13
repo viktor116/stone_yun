@@ -111,6 +111,66 @@ public class ModArmorMaterials {
                     2f,  // 硬度
                     0f  // 击退抗性
             ));
+    //铜套（原版铜盔甲数值）
+    public static final RegistryEntry<ArmorMaterial> COPPER_ARMOR_MATERIAL = registerArmorMaterial("copper",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+                map.put(ArmorItem.Type.HELMET, 1);
+                map.put(ArmorItem.Type.CHESTPLATE, 4);
+                map.put(ArmorItem.Type.LEGGINGS, 3);
+                map.put(ArmorItem.Type.BOOTS, 1);
+                map.put(ArmorItem.Type.BODY, 6);
+            }), 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(Items.COPPER_INGOT),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(InitValue.MOD_ID, "copper"))),0,0));
+    //斑驳铜套
+    public static final RegistryEntry<ArmorMaterial> EXPOSED_COPPER_ARMOR_MATERIAL = registerArmorMaterial("exposed_copper",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+                map.put(ArmorItem.Type.HELMET, 1);
+                map.put(ArmorItem.Type.CHESTPLATE, 3);
+                map.put(ArmorItem.Type.LEGGINGS, 2);
+                map.put(ArmorItem.Type.BOOTS, 1);
+                map.put(ArmorItem.Type.BODY, 5);
+            }), 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(Items.COPPER_INGOT),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(InitValue.MOD_ID, "exposed_copper"))),0,0));
+    //斑驳铜套（中间阶段）
+    public static final RegistryEntry<ArmorMaterial> WEATHERED_COPPER_ARMOR_MATERIAL = registerArmorMaterial("weathered_copper",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+                map.put(ArmorItem.Type.HELMET, 0);
+                map.put(ArmorItem.Type.CHESTPLATE, 2);
+                map.put(ArmorItem.Type.LEGGINGS, 2);
+                map.put(ArmorItem.Type.BOOTS, 1);
+                map.put(ArmorItem.Type.BODY, 4);
+            }), 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(Items.COPPER_INGOT),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(InitValue.MOD_ID, "weathered_copper"))),0,0));
+    //氧化铜套
+    public static final RegistryEntry<ArmorMaterial> OXIDIZED_COPPER_ARMOR_MATERIAL = registerArmorMaterial("oxidized_copper",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+                map.put(ArmorItem.Type.HELMET, 0);
+                map.put(ArmorItem.Type.CHESTPLATE, 2);
+                map.put(ArmorItem.Type.LEGGINGS, 1);
+                map.put(ArmorItem.Type.BOOTS, 0);
+                map.put(ArmorItem.Type.BODY, 3);
+            }), 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(Items.COPPER_INGOT),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(InitValue.MOD_ID, "oxidized_copper"))),0,0));
+    //涂蜡铜套（与铜套同数值）
+    public static final RegistryEntry<ArmorMaterial> WAXED_COPPER_ARMOR_MATERIAL = registerArmorMaterial("waxed_copper",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+                map.put(ArmorItem.Type.HELMET, 1);
+                map.put(ArmorItem.Type.CHESTPLATE, 4);
+                map.put(ArmorItem.Type.LEGGINGS, 3);
+                map.put(ArmorItem.Type.BOOTS, 1);
+                map.put(ArmorItem.Type.BODY, 6);
+            }), 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, () -> Ingredient.ofItems(Items.COPPER_INGOT),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(InitValue.MOD_ID, "waxed_copper"))),0,0));
+    //地衣钻石套
+    public static final RegistryEntry<ArmorMaterial> LICHEN_DIAMOND_ARMOR_MATERIAL = registerArmorMaterial("lichen_diamond",
+            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+                map.put(ArmorItem.Type.HELMET, 3);
+                map.put(ArmorItem.Type.CHESTPLATE, 8);
+                map.put(ArmorItem.Type.LEGGINGS, 6);
+                map.put(ArmorItem.Type.BOOTS, 3);
+                map.put(ArmorItem.Type.BODY, 11);
+            }), 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, () -> Ingredient.ofItems(Items.DIAMOND),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(InitValue.MOD_ID, "lichen_diamond"))),2f,0.2f));
     public static void initialize() {
 
     };

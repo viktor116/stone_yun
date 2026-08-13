@@ -36,6 +36,9 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.ALUMINUM_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.COMPRESS_OAK_LOG_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlock.TRANSLUCENT);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlock.LICHEN_DIAMOND_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlock.DEEPSLATE_DIAMOND_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlock.FALL_OAK_PLANKS);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(ModBlock.OBSIDIAN, Identifier.ofVanilla("block/obsidian")));
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(ModBlock.POTATO_BLOCK, Identifier.ofVanilla("block/raw_iron_block")));
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(ModBlock.COOKED_POTATO_BLOCK, Identifier.ofVanilla("block/raw_gold_block")));
@@ -117,6 +120,45 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.LICHEN_CHESTPLATE,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.LICHEN_LEGGINGS,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.LICHEN_BOOTS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.COPPER_HELMET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.COPPER_CHESTPLATE,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.COPPER_LEGGINGS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.COPPER_BOOTS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.EXPOSED_COPPER_HELMET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.EXPOSED_COPPER_CHESTPLATE,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.EXPOSED_COPPER_LEGGINGS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.EXPOSED_COPPER_BOOTS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.WEATHERED_COPPER_HELMET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.WEATHERED_COPPER_CHESTPLATE,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.WEATHERED_COPPER_LEGGINGS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.WEATHERED_COPPER_BOOTS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.OXIDIZED_COPPER_HELMET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.OXIDIZED_COPPER_CHESTPLATE,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.OXIDIZED_COPPER_LEGGINGS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.OXIDIZED_COPPER_BOOTS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.LICHEN_DIAMOND_HELMET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.LICHEN_DIAMOND_CHESTPLATE,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.LICHEN_DIAMOND_LEGGINGS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.LICHEN_DIAMOND_BOOTS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.COPPER_SWORD,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.COPPER_AXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.COPPER_PICKAXE_TOOL,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.EXPOSED_COPPER_SWORD,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.EXPOSED_COPPER_AXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.EXPOSED_COPPER_PICKAXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.WEATHERED_COPPER_SWORD,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.WEATHERED_COPPER_AXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.WEATHERED_COPPER_PICKAXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.OXIDIZED_COPPER_SWORD,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.OXIDIZED_COPPER_AXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.OXIDIZED_COPPER_PICKAXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.WAXED_COPPER_HELMET,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.WAXED_COPPER_CHESTPLATE,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.WAXED_COPPER_LEGGINGS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.WAXED_COPPER_BOOTS,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.WAXED_COPPER_SWORD,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.WAXED_COPPER_AXE,Models.HANDHELD);
+        itemModelGenerator.register(ItemsRegister.WAXED_COPPER_PICKAXE,Models.HANDHELD);
         itemModelGenerator.register(ItemsRegister.BLAZE_EYE, Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.CAKE, Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.ALUMINUM_INGOT,Models.GENERATED);
@@ -136,6 +178,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.WOODEN_SHEARS,Models.HANDHELD);
         itemModelGenerator.register(ItemsRegister.SAP,Models.GENERATED);
         itemModelGenerator.register(ItemsRegister.SOUL_ITEM,Models.GENERATED);
+        itemModelGenerator.register(ItemsRegister.LICHEN_DIAMOND,Models.GENERATED);
 
 
         itemModelGenerator.register(ModBlock.BEDROCK.asItem(), new Model(Optional.of(Identifier.ofVanilla("block/bedrock")), Optional.empty()));
@@ -151,6 +194,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.WITHER_SKULL_CHARGED_WAND,new Model(Optional.of(Identifier.of(InitValue.MOD_ID,"item/stone_stick")), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.RIDEABLE_POLAR_BEAR_SPAWN_EGG, new Model(Optional.of(TEMPLATE_SPAWN_EGG), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.COMMON_CREEPER_SPAWN_EGG, new Model(Optional.of(TEMPLATE_SPAWN_EGG), Optional.empty()));
+        itemModelGenerator.register(ItemsRegister.ROACH_SPAWN_EGG, new Model(Optional.of(TEMPLATE_SPAWN_EGG), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.SHEEP_PLANT,new Model(Optional.of(Identifier.ofVanilla("item/sheep_spawn_egg")), Optional.empty()));
 
         itemModelGenerator.register(ItemsRegister.CREEPER_ITEM, new Model(Optional.of(InitValue.id("item/air")), Optional.empty()));

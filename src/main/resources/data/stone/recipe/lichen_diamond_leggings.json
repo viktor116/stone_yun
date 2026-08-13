@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "# #",
+    "# #"
+  ],
+  "key": {
+    "#": { "item": "stone:lichen_diamond" }
+  },
+  "result": {
+    "id": "stone:lichen_diamond_leggings",
+    "count": 1
+  }
+}

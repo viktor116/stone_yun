@@ -8,6 +8,7 @@ import com.soybean.event.EventRegister;
 import com.soybean.init.ScreenHandlerTypeInit;
 import com.soybean.items.ItemsRegister;
 import com.soybean.items.armor.ModArmorMaterials;
+import com.soybean.items.recipes.ModRecipes;
 import com.soybean.network.NetworkRegister;
 import com.soybean.particles.ParticlesRegister;
 import com.soybean.screen.ScreenRegister;
@@ -28,6 +29,7 @@ public class Stone implements ModInitializer {
 		ItemsRegister.initialize();
 		EntityRegister.initialize();
 		ModBlock.initialize();
+		ModRecipes.registerRecipes();
 		EnchantmentRegister.Initialize();
 		ModArmorMaterials.initialize();
 		EventRegister.Initialize();

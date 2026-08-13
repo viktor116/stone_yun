@@ -37,10 +37,27 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlock.COAL_ORE)
                 .add(ModBlock.ALUMINUM_ORE)
                 .add(ModBlock.CONCRETE)
-                .add(ModBlock.COMPRESS_GOLD_BLOCK);
+                .add(ModBlock.COMPRESS_GOLD_BLOCK)
+                .add(ModBlock.LICHEN_DIAMOND_ORE)
+                .add(ModBlock.DEEPSLATE_DIAMOND_ORE);
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlock.LICHEN_DIAMOND_ORE)
+                .add(ModBlock.DEEPSLATE_DIAMOND_ORE);
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(ModBlock.FALL_OAK_LOG)
+                .add(ModBlock.FALL_OAK_PLANKS)
+                .add(ModBlock.FALL_CRAFTING_TABLE);
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(ModBlock.FALL_FURNACE);
+        getOrCreateTagBuilder(BlockTags.LOGS)
+                .add(ModBlock.FALL_OAK_LOG);
+        getOrCreateTagBuilder(BlockTags.PLANKS)
+                .add(ModBlock.FALL_OAK_PLANKS);
         getOrCreateTagBuilder(BlockTags.ANVIL)
                 .add(ModBlock.WOODEN_ANVIL)
                 .add(ModBlock.STONE_ANVIL);
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(ModBlock.MAIN_RESPAWN_ANCHOR);
 
     }
 }

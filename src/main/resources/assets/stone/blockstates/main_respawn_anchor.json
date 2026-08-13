@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "charges=0": { "model": "stone:block/main_respawn_anchor_0" },
+    "charges=1": { "model": "stone:block/main_respawn_anchor_1" },
+    "charges=2": { "model": "stone:block/main_respawn_anchor_2" },
+    "charges=3": { "model": "stone:block/main_respawn_anchor_3" },
+    "charges=4": { "model": "stone:block/main_respawn_anchor_4" }
+  }
+}

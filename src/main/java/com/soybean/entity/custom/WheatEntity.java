@@ -174,7 +174,7 @@ public class WheatEntity extends AnimalEntity implements GeoEntity {
 
     private PlayState predicate(AnimationState<GeoAnimatable> animationState) {
         animationState.getController().setAnimation(RawAnimation.begin()
-                .then("animation.idle", Animation.LoopType.LOOP));
+                .then("animation.wheat_entity", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
     }
 

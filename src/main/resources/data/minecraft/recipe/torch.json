@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "/",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "/": {
+      "tag": "minecraft:coals"
+    }
+  },
+  "result": {
+    "id": "stone:extinguish_torch",
+    "count": 4
+  }
+}

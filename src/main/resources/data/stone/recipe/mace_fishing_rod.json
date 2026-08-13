@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:fishing_rod" },
+    { "item": "minecraft:mace" }
+  ],
+  "result": {
+    "id": "stone:mace_fishing_rod",
+    "count": 1
+  }
+}
