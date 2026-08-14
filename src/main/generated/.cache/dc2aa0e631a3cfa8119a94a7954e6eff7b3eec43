@@ -1,4 +1,4 @@
-// 1.21.1	2026-08-13T12:59:15.8864618	stone/Model Definitions
+// 1.21.1	2026-08-15T00:28:33.2074577	stone/Model Definitions
 169122c3362e5db1de3dc148533abdf8f9887a75 assets\stone\models\block\aluminum_ore.json
 e7284609fb99aaed620f95213ff8c5f6c4575c5e assets\stone\models\item\weathered_copper_leggings.json
 6157b1509947dcdf341809a919c957e8af1d2d2c assets\stone\models\item\waxed_copper_axe.json
@@ -29,8 +29,8 @@ e5496d84f436ffb971cf5d21a0059e8ce08c0873 assets\stone\models\block\leaf_ore.json
 2d091fd0751b976d20b9dff4972d79be06e3767e assets\stone\models\item\main_world_helmet.json
 6827196f95f77f7fdc7f6655b79b79d28c7e2f31 assets\stone\models\item\compress_gold_block.json
 bbcd98cf683d6ce7ddc9f5100e2e9b74f48ed284 assets\stone\models\item\lichen_leggings.json
-0b98c0ddd43bed78e382988fddae37058ed21eb6 assets\stone\models\item\copper_helmet.json
 248b9b34d38628f2ba0eeb0048215a711ec72bba assets\stone\models\item\low_enchant_apple.json
+0b98c0ddd43bed78e382988fddae37058ed21eb6 assets\stone\models\item\copper_helmet.json
 4f8f129adb523768f295e020736869025c0c7318 assets\stone\models\item\leaf_boots.json
 8c5284b2d485af8b9e6a5f2916cb1729b4b62fba assets\stone\blockstates\cooked_cobblestone.json
 ef0915460b84b88bbdbdc0c90bb9a8c0739a451f assets\stone\models\item\cooked_potato_block.json
@@ -90,8 +90,8 @@ ca917b6392b50816ecb9f2fc35527085e157f7a6 assets\stone\models\item\raw_aluminum.j
 2ccf028461b8fb3294252acb6b8e566d34ead015 assets\stone\models\item\oxidized_copper_boots.json
 d6249c442ceb34a682910760a5eb134943f2b576 assets\stone\models\item\diamond_stick_axe.json
 94b5cb06f614bc5b38a0b1efec225ed2cc46420a assets\stone\models\item\gold_carrot_nugget.json
-cdc27a58460d97a97a852c57e61b49e50dae216e assets\stone\models\block\cooked_cobblestone.json
 7ad8d632b178e6eaab762ea91afaf8e6610f33ff assets\stone\models\item\cactus_boots.json
+cdc27a58460d97a97a852c57e61b49e50dae216e assets\stone\models\block\cooked_cobblestone.json
 cda266028f95ad72e787db68f467c02759c4513f assets\stone\models\item\enchanted_golden_carrot_2.json
 e0a2611bd960084c89ed745714783e50a30e9d63 assets\stone\models\item\reactor.json
 654dd89c0f08c1fd0362588d2a8929a7930b7399 assets\stone\blockstates\aluminum_ore.json
@@ -109,8 +109,8 @@ a4a2d682805c14bf846a3024d51874b783b79b7a assets\stone\models\item\timer_clock.js
 cd60801bd32b7b81846ce7595fc62068698bb802 assets\stone\models\item\concrete_pickaxe.json
 9ee59ce14ea0a4f78938a6068ae8c81dcbc77fd4 assets\stone\models\item\oxidized_copper_leggings.json
 c5d6266e7b9085cdbbaaade695a4ade64be89fdd assets\stone\models\item\wooden_shears.json
-77ebecbedc23a48b4772abcbd2fd8259b8219b78 assets\stone\models\item\golden_apple.json
 b8509740b4ae3573901b20d4ca0b9fd9298b9e3f assets\stone\models\item\obsidian.json
+77ebecbedc23a48b4772abcbd2fd8259b8219b78 assets\stone\models\item\golden_apple.json
 00195bcfc135044563bac142f6f6c4f112b194ac assets\stone\models\item\dirt_axe.json
 c4007f7e3bc7e5dfd3cb9d3999835bd4b597fc28 assets\stone\models\item\dirt_block_spawn_egg.json
 974e8f3ec530b0c69f1268e0859f381bf95b4159 assets\stone\models\item\main_world_scrap.json
@@ -125,8 +125,8 @@ fd1e25af069beeb8d0c3136d05ae234dfa02dd7f assets\stone\models\item\aluminum_ingot
 d938921f9918d68d292ca7581f8b5fc2811073af assets\stone\models\item\diamond_stick_pickaxe.json
 c9c53c9bd08214a341bbe59bb4522dbf490ffd2e assets\stone\models\item\oxidized_copper_helmet.json
 d05d572c22281ed3550545360b793cc8f851b775 assets\stone\models\item\cactus_pickaxe.json
-ebdf637ceff9aeb029c5ae47b3189c8077fe6c15 assets\stone\models\item\copper_boots.json
 88bcf76e8baa61e50b9b0eed811cb7e1f395e94c assets\stone\models\item\soul_item.json
+ebdf637ceff9aeb029c5ae47b3189c8077fe6c15 assets\stone\models\item\copper_boots.json
 c5251ef7900113f6bbd49f700a68986baa37425f assets\stone\models\item\wheat_meal.json
 1e7c61348ea92c445f373623a141620626540329 assets\stone\blockstates\leaf_ore.json
 275646b55ff0d08096cbde16c74c250dbdabe111 assets\stone\models\item\gold_apple_ingot.json
@@ -153,6 +153,7 @@ d6ab89a91802e54f57557aad2a5c1d9b319c10ec assets\stone\models\item\lichen_diamond
 c7c3cdfc0be9cd287cf336fe0c1e01fa38e8898c assets\stone\models\item\waxed_copper_boots.json
 fa37c5f411a998695a3ade7b53196f572ae37ba8 assets\stone\models\item\dirt_sword.json
 9446ad2dbb06a5e6acdf032746b10a05c58b1fe8 assets\stone\models\item\lichen_sword.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\stone\models\item\roach_blue_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets\stone\models\item\common_creeper_spawn_egg.json
 647ed9d460a0cdc2811217d9e916506b1837965e assets\stone\models\item\lichen_diamond_leggings.json
 3576d208929870a1cf1d0a103b93e759fa26af85 assets\stone\models\item\copper_tool_pickaxe.json
@@ -161,8 +162,8 @@ dba367ef945d0af9bd1f9780661f79e3d6f54709 assets\stone\models\item\wither_skull_c
 1d9ab0f38aae76ea0ee9eac4577c1bbacaeec97a assets\stone\models\item\exposed_copper_chestplate.json
 52a7c82b298b3509118bbc5cdc76423e524d65c7 assets\stone\models\item\warden_bucket.json
 b0b8c8953feef70c039bc5be1b7ce700ccc481f5 assets\stone\models\item\lichen_diamond_helmet.json
-d562490f1d096120783ac2b9e920b8f7349e2199 assets\stone\models\item\exposed_copper_leggings.json
 e5521d6a8bd4a3a6472967709f893441e1e5c8c7 assets\stone\models\item\cactus_leggings.json
+d562490f1d096120783ac2b9e920b8f7349e2199 assets\stone\models\item\exposed_copper_leggings.json
 a17efda27bdc0d689b2bfb833cabfe57fb36ecf3 assets\stone\models\block\compress_gold_block.json
 09002ccbd6c932cc7e21645f929579ad9790b0ee assets\stone\models\item\concrete.json
 aa883aa9375ce872ec26ba9d3cded2c83393b455 assets\stone\blockstates\obsidian.json

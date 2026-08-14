@@ -55,5 +55,6 @@ public class EntityRegisterClient {
         EntityRendererRegistry.register(EntityRegister.MACE_BOBBER_ENTITY, MaceBobberRenderer::new);
         EntityRendererRegistry.register(EntityRegister.BOW_PROJECTILE_ENTITY, BowProjectileRenderer::new);
         EntityRendererRegistry.register(EntityRegister.ROACH, RoachRenderer::new);
+        EntityRendererRegistry.register(EntityRegister.ROACH_BLUE, RoachBlueRenderer::new);
     }
 }

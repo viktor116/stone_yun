@@ -227,6 +227,8 @@ public class ItemsRegister {
             894731, 0, new Item.Settings()), "common_creeper_spawn_egg");
     public static final Item ROACH_SPAWN_EGG = register(new SpawnEggItem(EntityRegister.ROACH,
             0x2A1F14, 0x5C3A1E, new Item.Settings()), "roach_spawn_egg");
+    public static final Item ROACH_BLUE_SPAWN_EGG = register(new SpawnEggItem(EntityRegister.ROACH_BLUE,
+            0x39C5BB, 0x006E7F, new Item.Settings()), "roach_blue_spawn_egg");
     public static final Item BUCKET_HAT = register(new BucketHatItem(), "bucket_hat");
     public static final Item HALF_WHITE_BED = register(new BedItem(ModBlock.HALF_WHITE_BED,new Item.Settings().maxCount(1)), "half_white_bed");
     public static final Item HALF_OAK_DOOR = register(new TallBlockItem(ModBlock.HALF_OAK_DOOR,new Item.Settings()), "half_oak_door");
@@ -462,6 +464,7 @@ public class ItemsRegister {
             itemGroup.add(ARROW_BOW);
             itemGroup.add(MACE_FISHING_ROD);
             itemGroup.add(ROACH_SPAWN_EGG);
+            itemGroup.add(ROACH_BLUE_SPAWN_EGG);
             itemGroup.add(WITHER_STORM);
             itemGroup.add(TOMATO_EGG_SOUP);
         });

@@ -166,6 +166,15 @@ public class EntityRegister {
                     .build()
     );
 
+    public static final EntityType<RoachBlueEntity> ROACH_BLUE = Registry.register(
+            Registries.ENTITY_TYPE,
+            InitValue.id("roach_blue"),
+            FabricEntityTypeBuilder.<RoachBlueEntity>create(SpawnGroup.CREATURE, RoachBlueEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.4f, 0.25f))
+                    .trackRangeBlocks(8)
+                    .build()
+    );
+
     private static <T extends Entity> EntityType<T> register(String name, EntityType<T> entityType) {
         return Registry.register(Registries.ENTITY_TYPE, Identifier.of(InitValue.MOD_ID, name), entityType);
     }
@@ -178,5 +187,6 @@ public class EntityRegister {
         FabricDefaultAttributeRegistry.register(RIDEABLE_POLAR_BEAR, RideablePolarBearEntity.createPolarBearAttributes());
         FabricDefaultAttributeRegistry.register(COMMON_CREEPER, CommonCreeperEntity.createCreeperAttributes());
         FabricDefaultAttributeRegistry.register(ROACH, RoachEntity.createRoachAttributes());
+        FabricDefaultAttributeRegistry.register(ROACH_BLUE, RoachEntity.createRoachAttributes());
     }
 }

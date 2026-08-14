@@ -195,6 +195,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ItemsRegister.RIDEABLE_POLAR_BEAR_SPAWN_EGG, new Model(Optional.of(TEMPLATE_SPAWN_EGG), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.COMMON_CREEPER_SPAWN_EGG, new Model(Optional.of(TEMPLATE_SPAWN_EGG), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.ROACH_SPAWN_EGG, new Model(Optional.of(TEMPLATE_SPAWN_EGG), Optional.empty()));
+        itemModelGenerator.register(ItemsRegister.ROACH_BLUE_SPAWN_EGG, new Model(Optional.of(TEMPLATE_SPAWN_EGG), Optional.empty()));
         itemModelGenerator.register(ItemsRegister.SHEEP_PLANT,new Model(Optional.of(Identifier.ofVanilla("item/sheep_spawn_egg")), Optional.empty()));
 
         itemModelGenerator.register(ItemsRegister.CREEPER_ITEM, new Model(Optional.of(InitValue.id("item/air")), Optional.empty()));

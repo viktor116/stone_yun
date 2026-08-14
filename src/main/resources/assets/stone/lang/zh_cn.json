@@ -268,5 +268,7 @@
   "stone.container.crafting": "石制工作台",
 
   "item.stone.roach_spawn_egg": "蟑螂刷怪蛋",
-  "entity.stone.roach": "蟑螂"
+  "item.stone.roach_blue_spawn_egg": "初音未来蟑螂刷怪蛋",
+  "entity.stone.roach": "蟑螂",
+  "entity.stone.roach_blue": "初音未来蟑螂"
 }
