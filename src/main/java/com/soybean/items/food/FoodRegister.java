@@ -31,8 +31,10 @@ public class FoodRegister {
     
     // 树碳食物组件 - 食用后立即死亡
     public static final FoodComponent TREE_CARBON = new FoodComponent.Builder().nutrition(0).saturationModifier(0)
-            .statusEffect(new StatusEffectInstance(StatusEffects.WITHER, 999999, 127), 1.0f) // 添加最高等级凋零效果（作为备用）
-            .statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_DAMAGE, 1, 127), 1.0f) // 添加最高等级瞬间伤害
+            .statusEffect(new StatusEffectInstance(StatusEffects.WITHER, 999999, 127), 1.0f)
+            .statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_DAMAGE, 1, 127), 1.0f)
             .alwaysEdible().build();
+
+    public static final FoodComponent TOMATO_EGG_SOUP = new FoodComponent.Builder().nutrition(6).saturationModifier(0.6f).build();
 
 }

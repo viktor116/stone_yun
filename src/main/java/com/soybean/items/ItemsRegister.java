@@ -235,6 +235,7 @@ public class ItemsRegister {
     public static final Item WITHER_SKULL_CHARGED_WAND = register(new WitherSkullChargedWandItem(new Item.Settings().maxCount(1)), "wither_skull_charged_wand");
     public static final Item LICHEN_DIAMOND = register(new Item(new Item.Settings()), "lichen_diamond");
     public static final Item WITHER_STORM = register(new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)), "wither_storm");
+    public static final Item TOMATO_EGG_SOUP = register(new Item(new Item.Settings().maxCount(1).food(FoodRegister.TOMATO_EGG_SOUP)), "tomato_egg_soup");
 
     public static void initialize() {
 //        ModRecipes.registerRecipes();
@@ -462,6 +463,7 @@ public class ItemsRegister {
             itemGroup.add(MACE_FISHING_ROD);
             itemGroup.add(ROACH_SPAWN_EGG);
             itemGroup.add(WITHER_STORM);
+            itemGroup.add(TOMATO_EGG_SOUP);
         });
         ItemGroupEvents.modifyEntriesEvent(TRANSPARENT_GROUP_KEY).register(itemGroup->{
             itemGroup.add(ModBlock.TRANSPARENT_BLOCK);
